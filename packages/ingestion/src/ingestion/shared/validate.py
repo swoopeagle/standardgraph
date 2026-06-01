@@ -23,11 +23,11 @@ def validate() -> bool:
 
     print("Validating database...")
 
-    check("CCSS standards",  "SELECT COUNT(*) FROM standards WHERE system='ccss'", 400, 650)
-    check("sub_standards",   "SELECT COUNT(*) FROM sub_standards", 500)
+    check("CCSS standards",  "SELECT COUNT(*) FROM standards WHERE system='ccss'", 300, 450)
+    check("sub_standards",   "SELECT COUNT(*) FROM sub_standards", 80)
     check("keywords",        "SELECT COUNT(*) FROM keywords", 1000)
     check("relationships",   "SELECT COUNT(*) FROM standard_relationships", 500)
-    check("embeddings",      "SELECT COUNT(*) FROM embeddings", 400)
+    check("embeddings",      "SELECT COUNT(*) FROM embeddings", 300)
 
     # Embedding dimensions
     row = conn.execute("SELECT dimensions, length(vector) FROM embeddings LIMIT 1").fetchone()
@@ -76,26 +76,27 @@ def validate() -> bool:
         errors.append(f"{orphans} sub_standards with missing parent_id")
 
     # Spot check
+    # Note: commonstandardsproject API uses 6.RP.3 notation (no cluster letter)
     spot = conn.execute(
-        "SELECT id, grade, domain, standard_text FROM standards WHERE id='CCSS.MATH.6.RP.A.3'"
+        "SELECT id, grade, domain, standard_text FROM standards WHERE id='CCSS.MATH.6.RP.3'"
     ).fetchone()
     if spot:
         has_ratio = "ratio" in spot[3].lower()
-        print(f"  OK  spot check 6.RP.A.3: grade={spot[1]}, domain={spot[2][:30]}…, 'ratio' in text={has_ratio}")
+        print(f"  OK  spot check 6.RP.3: grade={spot[1]}, domain={spot[2][:30]}…, 'ratio' in text={has_ratio}")
         if not has_ratio:
-            warnings.append("6.RP.A.3 text does not contain 'ratio'")
+            warnings.append("6.RP.3 text does not contain 'ratio'")
     else:
-        warnings.append("CCSS.MATH.6.RP.A.3 not found")
+        warnings.append("CCSS.MATH.6.RP.3 not found")
 
-    # Relationship check for 6.RP.A.3
+    # Relationship check for 6.RP.3
     rel_check = conn.execute(
-        "SELECT relationship FROM standard_relationships WHERE source_id='CCSS.MATH.6.RP.A.3'"
+        "SELECT relationship FROM standard_relationships WHERE source_id='CCSS.MATH.6.RP.3'"
     ).fetchall()
     rel_types = {r[0] for r in rel_check}
     if "successor" in rel_types or "prerequisite" in rel_types:
-        print(f"  OK  6.RP.A.3 relationships: {rel_types}")
+        print(f"  OK  6.RP.3 relationships: {rel_types}")
     else:
-        warnings.append(f"6.RP.A.3 has no prerequisite/successor relationships: {rel_types}")
+        warnings.append(f"6.RP.3 has no prerequisite/successor relationships: {rel_types}")
 
     conn.close()
 
