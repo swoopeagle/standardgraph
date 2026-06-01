@@ -1,4 +1,4 @@
-"""Stage 4: Build standard_relationships from grade progression and cluster groupings."""
+"""Stage 4: Build standard_relationships from grade progression within each domain."""
 import sqlite3
 
 from shared.config import DB_PATH
@@ -13,68 +13,61 @@ def grade_key(g: str) -> int:
         return 99
 
 
-def build_relationships() -> None:
+def main() -> None:
+    print("Stage 4: Building standard relationships...")
     conn = sqlite3.connect(DB_PATH)
-    standards = conn.execute(
-        "SELECT id, grade, domain_code, cluster_letter FROM standards"
+    conn.execute("PRAGMA foreign_keys = ON")
+
+    rows = conn.execute(
+        "SELECT id, grade, domain, system FROM standards ORDER BY domain, grade"
     ).fetchall()
-    print(f"  Processing {len(standards)} standards...")
+    print(f"  Processing {len(rows)} standards...")
 
-    by_cluster: dict[tuple, list[tuple]] = {}
-    by_domain: dict[str, list[tuple]] = {}
-
-    for std_id, grade, domain_code, cluster_letter in standards:
-        cluster_key = (domain_code, cluster_letter)
-        by_cluster.setdefault(cluster_key, []).append((grade, std_id))
-        by_domain.setdefault(domain_code, []).append((grade, std_id))
+    # Group by (system, domain)
+    by_domain: dict[tuple, list[tuple]] = {}
+    for std_id, grade, domain, system in rows:
+        key = (system, domain)
+        by_domain.setdefault(key, []).append((grade, std_id))
 
     relationships: list[tuple] = []
     seen: set[tuple] = set()
 
-    def add(from_id: str, to_id: str, rel_type: str, weight: float = 1.0) -> None:
-        key = (from_id, to_id, rel_type)
+    def add(src: str, tgt: str, rel: str, system: str) -> None:
+        key = (src, tgt, rel)
         if key not in seen:
             seen.add(key)
-            relationships.append((from_id, to_id, rel_type, weight))
+            relationships.append((src, tgt, rel, system))
 
-    # Within-cluster: all standards in the same cluster are "related"
-    for entries in by_cluster.values():
-        if len(entries) < 2:
-            continue
-        for i, (_, id1) in enumerate(entries):
-            for j, (_, id2) in enumerate(entries):
-                if i != j:
-                    add(id1, id2, "related", 0.8)
-
-    # Cross-grade: standards in the same domain, adjacent grades, build_on each other
-    for domain_code, entries in by_domain.items():
+    for (system, domain), entries in by_domain.items():
+        # Sort by grade within each domain
         grade_map: dict[str, list[str]] = {}
         for grade, std_id in entries:
             grade_map.setdefault(grade, []).append(std_id)
 
         grades = sorted(grade_map.keys(), key=grade_key)
+
         for i in range(len(grades) - 1):
             g1, g2 = grades[i], grades[i + 1]
-            if grade_key(g2) - grade_key(g1) <= 2:
-                for id1 in grade_map[g1]:
-                    for id2 in grade_map[g2]:
-                        add(id1, id2, "builds_on", 0.7)
+            # Only link adjacent or near-adjacent grades (gap ≤ 2)
+            if grade_key(g2) - grade_key(g1) > 2:
+                continue
+            for id1 in grade_map[g1]:
+                for id2 in grade_map[g2]:
+                    add(id1, id2, "successor",    system)
+                    add(id2, id1, "prerequisite", system)
 
     with conn:
         conn.execute("DELETE FROM standard_relationships")
         conn.executemany(
-            "INSERT INTO standard_relationships (from_id, to_id, relationship_type, weight) VALUES (?,?,?,?)",
+            """INSERT OR IGNORE INTO standard_relationships
+               (source_id, target_id, relationship, system)
+               VALUES (?,?,?,?)""",
             relationships,
         )
 
     count = conn.execute("SELECT COUNT(*) FROM standard_relationships").fetchone()[0]
     conn.close()
     print(f"  Inserted {count} relationships")
-
-
-def main() -> None:
-    print("Stage 4: Building standard relationships...")
-    build_relationships()
     print("Done.")
 
 

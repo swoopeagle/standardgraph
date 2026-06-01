@@ -1,26 +1,22 @@
 """Stage 5: Generate embeddings for all standards via Ollama nomic-embed-text."""
 import sqlite3
-import struct
 
 import httpx
+import numpy as np
 
 from shared.config import DB_PATH, OLLAMA_BASE_URL, EMBED_MODEL
 
-BATCH_SIZE = 20
+BATCH_SIZE = 50
 
 
-def embed_texts(texts: list[str], client: httpx.Client) -> list[list[float]]:
+def embed_texts(texts: list[str], client: httpx.Client) -> np.ndarray:
     resp = client.post(
         f"{OLLAMA_BASE_URL}/api/embed",
         json={"model": EMBED_MODEL, "input": texts},
         timeout=60,
     )
     resp.raise_for_status()
-    return resp.json()["embeddings"]
-
-
-def pack_vector(vec: list[float]) -> bytes:
-    return struct.pack(f"{len(vec)}f", *vec)
+    return np.array(resp.json()["embeddings"], dtype=np.float32)
 
 
 def main() -> None:
@@ -28,7 +24,7 @@ def main() -> None:
     conn = sqlite3.connect(DB_PATH)
 
     pending = conn.execute("""
-        SELECT s.id, s.description
+        SELECT s.id, s.standard_text
         FROM standards s
         LEFT JOIN embeddings e ON e.standard_id = s.id
         WHERE e.standard_id IS NULL
@@ -45,20 +41,25 @@ def main() -> None:
     with httpx.Client() as client:
         for i in range(0, len(pending), BATCH_SIZE):
             batch = pending[i : i + BATCH_SIZE]
-            ids = [r[0] for r in batch]
+            ids   = [r[0] for r in batch]
             texts = [r[1] for r in batch]
 
             vecs = embed_texts(texts, client)
-            dim = len(vecs[0])
+            dims = vecs.shape[1]
 
             with conn:
                 conn.executemany(
-                    "INSERT OR REPLACE INTO embeddings (standard_id, model, vector) VALUES (?,?,?)",
-                    [(sid, EMBED_MODEL, pack_vector(vec)) for sid, vec in zip(ids, vecs)],
+                    """INSERT OR REPLACE INTO embeddings
+                       (standard_id, model, vector, dimensions)
+                       VALUES (?,?,?,?)""",
+                    [
+                        (sid, EMBED_MODEL, vecs[j].tobytes(), dims)
+                        for j, sid in enumerate(ids)
+                    ],
                 )
 
             done = min(i + BATCH_SIZE, len(pending))
-            print(f"  [{done}/{len(pending)}] dim={dim}")
+            print(f"  [{done}/{len(pending)}] dim={dims}")
 
     total = conn.execute("SELECT COUNT(*) FROM embeddings").fetchone()[0]
     conn.close()

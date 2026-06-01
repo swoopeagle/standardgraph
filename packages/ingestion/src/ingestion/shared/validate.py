@@ -4,6 +4,8 @@ import sys
 
 from shared.config import DB_PATH
 
+GRADE_ORDER = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "HS"]
+
 
 def validate() -> bool:
     conn = sqlite3.connect(DB_PATH)
@@ -20,19 +22,24 @@ def validate() -> bool:
             print(f"  OK  {label}: {count}")
 
     print("Validating database...")
-    check("CCSS standards",  "SELECT COUNT(*) FROM standards WHERE source='CCSS'", 400, 650)
+
+    check("CCSS standards",  "SELECT COUNT(*) FROM standards WHERE system='ccss'", 400, 650)
+    check("sub_standards",   "SELECT COUNT(*) FROM sub_standards", 500)
     check("keywords",        "SELECT COUNT(*) FROM keywords", 1000)
     check("relationships",   "SELECT COUNT(*) FROM standard_relationships", 500)
     check("embeddings",      "SELECT COUNT(*) FROM embeddings", 400)
 
-    vec_row = conn.execute("SELECT length(vector) FROM embeddings LIMIT 1").fetchone()
-    if vec_row:
-        expected = 768 * 4  # 768 float32s
-        if vec_row[0] == expected:
-            print(f"  OK  embedding size: {vec_row[0]} bytes (768 × float32)")
+    # Embedding dimensions
+    row = conn.execute("SELECT dimensions, length(vector) FROM embeddings LIMIT 1").fetchone()
+    if row:
+        dims, blob_len = row
+        expected_blob = dims * 4
+        if dims == 768 and blob_len == expected_blob:
+            print(f"  OK  embedding dimensions: {dims} ({blob_len} bytes)")
         else:
-            errors.append(f"embedding size: {vec_row[0]} bytes (expected {expected})")
+            errors.append(f"embedding: dims={dims}, blob={blob_len} bytes (expected dims=768, blob=3072)")
 
+    # Embedding coverage
     std_n = conn.execute("SELECT COUNT(*) FROM standards").fetchone()[0]
     emb_n = conn.execute("SELECT COUNT(*) FROM embeddings").fetchone()[0]
     if std_n == emb_n:
@@ -40,21 +47,55 @@ def validate() -> bool:
     else:
         warnings.append(f"embedding coverage: {emb_n}/{std_n} standards embedded")
 
+    # No missing standard_text
     missing = conn.execute(
-        "SELECT COUNT(*) FROM standards WHERE description = '' OR description IS NULL"
+        "SELECT COUNT(*) FROM standards WHERE standard_text = '' OR standard_text IS NULL"
     ).fetchone()[0]
     if missing == 0:
-        print("  OK  all standards have descriptions")
+        print("  OK  all standards have standard_text")
     else:
-        errors.append(f"{missing} standards missing description")
+        errors.append(f"{missing} standards missing standard_text")
 
+    # Every grade K-8 + HS has at least 5 standards
+    for grade in GRADE_ORDER:
+        n = conn.execute(
+            "SELECT COUNT(*) FROM standards WHERE system='ccss' AND grade=?", (grade,)
+        ).fetchone()[0]
+        if n < 5:
+            errors.append(f"Grade {grade}: only {n} standards (expected >= 5)")
+        else:
+            print(f"  OK  grade {grade}: {n} standards")
+
+    # sub_standards FK integrity
+    orphans = conn.execute(
+        "SELECT COUNT(*) FROM sub_standards WHERE parent_id NOT IN (SELECT id FROM standards)"
+    ).fetchone()[0]
+    if orphans == 0:
+        print("  OK  sub_standards FK integrity")
+    else:
+        errors.append(f"{orphans} sub_standards with missing parent_id")
+
+    # Spot check
     spot = conn.execute(
-        "SELECT id, grade, domain FROM standards WHERE id='CCSS.MATH.6.RP.A.3'"
+        "SELECT id, grade, domain, standard_text FROM standards WHERE id='CCSS.MATH.6.RP.A.3'"
     ).fetchone()
     if spot:
-        print(f"  OK  spot check 6.RP.A.3: grade={spot[1]}, domain={spot[2]}")
+        has_ratio = "ratio" in spot[3].lower()
+        print(f"  OK  spot check 6.RP.A.3: grade={spot[1]}, domain={spot[2][:30]}…, 'ratio' in text={has_ratio}")
+        if not has_ratio:
+            warnings.append("6.RP.A.3 text does not contain 'ratio'")
     else:
-        warnings.append("CCSS.MATH.6.RP.A.3 not found (ID format may differ)")
+        warnings.append("CCSS.MATH.6.RP.A.3 not found")
+
+    # Relationship check for 6.RP.A.3
+    rel_check = conn.execute(
+        "SELECT relationship FROM standard_relationships WHERE source_id='CCSS.MATH.6.RP.A.3'"
+    ).fetchall()
+    rel_types = {r[0] for r in rel_check}
+    if "successor" in rel_types or "prerequisite" in rel_types:
+        print(f"  OK  6.RP.A.3 relationships: {rel_types}")
+    else:
+        warnings.append(f"6.RP.A.3 has no prerequisite/successor relationships: {rel_types}")
 
     conn.close()
 
