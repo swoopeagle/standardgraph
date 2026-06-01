@@ -1,0 +1,19 @@
+[project]
+name = "common-core"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "shared",
+    "fastmcp>=0.3.0",
+    "aiosqlite>=0.19.0",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.uv.sources]
+shared = { workspace = true }
