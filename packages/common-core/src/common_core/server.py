@@ -22,9 +22,17 @@ def _db() -> sqlite3.Connection:
 
 
 def _expand_id(standard_id: str, system: str = "ccss") -> str:
-    """Accept shortform '6.RP.A.3' and expand to 'CCSS.MATH.6.RP.A.3'."""
+    """Accept shortform '6.RP.A.3' and expand to 'CCSS.MATH.6.RP.A.3'.
+
+    Already-qualified IDs (containing '.MATH.' or starting with a
+    two-letter state/system prefix like 'TX.') are returned unchanged.
+    """
     sid = standard_id.strip()
-    if sid.upper().startswith("CCSS."):
+    upper = sid.upper()
+    if upper.startswith("CCSS."):
+        return sid
+    # Already a qualified non-CCSS ID (e.g. 'TX.MATH.5.3.K', 'FL.MATH.MA.5.NSO.2.5')
+    if ".MATH." in upper:
         return sid
     if system == "ccss":
         return f"CCSS.MATH.{sid}"
