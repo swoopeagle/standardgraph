@@ -218,13 +218,15 @@ def ingest_set(
 
     by_id: dict[str, dict] = {s["id"]: s for s in all_stds}
 
-    # Find leaf depth: deepest depth with notation-bearing items
-    depths_with_notation = sorted(
-        {s.get("depth", 0) for s in all_stds if (s.get("statementNotation") or "").strip()},
-    )
-    if not depths_with_notation:
+    # Find leaf depth: depth with the most notation items
+    depth_notation_counts: dict[int, int] = {}
+    for s in all_stds:
+        if (s.get("statementNotation") or "").strip():
+            d = s.get("depth", 0)
+            depth_notation_counts[d] = depth_notation_counts.get(d, 0) + 1
+    if not depth_notation_counts:
         return 0, 0
-    leaf_depth = depths_with_notation[-1]
+    leaf_depth = max(depth_notation_counts, key=lambda d: depth_notation_counts[d])
 
     # Among items at leaf_depth, find true leaves (items that are NOT
     # parentId of another notation-bearing item at the same depth).
