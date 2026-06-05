@@ -7,6 +7,7 @@ Covered systems:
   ib-myp      IB Middle Years Programme Mathematics
   ib-dp       IB Diploma Programme Mathematics
   uk-aqa      AQA GCSE Mathematics (England/Wales)
+  uk-nc       England National Curriculum Mathematics (KS1-KS2, Years 1-6)
 """
 import json
 import re
@@ -95,6 +96,15 @@ def _uk_aqa_filter(s: dict) -> bool:
     return "math" in s.get("subject", "").lower() and _not_deprecated(s)
 
 
+def _uk_nc_filter(s: dict) -> bool:
+    if "math" not in s.get("subject", "").lower():
+        return False
+    if not _not_deprecated(s):
+        return False
+    # Skip the assessment framework set (multi-level, not curriculum statements)
+    return "assessment framework" not in s.get("title", "").lower()
+
+
 # IB MYP has empty educationLevels for Year 1 / Year 3; derive from title
 _IB_MYP_TITLE_GRADE: dict[str, str] = {
     "Mathematics Year 1": "6",
@@ -149,6 +159,14 @@ CURRICULA: list[dict] = [
         "grade_override": None,
         "source_url":   "https://www.aqa.org.uk/subjects/mathematics/gcse/mathematics-8300",
     },
+    {
+        "csp_id":            "AA5150D37ACE44B1B365366AB7869005",
+        "system":            "uk-nc",
+        "set_filter":        _uk_nc_filter,
+        "grade_override":    None,
+        "force_grade_prefix": True,
+        "source_url":        "https://www.gov.uk/government/publications/national-curriculum-in-england-mathematics-programmes-of-study",
+    },
 ]
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
@@ -200,6 +218,7 @@ def ingest_set(
     source_url: str,
     conn: sqlite3.Connection,
     seen_ids: set[str],
+    force_grade_prefix: bool = False,
 ) -> tuple[int, int]:
     """Ingest standards from one set. Leaf-depth detection handles any structure."""
     if not all_stds:
@@ -253,10 +272,10 @@ def ingest_set(
         if not notation or not desc:
             continue
 
-        # Notation systems that don't encode grade (e.g. IB MYP "D5", "Div")
-        # use no dot separators, so we include the grade to prevent cross-year
-        # collisions: IB_MYP.MATH.6.D5 vs IB_MYP.MATH.8.D5
-        if "." not in notation and len(notation) <= 8:
+        # Include grade in ID when: (a) force_grade_prefix is set for the curriculum
+        # (e.g. UK NC where Year 3 and Year 6 both use "S.1"), or (b) notation has no
+        # dots and is short (e.g. IB MYP "D5") so same code appears in multiple years.
+        if force_grade_prefix or ("." not in notation and len(notation) <= 8):
             std_id = f"{system_upper}.MATH.{grade}.{notation}"
         else:
             std_id = f"{system_upper}.MATH.{notation}"
@@ -366,7 +385,10 @@ def ingest_curriculum(curriculum: dict, conn: sqlite3.Connection, client: httpx.
 
         seen_ids: set[str] = set()  # fresh per grade — avoids cross-year notation collision
         with conn:
-            s, k = ingest_set(grade_stds, grade, system, source_url_for_grade, conn, seen_ids)
+            s, k = ingest_set(
+                grade_stds, grade, system, source_url_for_grade, conn, seen_ids,
+                force_grade_prefix=curriculum.get("force_grade_prefix", False),
+            )
         total_std += s
         total_kw  += k
 

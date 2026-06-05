@@ -1,4 +1,4 @@
-"""International Math Standards MCP server — Phase 1 (CCSS)."""
+"""International Math Standards MCP server."""
 import json
 import sqlite3
 
@@ -7,7 +7,46 @@ from fastmcp import FastMCP
 
 from shared.config import DB_PATH, OLLAMA_BASE_URL, EMBED_MODEL
 
-mcp = FastMCP("intl-math-standards")
+mcp = FastMCP(
+    "intl-math-standards",
+    instructions="""
+You have access to a database of 17,743 math standards across 64 curriculum systems, all
+cross-referenced to the US Common Core State Standards (CCSS) as the hub.
+
+## Available systems
+
+**US:** ccss (343 standards, the hub), plus all 50 states + DC by two-letter code
+  (al ak az ar ca co ct dc de fl ga hi id il in ia ks ky la me md ma mi mn ms mo
+   mt ne nv nh nj nm ny nc nd oh ok or pa ri sc sd tn tx ut vt va wa wv wi wy)
+
+**Canada:** ca-ab (Alberta) ca-bc (British Columbia) ca-mb (Manitoba)
+           ca-nb (New Brunswick) ca-on (Ontario) ca-sk (Saskatchewan)
+
+**International:** au-acara (Australian Curriculum) au-vic (Victorian Curriculum)
+  cambridge (Cambridge International) ib-myp (IB Middle Years) ib-dp (IB Diploma)
+  uk-aqa (AQA GCSE) uk-nc (England National Curriculum, Years 1-6)
+
+## Grade codes
+K, 1, 2, 3, 4, 5, 6, 7, 8, HS
+
+## When to use each tool
+
+- **lookup_standard**: user provides a specific standard ID they want to read
+- **search_standards**: user describes a concept and wants to find matching standards
+- **get_progression**: user asks how a topic develops across grade levels
+- **map_standard**: user wants to compare a standard across systems (e.g. "how does Texas
+  cover this vs CCSS?" or "what does the IB equivalent look like?")
+
+## Tips
+- Crosswalk mappings are NLP-generated (cosine similarity), not human-verified.
+  A confidence ≥ 0.85 is a strong match; 0.70–0.80 is plausible but worth checking.
+  A grade_delta ≠ 0 means the systems introduce the concept at different grade levels.
+- map_standard only maps to/from CCSS as the intermediate — direct system-to-system
+  mapping goes source → CCSS → target.
+- search_standards queries one system at a time; call it multiple times to compare
+  how different curricula cover the same concept.
+""",
+)
 
 GRADE_ORDER = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "HS"]
 
@@ -82,7 +121,17 @@ def lookup_standard(
     system: str = "ccss",
     include_elaborations: bool = False,
 ) -> str:
-    """Look up a math standard by ID. Accepts full IDs ('CCSS.MATH.6.RP.A.3') or shortform ('6.RP.A.3')."""
+    """Fetch the full text, domain, cluster, prerequisites, and successors for a single standard.
+
+    Use this when the user provides a specific standard ID they want to read or understand.
+
+    standard_id: full ID like 'CCSS.MATH.6.RP.A.3' or shortform '6.RP.A.3' (for CCSS).
+                 For other systems use the full ID, e.g. 'TX.MATH.5.3.K' or 'CA_BC.MATH.3.a'.
+    system: curriculum system code (default 'ccss'). See server instructions for all codes.
+
+    Returns the standard text, grade, domain, cluster, sub-standards (if any),
+    prerequisite standard IDs from the prior grade, and successor IDs for the next grade.
+    """
     sid = _expand_id(standard_id, system)
     conn = _db()
 
@@ -144,7 +193,20 @@ def search_standards(
     domain: str | None = None,
     limit: int = 5,
 ) -> str:
-    """Search math standards by natural language query. Optionally filter by grade or domain."""
+    """Find math standards that match a natural language description of a concept or skill.
+
+    Use this when the user describes what they're looking for rather than citing a standard ID.
+    Examples: "adding fractions with unlike denominators", "geometric transformations grade 8",
+    "solving quadratic equations".
+
+    query: plain English description of the math concept or skill.
+    system: which curriculum to search (default 'ccss'). Call multiple times to compare systems.
+    grade: optional filter — single grade '5', range '6-8', or 'HS'. Grade codes: K 1 2 3 4 5 6 7 8 HS.
+    domain: optional keyword to restrict by domain name (e.g. 'geometry', 'algebra').
+    limit: number of results (default 5, max sensible ~10).
+
+    Returns standards ranked by semantic similarity with relevance scores (0–1).
+    """
     query_vec = _embed_query(query)
     conn = _db()
     scored = _cosine_scores(query_vec, conn)
@@ -204,7 +266,19 @@ def get_progression(
     grade_start: int | None = None,
     grade_end: int | None = None,
 ) -> str:
-    """Show how a math concept develops across grade levels. Uses semantic search to find relevant standards."""
+    """Show how a math concept is introduced and built upon across grade levels.
+
+    Use this when the user asks questions like "how does fractions develop from grade 3 to 6?"
+    or "what's the full progression for proportional reasoning?" or "when is X introduced?"
+
+    concept: plain English name of the math concept (e.g. 'fractions', 'linear equations',
+             'place value', 'geometric transformations').
+    system: curriculum to trace (default 'ccss'). Try 'cambridge' or 'ib-myp' for comparison.
+    grade_start / grade_end: optional integer bounds to narrow the range (e.g. 3 and 8).
+
+    Returns the top matching standards per grade, ordered K through HS, showing how the
+    concept deepens over time.
+    """
     query_vec = _embed_query(concept)
     conn = _db()
     scored = _cosine_scores(query_vec, conn)
@@ -263,7 +337,26 @@ def map_standard(
     to_system: str,
     confidence_threshold: float = 0.7,
 ) -> str:
-    """Map a standard from one curriculum system to its nearest equivalent(s) in another."""
+    """Find the closest equivalent to a standard in a different curriculum system.
+
+    Use this when the user wants to compare curricula — e.g. "what is the CCSS equivalent
+    of this Texas standard?", "how does Cambridge cover this CCSS standard?", or
+    "I'm moving from Ontario to the UK — what's the equivalent?"
+
+    Note: all mappings go through CCSS as the hub. For direct system-to-system comparison
+    (e.g. tx → cambridge), call this twice: tx → ccss, then search_standards in cambridge
+    using the CCSS standard text.
+
+    standard_id: the source standard ID (full form, e.g. 'TX.MATH.5.3.K').
+    from_system: system code of the source standard (e.g. 'tx', 'ca-on', 'cambridge').
+    to_system: target system code — currently only 'ccss' mappings are precomputed.
+               For other targets, use search_standards instead.
+    confidence_threshold: minimum cosine similarity to return (default 0.7; raise to 0.85
+                          for high-confidence matches only).
+
+    Returns matched standards with confidence score, grade alignment, and whether
+    the mapping has been human-verified.
+    """
     sid = _expand_id(standard_id, from_system)
     conn = _db()
 

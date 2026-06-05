@@ -134,8 +134,8 @@ def select_grade_sets(sets: list[dict]) -> dict[str, list[str]]:
     Access Points, Spanish/French, and Deprecated sets are excluded.
     """
     def _is_core_math(s: dict) -> bool:
-        subj = s.get("subject", "").lower()
-        title = s.get("title", "").lower()
+        subj = (s.get("subject") or "").lower()
+        title = (s.get("title") or "").lower()
         if "math" not in subj:
             return False
         if s.get("document", {}).get("publicationStatus", "") == "Deprecated":
@@ -205,6 +205,7 @@ def ingest_set(
     all_stds: list[dict],
     conn: sqlite3.Connection,
     seen_ids: set[str],
+    force_grade_prefix: bool = False,
 ) -> tuple[int, int]:
     """
     Ingest one grade set for a state. Returns (standards_inserted, keywords_inserted).
@@ -269,7 +270,10 @@ def ingest_set(
         if not notation or not desc:
             continue
 
-        std_id = f"{state_upper}.MATH.{notation}"
+        if force_grade_prefix:
+            std_id = f"{state_upper}.MATH.{grade}.{notation}"
+        else:
+            std_id = f"{state_upper}.MATH.{notation}"
         if std_id in seen_ids:
             continue
         seen_ids.add(std_id)
