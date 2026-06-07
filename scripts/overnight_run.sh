@@ -108,6 +108,9 @@ run_step_unless_fresh() {
 # PDF-heavy steps use run_step_unless_fresh (skip if ingested within 6 days).
 # API-based steps always run (fast and idempotent).
 
+run_step_unless_fresh "AP Calculus + Statistics + Precalculus" "ap-calc-ab" \
+    uv run python -m ingestion.international.fetch_ap
+
 run_step_unless_fresh "Singapore MOE ingestion"      "sg-moe"   \
     uv run python -m ingestion.international.fetch_singapore
 

@@ -40,6 +40,9 @@ systems, all cross-referenced to the US Common Core State Standards (CCSS) as th
 **Sub-Saharan Africa:** gh-nacca (Ghana B1–12) za-caps (South Africa Gr R–12)
   rw-reb (Rwanda P4–P6)
 
+**US Advanced Placement:** ap-calc-ab (AP Calculus AB) ap-calc-bc (AP Calculus BC)
+  ap-stats (AP Statistics) ap-precalc (AP Precalculus)
+
 **International:** cambridge (Cambridge International) ib-myp (IB Middle Years)
   ib-dp (IB Diploma)
 
@@ -109,6 +112,11 @@ SYSTEM_META: dict[str, dict] = {
     "cambridge": {"country": "International", "country_code": None, "region": "International",      "language": "English",            "level": "international"},
     "ib-dp":     {"country": "International", "country_code": None, "region": "International",      "language": "English",            "level": "international"},
     "ib-myp":    {"country": "International", "country_code": None, "region": "International",      "language": "English",            "level": "international"},
+    # ── US Advanced Placement ─────────────────────────────────────────────────
+    "ap-calc-ab": {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
+    "ap-calc-bc": {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
+    "ap-stats":   {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
+    "ap-precalc": {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
 }
 
 _US_STATE_CODES = {

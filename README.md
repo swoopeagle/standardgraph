@@ -38,6 +38,7 @@ What's the Singapore equivalent of CCSS.MATH.6.RP.A.3?
 | Region | Systems |
 |---|---|
 | 🇺🇸 United States | `ccss` + all 50 states + DC (CCSS is the crosswalk hub) |
+| 🎓 Advanced Placement | `ap-calc-ab` `ap-calc-bc` `ap-stats` `ap-precalc` |
 | 🇨🇦 Canada | `ca-ab` `ca-bc` `ca-on` `ca-mb` `ca-sk` `ca-nb` `ca-qc` |
 | 🌍 International | `cambridge` `ib-myp` `ib-dp` `aero` `dodea` |
 | 🇦🇺 Australia | `au-acara` `au-vic` |
