@@ -5,7 +5,7 @@ import sqlite3
 import numpy as np
 from fastmcp import FastMCP
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL, EMBED_MODEL
+from common_core.config import DB_PATH, OLLAMA_BASE_URL, EMBED_MODEL
 
 def _build_instructions() -> str:
     try:
@@ -690,5 +690,9 @@ def list_systems() -> str:
     }, indent=2)
 
 
-if __name__ == "__main__":
+def main() -> None:
     mcp.run()
+
+
+if __name__ == "__main__":
+    main()

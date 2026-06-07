@@ -4,13 +4,13 @@ requires-python = ">=3.11"
 
 [manifest]
 members = [
-    "common-core",
     "crosswalk-engine",
     "ib-myp",
     "india-ncert",
     "ingestion",
     "shared",
     "singapore-moe",
+    "standardgraph",
 ]
 
 [manifest.dependency-groups]
@@ -339,32 +339,19 @@ wheels = [
 ]
 
 [[package]]
-name = "common-core"
+name = "crosswalk-engine"
 version = "0.1.0"
-source = { editable = "packages/common-core" }
+source = { editable = "packages/crosswalk-engine" }
 dependencies = [
-    { name = "aiosqlite" },
-    { name = "fastmcp" },
+    { name = "numpy" },
     { name = "shared" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "aiosqlite", specifier = ">=0.19.0" },
-    { name = "fastmcp", specifier = ">=0.3.0" },
+    { name = "numpy", specifier = ">=1.26" },
     { name = "shared", editable = "packages/shared" },
 ]
-
-[[package]]
-name = "crosswalk-engine"
-version = "0.1.0"
-source = { editable = "packages/crosswalk-engine" }
-dependencies = [
-    { name = "shared" },
-]
-
-[package.metadata]
-requires-dist = [{ name = "shared", editable = "packages/shared" }]
 
 [[package]]
 name = "cryptography"
@@ -1719,6 +1706,23 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/f7/2b/58abc2d1fd397e7dde08e947e05c884d8ef2f78d5e2588c17a12d42d6994/sse_starlette-3.4.4.tar.gz", hash = "sha256:07e0fa0460138baf25cdd5fb28683472c3995dc1642225191b3832d62526bcb0", size = 31819, upload-time = "2026-05-12T17:37:17.019Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/dc/67/805710444ea8cc75fbf70b920ed431a560c4bf9c57f7d5a3117213189399/sse_starlette-3.4.4-py3-none-any.whl", hash = "sha256:3f4dd50d8aed2771a091f3a83000323fc3844541c16b4fe585ae2420cc6df973", size = 16514, upload-time = "2026-05-12T17:37:15.601Z" },
+]
+
+[[package]]
+name = "standardgraph"
+version = "1.0.0"
+source = { editable = "packages/common-core" }
+dependencies = [
+    { name = "fastmcp" },
+    { name = "httpx" },
+    { name = "numpy" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "fastmcp", specifier = ">=0.3.0" },
+    { name = "httpx", specifier = ">=0.27.0" },
+    { name = "numpy", specifier = ">=1.26.0" },
 ]
 
 [[package]]

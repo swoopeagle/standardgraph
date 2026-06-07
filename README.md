@@ -50,28 +50,44 @@ StandardGraph indexes math curricula from the US, Canada, and 18 international s
 
 ## Quick Start
 
+### One-liner install (macOS)
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/swoopeagle/standardgraph/main/install.sh | bash
+```
+
+This installs [uv](https://docs.astral.sh/uv/) if needed, downloads the pre-built database (~200 MB), and patches your Claude Desktop config automatically. Then restart Claude Desktop — look for the hammer 🔨 icon.
+
+### Manual install
+
 Requires Python 3.11+ and [uv](https://docs.astral.sh/uv/).
 
 ```bash
-git clone https://github.com/swoopeagle/standardgraph.git
-cd standardgraph
-uv sync
-```
+# 1. Download the pre-built database
+mkdir -p ~/.standardgraph
+curl -L https://huggingface.co/datasets/swoopeagle/standardgraph/resolve/main/common_core.db \
+     -o ~/.standardgraph/common_core.db
 
-Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+# 2. Add to ~/Library/Application Support/Claude/claude_desktop_config.json
+```
 
 ```json
 {
   "mcpServers": {
-    "intl-math-standards": {
-      "command": "/path/to/standardgraph/.venv/bin/python",
-      "args": ["-m", "common_core.server"]
+    "standardgraph": {
+      "command": "uvx",
+      "args": ["standardgraph"],
+      "env": { "DB_PATH": "/Users/YOUR_USERNAME/.standardgraph/common_core.db" }
     }
   }
 }
 ```
 
-Restart Claude Desktop. The server appears under the hammer icon as **intl-math-standards**.
+Restart Claude Desktop. The server appears under the hammer icon as **standardgraph**.
+
+### Smithery (one-click)
+
+Find **standardgraph** on [smithery.ai](https://smithery.ai/server/standardgraph) and click Install.
 
 ---
 

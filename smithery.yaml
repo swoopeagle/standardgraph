@@ -1,0 +1,38 @@
+name: standardgraph
+description: >
+  20,000+ math standards across 75+ curriculum systems — US (all 50 states + CCSS),
+  Canada, Australia, UK, Singapore, Japan, New Zealand, Ireland, Hong Kong, India,
+  Ghana, South Africa, Rwanda, Cambridge International, IB MYP/DP, and more.
+  All cross-referenced to CCSS via NLP semantic similarity. Ask Claude to compare
+  curricula, trace concept progressions, or find equivalent standards across systems.
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      dbPath:
+        type: string
+        description: >
+          Absolute path to the standardgraph database file.
+          Run the installer first: curl -fsSL https://standardgraph.dev/install.sh | bash
+        default: ""
+      ollamaUrl:
+        type: string
+        description: >
+          Ollama base URL for semantic search (requires nomic-embed-text model).
+          Leave blank to disable embedding-based search.
+        default: "http://localhost:11434"
+    required: []
+  commandFunction: |-
+    (config) => {
+      const home = process.env.HOME || process.env.USERPROFILE || "";
+      const dbPath = config.dbPath || `${home}/.standardgraph/common_core.db`;
+      const env = { DB_PATH: dbPath };
+      if (config.ollamaUrl) env.OLLAMA_BASE_URL = config.ollamaUrl;
+      return {
+        command: "uvx",
+        args: ["standardgraph"],
+        env
+      };
+    }

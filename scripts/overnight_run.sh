@@ -27,6 +27,22 @@ LOG_FILE="$LOG_DIR/overnight_$(date +%Y%m%d_%H%M%S).log"
 
 exec > >(tee -a "$LOG_FILE") 2>&1
 
+# Wait for Ollama to be reachable (up to 5 minutes)
+echo "Checking Ollama availability..."
+OLLAMA_URL="http://169.254.1.1:11434"
+for i in $(seq 1 30); do
+    if curl -sf "$OLLAMA_URL/api/tags" >/dev/null 2>&1; then
+        echo "Ollama is up."
+        break
+    fi
+    echo "  Waiting for Ollama... attempt $i/30"
+    sleep 10
+done
+if ! curl -sf "$OLLAMA_URL/api/tags" >/dev/null 2>&1; then
+    echo "ERROR: Ollama not reachable at $OLLAMA_URL after 5 minutes. Aborting."
+    exit 1
+fi
+
 echo "======================================================"
 echo "  StandardGraph overnight pipeline — $(date)"
 echo "======================================================"
