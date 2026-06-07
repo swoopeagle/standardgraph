@@ -56,29 +56,23 @@ STOP_WORDS = {
 EXTRACT_PROMPT = """\
 Extract all mathematics learning outcomes from this Ireland Junior Cycle Mathematics specification text.
 
-Strand numbering:
-  Strand 1: Statistics and Probability  (outcomes numbered 1.1, 1.2, ...)
-  Strand 2: Geometry and Trigonometry   (outcomes numbered 2.1, 2.2, ...)
-  Strand 3: Number                       (outcomes numbered 3.1, 3.2, ...)
-  Strand 4: Algebra                      (outcomes numbered 4.1, 4.2, ...)
-  Strand 5: Functions                    (outcomes numbered 5.1, 5.2, ...)
+Ireland's JC Mathematics uses strand-prefixed outcome codes:
+  U.1, U.2, ...  — Unifying strand
+  N.1, N.2, ...  — Number strand
+  GT.1, GT.2, ... — Geometry and Trigonometry strand
+  AF.1, AF.2, ... — Algebra and Functions strand
+  SP.1, SP.2, ... — Statistics and Probability strand
 
-Learning outcomes start with "students should be able to..." and are numbered (e.g. 1.1, 1.2).
-Some outcomes have sub-items (a, b, c).
+Outcomes read like: "N.1 investigate the representation of numbers... so that they can: a. ... b. ..."
+The phrase "Students should be able to:" introduces each strand section — outcomes follow underneath.
 
 Return ONLY a JSON array (no other text, no markdown). Each element must have:
-  "strand_num"   : strand number as a string (e.g. "1", "2")
-  "strand_name"  : strand name (e.g. "Statistics and Probability")
-  "outcome_num"  : outcome number (e.g. "1.1", "2.3")
-  "outcome_text" : full text of the learning outcome
+  "strand_name"  : strand name (e.g. "Number", "Geometry and Trigonometry", "Unifying")
+  "outcome_num"  : outcome code (e.g. "N.1", "GT.2", "AF.3", "SP.1", "U.1")
+  "outcome_text" : full text of the learning outcome including all sub-items (a, b, c...)
 
-If no learning outcomes appear in this text, return an empty array [].
-
-Rules:
-- Include every numbered learning outcome you can find.
-- If an outcome has sub-items (a, b, c), include them as part of outcome_text.
-- Do NOT include strand headers, level descriptors, or general introductory notes.
-- Preserve exact wording.
+If no learning outcomes appear in this text, return [].
+Do NOT include strand section headers or assessment text.
 
 TEXT:
 {text}
@@ -188,9 +182,9 @@ def main() -> None:
     print("Extracting Ireland NCCA Junior Cycle Mathematics...")
     pages = _extract_pages(pdf_path)
 
-    # Skip first 12 intro/cover pages; process content in 3-page chunks
-    content_pages = pages[12:]
-    chunk_size = 3
+    # Outcomes are on pages 14-20 only (0-indexed 13-19); pages 21+ are assessment/appendices
+    content_pages = pages[13:21]
+    chunk_size = 2
     grand_std = grand_kw = 0
     seen_ids: set[str] = set()
 
