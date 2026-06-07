@@ -29,7 +29,9 @@ exec > >(tee -a "$LOG_FILE") 2>&1
 
 # Wait for Ollama to be reachable (up to 5 minutes)
 echo "Checking Ollama availability..."
-OLLAMA_URL="http://169.254.1.1:11434"
+# 169.254.1.1 is a Mac Studio on Thunderbolt Bridge. Change to your Ollama host,
+# or set OLLAMA_BASE_URL env var before running.
+OLLAMA_URL="${OLLAMA_BASE_URL:-http://169.254.1.1:11434}"
 for i in $(seq 1 30); do
     if curl -sf "$OLLAMA_URL/api/tags" >/dev/null 2>&1; then
         echo "Ollama is up."
