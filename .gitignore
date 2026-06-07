@@ -6,4 +6,7 @@ __pycache__/
 .DS_Store
 data/raw/
 data/*.db
+data/*.db-wal
+data/*.db-shm
 logs/
+.pipeline.lock
