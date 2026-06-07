@@ -57,6 +57,11 @@ STEP_PASS=()
 STEP_FAIL=()
 DB="$REPO_DIR/data/common_core.db"
 
+# Export Ollama URL so all ingestion subprocesses pick it up.
+# Override by setting OLLAMA_BASE_URL before running this script.
+export OLLAMA_BASE_URL="${OLLAMA_BASE_URL:-http://169.254.1.1:11434}"
+export DB_PATH="$DB"
+
 run_step() {
     local label="$1"; shift
     echo
