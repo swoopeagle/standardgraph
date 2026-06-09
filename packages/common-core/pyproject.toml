@@ -1,6 +1,6 @@
 [project]
 name = "standardgraph"
-version = "1.0.0"
+version = "1.0.1"
 description = "20,000+ math standards across 75+ curriculum systems, cross-referenced to CCSS via NLP — accessible as a Claude MCP server"
 readme = "README.md"
 requires-python = ">=3.11"

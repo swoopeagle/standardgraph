@@ -16,10 +16,11 @@ def _build_instructions() -> str:
     except Exception:
         _std_count, _sys_count = 0, 0
     return f"""\
-You have access to a database of {_std_count:,} math standards across {_sys_count} curriculum \
-systems, all cross-referenced to the US Common Core State Standards (CCSS) as the hub.
+You have access to a database of {_std_count:,} math and science standards across {_sys_count} \
+curriculum systems. Mathematics standards are cross-referenced to CCSS as the hub; \
+science standards are cross-referenced to NGSS as the hub.
 
-## Available systems
+## Available systems — Mathematics
 
 **North America — US:** ccss (hub), plus all 50 states + DC by two-letter code
   (al ak az ar ca co ct dc de fl ga hi id il in ia ks ky la me md ma mi mn ms mo
@@ -40,11 +41,23 @@ systems, all cross-referenced to the US Common Core State Standards (CCSS) as th
 **Sub-Saharan Africa:** gh-nacca (Ghana B1–12) za-caps (South Africa Gr R–12)
   rw-reb (Rwanda P4–P6)
 
-**US Advanced Placement:** ap-calc-ab (AP Calculus AB) ap-calc-bc (AP Calculus BC)
+**US Advanced Placement — Math:** ap-calc-ab (AP Calculus AB) ap-calc-bc (AP Calculus BC)
   ap-stats (AP Statistics) ap-precalc (AP Precalculus)
 
 **International:** cambridge (Cambridge International) ib-myp (IB Middle Years)
   ib-dp (IB Diploma)
+
+## Available systems — Science
+
+**Science hub:** ngss (Next Generation Science Standards, K–12)
+
+**US state science:** same two-letter state codes with -sci suffix
+  (al-sci ak-sci az-sci ... tx-sci ca-sci ny-sci — all 50 states + DC)
+
+**US Advanced Placement — Science:** ap-bio (AP Biology) ap-chem (AP Chemistry)
+  ap-phys-1 (AP Physics 1) ap-phys-2 (AP Physics 2)
+  ap-phys-c-mech (AP Physics C: Mechanics) ap-phys-c-em (AP Physics C: E&M)
+  ap-env (AP Environmental Science)
 
 ## Grade codes
 K, 1, 2, 3, 4, 5, 6, 7, 8, HS
@@ -112,11 +125,21 @@ SYSTEM_META: dict[str, dict] = {
     "cambridge": {"country": "International", "country_code": None, "region": "International",      "language": "English",            "level": "international"},
     "ib-dp":     {"country": "International", "country_code": None, "region": "International",      "language": "English",            "level": "international"},
     "ib-myp":    {"country": "International", "country_code": None, "region": "International",      "language": "English",            "level": "international"},
-    # ── US Advanced Placement ─────────────────────────────────────────────────
-    "ap-calc-ab": {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
-    "ap-calc-bc": {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
-    "ap-stats":   {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
-    "ap-precalc": {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
+    # ── US Advanced Placement — Math ──────────────────────────────────────────
+    "ap-calc-ab":     {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    "ap-calc-bc":     {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    "ap-stats":       {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    "ap-precalc":     {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    # ── Science hub ───────────────────────────────────────────────────────────
+    "ngss":           {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    # ── US Advanced Placement — Science ───────────────────────────────────────
+    "ap-bio":         {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    "ap-chem":        {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    "ap-phys-1":      {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    "ap-phys-2":      {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    "ap-phys-c-mech": {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    "ap-phys-c-em":   {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    "ap-env":         {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
 }
 
 _US_STATE_CODES = {
@@ -126,7 +149,8 @@ _US_STATE_CODES = {
     "va","vt","wa","wi","wv","wy",
 }
 
-_US_STATE_META = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "state"}
+_US_STATE_META     = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "state"}
+_US_STATE_SCI_META = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "state"}
 
 
 def _meta(system: str) -> dict:
@@ -134,6 +158,8 @@ def _meta(system: str) -> dict:
         return SYSTEM_META[system]
     if system in _US_STATE_CODES:
         return _US_STATE_META
+    if system.endswith("-sci") and system[:-4] in _US_STATE_CODES:
+        return _US_STATE_SCI_META
     return {}
 
 

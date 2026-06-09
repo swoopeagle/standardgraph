@@ -155,6 +155,17 @@ run_step_unless_fresh "Rwanda REB ingestion"         "rw-reb"   \
 run_step_unless_fresh "Philippines DepEd ingestion"  "ph-deped" \
     uv run python -m ingestion.international.fetch_philippines
 
+# ── Science ingestion steps ───────────────────────────────────────────────────
+
+run_step_unless_fresh "NGSS ingestion"               "ngss"     \
+    uv run python -m ingestion.science.fetch_ngss
+
+run_step_unless_fresh "AP Sciences ingestion"        "ap-bio"   \
+    uv run python -m ingestion.science.fetch_ap_science
+
+run_step_unless_fresh "US State science standards"   "al-sci"   \
+    uv run python -m ingestion.science.fetch_science_states
+
 # ── 2. Embeddings ─────────────────────────────────────────────────────────────
 # Only embeds standards that don't already have an embedding (LEFT JOIN check).
 run_step "Embeddings (nomic-embed-text)" \
