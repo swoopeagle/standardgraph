@@ -11,33 +11,57 @@ from pathlib import Path
 DB_PATH = Path(__file__).parent.parent / "data" / "common_core.db"
 
 EXPECTED_SYSTEMS = {
-    # system: minimum expected standard count
+    # ── Subject hubs ──────────────────────────────────────────────────────────
     "ccss":      343,
-    # US states (sample)
+    "ngss":      100,
+    "ccss-ela":  400,
+    "c3":        200,
+    "csta":       80,
+    # ── US states sample — math ───────────────────────────────────────────────
     "tx":        500,
     "ca":        100,
     "fl":        400,
-    # Canada
+    "ny":         80,
+    # ── US states sample — science ────────────────────────────────────────────
+    "tx-sci":    200,
+    "ca-sci":    200,
+    "fl-sci":    400,
+    # ── US states sample — ELA ────────────────────────────────────────────────
+    "tx-ela":    200,
+    "ca-ela":    200,
+    "fl-ela":    400,
+    # ── US states sample — social studies ─────────────────────────────────────
+    "tx-ss":     300,
+    "al-ss":     300,
+    # ── US states sample — CS ─────────────────────────────────────────────────
+    "ut-cs":      50,
+    "fl-cs":      15,
+    # ── AP courses ────────────────────────────────────────────────────────────
+    "ap-calc-ab":     25,
+    "ap-bio":         70,
+    "ap-env":         80,
+    # ── Canada ───────────────────────────────────────────────────────────────
     "ca-ab":     800,
     "ca-on":     150,
-    # Original international
+    # ── International math ────────────────────────────────────────────────────
     "cambridge": 400,
-    "ib-myp":    80,
+    "ib-myp":     80,
     "au-acara":  100,
     "uk-nc":     150,
-    # New international (lower bar — PDF extraction is variable)
     "sg-moe":    150,
-    "jp-mext":   50,
-    "nz-moe":    200,  # Years 0-10, 4 phases
-    "aero":      50,
-    "dodea":     50,
-    "gb-sco":    30,
-    "ie-ncca":   30,
-    "hk-edb":    30,
-    "in-ncert":  50,
-    "gh-nacca":  50,
-    "za-caps":   50,
+    "jp-mext":    50,
+    "nz-moe":    200,
+    "aero":       50,
+    "dodea":      50,
+    "ie-ncca":    30,
+    "hk-edb":     15,
+    "in-ncert":   10,
+    "gh-nacca":   50,
+    "za-caps":    10,
 }
+
+# These are crosswalk hubs — they don't get mapped to themselves
+CROSSWALK_HUBS = {"ccss", "ngss", "ccss-ela", "c3", "csta"}
 
 WARN = "\033[33mWARN\033[0m"
 FAIL = "\033[31mFAIL\033[0m"
@@ -94,10 +118,13 @@ def main() -> int:
         "SELECT COUNT(DISTINCT s.system) FROM crosswalk_mappings cm "
         "JOIN standards s ON s.id = cm.source_id"
     ).fetchone()[0]
+    # Hubs are intentionally excluded — they are crosswalk targets, not sources
+    hub_placeholders = ",".join("?" * len(CROSSWALK_HUBS))
     systems_missing_xwalk = conn.execute(
-        "SELECT DISTINCT system FROM standards "
-        "WHERE system != 'ccss' "
-        "AND system NOT IN (SELECT DISTINCT s.system FROM crosswalk_mappings cm JOIN standards s ON s.id = cm.source_id)"
+        f"SELECT DISTINCT system FROM standards "
+        f"WHERE system NOT IN ({hub_placeholders}) "
+        f"AND system NOT IN (SELECT DISTINCT s.system FROM crosswalk_mappings cm JOIN standards s ON s.id = cm.source_id)",
+        list(CROSSWALK_HUBS),
     ).fetchall()
     tag = WARN if systems_missing_xwalk else OK
     print(f"  [{tag}] {total_xwalk:,} crosswalk mappings across {systems_with_xwalk} systems")

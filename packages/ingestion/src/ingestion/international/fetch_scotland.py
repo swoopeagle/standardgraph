@@ -58,27 +58,25 @@ STOP_WORDS = {
 }
 
 EXTRACT_PROMPT = """\
-Extract all mathematics learning outcomes from this Scotland Curriculum for Excellence (CfE) text.
+This is a page from the Scotland Curriculum for Excellence (CfE) Numeracy and Mathematics document.
+The page is a TABLE with columns: Early | First | Second | Third | Fourth
+Each row is a sub-topic. Each cell contains the learning outcomes for that level.
 
-The text covers Level: {level}
-
-CfE mathematics has three organisers:
-- Number, money and measure
-- Shape, position and movement
-- Information handling
+Extract every "I can..." or "I am..." or "I have..." outcome statement from this page.
 
 Return ONLY a JSON array (no other text, no markdown). Each element must have:
-  "organiser"  : the organiser name (one of the three above)
-  "sub_area"   : sub-topic within the organiser (e.g. "Estimation and rounding", "Fractions, decimal fractions and percentages")
-  "outcome"    : the full text of the learning outcome (the "I can..." statement)
+  "level"      : one of "early", "first", "second", "third", "fourth"
+  "organiser"  : the section name — one of "Number, money and measure", "Shape, position and movement", "Information handling"
+  "sub_area"   : the row topic (e.g. "Estimation and rounding", "Fractions, decimal fractions and percentages")
+  "outcome"    : the full text of the learning outcome
 
 Rules:
-- Include every individual "I can..." or "I have..." outcome statement.
+- Include every individual "I can...", "I am...", or "I have..." statement.
+- Each outcome gets its own array entry with its correct level.
 - Do NOT include level descriptions, headers, or teacher guidance notes.
-- Preserve exact wording.
-- If organiser is not clear from context, infer from the topic.
+- Preserve exact wording from the document.
 
-CfE TEXT (Level: {level}):
+TABLE TEXT:
 {text}
 """
 
@@ -121,8 +119,8 @@ def _split_by_level(pages: list[tuple[int, str]]) -> dict[str, str]:
     return {lv: "\n".join(texts) for lv, texts in blocks.items()}
 
 
-def _call_gemma(level: str, text: str) -> list[dict]:
-    prompt = EXTRACT_PROMPT.format(level=level, text=text[:4000])
+def _call_gemma(text: str, page_num: int) -> list[dict]:
+    prompt = EXTRACT_PROMPT.format(text=text[:5000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
@@ -137,7 +135,7 @@ def _call_gemma(level: str, text: str) -> list[dict]:
     content = re.sub(r"\s*```$", "", content, flags=re.MULTILINE)
     m = re.search(r"\[.*\]", content, re.DOTALL)
     if not m:
-        print(f"    WARN: no JSON array for level {level}")
+        print(f"    WARN: no JSON array for page {page_num}")
         return []
     return json.loads(m.group(0))
 
@@ -153,16 +151,17 @@ def _extract_keywords(text: str) -> list[str]:
     return result[:20]
 
 
-def _ingest_objectives(objectives: list[dict], level: str, conn: sqlite3.Connection, seen_ids: set[str]) -> tuple[int, int]:
+def _ingest_objectives(objectives: list[dict], conn: sqlite3.Connection, seen_ids: set[str]) -> tuple[int, int]:
     std_count = kw_count = 0
-    grade = LEVEL_TO_GRADE.get(level, level)
 
     for obj in objectives:
         outcome = (obj.get("outcome") or "").strip()
         if not outcome:
             continue
+        level = (obj.get("level") or "").strip().lower()
         organiser = (obj.get("organiser") or "").strip()
         sub_area = (obj.get("sub_area") or "").strip()
+        grade = LEVEL_TO_GRADE.get(level, level or "unknown")
 
         std_id = f"GB_SCO.MATH.{level}.{abs(hash(outcome[:40])) % 100000}"
         if std_id in seen_ids:
@@ -197,34 +196,27 @@ def main() -> None:
 
     print("Extracting Scotland CfE Numeracy and Mathematics...")
     pages = _extract_pages(pdf_path)
-    level_blocks = _split_by_level(pages)
+    print(f"  {len(pages)} content pages")
 
-    if not level_blocks:
-        print("  WARN: no level blocks found — check PDF structure")
-        conn.close()
-        return
-
-    print(f"  Levels found: {list(level_blocks.keys())}")
     grand_std = grand_kw = 0
     seen_ids: set[str] = set()
 
-    for level in LEVELS:
-        text = level_blocks.get(level, "")
-        if not text:
-            print(f"  level {level}: not found")
+    for pnum, text in pages:
+        # Skip pages with no table content (intro/cover/appendix pages)
+        if "I can" not in text and "I am" not in text and "I have" not in text:
             continue
-        print(f"  level {level}: {len(text)} chars → Gemma...", end="", flush=True)
+        print(f"  page {pnum}: {len(text)} chars → Gemma...", end="", flush=True)
         try:
-            objectives = _call_gemma(level, text)
+            objectives = _call_gemma(text, pnum)
         except Exception as e:
             print(f" ERROR: {e}")
             continue
         with conn:
-            s, k = _ingest_objectives(objectives, level, conn, seen_ids)
+            s, k = _ingest_objectives(objectives, conn, seen_ids)
         grand_std += s
         grand_kw += k
         print(f" {len(objectives)} extracted, {s} ingested")
-        time.sleep(0.5)
+        time.sleep(0.3)
 
     conn.close()
     print(f"\nTotal: {grand_std} standards, {grand_kw} keywords")
