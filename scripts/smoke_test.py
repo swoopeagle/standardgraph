@@ -33,6 +33,9 @@ EXPECTED_SYSTEMS = {
     # ── US states sample — social studies ─────────────────────────────────────
     "tx-ss":     300,
     "al-ss":     300,
+    "ca-ss":     100,
+    "il-ss":     100,
+    "ma-ss":     100,
     # ── US states sample — CS ─────────────────────────────────────────────────
     "ut-cs":      50,
     "fl-cs":      15,

@@ -78,7 +78,7 @@ How does the C3 Framework approach civics compared to California's social studie
 
 | Region | Systems |
 |---|---|
-| 🇺🇸 United States | `c3` (C3 Framework hub, K–12) + 47 states |
+| 🇺🇸 United States | `c3` (C3 Framework hub, K–12) + 50 states |
 
 ### Computer Science
 

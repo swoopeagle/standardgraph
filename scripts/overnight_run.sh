@@ -171,6 +171,9 @@ run_step_unless_fresh "C3 Framework ingestion"       "c3"       \
 run_step_unless_fresh "US State Social Studies"      "al-ss"    \
     uv run python -m ingestion.social_studies.fetch_ss_states
 
+run_step_unless_fresh "CA/IL/MA Social Studies (PDF)" "ca-ss"   \
+    uv run python -m ingestion.social_studies.fetch_ss_states_pdf
+
 # ── Computer Science ingestion steps ─────────────────────────────────────────
 
 run_step_unless_fresh "CSTA K-12 CS hub ingestion"  "csta"     \
