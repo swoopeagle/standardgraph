@@ -54,12 +54,19 @@ def _grade_delta(g_src: str, g_tgt: str) -> int:
 
 
 def _hub_for_system(source_system: str, conn: sqlite3.Connection) -> str:
-    """Return the hub system (ccss or ngss) based on the subject of source_system."""
+    """Return the hub system for a given source, keyed by subject."""
     row = conn.execute(
         "SELECT subject FROM standards WHERE system=? LIMIT 1", (source_system,)
     ).fetchone()
-    if row and (row[0] or "").lower() == "science":
+    subject = (row[0] or "").lower() if row else ""
+    if subject == "science":
         return "ngss"
+    if subject == "ela":
+        return "ccss-ela"
+    if subject == "social-studies":
+        return "c3"
+    if subject == "cs":
+        return "csta"
     return "ccss"
 
 
@@ -156,7 +163,7 @@ def main() -> None:
         systems = [
             r[0]
             for r in conn.execute(
-                "SELECT DISTINCT system FROM standards WHERE system NOT IN ('ccss', 'ngss') ORDER BY system"
+                "SELECT DISTINCT system FROM standards WHERE system NOT IN ('ccss', 'ngss', 'ccss-ela', 'c3', 'csta') ORDER BY system"
             ).fetchall()
         ]
 

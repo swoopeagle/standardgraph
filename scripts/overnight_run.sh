@@ -155,6 +155,30 @@ run_step_unless_fresh "Rwanda REB ingestion"         "rw-reb"   \
 run_step_unless_fresh "Philippines DepEd ingestion"  "ph-deped" \
     uv run python -m ingestion.international.fetch_philippines
 
+# ── ELA ingestion steps ──────────────────────────────────────────────────────
+
+run_step_unless_fresh "CCSS ELA hub ingestion"       "ccss-ela" \
+    uv run python -m ingestion.ela.fetch_ccss_ela
+
+run_step_unless_fresh "US State ELA standards"       "al-ela"   \
+    uv run python -m ingestion.ela.fetch_ela_states
+
+# ── Social Studies ingestion steps ───────────────────────────────────────────
+
+run_step_unless_fresh "C3 Framework ingestion"       "c3"       \
+    uv run python -m ingestion.social_studies.fetch_c3
+
+run_step_unless_fresh "US State Social Studies"      "al-ss"    \
+    uv run python -m ingestion.social_studies.fetch_ss_states
+
+# ── Computer Science ingestion steps ─────────────────────────────────────────
+
+run_step_unless_fresh "CSTA K-12 CS hub ingestion"  "csta"     \
+    uv run python -m ingestion.cs.fetch_csta
+
+run_step_unless_fresh "US State CS standards"        "al-cs"    \
+    uv run python -m ingestion.cs.fetch_cs_states
+
 # ── Science ingestion steps ───────────────────────────────────────────────────
 
 run_step_unless_fresh "NGSS ingestion"               "ngss"     \

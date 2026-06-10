@@ -16,9 +16,10 @@ def _build_instructions() -> str:
     except Exception:
         _std_count, _sys_count = 0, 0
     return f"""\
-You have access to a database of {_std_count:,} math and science standards across {_sys_count} \
-curriculum systems. Mathematics standards are cross-referenced to CCSS as the hub; \
-science standards are cross-referenced to NGSS as the hub.
+You have access to a database of {_std_count:,} standards across {_sys_count} curriculum \
+systems covering Mathematics, Science, ELA, Social Studies, and Computer Science. \
+Each subject has its own crosswalk hub: CCSS (math), NGSS (science), \
+CCSS-ELA (ELA), C3 Framework (social studies), CSTA (computer science).
 
 ## Available systems — Mathematics
 
@@ -58,6 +59,27 @@ science standards are cross-referenced to NGSS as the hub.
   ap-phys-1 (AP Physics 1) ap-phys-2 (AP Physics 2)
   ap-phys-c-mech (AP Physics C: Mechanics) ap-phys-c-em (AP Physics C: E&M)
   ap-env (AP Environmental Science)
+
+## Available systems — ELA
+
+**ELA hub:** ccss-ela (Common Core ELA, K–12)
+
+**US state ELA:** two-letter state codes with -ela suffix
+  (al-ela ak-ela az-ela ... tx-ela ca-ela ny-ela — 49 states; DC and WY use CCSS-ELA directly)
+
+## Available systems — Social Studies
+
+**Social Studies hub:** c3 (C3 Framework for Social Studies, K–12)
+
+**US state social studies:** two-letter state codes with -ss suffix
+  (al-ss ak-ss az-ss ... tx-ss ca-ss ny-ss — all 50 states + DC)
+
+## Available systems — Computer Science
+
+**CS hub:** csta (CSTA K-12 Computer Science Standards 2017, K–12)
+
+**US state CS:** two-letter state codes with -cs suffix
+  (34 states currently indexed; see list_systems for exact coverage)
 
 ## Grade codes
 K, 1, 2, 3, 4, 5, 6, 7, 8, HS
@@ -140,6 +162,12 @@ SYSTEM_META: dict[str, dict] = {
     "ap-phys-c-mech": {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
     "ap-phys-c-em":   {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
     "ap-env":         {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    # ── ELA hub ───────────────────────────────────────────────────────────────
+    "ccss-ela":       {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    # ── Social Studies hub ────────────────────────────────────────────────────
+    "c3":             {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    # ── Computer Science hub ──────────────────────────────────────────────────
+    "csta":           {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
 }
 
 _US_STATE_CODES = {
@@ -149,8 +177,9 @@ _US_STATE_CODES = {
     "va","vt","wa","wi","wv","wy",
 }
 
-_US_STATE_META     = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "state"}
-_US_STATE_SCI_META = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "state"}
+_US_STATE_META = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "state"}
+
+_STATE_SUFFIXES = ("-sci", "-ela", "-ss", "-cs")
 
 
 def _meta(system: str) -> dict:
@@ -158,8 +187,9 @@ def _meta(system: str) -> dict:
         return SYSTEM_META[system]
     if system in _US_STATE_CODES:
         return _US_STATE_META
-    if system.endswith("-sci") and system[:-4] in _US_STATE_CODES:
-        return _US_STATE_SCI_META
+    for suffix in _STATE_SUFFIXES:
+        if system.endswith(suffix) and system[:-len(suffix)] in _US_STATE_CODES:
+            return _US_STATE_META
     return {}
 
 
