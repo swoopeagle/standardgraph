@@ -20,7 +20,6 @@ Page boundaries (0-indexed):
 import json
 import re
 import sqlite3
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -208,7 +207,6 @@ def main() -> None:
             phase_std += s
             phase_kw += k
             print(f" {len(objectives)} extracted, {s} ingested")
-            time.sleep(0.3)
 
         print(f"  {label} total: {phase_std} standards, {phase_kw} keywords")
         grand_std += phase_std

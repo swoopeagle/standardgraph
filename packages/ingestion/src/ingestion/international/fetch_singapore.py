@@ -23,7 +23,6 @@ import json
 import re
 import sqlite3
 import sys
-import time
 from datetime import date
 from pathlib import Path
 
@@ -260,7 +259,6 @@ def _process_pdf(
         total_std += s
         total_kw += k
         print(f" {len(objectives)} extracted, {s} ingested")
-        time.sleep(0.5)  # brief pause between Gemma calls
 
     return total_std, total_kw
 

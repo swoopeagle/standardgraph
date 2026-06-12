@@ -15,8 +15,6 @@ Sources:
 import json
 import re
 import sqlite3
-import time
-import urllib.request
 from datetime import date
 from pathlib import Path
 
@@ -24,6 +22,7 @@ import httpx
 import pdfplumber
 
 from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.pdf_utils import is_standards_page
 
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "ss_states_pdf"
@@ -92,9 +91,9 @@ PAGE TEXT:
 def _download(url: str, path: Path) -> None:
     print(f"  Downloading {url} ...")
     RAW_DIR.mkdir(parents=True, exist_ok=True)
-    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
-    with urllib.request.urlopen(req, timeout=60) as resp, open(path, "wb") as f:
-        f.write(resp.read())
+    resp = httpx.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=60, follow_redirects=True)
+    resp.raise_for_status()
+    path.write_bytes(resp.content)
     print(f"  Saved: {path.stat().st_size:,} bytes")
 
 
@@ -209,8 +208,7 @@ def _process_state(state: dict, conn: sqlite3.Connection) -> tuple[int, int]:
     seen_ids: set[str] = set()
 
     for pnum, text in pages:
-        # Skip pages with no standard-like content
-        if len(text.strip()) < 100:
+        if len(text.strip()) < 100 or not is_standards_page(text):
             continue
         print(f"  page {pnum}: {len(text)} chars → Gemma...", end="", flush=True)
         try:
@@ -223,7 +221,6 @@ def _process_state(state: dict, conn: sqlite3.Connection) -> tuple[int, int]:
         grand_std += s
         grand_kw += k
         print(f" {len(standards)} extracted, {s} ingested")
-        time.sleep(0.3)
 
     return grand_std, grand_kw
 

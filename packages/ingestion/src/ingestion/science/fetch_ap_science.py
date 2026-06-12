@@ -17,7 +17,6 @@ IDs: AP.{SYSTEM}.{objective_num}  e.g. AP.AP_BIO.ENE-1.A
 import json
 import re
 import sqlite3
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -257,7 +256,6 @@ def main() -> None:
                 print(f" {len(objectives)} extracted, {s} ingested")
             else:
                 print(" 0 extracted")
-            time.sleep(0.3)
 
         print(f"  Total: {course_std} standards, {course_kw} keywords")
         grand_std += course_std

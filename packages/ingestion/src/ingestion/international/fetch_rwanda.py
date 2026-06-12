@@ -13,7 +13,6 @@ Note: P1-P3 and secondary PDFs not yet found — extend when URLs are confirmed.
 import json
 import re
 import sqlite3
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -192,7 +191,6 @@ def main() -> None:
             file_std += s
             file_kw += k
             print(f" {len(objectives)} extracted, {s} ingested")
-            time.sleep(0.3)
 
         print(f"  Total: {file_std} standards, {file_kw} keywords")
         grand_std += file_std

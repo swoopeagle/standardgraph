@@ -12,7 +12,6 @@ IDs: PH_DEPED.MATH.{grade}.{hash}
 import json
 import re
 import sqlite3
-import time
 from datetime import date
 from pathlib import Path
 
@@ -177,7 +176,6 @@ def main() -> None:
         grand_std += s
         grand_kw += k
         print(f" {len(objectives)} extracted, {s} ingested")
-        time.sleep(0.3)
 
     conn.close()
     print(f"\nTotal: {grand_std} standards, {grand_kw} keywords")
