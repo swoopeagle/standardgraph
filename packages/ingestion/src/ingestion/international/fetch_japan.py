@@ -118,7 +118,7 @@ def _split_by_grade(pages: list[tuple[int, str]]) -> dict[str, str]:
 
 
 def _call_gemma(grade: str, text: str) -> list[dict]:
-    prompt = EXTRACT_PROMPT.format(grade=grade, text=text[:4000])
+    prompt = EXTRACT_PROMPT.format(grade=grade, text=text[:12000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
