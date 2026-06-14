@@ -1,6 +1,6 @@
 # StandardGraph
 
-**144,000+ standards across 250+ curriculum systems, accessible via Claude.**
+**146,000+ standards across 256 curriculum systems, accessible via Claude.**
 
 Covers Mathematics, Science, ELA, Social Studies, and Computer Science — US national and state standards plus major international curricula. Ask Claude to look up any standard, trace a concept across grade levels, or find the equivalent in another country's curriculum.
 
