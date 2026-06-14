@@ -1,4 +1,4 @@
-"""International Math Standards MCP server."""
+"""StandardGraph MCP server — K-12 curriculum standards across 256 systems."""
 import json
 import sqlite3
 
@@ -32,7 +32,6 @@ CCSS-ELA (ELA), C3 Framework (social studies), CSTA (computer science).
 
 **Asia-Pacific:** sg-moe (Singapore) jp-mext (Japan, Gr 1–6) nz-moe (New Zealand Yr 0–10)
   au-acara (Australian Curriculum) au-vic (Victoria) hk-edb (Hong Kong KS1–3)
-  ph-deped (Philippines K–10)
 
 **Europe:** uk-nc (England Yr 1–6) uk-aqa (AQA GCSE) gb-sco (Scotland CfE)
   ie-ncca (Ireland Junior Cycle)
@@ -130,7 +129,6 @@ SYSTEM_META: dict[str, dict] = {
     "hk-edb":   {"country": "Hong Kong",     "country_code": "HK", "region": "Asia-Pacific",      "language": "English/Chinese",    "level": "national"},
     "jp-mext":   {"country": "Japan",         "country_code": "JP", "region": "Asia-Pacific",      "language": "Japanese",           "level": "national"},
     "nz-moe":    {"country": "New Zealand",   "country_code": "NZ", "region": "Asia-Pacific",      "language": "English",            "level": "national"},
-    "ph-deped":  {"country": "Philippines",   "country_code": "PH", "region": "Asia-Pacific",      "language": "English/Filipino",   "level": "national"},
     "sg-moe":    {"country": "Singapore",     "country_code": "SG", "region": "Asia-Pacific",      "language": "English",            "level": "national"},
     # ── Europe ───────────────────────────────────────────────────────────────
     "gb-sco":    {"country": "Scotland",      "country_code": "GB", "region": "Europe",             "language": "English",            "level": "national"},
