@@ -22,14 +22,13 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "hk-edb"
 SOURCE_URL = "https://www.edb.gov.hk/en/curriculum-development/kla/ma/curr/index2.html"
 PDF_URL = "https://www.edb.gov.hk/attachment/en/curriculum-development/kla/ma/curr/ME_KLACG_eng_2017_12_08.pdf"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "hongkong"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 KEY_STAGES = [
     ("KS1", ["1", "2", "3"], "Primary 1-3"),
@@ -114,6 +113,7 @@ def _call_gemma(ks: str, ks_desc: str, text: str) -> list[dict]:
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
+        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }

@@ -27,14 +27,13 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "ie-ncca"
 SOURCE_URL = "https://www.curriculumonline.ie/junior-cycle/junior-cycle-subjects/mathematics/"
 PDF_URL = "https://www.curriculumonline.ie/getmedia/6a7f1ff5-9b9e-4d71-8e1f-6d4f932191db/JC_Mathematics_Specification.pdf"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "ireland"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 STRAND_NAMES = {
     "1": "Statistics and Probability",
@@ -104,6 +103,7 @@ def _call_gemma(text: str) -> list[dict]:
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
+        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }

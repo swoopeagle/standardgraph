@@ -1,21 +1,14 @@
-"""Fetch and ingest College Board AP Science courses.
+"""Fetch and ingest College Board AP Computer Science courses.
 
 Covered systems:
-  ap-bio          — AP Biology
-  ap-chem         — AP Chemistry
-  ap-phys-1       — AP Physics 1: Algebra-Based
-  ap-phys-2       — AP Physics 2: Algebra-Based
-  ap-phys-c-mech  — AP Physics C: Mechanics
-  ap-phys-c-em    — AP Physics C: Electricity and Magnetism
-  ap-env          — AP Environmental Science
-  ap-ess          — AP Earth and Space Science
+  ap-cs-a          — AP Computer Science A (Java)
+  ap-cs-principles — AP Computer Science Principles
 
 Sources: College Board Course and Exam Descriptions (auto-downloaded).
-Structure: Big Ideas → Enduring Understandings → Learning Objectives → Essential Knowledge
-IDs: AP.{SYSTEM}.{objective_num}  e.g. AP.AP_BIO.ENE-1.A
+Structure: Big Ideas → Enduring Understandings → Learning Objectives
+IDs: AP.{SYSTEM}.{objective_num}  e.g. AP.AP_CS_A.MOD-1.A
 """
 import json
-import os
 import re
 import sqlite3
 import urllib.request
@@ -28,7 +21,7 @@ import pdfplumber
 from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 VERIFIED_DATE = date.today().isoformat()
-RAW_DIR = DB_PATH.parent / "raw" / "ap_science"
+RAW_DIR = DB_PATH.parent / "raw" / "ap_cs"
 SOURCE_URL = "https://apcentral.collegeboard.org"
 
 STOP_WORDS = {
@@ -37,95 +30,75 @@ STOP_WORDS = {
     "such", "both", "also", "into", "more", "most", "some", "other",
     "these", "those", "about", "able", "after", "where", "while", "make",
     "used", "given", "find", "show", "know", "understand", "apply",
-    "students", "student", "science",
+    "students", "student", "should", "computer", "program", "code", "data",
 }
 
 COURSES = [
     {
-        "key":        "bio",
-        "system":     "ap-bio",
-        "name":       "AP Biology",
-        "pdf_file":   "ap_bio.pdf",
-        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-biology-course-and-exam-description.pdf",
-        "start_page": 35,
+        "key":        "cs_a",
+        "system":     "ap-cs-a",
+        "name":       "AP Computer Science A",
+        "pdf_file":   "ap_cs_a.pdf",
+        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-computer-science-a-course-and-exam-description.pdf",
+        "start_page": 25,
         "end_page":   300,
+        "prompt":     "CSA",
     },
     {
-        "key":        "chem",
-        "system":     "ap-chem",
-        "name":       "AP Chemistry",
-        "pdf_file":   "ap_chem.pdf",
-        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-chemistry-course-and-exam-description.pdf",
-        "start_page": 35,
+        "key":        "cs_principles",
+        "system":     "ap-cs-principles",
+        "name":       "AP Computer Science Principles",
+        "pdf_file":   "ap_cs_principles.pdf",
+        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-computer-science-principles-course-and-exam-description.pdf",
+        "start_page": 25,
         "end_page":   300,
-    },
-    {
-        "key":        "phys1",
-        "system":     "ap-phys-1",
-        "name":       "AP Physics 1",
-        "pdf_file":   "ap_phys1.pdf",
-        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-physics-1-course-and-exam-description.pdf",
-        "start_page": 35,
-        "end_page":   300,
-    },
-    {
-        "key":        "phys2",
-        "system":     "ap-phys-2",
-        "name":       "AP Physics 2",
-        "pdf_file":   "ap_phys2.pdf",
-        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-physics-2-course-and-exam-description.pdf",
-        "start_page": 35,
-        "end_page":   300,
-    },
-    {
-        "key":        "physc_mech",
-        "system":     "ap-phys-c-mech",
-        "name":       "AP Physics C: Mechanics",
-        "pdf_file":   "ap_physc_mech.pdf",
-        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-physics-c-mechanics-course-and-exam-description.pdf",
-        "start_page": 30,
-        "end_page":   250,
-    },
-    {
-        "key":        "physc_em",
-        "system":     "ap-phys-c-em",
-        "name":       "AP Physics C: Electricity and Magnetism",
-        "pdf_file":   "ap_physc_em.pdf",
-        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-physics-c-electricity-and-magnetism-course-and-exam-description.pdf",
-        "start_page": 30,
-        "end_page":   250,
-    },
-    {
-        "key":        "env",
-        "system":     "ap-env",
-        "name":       "AP Environmental Science",
-        "pdf_file":   "ap_env.pdf",
-        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-environmental-science-course-and-exam-description.pdf",
-        "start_page": 35,
-        "end_page":   300,
+        "prompt":     "CSP",
     },
 ]
 
-SCIENCE_PROMPT = """\
-Extract all AP {course_name} learning objectives from this College Board Course and Exam Description text.
+CSA_PROMPT = """\
+Extract all AP Computer Science A learning objectives from this College Board Course and Exam Description text.
 
-AP science courses use this hierarchy:
-  Big Ideas: identified by 2-4 letter codes (e.g. EVO, ENE, SAP, CHA, FLD, EIN, STB)
-  Enduring Understandings: Big Idea code + number (e.g. ENE-1, SAP-3)
-  Learning Objectives: Enduring Understanding + letter (e.g. ENE-1.A, SAP-3.C) ← extract these
-  Essential Knowledge: Learning Objective + number (e.g. ENE-1.A.1) — supporting detail, include in text
+AP Computer Science A uses this hierarchy:
+  Big Ideas: MOD (Modularity), VAR (Variables and Assignments), ARR (Arrays),
+             OBJ (Objects), ALG (Algorithms), PRG (Programming), IMP (Implementation)
+  Enduring Understandings: Big Idea code + number (e.g. MOD-1, VAR-2)
+  Learning Objectives: Enduring Understanding + letter (e.g. MOD-1.A, VAR-2.B) ← extract these
+  Essential Knowledge: supporting detail, include in objective_text
 
 Return ONLY a JSON array (no other text, no markdown). Each element must have:
-  "objective_num" : the learning objective code (e.g. "ENE-1.A")
-  "big_idea"      : big idea full name (e.g. "Energetics")
-  "objective_text": full text of the learning objective including any essential knowledge detail
+  "objective_num" : the learning objective code (e.g. "MOD-1.A")
+  "big_idea"      : big idea full name (e.g. "Modularity")
+  "objective_text": full text of the learning objective including essential knowledge detail
 
 If no learning objectives appear in this text, return [].
-Do NOT include enduring understandings alone or essential knowledge as separate top-level items.
 
 TEXT:
 {text}
 """
+
+CSP_PROMPT = """\
+Extract all AP Computer Science Principles learning objectives from this College Board Course and Exam Description text.
+
+AP Computer Science Principles uses this hierarchy:
+  Big Ideas: CRD (Creative Development), DAT (Data), AAP (Algorithms and Programming),
+             CSN (Computer Systems and Networks), IOC (Impact of Computing)
+  Enduring Understandings: Big Idea code + number (e.g. CRD-1, DAT-2)
+  Learning Objectives: Enduring Understanding + letter (e.g. CRD-1.A, DAT-2.B) ← extract these
+  Essential Knowledge: supporting detail, include in objective_text
+
+Return ONLY a JSON array (no other text, no markdown). Each element must have:
+  "objective_num" : the learning objective code (e.g. "CRD-1.A")
+  "big_idea"      : big idea full name (e.g. "Creative Development")
+  "objective_text": full text of the learning objective including essential knowledge detail
+
+If no learning objectives appear in this text, return [].
+
+TEXT:
+{text}
+"""
+
+PROMPTS = {"CSA": CSA_PROMPT, "CSP": CSP_PROMPT}
 
 
 def _download(url: str, path: Path) -> None:
@@ -149,8 +122,8 @@ def _extract_pages(pdf_path: Path, start: int, end: int) -> list[tuple[int, str]
     return results
 
 
-def _call_gemma(text: str, course_name: str) -> list[dict]:
-    prompt = SCIENCE_PROMPT.format(course_name=course_name, text=text[:5500])
+def _call_gemma(text: str, prompt_template: str) -> list[dict]:
+    prompt = prompt_template.format(text=text[:5500])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
@@ -199,7 +172,7 @@ def _ingest(objectives: list[dict], system: str, conn: sqlite3.Connection, seen_
                (id, system, subject, grade, grade_band, domain, cluster,
                 standard_text, last_verified_date, source_url)
                VALUES (?,?,?,?,?,?,?,?,?,?)""",
-            (std_id, system, "science", "HS", "9-12",
+            (std_id, system, "cs", "HS", "9-12",
              big_idea, "", obj_text, VERIFIED_DATE, SOURCE_URL),
         )
         std_count += 1
@@ -217,12 +190,7 @@ def main() -> None:
 
     grand_std = grand_kw = 0
 
-    _keys_env = os.getenv("AP_SCI_KEYS", "")
-    _allowed = {k.strip() for k in _keys_env.split(",") if k.strip()} if _keys_env else None
-
     for course in COURSES:
-        if _allowed and course["key"] not in _allowed:
-            continue
         pdf_path = RAW_DIR / course["pdf_file"]
         if not pdf_path.exists():
             try:
@@ -250,7 +218,7 @@ def main() -> None:
             page_nums = f"{chunk[0][0]}-{chunk[-1][0]}"
             print(f"  pages {page_nums}: {len(chunk_text)} chars → Gemma...", end="", flush=True)
             try:
-                objectives = _call_gemma(chunk_text, course["name"])
+                objectives = _call_gemma(chunk_text, PROMPTS[course["prompt"]])
             except Exception as e:
                 print(f" ERROR: {e}")
                 continue
@@ -258,10 +226,7 @@ def main() -> None:
                 s, k = _ingest(objectives, system, conn, seen_ids)
             course_std += s
             course_kw += k
-            if objectives:
-                print(f" {len(objectives)} extracted, {s} ingested")
-            else:
-                print(" 0 extracted")
+            print(f" {len(objectives)} extracted, {s} ingested" if objectives else " 0 extracted")
 
         print(f"  Total: {course_std} standards, {course_kw} keywords")
         grand_std += course_std

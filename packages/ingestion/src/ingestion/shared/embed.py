@@ -6,17 +6,28 @@ import numpy as np
 
 from shared.config import DB_PATH, OLLAMA_BASE_URL, EMBED_MODEL
 
-BATCH_SIZE = 50
+BATCH_SIZE = 20
+MAX_RETRIES = 3
 
 
 def embed_texts(texts: list[str], client: httpx.Client) -> np.ndarray:
-    resp = client.post(
-        f"{OLLAMA_BASE_URL}/api/embed",
-        json={"model": EMBED_MODEL, "input": texts},
-        timeout=60,
-    )
-    resp.raise_for_status()
-    return np.array(resp.json()["embeddings"], dtype=np.float32)
+    import time
+    for attempt in range(MAX_RETRIES):
+        try:
+            resp = client.post(
+                f"{OLLAMA_BASE_URL}/api/embed",
+                json={"model": EMBED_MODEL, "input": texts},
+                timeout=120,
+            )
+            resp.raise_for_status()
+            return np.array(resp.json()["embeddings"], dtype=np.float32)
+        except (httpx.TimeoutException, httpx.HTTPError) as e:
+            if attempt == MAX_RETRIES - 1:
+                raise
+            wait = 10 * (attempt + 1)
+            print(f"  retry {attempt+1}/{MAX_RETRIES} after {wait}s: {e}")
+            time.sleep(wait)
+    raise RuntimeError("unreachable")
 
 
 def main() -> None:

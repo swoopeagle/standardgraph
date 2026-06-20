@@ -29,14 +29,13 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "jp-mext"
 SOURCE_URL = "https://www.mext.go.jp/component/english/__icsFiles/afieldfile/2011/03/17/1303755_004.pdf"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "japan"
 
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 STOP_WORDS = {
     "that", "with", "this", "from", "they", "have", "been", "were", "will",
@@ -123,6 +122,7 @@ def _call_gemma(grade: str, text: str) -> list[dict]:
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
+        "format": "json",
         "options": {"temperature": 0.0},
     }
     resp = httpx.post(

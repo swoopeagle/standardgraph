@@ -27,14 +27,13 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "gh-nacca"
 SOURCE_URL = "https://nacca.gov.gh/secondary-education-curriculum/"
 PDF_URL = "https://nacca.gov.gh/wp-content/uploads/2025/04/Mathematics-Curriculum.pdf"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "ghana"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 PDF_PATH = RAW_DIR / "ghana_nacca_mathematics.pdf"
 
 # Page ranges are 0-indexed (PDF page index, not page number)
@@ -100,6 +99,7 @@ def _call_gemma(text: str, phase_label: str, year: str) -> list[dict]:
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
+        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }

@@ -20,13 +20,12 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "rw-reb"
 SOURCE_URL = "https://reb.rw/index.php/competence-based-curriculum/"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "rwanda"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 PDFS = [
     (
@@ -99,6 +98,7 @@ def _call_gemma(text: str) -> list[dict]:
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
+        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }

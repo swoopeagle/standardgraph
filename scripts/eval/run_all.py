@@ -8,13 +8,20 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
-from scripts.eval import coverage, duplicates, crosswalk_quality, search_quality
+from scripts.eval import (
+    coverage, duplicates, crosswalk_quality, search_quality, coverage_matrix,
+    db_integrity, search_filter_tests, lookup_standard_tests,
+)
 
 CHECKS = [
-    ("Coverage & known IDs",    coverage),
-    ("Duplicate detection",     duplicates),
-    ("Crosswalk quality",       crosswalk_quality),
-    ("Search quality (golden)", search_quality),
+    ("DB integrity",                       db_integrity),
+    ("Coverage & known IDs",               coverage),
+    ("Duplicate detection",                duplicates),
+    ("Crosswalk quality",                  crosswalk_quality),
+    ("Search quality (golden)",            search_quality),
+    ("Search filter accuracy",             search_filter_tests),
+    ("Coverage matrix (all 256 systems)",  coverage_matrix),
+    ("lookup_standard correctness",        lookup_standard_tests),
 ]
 
 OK   = "\033[32m OK \033[0m"

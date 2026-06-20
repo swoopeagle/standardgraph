@@ -24,11 +24,10 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "ap"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 SOURCE_URL = "https://apcentral.collegeboard.org"
 
 STOP_WORDS = {
@@ -173,6 +172,7 @@ def _call_gemma(text: str, prompt_template: str) -> list[dict]:
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
+        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }

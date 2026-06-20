@@ -29,14 +29,13 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "gb-sco"
 SOURCE_URL = "https://education.gov.scot/curriculum-for-excellence/curriculum-areas/numeracy-and-mathematics/"
 PDF_URL = "https://education.gov.scot/media/sz2lnh1g/numeracy-maths-eo.pdf"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "scotland"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 LEVELS = ["early", "first", "second", "third", "fourth"]
 
@@ -124,6 +123,7 @@ def _call_gemma(text: str, page_num: int) -> list[dict]:
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
+        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }

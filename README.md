@@ -67,26 +67,92 @@ How does the C3 Framework approach civics compared to California's social studie
 |---|---|
 | 🇺🇸 United States | `ngss` (hub, K–12) + all 50 states + DC |
 | 🎓 Advanced Placement | `ap-bio` `ap-chem` `ap-phys-1` `ap-phys-2` `ap-phys-c-mech` `ap-phys-c-em` `ap-env` |
+| 🌍 International | `ib-dp-bio` `ib-dp-chem` `ib-dp-physics` `ib-dp-ess` `ib-myp-science` |
 
 ### ELA (English Language Arts)
+
+US state coverage only; international ELA is planned.
 
 | Region | Systems |
 |---|---|
 | 🇺🇸 United States | `ccss-ela` (hub, K–12) + 49 states |
+| 🎓 Advanced Placement | `ap-english-lang` `ap-english-lit` |
+| 🌍 International | `ib-dp-english-a` `ib-myp-english` |
 
 ### Social Studies
+
+US state coverage only; international Social Studies is planned.
 
 | Region | Systems |
 |---|---|
 | 🇺🇸 United States | `c3` (C3 Framework hub, K–12) + 50 states |
+| 🎓 Advanced Placement | `ap-us-history` `ap-world-history` `ap-euro-history` `ap-us-gov` `ap-comp-gov` `ap-human-geo` `ap-psych` `ap-macro-econ` `ap-micro-econ` `ap-art-history` `ap-african-american-stud` `ap-seminar` `ap-research` |
+| 🌍 International | `ib-dp-history` `ib-dp-geography` `ib-dp-economics` `ib-dp-psych` `ib-myp-ss` |
 
 ### Computer Science
 
 | Region | Systems |
 |---|---|
-| 🇺🇸 United States | `csta` (CSTA 2017 hub, K–12) + 9 states (coverage expanding) |
+| 🇺🇸 United States | `csta` (CSTA 2017 hub, K–12) + 11 states (coverage expanding) |
+| 🎓 Advanced Placement | `ap-cs-a` `ap-cs-principles` |
+| 🌍 International | `ib-dp-cs` `ib-myp-design` |
+
+### World Languages
+
+| Region | Systems |
+|---|---|
+| 🎓 Advanced Placement | `ap-spanish-lang` `ap-spanish-lit` `ap-french` `ap-german` `ap-italian` `ap-japanese` `ap-chinese` `ap-latin` |
+
+### Arts
+
+| Region | Systems |
+|---|---|
+| 🎓 Advanced Placement | `ap-music-theory` `ap-2d-art` `ap-3d-art` `ap-drawing` |
 
 > Run `list_systems` in Claude for a live count — the pipeline updates nightly.
+
+---
+
+## Using with Claude
+
+StandardGraph works out of the box once installed, but pasting the following into your **Claude Project instructions** (Settings → Projects → [your project] → Instructions) gives Claude better guidance on how to use the tools and how to interpret results:
+
+<details>
+<summary>Copy this into your Claude Project instructions</summary>
+
+```
+You are a K-12 curriculum expert with access to StandardGraph — a database of 146,000+ standards across 256 curriculum systems in 40+ countries, covering Math, Science, ELA, Social Studies, and Computer Science.
+
+## When the user asks about standards, use these tools:
+- search_standards — when they describe a concept and want matching standards
+- lookup_standard — when they cite a specific standard ID (e.g. CCSS.MATH.6.RP.A.3)
+- get_progression — when they ask how a topic develops across grade levels
+- map_standard — when they want the equivalent standard in another curriculum or country
+- list_systems — when they want to know which systems are available
+
+## Reading crosswalk confidence scores:
+- ≥ 0.90: Strong match — same concept, aligned grade level
+- 0.85–0.89: Good match — same concept, may differ by ±1 grade
+- 0.75–0.84: Plausible — related concept, scope or grade may differ; flag as "worth verifying"
+- < 0.75: Weak — treat as a starting point only, not a definitive equivalent
+
+When grade_delta ≠ 0, note which curriculum introduces the concept earlier or later. A negative delta means the source curriculum teaches it at a lower grade than the target.
+
+## Tool chaining patterns:
+- Compare two systems on a topic: search_standards in system A, then system B with the same query
+- Deep dive on a standard: lookup_standard → follow prerequisites/successors → map_standard to compare
+- Cross-curriculum progression: get_progression in CCSS, then map key grade stages to another system
+
+## Always note:
+Crosswalk mappings are NLP-generated (cosine similarity), not human-verified. Present them as "closest available match" rather than "equivalent." For high-stakes decisions — student placement, curriculum adoption, teacher credentialing — recommend expert review for any mapping below 0.85 confidence.
+```
+
+</details>
+
+StandardGraph also ships three **MCP prompt templates** that Claude can invoke directly. In a conversation with StandardGraph connected, try:
+- `/curriculum_assistant` — sets Claude up as a curriculum specialist for the session
+- `/compare` — side-by-side comparison of two curriculum systems on a topic
+- `/find_equivalent` — maps a specific standard ID into another curriculum
 
 ---
 

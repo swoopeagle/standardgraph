@@ -752,6 +752,85 @@ def list_systems() -> str:
     }, indent=2)
 
 
+# ── Prompts ───────────────────────────────────────────────────────────────────
+
+@mcp.prompt()
+def curriculum_assistant() -> str:
+    """Set Claude up as a K-12 curriculum standards expert using StandardGraph."""
+    return """\
+You are a K-12 curriculum expert with access to StandardGraph — a database of 146,000+ \
+standards across 256 curriculum systems in 40+ countries (Math, Science, ELA, Social Studies, \
+Computer Science).
+
+## Tool guidance
+- search_standards — user describes a concept; returns ranked matches by semantic similarity
+- lookup_standard — user cites a specific ID (e.g. CCSS.MATH.6.RP.A.3)
+- get_progression — user wants to see how a topic builds across grade levels
+- map_standard — user wants the equivalent standard in another curriculum
+- list_systems — user wants to know what systems are available
+
+## Reading confidence scores on crosswalk mappings
+- ≥ 0.90 Strong match — same concept, aligned grade level
+- 0.85–0.89 Good match — same concept, may differ by ±1 grade
+- 0.75–0.84 Plausible — related concept, scope or grade may differ; flag as "worth verifying"
+- < 0.75 Weak — treat as a starting point only
+
+When grade_delta ≠ 0, tell the user which curriculum teaches the concept earlier or later. \
+Negative delta means the source curriculum is earlier.
+
+## Always note
+Crosswalk mappings are NLP-generated (cosine similarity), not human-verified. \
+Present them as "closest available match," not "equivalent." \
+For high-stakes decisions — student placement, curriculum adoption — recommend expert review.
+"""
+
+
+@mcp.prompt()
+def compare(topic: str, system_a: str = "ccss", system_b: str = "sg-moe") -> str:
+    """Set up a side-by-side curriculum comparison for a given topic.
+
+    topic: concept or skill to compare (e.g. "fractions grade 4", "linear equations")
+    system_a: first curriculum system code (default: ccss)
+    system_b: second curriculum system code (default: sg-moe)
+    """
+    return f"""\
+Compare how **{system_a}** and **{system_b}** cover the topic: "{topic}".
+
+Steps:
+1. Call search_standards with query="{topic}" and system="{system_a}" to find the most relevant standards.
+2. Call search_standards again with system="{system_b}" to find how that curriculum covers the same concept.
+3. If useful, call get_progression with system="{system_a}" to show the full grade arc, then repeat for "{system_b}".
+4. Note any differences in grade placement (grade_delta), scope, or depth between the two systems.
+
+Present the comparison in a clear table or side-by-side format. \
+Flag grade-level differences — a curriculum that covers a concept earlier is not \
+necessarily "better," as pedagogical sequencing choices reflect different philosophy.
+"""
+
+
+@mcp.prompt()
+def find_equivalent(standard_id: str, target_system: str) -> str:
+    """Find the closest equivalent of a specific standard in another curriculum.
+
+    standard_id: the source standard ID (e.g. CCSS.MATH.6.RP.A.3 or TX.MATH.5.3.K)
+    target_system: the curriculum to map into (e.g. sg-moe, cambridge, uk-nc, ca-on)
+    """
+    return f"""\
+Find the closest equivalent of **{standard_id}** in the **{target_system}** curriculum.
+
+Steps:
+1. Call lookup_standard with standard_id="{standard_id}" to read the full source standard.
+2. Call map_standard with standard_id="{standard_id}", from_system inferred from the ID, \
+and to_system="{target_system}".
+3. If map_standard returns multiple mapping methods (precomputed, two-hop via CCSS, semantic \
+fallback), explain which was used and why.
+4. Share the confidence score and any grade_delta — note whether {target_system} teaches \
+this concept at an earlier or later grade.
+
+Remind the user that mappings are NLP-generated and should be verified for high-stakes use.
+"""
+
+
 def main() -> None:
     mcp.run()
 
