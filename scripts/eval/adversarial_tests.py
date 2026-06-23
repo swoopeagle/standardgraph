@@ -119,11 +119,11 @@ def _scenarios():
     return [
         # ── Out-of-range grade ─────────────────────────────────────────────────
         {
-            "name": "jp-mext Grade 9 (DB only has 1–6)",
-            "description": "Search jp-mext grade 9 — this grade doesn't exist in the DB",
+            "name": "jp-mext Grade 12 (DB only has 1–9)",
+            "description": "Search jp-mext grade 12 — this grade doesn't exist in the DB",
             "expected_behavior": "Returns empty results or a no-standards error, not junk results",
             "fn": tool_search,
-            "kwargs": {"query": "algebra linear functions", "system": "jp-mext", "grade": "9"},
+            "kwargs": {"query": "algebra linear functions", "system": "jp-mext", "grade": "12"},
             "check": lambda r: len(r.get("results", [])) == 0,
             "check_desc": "empty results for out-of-range grade",
         },

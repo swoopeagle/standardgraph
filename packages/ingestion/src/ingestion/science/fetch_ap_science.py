@@ -8,7 +8,6 @@ Covered systems:
   ap-phys-c-mech  — AP Physics C: Mechanics
   ap-phys-c-em    — AP Physics C: Electricity and Magnetism
   ap-env          — AP Environmental Science
-  ap-ess          — AP Earth and Space Science
 
 Sources: College Board Course and Exam Descriptions (auto-downloaded).
 Structure: Big Ideas → Enduring Understandings → Learning Objectives → Essential Knowledge
@@ -150,14 +149,13 @@ def _extract_pages(pdf_path: Path, start: int, end: int) -> list[tuple[int, str]
 
 
 def _call_gemma(text: str, course_name: str) -> list[dict]:
-    prompt = SCIENCE_PROMPT.format(course_name=course_name, text=text[:5500])
+    prompt = SCIENCE_PROMPT.format(course_name=course_name, text=text[:12000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
-        "format": "json",
         "keep_alive": "4h",
-        "options": {"temperature": 0.0},
+        "options": {"temperature": 0.0, "num_ctx": 8192},
     }
     resp = httpx.post(f"{OLLAMA_BASE_URL}/api/chat", json=payload, timeout=3600)
     resp.raise_for_status()
@@ -214,6 +212,7 @@ def main() -> None:
     conn = sqlite3.connect(DB_PATH)
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute("PRAGMA journal_mode = WAL")
+    conn.execute("PRAGMA busy_timeout = 30000")
 
     grand_std = grand_kw = 0
 

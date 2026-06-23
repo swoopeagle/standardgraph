@@ -104,12 +104,11 @@ def _extract_pages(pdf_path: Path, start: int, end: int) -> list[tuple[int, str]
 
 
 def _call_gemma(text: str, course_name: str) -> list[dict]:
-    prompt = ELA_PROMPT.format(course_name=course_name, text=text[:5500])
+    prompt = ELA_PROMPT.format(course_name=course_name, text=text[:12000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
-        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }

@@ -15,6 +15,7 @@ Objective format: Big Idea Code + number (e.g. LIM-2.A, CHA-3.D, VAR-1.B)
 IDs: AP.{COURSE}.{objective_num}  e.g. AP.CALC_AB.LIM-2.A
 """
 import json
+import os
 import re
 import sqlite3
 import urllib.request
@@ -126,14 +127,17 @@ Extract all AP Precalculus learning objectives from this College Board Course an
 AP Precalculus uses this hierarchy:
   Units: 1 (Polynomial and Rational Functions), 2 (Exponential and Logarithmic Functions),
          3 (Trigonometric and Polar Functions), 4 (Functions Involving Parameters, Vectors, Matrices)
-  Learning Objectives are numbered like PCR-1.A, PCR-2.B, etc.
-  (PCR = Precalculus, with Big Idea codes like FUN, LIM, etc.)
+  Learning Objectives are coded as Unit.Topic.Letter, e.g. "1.1.A", "1.4.B", "2.3.A".
+  In the document they appear under "LEARNING OBJECTIVE" headings, formatted like:
+    1.1.A
+    Construct a graph representing two quantities that vary with respect to each other.
+  Essential Knowledge items (e.g. 1.1.A.1, 1.1.A.2) are sub-details — do NOT extract them as separate objectives.
 
 Return ONLY a JSON array. Each element must have:
-  "objective_num" : the learning objective code (e.g. "FUN-1.A")
+  "objective_num" : the learning objective code (e.g. "1.1.A")
   "unit"          : unit number as string ("1", "2", "3", or "4")
-  "big_idea"      : big idea name
-  "objective_text": full text of the learning objective
+  "big_idea"      : empty string (AP Precalculus does not use named big ideas)
+  "objective_text": full text of the learning objective (the sentence under the code)
 
 If no learning objectives appear in this text, return [].
 
@@ -167,12 +171,11 @@ def _extract_pages(pdf_path: Path, start: int, end: int) -> list[tuple[int, str]
 
 
 def _call_gemma(text: str, prompt_template: str) -> list[dict]:
-    prompt = prompt_template.format(text=text[:5500])
+    prompt = prompt_template.format(text=text[:12000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
-        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }
@@ -278,7 +281,12 @@ def main() -> None:
 
     grand_std = grand_kw = 0
 
+    _keys_env = os.getenv("AP_MATH_KEYS", "")
+    _allowed = {k.strip() for k in _keys_env.split(",") if k.strip()} if _keys_env else None
+
     for course in COURSES:
+        if _allowed and course["key"] not in _allowed:
+            continue
         pdf_path = RAW_DIR / course["pdf_file"]
         if not pdf_path.exists():
             _download(course["url"], pdf_path)

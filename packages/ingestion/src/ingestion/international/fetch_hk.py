@@ -113,7 +113,6 @@ def _call_gemma(ks: str, ks_desc: str, text: str) -> list[dict]:
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
-        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }

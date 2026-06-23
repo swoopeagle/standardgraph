@@ -79,7 +79,7 @@ COURSES = [
         "system":     "ap-us-gov",
         "name":       "AP United States Government and Politics",
         "pdf_file":   "ap_us_gov.pdf",
-        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-united-states-government-and-politics-course-and-exam-description.pdf",
+        "url":        "https://apcentral.collegeboard.org/media/pdf/ap-us-government-and-politics-course-and-exam-description.pdf",
         "start_page": 25,
         "end_page":   300,
     },
@@ -215,12 +215,11 @@ def _extract_pages(pdf_path: Path, start: int, end: int) -> list[tuple[int, str]
 
 
 def _call_gemma(text: str, course_name: str) -> list[dict]:
-    prompt = SS_PROMPT.format(course_name=course_name, text=text[:5500])
+    prompt = SS_PROMPT.format(course_name=course_name, text=text[:12000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
-        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }
@@ -279,6 +278,7 @@ def main() -> None:
     conn = sqlite3.connect(DB_PATH)
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute("PRAGMA journal_mode = WAL")
+    conn.execute("PRAGMA busy_timeout = 30000")
 
     grand_std = grand_kw = 0
 

@@ -16,7 +16,7 @@ def embed_texts(texts: list[str], client: httpx.Client) -> np.ndarray:
         try:
             resp = client.post(
                 f"{OLLAMA_BASE_URL}/api/embed",
-                json={"model": EMBED_MODEL, "input": texts},
+                json={"model": EMBED_MODEL, "input": texts, "keep_alive": "2h"},
                 timeout=120,
             )
             resp.raise_for_status()

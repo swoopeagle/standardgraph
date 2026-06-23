@@ -99,7 +99,6 @@ def _call_gemma(text: str, phase_label: str, year: str) -> list[dict]:
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
         "stream": False,
-        "format": "json",
         "keep_alive": "4h",
         "options": {"temperature": 0.0},
     }

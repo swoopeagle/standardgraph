@@ -234,7 +234,8 @@ def main(no_judge: bool = False, local_judge: bool = False) -> int:
         except Exception as e:
             error_msg = str(e)
 
-        top = result.get("results", [{}])[0] if not error_msg else {}
+        _res = result.get("results", [])
+        top = _res[0] if (not error_msg and _res) else {}
         top_conf = top.get("combined_confidence", 0.0)
 
         det_pass = (
