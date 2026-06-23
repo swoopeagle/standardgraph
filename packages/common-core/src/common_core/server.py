@@ -1,5 +1,6 @@
 """International Math Standards MCP server."""
 import json
+import re
 import sqlite3
 
 import numpy as np
@@ -231,6 +232,104 @@ def _cosine_scores(query_vec: np.ndarray, conn: sqlite3.Connection) -> list[tupl
     return sorted(zip(scores.tolist(), ids), reverse=True)
 
 
+# ── FTS keyword fallback (used when Ollama is unavailable) ────────────────────
+
+def _fts_query(text: str) -> str:
+    """Return an OR expression of prefix wildcards for words of 5+ chars.
+
+    5-char minimum excludes stop-word-like tokens ("with", "that", "from").
+    Prefix wildcards bridge gerund/imperative gap: "addin*" matches "adding"
+    but not "add"; "fract*" matches "fraction", "fractions", "fractional".
+    """
+    words = re.findall(r'[a-zA-Z]{5,}', text)
+    return " OR ".join(w[:6] + "*" for w in words) if words else ""
+
+
+def _ensure_fts(conn: sqlite3.Connection) -> bool:
+    """Create and populate FTS5 index on standards if not present. One-time cost.
+
+    COUNT(*) on an FTS5 content table reads from the base table, always equals
+    len(standards) even when the index is empty. Use the shadow data table
+    instead: it has >1 row only after a real rebuild.
+    """
+    try:
+        conn.execute("""
+            CREATE VIRTUAL TABLE IF NOT EXISTS standards_fts
+            USING fts5(standard_text, domain, cluster,
+                       content='standards', content_rowid='rowid')
+        """)
+        data_rows = conn.execute("SELECT COUNT(*) FROM standards_fts_data").fetchone()[0]
+        if data_rows <= 1:
+            conn.execute("INSERT INTO standards_fts(standards_fts) VALUES('rebuild')")
+            conn.commit()
+        return True
+    except Exception:
+        return False
+
+
+def _fts_search(
+    query: str,
+    conn: sqlite3.Connection,
+    system: str,
+    grade_filter: set[str] | None = None,
+    domain_filter: str | None = None,
+    limit: int = 5,
+) -> list[dict]:
+    """BM25-ranked FTS5 keyword search, filtered to a single curriculum system."""
+    if not _ensure_fts(conn):
+        return []
+    fts_q = _fts_query(query)
+    if not fts_q:
+        return []
+
+    # Pull top global BM25 results then filter by system in Python.
+    # 1000 rows at ~6ms; catches tail-ranked systems (first CCSS result for niche
+    # queries like "data analysis statistics" can appear at global rank ~238).
+    try:
+        ranked = conn.execute(
+            "SELECT rowid FROM standards_fts WHERE standards_fts MATCH ? ORDER BY rank LIMIT 1000",
+            (fts_q,),
+        ).fetchall()
+    except Exception:
+        return []
+
+    if not ranked:
+        return []
+
+    rowids = [r[0] for r in ranked]
+    placeholders = ",".join("?" * len(rowids))
+    try:
+        rows_by_id = {
+            r["rowid"]: r
+            for r in conn.execute(
+                f"SELECT rowid, id, grade, domain, standard_text"
+                f" FROM standards WHERE rowid IN ({placeholders}) AND system = ?",
+                rowids + [system],
+            ).fetchall()
+        }
+    except Exception:
+        return []
+
+    results = []
+    for rowid in rowids:
+        if len(results) >= limit:
+            break
+        row = rows_by_id.get(rowid)
+        if row is None:
+            continue
+        if grade_filter and row["grade"] not in grade_filter:
+            continue
+        if domain_filter and domain_filter.lower() not in (row["domain"] or "").lower():
+            continue
+        results.append({
+            "id":            row["id"],
+            "grade":         row["grade"],
+            "domain":        row["domain"],
+            "standard_text": row["standard_text"],
+        })
+    return results
+
+
 # ── Tool 1: lookup_standard ───────────────────────────────────────────────────
 
 @mcp.tool()
@@ -325,7 +424,22 @@ def search_standards(
 
     Returns standards ranked by semantic similarity with relevance scores (0–1).
     """
-    query_vec = _embed_query(query)
+    try:
+        query_vec = _embed_query(query)
+    except Exception:
+        conn = _db()
+        results = _fts_search(
+            query, conn, system,
+            grade_filter=_parse_grade_filter(grade) if grade else None,
+            domain_filter=domain,
+            limit=limit,
+        )
+        conn.close()
+        return json.dumps({
+            "search_method": "keyword_fts_fallback",
+            "note": "Ollama is unavailable — results are keyword-based, not semantic. Install Ollama for richer search.",
+            "results": results,
+        }, indent=2)
     conn = _db()
     scored = _cosine_scores(query_vec, conn)
 
@@ -397,7 +511,36 @@ def get_progression(
     Returns the top matching standards per grade, ordered K through HS, showing how the
     concept deepens over time.
     """
-    query_vec = _embed_query(concept)
+    try:
+        query_vec = _embed_query(concept)
+    except Exception:
+        conn = _db()
+        raw = _fts_search(concept, conn, system, limit=60)
+        conn.close()
+
+        by_grade: dict[str, list[dict]] = {}
+        for r in raw:
+            g = r["grade"]
+            if grade_start is not None and _grade_key(g) < _grade_key(str(grade_start)):
+                continue
+            if grade_end is not None and _grade_key(g) > _grade_key(str(grade_end)):
+                continue
+            by_grade.setdefault(g, []).append({"id": r["id"], "text": r["standard_text"]})
+
+        gr_start = str(grade_start) if grade_start is not None else "K"
+        gr_end   = str(grade_end)   if grade_end   is not None else "HS"
+
+        return json.dumps({
+            "concept":       concept,
+            "system":        system,
+            "grade_range":   f"{gr_start}–{gr_end}",
+            "search_method": "keyword_fts_fallback",
+            "note": "Ollama is unavailable — results are keyword-based, not semantic. Install Ollama for richer search.",
+            "stages": [
+                {"grade": g, "standards": by_grade[g][:3]}
+                for g in sorted(by_grade.keys(), key=_grade_key)
+            ],
+        }, indent=2)
     conn = _db()
     scored = _cosine_scores(query_vec, conn)
 
@@ -603,6 +746,7 @@ def map_standard(
 
     # ── 4. Semantic embedding fallback ────────────────────────────────────────
     nearest_by_concept: list[dict] = []
+    embedding_error: str | None = None
     try:
         qvec = _embed_query(src_dict["standard_text"])
         scored = _cosine_scores(qvec, conn)
@@ -621,8 +765,8 @@ def map_standard(
                     "grade":                row["grade"],
                     "semantic_similarity":  round(score, 4),
                 })
-    except Exception:
-        pass
+    except Exception as exc:
+        embedding_error = str(exc)
 
     conn.close()
 
@@ -649,8 +793,15 @@ def map_standard(
     if nearest_by_concept:
         response["nearest_by_concept"] = nearest_by_concept
 
+    if embedding_error:
+        response["embedding_fallback_error"] = embedding_error
+        response["embedding_hint"] = (
+            f"Start Ollama with `ollama serve` and pull the model with `ollama pull {EMBED_MODEL}`. "
+            "Retry once it is running to get a semantic-similarity result."
+        )
+
     if not best_below and not two_hop and not nearest_by_concept:
-        response["result"] = "no_mapping_found"
+        response["result"] = "no_precomputed_or_bridge_mapping_found" if embedding_error else "no_mapping_found"
         try:
             _c = sqlite3.connect(DB_PATH)
             response["available_systems"] = [
