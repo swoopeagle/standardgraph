@@ -2,6 +2,8 @@
 
 **156,000+ standards across 297 curriculum systems, accessible via Claude.**
 
+The alignment layer for the global curriculum.
+
 Covers Mathematics, Science, ELA, Social Studies, and Computer Science — US national and state standards plus major international curricula. Ask Claude to look up any standard, trace a concept across grade levels, or find the equivalent in another country's curriculum.
 
 ---
@@ -217,6 +219,18 @@ StandardGraph also ships three **MCP prompt templates** that Claude can invoke d
 - **SQLite** — standards, embeddings (BLOBs), relationships, crosswalk mappings
 - **nomic-embed-text** via Ollama — 768-dim embeddings
 - **Gemma 4 31B** via Ollama — PDF→JSON extraction for international and AP curricula
+
+---
+
+## Research foundation
+
+StandardGraph's crosswalk engine is grounded in peer-reviewed work showing that NLP embedding similarity reliably identifies equivalent standards across curriculum systems. Three independent research groups validated this approach in 2024–2025:
+
+- [*Automated Alignment of Math Items to Content Standards*](https://arxiv.org/abs/2510.05129) — fine-tuned transformer models achieve F1=0.95 on mathematics standards alignment, validating the approach for the subject where StandardGraph has deepest coverage.
+- [*An NLP Crosswalk Between CCSS and NAEP Item Specifications*](https://arxiv.org/abs/2405.17284) — demonstrates that sentence embedding cosine similarity can replace manual crosswalk construction between curriculum standards, the exact method StandardGraph uses.
+- [*Scaling Item-to-Standard Alignment with Large Language Models*](https://arxiv.org/abs/2511.19749) — LLMs achieve 83–94% accuracy on standards alignment, and the authors call for hybrid pipelines combining automated screening with human review for ambiguous cases.
+
+The research base is strongest for mathematics; evidence for science standards alignment is emerging. **StandardGraph's crosswalks are NLP-generated and not human-verified** — for high-stakes decisions (student placement, teacher credentialing, curriculum adoption), expert review of any mapping below 0.85 confidence is recommended.
 
 ---
 
