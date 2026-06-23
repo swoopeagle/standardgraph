@@ -196,6 +196,14 @@ def _ingest_objectives(
             continue
         seen_ids.add(std_id)
 
+        # Also skip if same (grade, text) already in DB — prevents dupes across tracks
+        # (G2/G3 and G1/NT PDFs overlap; Gemma may emit different codes for same objective)
+        if conn.execute(
+            "SELECT 1 FROM standards WHERE system=? AND grade=? AND standard_text=?",
+            (SYSTEM, grade, obj_text),
+        ).fetchone():
+            continue
+
         conn.execute(
             """INSERT OR REPLACE INTO standards
                (id, system, subject, grade, grade_band, domain, cluster,

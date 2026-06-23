@@ -1,4 +1,4 @@
-"""International Math Standards MCP server."""
+"""StandardGraph MCP server — education standards across 7 subjects."""
 import json
 import re
 import sqlite3
@@ -17,70 +17,71 @@ def _build_instructions() -> str:
     except Exception:
         _std_count, _sys_count = 0, 0
     return f"""\
-You have access to a database of {_std_count:,} math and science standards across {_sys_count} \
-curriculum systems. Mathematics standards are cross-referenced to CCSS as the hub; \
-science standards are cross-referenced to NGSS as the hub.
+You have access to a database of {_std_count:,} education standards across {_sys_count} \
+curriculum systems covering 7 subjects: Mathematics, Science, ELA, Social Studies, \
+Computer Science, Arts, and World Languages.
 
-## Available systems — Mathematics
+## Subject hubs (crosswalk anchors)
+- **Mathematics** → ccss (Common Core State Standards)
+- **Science** → ngss (Next Generation Science Standards)
+- **ELA** → ccss-ela (Common Core ELA)
+- **Social Studies** → c3 (C3 Framework)
+- **CS** → csta (CSTA K–12 Framework)
 
-**North America — US:** ccss (hub), plus all 50 states + DC by two-letter code
-  (al ak az ar ca co ct dc de fl ga hi id il in ia ks ky la me md ma mi mn ms mo
-   mt ne nv nh nj nm ny nc nd oh ok or pa ri sc sd tn tx ut vt va wa wv wi wy)
+## Naming conventions
 
-**North America — Canada:** ca-ab (Alberta) ca-bc (British Columbia) ca-mb (Manitoba)
-  ca-nb (New Brunswick) ca-on (Ontario) ca-qc (Quebec, French) ca-sk (Saskatchewan)
+**Mathematics** — hub: `ccss`
+  US states: two-letter code (`al ak az ar ca co ct dc de fl ga hi ia id il in ks ky
+    la ma md me mi mn mo ms mt nc nd ne nh nj nm nv ny oh ok or pa ri sc sd tn tx
+    ut va vt wa wi wv wy`)
+  ⚠️  `de` = Delaware (US state), NOT Germany. Germany = `de-kmk`.
+  Canada: `ca-ab ca-bc ca-mb ca-nb ca-on ca-qc ca-sk`
+  International: `sg-moe jp-mext nz-moe au-acara au-vic hk-edb ph-deped uk-nc uk-aqa
+    gb-sco ie-ncca in-ncert gh-nacca rw-reb za-caps cambridge ib-myp ib-dp de-kmk`
+  AP Math: `ap-calc-ab ap-calc-bc ap-stats ap-precalc`
 
-**Asia-Pacific:** sg-moe (Singapore) jp-mext (Japan, Gr 1–6) nz-moe (New Zealand Yr 0–10)
-  au-acara (Australian Curriculum) au-vic (Victoria) hk-edb (Hong Kong KS1–3)
-  ph-deped (Philippines K–10)
+**Science** — hub: `ngss`
+  US states: `{{state}}-sci` (e.g. `ca-sci tx-sci ny-sci`)
+  AP Science: `ap-bio ap-chem ap-phys-1 ap-phys-2 ap-phys-c-mech ap-phys-c-em ap-env`
 
-**Europe:** uk-nc (England Yr 1–6) uk-aqa (AQA GCSE) gb-sco (Scotland CfE)
-  ie-ncca (Ireland Junior Cycle)
+**ELA** — hub: `ccss-ela`
+  US states: `{{state}}-ela` (e.g. `ca-ela tx-ela ny-ela`)
+  AP English: `ap-english-lang ap-english-lit`
 
-**South Asia:** in-ncert (India NCERT)
+**Social Studies** — hub: `c3`
+  US states: `{{state}}-ss` (e.g. `ca-ss tx-ss ny-ss`)
+  AP Social Studies: `ap-us-history ap-world-history ap-euro-history ap-us-gov
+    ap-comp-gov ap-human-geo ap-macro-econ ap-micro-econ ap-psych
+    ap-african-american-stud ap-research ap-seminar`
 
-**Sub-Saharan Africa:** gh-nacca (Ghana B1–12) za-caps (South Africa Gr R–12)
-  rw-reb (Rwanda P4–P6)
+**Computer Science** — hub: `csta`
+  Select US states: `fl-cs ga-cs id-cs in-cs nc-cs ne-cs nh-cs sc-cs ut-cs wi-cs wv-cs`
+  AP CS: `ap-cs-a ap-cs-principles`
 
-**US Advanced Placement — Math:** ap-calc-ab (AP Calculus AB) ap-calc-bc (AP Calculus BC)
-  ap-stats (AP Statistics) ap-precalc (AP Precalculus)
+**Arts:** `ap-2d-art ap-3d-art ap-drawing ap-music-theory`
 
-**International:** cambridge (Cambridge International) ib-myp (IB Middle Years)
-  ib-dp (IB Diploma)
-
-## Available systems — Science
-
-**Science hub:** ngss (Next Generation Science Standards, K–12)
-
-**US state science:** same two-letter state codes with -sci suffix
-  (al-sci ak-sci az-sci ... tx-sci ca-sci ny-sci — all 50 states + DC)
-
-**US Advanced Placement — Science:** ap-bio (AP Biology) ap-chem (AP Chemistry)
-  ap-phys-1 (AP Physics 1) ap-phys-2 (AP Physics 2)
-  ap-phys-c-mech (AP Physics C: Mechanics) ap-phys-c-em (AP Physics C: E&M)
-  ap-env (AP Environmental Science)
+**World Languages:** `ap-chinese ap-french ap-german ap-italian ap-japanese ap-latin
+  ap-spanish-lang ap-spanish-lit`
 
 ## Grade codes
 K, 1, 2, 3, 4, 5, 6, 7, 8, HS
 
 ## When to use each tool
-
-- **lookup_standard**: user provides a specific standard ID they want to read
-- **search_standards**: user describes a concept and wants to find matching standards
+- **lookup_standard**: user provides a specific standard ID
+- **search_standards**: user describes a concept and wants matching standards
 - **get_progression**: user asks how a topic develops across grade levels
-- **map_standard**: user wants to compare a standard across systems (e.g. "how does Texas
-  cover this vs CCSS?" or "what does the IB equivalent look like?")
+- **map_standard**: user wants to find the equivalent standard in another system
+- **list_systems**: get live counts; filter by subject or region to keep response small
 
 ## Tips
 - Crosswalk mappings are NLP-generated (cosine similarity), not human-verified.
-  A confidence ≥ 0.85 is a strong match; 0.70–0.80 is plausible but worth checking.
-  A grade_delta ≠ 0 means the systems introduce the concept at different grade levels.
-- map_standard tries three strategies in order: (1) precomputed crosswalk above
-  threshold; (2) two-hop CCSS bridge (source→CCSS→target for any-to-any mapping);
-  (3) semantic embedding fallback. Below-threshold precomputed results are always
-  included, flagged with "below_threshold": true.
-- search_standards queries one system at a time; call it multiple times to compare
-  how different curricula cover the same concept.
+  Confidence ≥ 0.85 is a strong match; 0.70–0.80 is plausible.
+  grade_delta ≠ 0 means systems introduce the concept at different grade levels.
+- map_standard tries: (1) precomputed crosswalk; (2) two-hop hub bridge; (3) semantic
+  embedding fallback. Below-threshold precomputed results are included with "below_threshold": true.
+- search_standards falls back to keyword FTS if Ollama is unavailable — install Ollama
+  for richer semantic search.
+- search_standards queries one system at a time; call multiple times to compare curricula.
 """
 
 
@@ -93,8 +94,13 @@ GRADE_ORDER = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "HS"]
 # level: national | state | provincial | international | exam_board
 
 SYSTEM_META: dict[str, dict] = {
-    # ── Hub ──────────────────────────────────────────────────────────────────
+    # ── Subject hubs ─────────────────────────────────────────────────────────
     "ccss":      {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
+    "ccss-ela":  {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
+    "ngss":      {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
+    "c3":        {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
+    "csta":      {"country": "United States", "country_code": "US", "region": "North America",     "language": "English",            "level": "national"},
+    "aero":      {"country": "International", "country_code": None, "region": "International",     "language": "English",            "level": "international"},
     # ── Canada ───────────────────────────────────────────────────────────────
     "ca-ab":     {"country": "Canada",        "country_code": "CA", "region": "North America",     "language": "English",            "level": "provincial"},
     "ca-bc":     {"country": "Canada",        "country_code": "CA", "region": "North America",     "language": "English",            "level": "provincial"},
@@ -112,6 +118,7 @@ SYSTEM_META: dict[str, dict] = {
     "ph-deped":  {"country": "Philippines",   "country_code": "PH", "region": "Asia-Pacific",      "language": "English/Filipino",   "level": "national"},
     "sg-moe":    {"country": "Singapore",     "country_code": "SG", "region": "Asia-Pacific",      "language": "English",            "level": "national"},
     # ── Europe ───────────────────────────────────────────────────────────────
+    "de-kmk":    {"country": "Germany",       "country_code": "DE", "region": "Europe",             "language": "German",             "level": "national"},
     "gb-sco":    {"country": "Scotland",      "country_code": "GB", "region": "Europe",             "language": "English",            "level": "national"},
     "ie-ncca":   {"country": "Ireland",       "country_code": "IE", "region": "Europe",             "language": "English/Irish",      "level": "national"},
     "uk-aqa":    {"country": "England",       "country_code": "GB", "region": "Europe",             "language": "English",            "level": "exam_board"},
@@ -126,21 +133,7 @@ SYSTEM_META: dict[str, dict] = {
     "cambridge": {"country": "International", "country_code": None, "region": "International",      "language": "English",            "level": "international"},
     "ib-dp":     {"country": "International", "country_code": None, "region": "International",      "language": "English",            "level": "international"},
     "ib-myp":    {"country": "International", "country_code": None, "region": "International",      "language": "English",            "level": "international"},
-    # ── US Advanced Placement — Math ──────────────────────────────────────────
-    "ap-calc-ab":     {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    "ap-calc-bc":     {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    "ap-stats":       {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    "ap-precalc":     {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    # ── Science hub ───────────────────────────────────────────────────────────
-    "ngss":           {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    # ── US Advanced Placement — Science ───────────────────────────────────────
-    "ap-bio":         {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    "ap-chem":        {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    "ap-phys-1":      {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    "ap-phys-2":      {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    "ap-phys-c-mech": {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    "ap-phys-c-em":   {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
-    "ap-env":         {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"},
+    # AP courses are handled by the ap-* prefix rule in _meta(); no entries needed here.
 }
 
 _US_STATE_CODES = {
@@ -150,8 +143,10 @@ _US_STATE_CODES = {
     "va","vt","wa","wi","wv","wy",
 }
 
-_US_STATE_META     = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "state"}
-_US_STATE_SCI_META = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "state"}
+_US_STATE_META = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "state"}
+_AP_META       = {"country": "United States", "country_code": "US", "region": "North America", "language": "English", "level": "national"}
+
+_US_STATE_SUFFIXES = {"-sci", "-ela", "-ss", "-cs"}
 
 
 def _meta(system: str) -> dict:
@@ -159,13 +154,16 @@ def _meta(system: str) -> dict:
         return SYSTEM_META[system]
     if system in _US_STATE_CODES:
         return _US_STATE_META
-    if system.endswith("-sci") and system[:-4] in _US_STATE_CODES:
-        return _US_STATE_SCI_META
+    for suffix in _US_STATE_SUFFIXES:
+        if system.endswith(suffix) and system[: -len(suffix)] in _US_STATE_CODES:
+            return _US_STATE_META
+    if system.startswith("ap-"):
+        return _AP_META
     return {}
 
 
 mcp = FastMCP(
-    "intl-math-standards",
+    "standardgraph",
     instructions=_build_instructions(),
 )
 
@@ -410,19 +408,20 @@ def search_standards(
     domain: str | None = None,
     limit: int = 5,
 ) -> str:
-    """Find math standards that match a natural language description of a concept or skill.
+    """Find standards that match a natural language description of a concept or skill.
 
     Use this when the user describes what they're looking for rather than citing a standard ID.
-    Examples: "adding fractions with unlike denominators", "geometric transformations grade 8",
-    "solving quadratic equations".
+    Works across all subjects: mathematics, science, ELA, social studies, CS, arts, world-languages.
+    Examples: "adding fractions with unlike denominators", "photosynthesis", "argumentative writing grade 8".
 
-    query: plain English description of the math concept or skill.
+    query: plain English description of the concept or skill.
     system: which curriculum to search (default 'ccss'). Call multiple times to compare systems.
     grade: optional filter — single grade '5', range '6-8', or 'HS'. Grade codes: K 1 2 3 4 5 6 7 8 HS.
     domain: optional keyword to restrict by domain name (e.g. 'geometry', 'algebra').
     limit: number of results (default 5, max sensible ~10).
 
-    Returns standards ranked by semantic similarity with relevance scores (0–1).
+    Uses semantic similarity (requires Ollama) with automatic keyword FTS fallback when Ollama is unavailable.
+    Returns standards ranked by relevance with scores (0–1).
     """
     try:
         query_vec = _embed_query(query)
@@ -819,19 +818,36 @@ def map_standard(
 # ── Tool 5: list_systems ──────────────────────────────────────────────────────
 
 @mcp.tool()
-def list_systems() -> str:
-    """Return a live count of every curriculum system currently in the database.
+def list_systems(
+    subject: str | None = None,
+    region: str | None = None,
+) -> str:
+    """Return curriculum systems in the database with standard counts and crosswalk coverage.
 
-    Use this to see exactly which systems are available, how many standards each has,
-    and overall DB stats. Unlike the server instructions (which are set at startup),
-    this always reflects the current state of the database.
+    Without filters returns all systems (~300 rows — large). Use filters to narrow results.
 
-    Returns system codes, standard counts, embedding coverage, and crosswalk coverage.
+    subject: restrict to one subject — 'mathematics', 'science', 'ela', 'social-studies',
+             'cs', 'arts', 'world-languages'
+    region: restrict to one region — 'North America', 'Europe', 'Asia-Pacific',
+            'South Asia', 'Sub-Saharan Africa', 'International'
+
+    Returns: system code, subjects covered, standard count, crosswalk coverage, country, region.
     """
     conn = _db()
 
+    # Build subject-filtered system list from the standards table
+    if subject:
+        subject_systems = {
+            r[0] for r in conn.execute(
+                "SELECT DISTINCT system FROM standards WHERE subject = ?", (subject,)
+            ).fetchall()
+        }
+    else:
+        subject_systems = None
+
     systems = conn.execute(
         """SELECT s.system,
+                  GROUP_CONCAT(DISTINCT s.subject) AS subjects,
                   COUNT(s.id) AS standards,
                   COUNT(e.standard_id) AS embedded,
                   COUNT(cm.source_id) AS crosswalked
@@ -850,27 +866,31 @@ def list_systems() -> str:
 
     system_rows = []
     for r in systems:
+        if subject_systems is not None and r["system"] not in subject_systems:
+            continue
         m = _meta(r["system"])
+        sys_region = m.get("region", "")
+        if region and region.lower() not in sys_region.lower():
+            continue
         system_rows.append({
-            "system":       r["system"],
-            "standards":    r["standards"],
-            "embedded":     r["embedded"],
-            "crosswalked":  r["crosswalked"],
-            "country":      m.get("country"),
-            "country_code": m.get("country_code"),
-            "region":       m.get("region"),
-            "language":     m.get("language"),
-            "level":        m.get("level"),
+            "system":      r["system"],
+            "subjects":    r["subjects"],
+            "standards":   r["standards"],
+            "crosswalked": r["crosswalked"],
+            "country":     m.get("country"),
+            "region":      sys_region or None,
         })
 
     return json.dumps({
         "totals": {
-            "systems":             len(systems),
-            "standards":           total_std,
-            "embeddings":          total_emb,
-            "crosswalk_mappings":  total_xwalk,
-            "relationships":       total_rel,
+            "systems":            len(systems),
+            "standards":          total_std,
+            "embeddings":         total_emb,
+            "crosswalk_mappings": total_xwalk,
+            "relationships":      total_rel,
         },
+        "filters_applied": {k: v for k, v in {"subject": subject, "region": region}.items() if v},
+        "matched_systems":  len(system_rows),
         "systems": system_rows,
     }, indent=2)
 
