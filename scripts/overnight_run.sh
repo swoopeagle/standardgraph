@@ -116,6 +116,9 @@ run_step_unless_fresh() {
 run_step_unless_fresh "AP Calculus + Statistics + Precalculus" "ap-calc-ab" \
     uv run python -m ingestion.international.fetch_ap
 
+run_step_unless_fresh "Ontario K-8 elementary math"           "ca-on"  \
+    uv run python -m ingestion.international.fetch_ontario
+
 run_step_unless_fresh "Singapore MOE ingestion"      "sg-moe"   \
     uv run python -m ingestion.international.fetch_singapore
 
