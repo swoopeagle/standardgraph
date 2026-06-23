@@ -155,11 +155,16 @@ def select_grade_sets(sets: list[dict]) -> dict[str, list[str]]:
         by_doc[doc_id].append(s)
 
     # If one document covers 5+ grade sets, treat it as the canonical source.
-    # Otherwise fall through and collect across all documents.
+    # Prefer named document IDs over "unknown" (course sets without a shared doc ID,
+    # e.g. Ontario's standalone 2021 HS courses, should not beat a proper K-8 document).
     dominant_doc: str | None = None
+    named_docs = {k: v for k, v in by_doc.items() if k != "unknown"}
+    best_named_coverage = max((len(v) for v in named_docs.values()), default=0)
     best_coverage = max((len(v) for v in by_doc.values()), default=0)
-    if best_coverage >= 5:
-        dominant_doc = max(by_doc.keys(), key=lambda d: (len(by_doc[d]), d != "unknown"))
+    if best_named_coverage >= 5:
+        dominant_doc = max(named_docs.keys(), key=lambda d: len(named_docs[d]))
+    elif best_coverage >= 5:
+        dominant_doc = max(by_doc.keys(), key=lambda d: len(by_doc[d]))
 
     candidate_sets = by_doc[dominant_doc] if dominant_doc else math_sets
 
