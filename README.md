@@ -1,6 +1,6 @@
 # StandardGraph
 
-**146,000+ standards across 256 curriculum systems, accessible via Claude.**
+**156,000+ standards across 297 curriculum systems, accessible via Claude.**
 
 Covers Mathematics, Science, ELA, Social Studies, and Computer Science — US national and state standards plus major international curricula. Ask Claude to look up any standard, trace a concept across grade levels, or find the equivalent in another country's curriculum.
 
@@ -48,15 +48,27 @@ How does the C3 Framework approach civics compared to California's social studie
 | 🇺🇸 United States | `ccss` (hub) + all 50 states + DC |
 | 🎓 Advanced Placement | `ap-calc-ab` `ap-calc-bc` `ap-stats` `ap-precalc` |
 | 🇨🇦 Canada | `ca-ab` `ca-bc` `ca-on` `ca-mb` `ca-sk` `ca-nb` `ca-qc` |
-| 🌍 International | `cambridge` `ib-myp` `ib-dp` `aero` `dodea` |
+| 🌍 International | `cambridge` `ib-pyp` `ib-myp` `ib-dp` `aero` `dodea` |
 | 🇦🇺 Australia | `au-acara` `au-vic` |
 | 🇬🇧 United Kingdom | `uk-nc` `uk-aqa` `gb-sco` |
 | 🇸🇬 Singapore | `sg-moe` |
-| 🇯🇵 Japan | `jp-mext` |
+| 🇯🇵 Japan | `jp-mext` (Grades 1–9) |
+| 🇰🇷 South Korea | `ko-ncic` |
+| 🇩🇪 Germany | `de-kmk` |
+| 🇫🇮 Finland | `fi-oph` |
+| 🇨🇿 Czech Republic | `cz-msmt` |
+| 🇪🇸 Spain | `es-lomloe` |
+| 🇧🇷 Brazil | `br-bncc` |
+| 🇲🇽 Mexico | `mx-sep` `mx-dgb-ems` |
+| 🇨🇱 Chile | `cl-mineduc` `cl-mineduc-sec` |
+| 🇨🇴 Colombia | `co-men` |
+| 🇵🇪 Peru | `pe-minedu` |
+| 🇺🇾 Uruguay | `uy-anep` |
 | 🇳🇿 New Zealand | `nz-moe` |
 | 🇮🇪 Ireland | `ie-ncca` |
 | 🇭🇰 Hong Kong | `hk-edb` |
 | 🇮🇳 India | `in-ncert` |
+| 🇵🇭 Philippines | `ph-deped` |
 | 🇬🇭 Ghana | `gh-nacca` |
 | 🇿🇦 South Africa | `za-caps` |
 | 🇷🇼 Rwanda | `rw-reb` |
@@ -121,7 +133,7 @@ StandardGraph works out of the box once installed, but pasting the following int
 <summary>Copy this into your Claude Project instructions</summary>
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 146,000+ standards across 256 curriculum systems in 40+ countries, covering Math, Science, ELA, Social Studies, and Computer Science.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 156,000+ standards across 297 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, and Computer Science.
 
 ## When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards
