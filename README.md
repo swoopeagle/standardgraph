@@ -48,7 +48,8 @@ How does the C3 Framework approach civics compared to California's social studie
 | 🇺🇸 United States | `ccss` (hub) + all 50 states + DC |
 | 🎓 Advanced Placement | `ap-calc-ab` `ap-calc-bc` `ap-stats` `ap-precalc` |
 | 🇨🇦 Canada | `ca-ab` `ca-bc` `ca-on` `ca-mb` `ca-sk` `ca-nb` `ca-qc` |
-| 🌍 International | `cambridge` `ib-pyp` `ib-myp` `ib-dp` `aero` `dodea` |
+| 🌍 International Baccalaureate | `ib-pyp` `ib-myp` `ib-dp` |
+| 🌍 Other International | `cambridge` `aero` `dodea` |
 | 🇦🇺 Australia | `au-acara` `au-vic` |
 | 🇬🇧 United Kingdom | `uk-nc` `uk-aqa` `gb-sco` |
 | 🇸🇬 Singapore | `sg-moe` |
@@ -79,7 +80,7 @@ How does the C3 Framework approach civics compared to California's social studie
 |---|---|
 | 🇺🇸 United States | `ngss` (hub, K–12) + all 50 states + DC |
 | 🎓 Advanced Placement | `ap-bio` `ap-chem` `ap-phys-1` `ap-phys-2` `ap-phys-c-mech` `ap-phys-c-em` `ap-env` |
-| 🌍 International | `ib-dp-bio` `ib-dp-chem` `ib-dp-physics` `ib-dp-ess` `ib-myp-science` |
+| 🌍 International Baccalaureate | `ib-dp-bio` `ib-dp-chem` `ib-dp-physics` `ib-dp-ess` `ib-myp-science` |
 
 ### ELA (English Language Arts)
 
@@ -89,7 +90,7 @@ US state coverage only; international ELA is planned.
 |---|---|
 | 🇺🇸 United States | `ccss-ela` (hub, K–12) + 49 states |
 | 🎓 Advanced Placement | `ap-english-lang` `ap-english-lit` |
-| 🌍 International | `ib-dp-english-a` `ib-myp-english` |
+| 🌍 International Baccalaureate | `ib-dp-english-a` `ib-myp-english` |
 
 ### Social Studies
 
@@ -99,7 +100,7 @@ US state coverage only; international Social Studies is planned.
 |---|---|
 | 🇺🇸 United States | `c3` (C3 Framework hub, K–12) + 50 states |
 | 🎓 Advanced Placement | `ap-us-history` `ap-world-history` `ap-euro-history` `ap-us-gov` `ap-comp-gov` `ap-human-geo` `ap-psych` `ap-macro-econ` `ap-micro-econ` `ap-art-history` `ap-african-american-stud` `ap-seminar` `ap-research` |
-| 🌍 International | `ib-dp-history` `ib-dp-geography` `ib-dp-economics` `ib-dp-psych` `ib-myp-ss` |
+| 🌍 International Baccalaureate | `ib-dp-history` `ib-dp-geography` `ib-dp-economics` `ib-dp-psych` `ib-myp-ss` |
 
 ### Computer Science
 
@@ -107,7 +108,7 @@ US state coverage only; international Social Studies is planned.
 |---|---|
 | 🇺🇸 United States | `csta` (CSTA 2017 hub, K–12) + 11 states (coverage expanding) |
 | 🎓 Advanced Placement | `ap-cs-a` `ap-cs-principles` |
-| 🌍 International | `ib-dp-cs` `ib-myp-design` |
+| 🌍 International Baccalaureate | `ib-dp-cs` `ib-myp-design` |
 
 ### World Languages
 
@@ -216,27 +217,6 @@ StandardGraph also ships three **MCP prompt templates** that Claude can invoke d
 - **SQLite** — standards, embeddings (BLOBs), relationships, crosswalk mappings
 - **nomic-embed-text** via Ollama — 768-dim embeddings
 - **Gemma 4 31B** via Ollama — PDF→JSON extraction for international and AP curricula
-
----
-
-## Development
-
-```bash
-git clone https://github.com/swoopeagle/standardgraph.git
-cd standardgraph
-uv sync
-```
-
-Run the MCP server locally:
-```bash
-DB_PATH=./data/common_core.db OLLAMA_BASE_URL=http://localhost:11434 \
-  uv run python -m common_core.server
-```
-
-Run the overnight pipeline manually:
-```bash
-bash scripts/overnight_run.sh
-```
 
 ---
 
