@@ -845,18 +845,19 @@ def list_systems(
     else:
         subject_systems = None
 
+    # Counts split into separate fast queries to avoid expensive 3-way JOIN.
     systems = conn.execute(
-        """SELECT s.system,
-                  GROUP_CONCAT(DISTINCT s.subject) AS subjects,
-                  COUNT(s.id) AS standards,
-                  COUNT(e.standard_id) AS embedded,
-                  COUNT(cm.source_id) AS crosswalked
-           FROM standards s
-           LEFT JOIN embeddings e ON e.standard_id = s.id
-           LEFT JOIN crosswalk_mappings cm ON cm.source_id = s.id
-           GROUP BY s.system
-           ORDER BY s.system"""
+        """SELECT system,
+                  GROUP_CONCAT(DISTINCT subject) AS subjects,
+                  COUNT(id) AS standards
+           FROM standards
+           GROUP BY system
+           ORDER BY system"""
     ).fetchall()
+    xwalk_counts = dict(conn.execute(
+        "SELECT s.system, COUNT(*) FROM crosswalk_mappings cm "
+        "INNER JOIN standards s ON s.id = cm.source_id GROUP BY s.system"
+    ).fetchall())
 
     total_std = conn.execute("SELECT COUNT(*) FROM standards").fetchone()[0]
     total_emb = conn.execute("SELECT COUNT(*) FROM embeddings").fetchone()[0]
@@ -876,7 +877,7 @@ def list_systems(
             "system":      r["system"],
             "subjects":    r["subjects"],
             "standards":   r["standards"],
-            "crosswalked": r["crosswalked"],
+            "crosswalked": xwalk_counts.get(r["system"], 0),
             "country":     m.get("country"),
             "region":      sys_region or None,
         })
