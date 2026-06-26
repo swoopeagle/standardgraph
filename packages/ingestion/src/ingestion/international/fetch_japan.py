@@ -22,7 +22,6 @@ import json
 import re
 import sqlite3
 import sys
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -30,14 +29,13 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "jp-mext"
 SOURCE_URL = "https://www.mext.go.jp/component/english/__icsFiles/afieldfile/2011/03/17/1303755_004.pdf"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "japan"
 
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 STOP_WORDS = {
     "that", "with", "this", "from", "they", "have", "been", "were", "will",
@@ -119,7 +117,7 @@ def _split_by_grade(pages: list[tuple[int, str]]) -> dict[str, str]:
 
 
 def _call_gemma(grade: str, text: str) -> list[dict]:
-    prompt = EXTRACT_PROMPT.format(grade=grade, text=text[:4000])
+    prompt = EXTRACT_PROMPT.format(grade=grade, text=text[:12000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
@@ -241,7 +239,6 @@ def main() -> None:
         grand_std += s
         grand_kw += k
         print(f" {len(objectives)} extracted, {s} ingested")
-        time.sleep(0.5)
 
     conn.close()
     print(f"\nTotal: {grand_std} standards, {grand_kw} keywords")

@@ -23,21 +23,19 @@ import json
 import re
 import sqlite3
 import sys
-import time
 from datetime import date
 from pathlib import Path
 
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "sg-moe"
 SOURCE_URL = "https://www.moe.gov.sg/primary/curriculum/syllabus"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "singapore"
 
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 GRADE_MAP = {
     "primary one":   "1",  "p1": "1",
@@ -268,7 +266,6 @@ def _process_pdf(
         total_std += s
         total_kw += k
         print(f" {len(objectives)} extracted, {s} ingested")
-        time.sleep(0.5)  # brief pause between Gemma calls
 
     return total_std, total_kw
 

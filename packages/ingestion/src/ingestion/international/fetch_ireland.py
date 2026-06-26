@@ -20,7 +20,6 @@ IDs: IE_NCCA.MATH.JC.{outcome_num}
 import json
 import re
 import sqlite3
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -28,14 +27,13 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "ie-ncca"
 SOURCE_URL = "https://www.curriculumonline.ie/junior-cycle/junior-cycle-subjects/mathematics/"
 PDF_URL = "https://www.curriculumonline.ie/getmedia/6a7f1ff5-9b9e-4d71-8e1f-6d4f932191db/JC_Mathematics_Specification.pdf"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "ireland"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 STRAND_NAMES = {
     "1": "Statistics and Probability",
@@ -205,7 +203,6 @@ def main() -> None:
         grand_std += s
         grand_kw += k
         print(f" {len(objectives)} extracted, {s} ingested")
-        time.sleep(0.3)
 
     conn.close()
     print(f"\nTotal: {grand_std} standards, {grand_kw} keywords")

@@ -13,7 +13,6 @@ Note: P1-P3 and secondary PDFs not yet found — extend when URLs are confirmed.
 import json
 import re
 import sqlite3
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -21,13 +20,12 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "rw-reb"
 SOURCE_URL = "https://reb.rw/index.php/competence-based-curriculum/"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "rwanda"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 PDFS = [
     (
@@ -192,7 +190,6 @@ def main() -> None:
             file_std += s
             file_kw += k
             print(f" {len(objectives)} extracted, {s} ingested")
-            time.sleep(0.3)
 
         print(f"  Total: {file_std} standards, {file_kw} keywords")
         grand_std += file_std

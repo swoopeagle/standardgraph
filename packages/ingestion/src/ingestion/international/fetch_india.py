@@ -6,13 +6,15 @@ Sources (NCERT syllabus PDFs):
   - Classes VI-VIII: https://ncert.nic.in/pdf/syllabus/07Math%20(VI-VIII).pdf
   - Classes IX-XII:  https://ncert.nic.in/pdf/syllabus/05%20Mathmetics%20(class%20IX-XII).pdf
 
+The PDFs use a 3-column table layout (VI/VII/VIII side-by-side) or continuous unit-based
+text (IX-XII), so we process them in page chunks and ask Gemma to identify the grade.
+
 Grade mapping: Class I → grade 1, ... Class XII → grade HS (11/12)
 IDs: IN_NCERT.MATH.{grade}.{hash}
 """
 import json
 import re
 import sqlite3
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -20,18 +22,17 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "in-ncert"
 SOURCE_URL = "https://ncert.nic.in/syllabus.php?ln=en"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "india"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 PDFS = [
-    ("classes_1_5.pdf",  "https://ncert.nic.in/pdf/syllabus/06Math%20(I-V).pdf",   ["1","2","3","4","5"]),
-    ("classes_6_8.pdf",  "https://ncert.nic.in/pdf/syllabus/07Math%20(VI-VIII).pdf", ["6","7","8"]),
-    ("classes_9_12.pdf", "https://ncert.nic.in/pdf/syllabus/05%20Mathmetics%20(class%20IX-XII).pdf", ["9","10","HS"]),
+    ("classes_1_5.pdf",  "https://ncert.nic.in/pdf/syllabus/06Math%20(I-V).pdf"),
+    ("classes_6_8.pdf",  "https://ncert.nic.in/pdf/syllabus/07Math%20(VI-VIII).pdf"),
+    ("classes_9_12.pdf", "https://ncert.nic.in/pdf/syllabus/05%20Mathmetics%20(class%20IX-XII).pdf"),
 ]
 
 CLASS_TO_GRADE: dict[str, str] = {
@@ -52,28 +53,33 @@ STOP_WORDS = {
 }
 
 EXTRACT_PROMPT = """\
-Extract all mathematics learning objectives from this India NCERT syllabus text for Class {grade_label}.
+Extract all mathematics content learning objectives from this NCERT syllabus excerpt.
 
-The syllabus is organised into units/topics. Under each topic there are numbered learning objectives or "learning outcomes."
+The text may cover multiple classes (I through XII). For each objective, identify which class it belongs to.
 
 Return ONLY a JSON array (no other text, no markdown). Each element must have:
+  "class"      : class number as Arabic numeral string — "1","2",...,"10","11","12"
+                 (Roman numerals I=1, II=2, III=3, IV=4, V=5, VI=6, VII=7, VIII=8, IX=9, X=10, XI=11, XII=12)
   "unit"       : unit or topic name (e.g. "Number System", "Algebra", "Geometry")
-  "sub_topic"  : sub-topic if present (e.g. "Rational Numbers", "Linear Equations")
-  "obj_text"   : full text of the learning objective or expected learning outcome
+  "sub_topic"  : sub-topic if present (e.g. "Rational Numbers", "Linear Equations"); empty string if none
+  "obj_text"   : full text of the content learning objective
 
 Rules:
-- Extract every individual learning objective/outcome.
-- Include objectives stated as "Students will be able to...", "Consolidate...", numbered items, or bullet points.
-- Do NOT include time allotments, unit introductions, or assessment guidelines.
-- Preserve exact wording.
+- Extract CONTENT STANDARDS only — specific mathematical topics, concepts, or skills students will learn.
+- SKIP these: general pedagogical goals ("develop a sense of estimation"), time allotments ("60 hrs"),
+  assessment instructions, and document preamble text.
+- A valid objective describes specific mathematical content, e.g. "Understand HCF and LCM using prime factorisation".
+- If the text is a multi-column table (Class VI / Class VII / Class VIII), extract from all columns.
+- Preserve exact wording. Do not paraphrase.
 
-NCERT SYLLABUS TEXT (Class {grade_label}):
+SYLLABUS TEXT:
 {text}
 """
 
+PAGES_PER_CHUNK = 3
+
 
 def _download_pdf(url: str, path: Path) -> bool:
-    """Return True if download succeeded, False otherwise."""
     print(f"  Downloading {url} ...")
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     try:
@@ -90,42 +96,18 @@ def _download_pdf(url: str, path: Path) -> bool:
         return False
 
 
-def _extract_pages(pdf_path: Path) -> list[tuple[int, str]]:
-    results = []
+def _extract_pages(pdf_path: Path) -> list[str]:
+    pages = []
     with pdfplumber.open(pdf_path) as pdf:
-        for i, page in enumerate(pdf.pages):
+        for page in pdf.pages:
             text = page.extract_text() or ""
             if text.strip():
-                results.append((i + 1, text))
-    return results
+                pages.append(text)
+    return pages
 
 
-def _split_by_class(pages: list[tuple[int, str]], expected_grades: list[str]) -> dict[str, str]:
-    """Split PDF text by class/grade section headers."""
-    class_re = re.compile(
-        r"^\s*class(?:es)?\s+(i{1,3}v?|vi{0,3}|ix|x{1,2}i{0,2}|\d{1,2})\b",
-        re.IGNORECASE,
-    )
-    current: str | None = None
-    blocks: dict[str, list[str]] = {}
-
-    for _pnum, text in pages:
-        for line in text.splitlines():
-            m = class_re.match(line.strip())
-            if m:
-                raw = m.group(1).lower()
-                grade = CLASS_TO_GRADE.get(raw)
-                if grade:
-                    current = grade
-                    blocks.setdefault(current, [])
-        if current:
-            blocks.setdefault(current, []).append(text)
-
-    return {g: "\n".join(texts) for g, texts in blocks.items()}
-
-
-def _call_gemma(grade: str, grade_label: str, text: str) -> list[dict]:
-    prompt = EXTRACT_PROMPT.format(grade_label=grade_label, text=text[:4000])
+def _call_gemma(text: str) -> list[dict]:
+    prompt = EXTRACT_PROMPT.format(text=text[:8000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
@@ -140,7 +122,6 @@ def _call_gemma(grade: str, grade_label: str, text: str) -> list[dict]:
     content = re.sub(r"\s*```$", "", content, flags=re.MULTILINE)
     m = re.search(r"\[.*\]", content, re.DOTALL)
     if not m:
-        print(f"    WARN: no JSON for grade {grade}")
         return []
     return json.loads(m.group(0))
 
@@ -156,18 +137,26 @@ def _extract_keywords(text: str) -> list[str]:
     return result[:20]
 
 
-def _ingest_objectives(objectives: list[dict], grade: str, conn: sqlite3.Connection, seen_ids: set[str]) -> tuple[int, int]:
+def _ingest_objectives(
+    objectives: list[dict], conn: sqlite3.Connection, seen_ids: set[str]
+) -> tuple[int, int]:
     std_count = kw_count = 0
-    grade_band = "9-12" if grade == "HS" else None
 
     for obj in objectives:
         obj_text = (obj.get("obj_text") or "").strip()
-        if not obj_text:
+        if not obj_text or len(obj_text) < 15:
             continue
-        unit = (obj.get("unit") or "").strip()
-        sub_topic = (obj.get("sub_topic") or "").strip()
 
-        std_id = f"IN_NCERT.MATH.{grade}.{abs(hash(obj_text[:40])) % 100000}"
+        raw_class = str(obj.get("class") or "").strip().lower()
+        grade = CLASS_TO_GRADE.get(raw_class)
+        if not grade:
+            continue
+
+        unit = (obj.get("unit") or "General").strip()
+        sub_topic = (obj.get("sub_topic") or "").strip()
+        grade_band = "9-12" if grade == "HS" else None
+
+        std_id = f"IN_NCERT.MATH.{grade}.{abs(hash(obj_text[:60])) % 100000}"
         if std_id in seen_ids:
             continue
         seen_ids.add(std_id)
@@ -182,7 +171,10 @@ def _ingest_objectives(objectives: list[dict], grade: str, conn: sqlite3.Connect
         )
         std_count += 1
         for kw in _extract_keywords(obj_text):
-            conn.execute("INSERT OR IGNORE INTO keywords (standard_id, keyword) VALUES (?,?)", (std_id, kw))
+            conn.execute(
+                "INSERT OR IGNORE INTO keywords (standard_id, keyword) VALUES (?,?)",
+                (std_id, kw),
+            )
             kw_count += 1
 
     return std_count, kw_count
@@ -194,53 +186,45 @@ def main() -> None:
     conn.execute("PRAGMA foreign_keys = ON")
     conn.execute("PRAGMA journal_mode = WAL")
 
+    # Delete existing NCERT standards so we start clean
+    with conn:
+        deleted = conn.execute("DELETE FROM standards WHERE system=?", (SYSTEM,)).rowcount
+    if deleted:
+        print(f"  Cleared {deleted} existing {SYSTEM} standards")
+
     print("Extracting India NCERT Mathematics standards...")
     grand_std = grand_kw = 0
     seen_ids: set[str] = set()
 
-    grade_labels = {
-        "1": "I", "2": "II", "3": "III", "4": "IV", "5": "V",
-        "6": "VI", "7": "VII", "8": "VIII", "9": "IX", "10": "X",
-        "HS": "XI-XII",
-    }
-
-    for fname, url, expected_grades in PDFS:
+    for fname, url in PDFS:
         pdf_path = RAW_DIR / fname
         if not pdf_path.exists():
             ok = _download_pdf(url, pdf_path)
             if not ok:
                 print(f"  SKIP {fname} — ncert.nic.in blocked automated download.")
-                print(f"  Manual steps:")
-                print(f"    1. Open {url} in a browser")
-                print(f"    2. Save the PDF as {pdf_path}")
+                print(f"  Manual step: save {url} as {pdf_path}")
                 continue
 
         pages = _extract_pages(pdf_path)
-        grade_blocks = _split_by_class(pages, expected_grades)
+        print(f"  {fname}: {len(pages)} pages → processing in chunks of {PAGES_PER_CHUNK}...")
 
-        if not grade_blocks:
-            print(f"  WARN: no grade blocks in {fname} — processing whole PDF")
-            all_text = "\n".join(t for _, t in pages)
-            grade_blocks = {expected_grades[0]: all_text}
-
-        for grade in expected_grades:
-            text = grade_blocks.get(grade, "")
-            if not text:
-                print(f"  grade {grade}: not found in {fname}, skipping")
-                continue
-            label = grade_labels.get(grade, grade)
-            print(f"  grade {grade} (Class {label}): {len(text)} chars → Gemma...", end="", flush=True)
+        chunk_std = 0
+        for i in range(0, len(pages), PAGES_PER_CHUNK):
+            chunk = "\n\n".join(pages[i : i + PAGES_PER_CHUNK])
+            chunk_n = i // PAGES_PER_CHUNK + 1
             try:
-                objectives = _call_gemma(grade, label, text)
+                objectives = _call_gemma(chunk)
             except Exception as e:
-                print(f" ERROR: {e}")
+                print(f"    chunk {chunk_n}: ERROR {e}")
                 continue
             with conn:
-                s, k = _ingest_objectives(objectives, grade, conn, seen_ids)
+                s, k = _ingest_objectives(objectives, conn, seen_ids)
+            chunk_std += s
             grand_std += s
             grand_kw += k
-            print(f" {len(objectives)} extracted, {s} ingested")
-            time.sleep(0.5)
+            print(f"    chunk {chunk_n} (pp {i+1}-{min(i+PAGES_PER_CHUNK, len(pages))}): {len(objectives)} extracted, {s} ingested")
+
+        print(f"  {fname}: {chunk_std} standards ingested")
 
     conn.close()
     print(f"\nTotal: {grand_std} standards, {grand_kw} keywords")

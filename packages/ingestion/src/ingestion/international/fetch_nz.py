@@ -23,20 +23,18 @@ IDs: NZ_MOE.MATH.{grade}.{hash(obj_text[:40]) % 100000}
 import json
 import re
 import sqlite3
-import time
 from datetime import date
 from pathlib import Path
 
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "nz-moe"
 SOURCE_URL = "https://nzcurriculum.tki.org.nz/the-nzc/learning-areas/mathematics-and-statistics"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "nz"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 COMBINED_PDF = RAW_DIR / "nz_years0_10.pdf"
 
 # Page ranges are inclusive, 1-indexed; excludes language/vocab summary pages
@@ -249,7 +247,6 @@ def main() -> None:
             phase_std += s
             phase_kw += k
             print(f" {len(objectives)} extracted, {s} ingested")
-            time.sleep(0.3)
 
         print(f"  {phase['name']} total: {phase_std} standards, {phase_kw} keywords")
         grand_std += phase_std

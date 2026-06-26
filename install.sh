@@ -23,7 +23,7 @@ fail() { echo "${red}✗${reset} $*"; exit 1; }
 
 echo
 echo "${bold}StandardGraph installer${reset}"
-echo "20,000+ math standards across 75+ curriculum systems for Claude"
+echo "146,000+ K-12 curriculum standards across 256 systems for Claude"
 echo
 
 # ── 1. Check / install uv ─────────────────────────────────────────────────────
@@ -48,7 +48,7 @@ if [ -f "$DB_PATH" ]; then
     info "Database already exists ($existing_size). Skipping download."
     info "To re-download, delete $DB_PATH and re-run this script."
 else
-    info "Downloading standardgraph database (~200 MB)..."
+    info "Downloading standardgraph database (~1.5 GB)..."
     if command -v curl &>/dev/null; then
         curl -L --progress-bar "$DB_URL" -o "$DB_PATH" || fail "Database download failed. Check your internet connection."
     elif command -v wget &>/dev/null; then

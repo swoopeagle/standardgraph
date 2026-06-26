@@ -18,7 +18,6 @@ IDs: CA_QC.MATH.{grade}.{hash}
 import json
 import re
 import sqlite3
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -26,13 +25,12 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "ca-qc"
 SOURCE_URL = "https://www.education.gouv.qc.ca/en/teachers/programs/mathematics/"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "quebec"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 PDFS = [
     (
@@ -232,7 +230,6 @@ def main() -> None:
             level_std += s
             level_kw += k
             print(f" {len(objectives)} extracted, {s} ingested")
-            time.sleep(0.3)
 
         print(f"  {level.capitalize()} total: {level_std} standards, {level_kw} keywords")
         grand_std += level_std

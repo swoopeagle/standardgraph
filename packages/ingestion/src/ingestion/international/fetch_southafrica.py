@@ -17,7 +17,6 @@ IDs: ZA_CAPS.MATH.{grade}.{hash}
 import json
 import re
 import sqlite3
-import time
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -25,13 +24,12 @@ from pathlib import Path
 import httpx
 import pdfplumber
 
-from shared.config import DB_PATH, OLLAMA_BASE_URL
+from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
 SYSTEM = "za-caps"
 SOURCE_URL = "https://www.education.gov.za/Curriculum/NationalCurriculumStatementsGradesR-12.aspx"
 VERIFIED_DATE = date.today().isoformat()
 RAW_DIR = DB_PATH.parent / "raw" / "southafrica"
-OLLAMA_MODEL = "gemma4:31b-it-q8_0"
 
 PHASES = [
     (
@@ -237,7 +235,6 @@ def main() -> None:
             grand_std += s
             grand_kw += k
             print(f" {len(objectives)} extracted, {s} ingested")
-            time.sleep(0.5)
 
     conn.close()
     print(f"\nTotal: {grand_std} standards, {grand_kw} keywords")
