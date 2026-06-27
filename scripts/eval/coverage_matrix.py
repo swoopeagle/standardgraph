@@ -34,9 +34,14 @@ _SCIENCE_SYSTEMS = {
     "ngss", "ap-bio", "ap-chem", "ap-phys-1", "ap-phys-2",
     "ap-phys-c-mech", "ap-phys-c-em", "ap-env",
 }
-_ELA_SYSTEMS = {"ccss-ela"}
-_SS_SYSTEMS  = {"c3"}
+_ELA_SYSTEMS = {"ccss-ela", "ap-english-lang", "ap-english-lit"}
+_SS_SYSTEMS  = {"c3", "ap-us-history", "ap-world-history", "ap-euro-history",
+                "ap-us-gov", "ap-comp-gov", "ap-human-geo",
+                "ap-macro-econ", "ap-micro-econ", "ap-psych",
+                "ap-african-american-stud", "ap-research", "ap-seminar"}
 _CS_SYSTEMS  = {"csta"}
+_WL_SYSTEMS  = {"ap-chinese", "ap-french", "ap-german", "ap-italian",
+                "ap-japanese", "ap-latin", "ap-spanish-lang", "ap-spanish-lit"}
 
 OK   = "\033[32m OK \033[0m"
 FAIL = "\033[31mFAIL\033[0m"
@@ -52,6 +57,8 @@ def _classify(system: str) -> str:
         return "ss"
     if system in _CS_SYSTEMS or system.endswith("-cs"):
         return "cs"
+    if system in _WL_SYSTEMS:
+        return "ela"  # world languages share ELA embedding space most closely
     return "math"
 
 
