@@ -45,7 +45,12 @@ scripts/
 | Mac mini 3 | M4 | 16 GB | 100.123.114.101 | `devos` | pipeline runner, MCP server |
 | IWPC | — | — | 100.70.170.62 | — | remote Windows PC |
 
-Mac Studio models: `gemma4:31b-it-q8_0` (33 GB), `qwen2.5:72b` (47 GB), `gemma3:27b` (17 GB), `nomic-embed-text` (274 MB), `llama3.2` (2 GB). Neither Mac mini has Ollama installed — all inference goes to Mac Studio.
+Model roster per device (do not exceed safe limits):
+- **Mac Studio (64 GB):** `gemma4:31b-it-q8_0`, `qwen2.5:72b`, `gemma3:27b`, `nomic-embed-text`, `llama3.2` — any model up to 47 GB
+- **Mac mini 2 (24 GB M4 Pro):** `gemma4:26b` (17 GB), `qwen2.5:14b` (9 GB), `nomic-embed-text` — limit ~18 GB
+- **Mac mini 3 (16 GB M4):** `qwen2.5:14b` (9 GB), `nomic-embed-text` — limit ~10 GB; never install 17+ GB models
+
+Both Mac minis run Ollama at `localhost:11434`. Pipeline defaults to local Ollama for embeddings; Mac Studio handles PDF extraction (gemma4:31b).
 
 Project on Mac minis: `~/projects/intl-math-standards-mcp/` (old name, same codebase).
 SSH authorized on Mac Studio and both Mac minis as of 2026-06-26.

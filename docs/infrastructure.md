@@ -43,13 +43,13 @@ Mac Studio hosts Ollama exclusively — no standardgraph repo lives there. 64 GB
 
 **Model size limits by device** — max model size that fits in RAM without heavy swapping:
 
-| Device | RAM | Safe model limit |
-|---|---|---|
-| Mac Studio | 64 GB | 47 GB (qwen2.5:72b) |
-| Mac mini 2 | 24 GB | ~18 GB (e.g. gemma3:12b) |
-| Mac mini 3 | 16 GB | ~10 GB (e.g. gemma3:4b, nomic-embed-text only) |
+| Device | RAM | Safe model limit | Installed models |
+|---|---|---|---|
+| Mac Studio | 64 GB | 47 GB | `gemma4:31b`, `qwen2.5:72b`, `gemma3:27b`, `nomic-embed-text`, `llama3.2` |
+| Mac mini 2 | 24 GB | ~18 GB | `gemma4:26b` (17 GB), `qwen2.5:14b` (9 GB), `nomic-embed-text` |
+| Mac mini 3 | 16 GB | ~10 GB | `qwen2.5:14b` (9 GB), `nomic-embed-text` |
 
-Neither Mac mini currently has Ollama installed — all inference routes to Mac Studio.
+Both Mac minis have Ollama running at `localhost:11434`. The pipeline's overnight_run.sh defaults to `localhost:11434` — each mini embeds locally rather than hitting Mac Studio over the network.
 
 ```bash
 # Check what's loaded (no SSH needed)
