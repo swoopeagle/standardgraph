@@ -37,13 +37,15 @@ scripts/
 
 ## Tailscale devices
 
-| Device | IP | SSH user | Role |
-|---|---|---|---|
-| MacBook Pro | 100.118.151.10 | `ianwang` | dev machine |
-| Mac Studio | 100.77.63.73 | `ianwangm1max` | Ollama host only (no repo) |
-| Mac mini 2 | 100.101.100.96 | `devos` | pipeline runner, MCP server |
-| Mac mini 3 | 100.123.114.101 | `devos` | pipeline runner, MCP server |
-| IWPC | 100.70.170.62 | — | remote Windows PC |
+| Device | Chip | RAM | IP | SSH user | Role |
+|---|---|---|---|---|---|
+| MacBook Pro | — | — | 100.118.151.10 | `ianwang` | dev machine |
+| Mac Studio | M1 Max | 64 GB | 100.77.63.73 | `ianwangm1max` | Ollama host only (no repo) |
+| Mac mini 2 | M4 Pro | 24 GB | 100.101.100.96 | `devos` | pipeline runner, MCP server |
+| Mac mini 3 | M4 | 16 GB | 100.123.114.101 | `devos` | pipeline runner, MCP server |
+| IWPC | — | — | 100.70.170.62 | — | remote Windows PC |
+
+Mac Studio models: `gemma4:31b-it-q8_0` (33 GB), `qwen2.5:72b` (47 GB), `gemma3:27b` (17 GB), `nomic-embed-text` (274 MB), `llama3.2` (2 GB). Neither Mac mini has Ollama installed — all inference goes to Mac Studio.
 
 Project on Mac minis: `~/projects/intl-math-standards-mcp/` (old name, same codebase).
 SSH authorized on Mac Studio and both Mac minis as of 2026-06-26.
