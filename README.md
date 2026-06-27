@@ -1,6 +1,6 @@
 # StandardGraph
 
-**156,000+ standards across 297 curriculum systems, accessible via Claude.**
+**157,000+ standards across 298 curriculum systems, accessible via Claude.**
 
 The alignment layer for the global curriculum.
 
@@ -18,7 +18,18 @@ curl -fsSL https://raw.githubusercontent.com/swoopeagle/standardgraph/main/insta
 
 Then **quit and reopen Claude Desktop**. Look for the 🔨 icon in a new conversation.
 
-> The installer handles everything: downloads the pre-built database (~1.5 GB), installs dependencies, and patches your Claude config automatically.
+> The installer handles everything: downloads the pre-built database (~1.9 GB), installs dependencies, and patches your Claude config automatically.
+
+**Optional: better semantic search**
+
+Install [Ollama](https://ollama.com) and pull the embedding model for richer concept matching:
+
+```bash
+brew install ollama
+ollama pull nomic-embed-text
+```
+
+Without Ollama, StandardGraph falls back to keyword search — still useful, but semantic search finds conceptually related standards even when the exact words don't match. See [docs/install.md](docs/install.md) for full setup details.
 
 **Try it:**
 ```
@@ -37,7 +48,7 @@ Find Texas ELA standards related to argumentative writing in grades 9-10
 How does the C3 Framework approach civics compared to California's social studies standards?
 ```
 
-→ Full install guide: [docs/install.md](docs/install.md)
+→ Full install guide: [docs/install.md](docs/install.md) · First-time user guide: [docs/quickstart.md](docs/quickstart.md)
 
 ---
 
@@ -136,7 +147,7 @@ StandardGraph works out of the box once installed, but pasting the following int
 <summary>Copy this into your Claude Project instructions</summary>
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 156,000+ standards across 297 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, and Computer Science.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 157,000+ standards across 298 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
 
 ## When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards
