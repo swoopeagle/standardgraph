@@ -37,14 +37,16 @@ scripts/
 
 ## Tailscale devices
 
-| Device | IP | Role |
-|---|---|---|
-| MacBook Pro | 100.118.151.10 | dev machine |
-| Mac Studio | 100.77.63.73 | Ollama / ingestion host |
-| Mac mini | 100.101.100.97 | secondary |
-| IWPC | 100.70.170.62 | remote |
+| Device | IP | SSH user | Role |
+|---|---|---|---|
+| MacBook Pro | 100.118.151.10 | `ianwang` | dev machine |
+| Mac Studio | 100.77.63.73 | `ianwangm1max` | Ollama host only (no repo) |
+| Mac mini 2 | 100.101.100.96 | `devos` | pipeline runner, MCP server |
+| Mac mini 3 | 100.123.114.101 | `devos` | pipeline runner, MCP server |
+| IWPC | 100.70.170.62 | — | remote Windows PC |
 
-SSH: `ssh ianwang@<ip>` — Mac Studio and Mac mini may not have MacBook's key authorized yet.
+Project on Mac minis: `~/projects/intl-math-standards-mcp/` (old name, same codebase).
+SSH authorized on Mac Studio and both Mac minis as of 2026-06-26.
 
 ## Common commands
 
