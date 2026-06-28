@@ -110,6 +110,52 @@ Two distinct JSON schemas — always use `_is_precomputed()` / `_has_mapping()` 
 | Ontario HS | `CA-ON.MATH.HS.9.E1.4` |
 | AP Precalc | `AP.AP_PRECALC.1.1.A` (not PCR-format) |
 
+## Batch execution workflow
+
+For longer runs, use this two-phase pattern:
+
+### Phase 1 — Planning (get approval upfront)
+
+Before starting a multi-step run, draft a plan table with every job, its device,
+its dependencies, estimated time, and any risk flags. Present it for a single
+approval. Format:
+
+| # | Job | Device | Deps | Est. time | Risk |
+|---|---|---|---|---|---|
+| 1 | fetch_portugal | Mini 3 → Studio | — | 30 min | low |
+| 2 | embed + relate | Mini 2 + Mini 3 (parallel) | 1 | 20 min | low |
+| ... | | | | | |
+
+Risk flags:
+- `token` — requires PyPI or HuggingFace credential (always prompt separately)
+- `destructive` — modifies or deletes data in the DB
+- `irreversible` — publish to PyPI, push to HuggingFace
+
+### Phase 2 — Execution (run uninterrupted)
+
+Once plan is approved, execute without mid-run check-ins. Report only:
+- Chapter milestones (job N complete, moving to job N+1)
+- Blockers that weren't in the plan
+- Final summary
+
+### Pre-authorized work (no per-step approval needed)
+
+The following are always safe to run without asking:
+- SSH to `devos@100.101.100.96`, `devos@100.123.114.101`, `ianwangm1max@100.77.63.73`
+- `git add`, `git commit`, `git push` to `origin main`
+- File edits anywhere in this repo
+- Starting background pipeline jobs on the minis (embed, relate, crosswalk, fetchers)
+- Running `mcp_test.py` or eval scripts
+- Building the package (`uv build`)
+- Pulling the DB from Mini 2 to MacBook via `sqlite3 .backup`
+
+### Always prompt separately (never include in batch)
+
+- PyPI upload (`uvx twine upload`) — needs token, remind to rotate after use
+- HuggingFace upload (`huggingface-cli upload`) — needs token, remind to rotate after use
+- `DELETE` or `DROP` SQL against the production DB
+- Force push or branch deletion
+
 ## Security reminder
 
 User shares PyPI and HuggingFace tokens in chat — always remind to rotate immediately after use.
