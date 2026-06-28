@@ -215,8 +215,19 @@ def _embed_query(text: str) -> np.ndarray:
     return np.array(resp.json()["embeddings"][0], dtype=np.float32)
 
 
-def _cosine_scores(query_vec: np.ndarray, conn: sqlite3.Connection) -> list[tuple[float, str]]:
-    rows = conn.execute("SELECT standard_id, vector, dimensions FROM embeddings").fetchall()
+def _cosine_scores(
+    query_vec: np.ndarray,
+    conn: sqlite3.Connection,
+    system: str | None = None,
+) -> list[tuple[float, str]]:
+    if system:
+        rows = conn.execute(
+            "SELECT e.standard_id, e.vector, e.dimensions FROM embeddings e "
+            "JOIN standards s ON s.id = e.standard_id WHERE s.system = ?",
+            (system,),
+        ).fetchall()
+    else:
+        rows = conn.execute("SELECT standard_id, vector, dimensions FROM embeddings").fetchall()
     if not rows:
         return []
     dim = rows[0]["dimensions"]
@@ -440,14 +451,14 @@ def search_standards(
             "results": results,
         }, indent=2)
     conn = _db()
-    scored = _cosine_scores(query_vec, conn)
+    scored = _cosine_scores(query_vec, conn, system=system)
 
     results = []
     for score, sid in scored:
         if len(results) >= limit:
             break
         row = conn.execute(
-            "SELECT * FROM standards WHERE id=? AND system=?", (sid, system)
+            "SELECT * FROM standards WHERE id=?", (sid,)
         ).fetchone()
         if not row:
             continue
@@ -541,7 +552,7 @@ def get_progression(
             ],
         }, indent=2)
     conn = _db()
-    scored = _cosine_scores(query_vec, conn)
+    scored = _cosine_scores(query_vec, conn, system=system)
 
     # Collect top standards per grade, filtered by grade range
     by_grade: dict[str, list[dict]] = {}
@@ -549,7 +560,7 @@ def get_progression(
         if score < 0.5:
             break
         row = conn.execute(
-            "SELECT * FROM standards WHERE id=? AND system=?", (sid, system)
+            "SELECT * FROM standards WHERE id=?", (sid,)
         ).fetchone()
         if not row:
             continue
@@ -748,14 +759,14 @@ def map_standard(
     embedding_error: str | None = None
     try:
         qvec = _embed_query(src_dict["standard_text"])
-        scored = _cosine_scores(qvec, conn)
+        scored = _cosine_scores(qvec, conn, system=to_system)
         for score, candidate_id in scored:
             if len(nearest_by_concept) >= 3:
                 break
             if score < 0.35:
                 break
             row = conn.execute(
-                "SELECT * FROM standards WHERE id=? AND system=?", (candidate_id, to_system)
+                "SELECT * FROM standards WHERE id=?", (candidate_id,)
             ).fetchone()
             if row:
                 nearest_by_concept.append({
