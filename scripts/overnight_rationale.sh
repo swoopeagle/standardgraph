@@ -119,20 +119,20 @@ echo "" | tee -a "$LOG"
 echo "[$(date)] Starting high-band phase: A=AP Math (Studio) || B=AP Science+IB (Mini 2)" | tee -a "$LOG"
 
 (
-    run_mini2 "AP Bio → NGSS      [high]"  --system ap-bio     --band high --sample 0
-    run_mini2 "AP Chem → NGSS     [high]"  --system ap-chem    --band high --sample 0
-    run_mini2 "AP Phys 1 → NGSS   [high]"  --system ap-phys-1  --band high --sample 0
-    run_mini2 "AP Phys 2 → NGSS   [high]"  --system ap-phys-2  --band high --sample 0
-    run_mini2 "AP Env → NGSS      [high]"  --system ap-env     --band high --sample 0
-    run_mini2 "IB-DP → CCSS       [high]"  --system ib-dp      --band high --sample 0
-    run_mini2 "IB-MYP → CCSS      [high]"  --system ib-myp     --band high --sample 0
+    run_mini2 "AP Bio → NGSS      [high]"  --system ap-bio     --band high --sample 0 --force-rewrite
+    run_mini2 "AP Chem → NGSS     [high]"  --system ap-chem    --band high --sample 0 --force-rewrite
+    run_mini2 "AP Phys 1 → NGSS   [high]"  --system ap-phys-1  --band high --sample 0 --force-rewrite
+    run_mini2 "AP Phys 2 → NGSS   [high]"  --system ap-phys-2  --band high --sample 0 --force-rewrite
+    run_mini2 "AP Env → NGSS      [high]"  --system ap-env     --band high --sample 0 --force-rewrite
+    run_mini2 "IB-DP → CCSS       [high]"  --system ib-dp      --band high --sample 0 --force-rewrite
+    run_mini2 "IB-MYP → CCSS      [high]"  --system ib-myp     --band high --sample 0 --force-rewrite
 ) &
 MINI2_HIGH_PID=$!
 
-run "AP Calc AB → CCSS  [high]"  --system ap-calc-ab  --band high --sample 0
-run "AP Calc BC → CCSS  [high]"  --system ap-calc-bc  --band high --sample 0
-run "AP Stats → CCSS    [high]"  --system ap-stats    --band high --sample 0
-run "AP Precalc → CCSS  [high]"  --system ap-precalc  --band high --sample 0
+run "AP Calc AB → CCSS  [high]"  --system ap-calc-ab  --band high --sample 0 --force-rewrite
+run "AP Calc BC → CCSS  [high]"  --system ap-calc-bc  --band high --sample 0 --force-rewrite
+run "AP Stats → CCSS    [high]"  --system ap-stats    --band high --sample 0 --force-rewrite
+run "AP Precalc → CCSS  [high]"  --system ap-precalc  --band high --sample 0 --force-rewrite
 
 wait $MINI2_HIGH_PID || echo "[WARN] Mini 2 high-band stream had errors — check $LOG_M2" | tee -a "$LOG"
 echo "[$(date)] High-band phase complete" | tee -a "$LOG"
@@ -142,20 +142,20 @@ echo "[$(date)] High-band phase complete" | tee -a "$LOG"
 echo "[$(date)] Starting mid-band phase: A=AP Math (Studio) || B=AP Science+IB (Mini 2)" | tee -a "$LOG"
 
 (
-    run_mini2 "AP Bio → NGSS      [mid]"   --system ap-bio     --band mid  --sample 0
-    run_mini2 "AP Chem → NGSS     [mid]"   --system ap-chem    --band mid  --sample 0
-    run_mini2 "AP Phys 1 → NGSS   [mid]"   --system ap-phys-1  --band mid  --sample 0
-    run_mini2 "AP Phys 2 → NGSS   [mid]"   --system ap-phys-2  --band mid  --sample 0
-    run_mini2 "AP Env → NGSS      [mid]"   --system ap-env     --band mid  --sample 0
-    run_mini2 "IB-DP → CCSS       [mid]"   --system ib-dp      --band mid  --sample 0
-    run_mini2 "IB-MYP → CCSS      [mid]"   --system ib-myp     --band mid  --sample 0
+    run_mini2 "AP Bio → NGSS      [mid]"   --system ap-bio     --band mid  --sample 0 --force-rewrite
+    run_mini2 "AP Chem → NGSS     [mid]"   --system ap-chem    --band mid  --sample 0 --force-rewrite
+    run_mini2 "AP Phys 1 → NGSS   [mid]"   --system ap-phys-1  --band mid  --sample 0 --force-rewrite
+    run_mini2 "AP Phys 2 → NGSS   [mid]"   --system ap-phys-2  --band mid  --sample 0 --force-rewrite
+    run_mini2 "AP Env → NGSS      [mid]"   --system ap-env     --band mid  --sample 0 --force-rewrite
+    run_mini2 "IB-DP → CCSS       [mid]"   --system ib-dp      --band mid  --sample 0 --force-rewrite
+    run_mini2 "IB-MYP → CCSS      [mid]"   --system ib-myp     --band mid  --sample 0 --force-rewrite
 ) &
 MINI2_MID_PID=$!
 
-run "AP Calc AB → CCSS  [mid]"   --system ap-calc-ab  --band mid  --sample 0
-run "AP Calc BC → CCSS  [mid]"   --system ap-calc-bc  --band mid  --sample 0
-run "AP Stats → CCSS    [mid]"   --system ap-stats    --band mid  --sample 0
-run "AP Precalc → CCSS  [mid]"   --system ap-precalc  --band mid  --sample 0
+run "AP Calc AB → CCSS  [mid]"   --system ap-calc-ab  --band mid  --sample 0 --force-rewrite
+run "AP Calc BC → CCSS  [mid]"   --system ap-calc-bc  --band mid  --sample 0 --force-rewrite
+run "AP Stats → CCSS    [mid]"   --system ap-stats    --band mid  --sample 0 --force-rewrite
+run "AP Precalc → CCSS  [mid]"   --system ap-precalc  --band mid  --sample 0 --force-rewrite
 
 wait $MINI2_MID_PID || echo "[WARN] Mini 2 mid-band stream had errors — check $LOG_M2" | tee -a "$LOG"
 echo "[$(date)] Mid-band phase complete" | tee -a "$LOG"

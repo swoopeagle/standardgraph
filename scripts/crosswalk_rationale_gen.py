@@ -99,9 +99,12 @@ def sample_mappings(
     target: str | None,
     band: str | None,
     review_only: bool = False,
+    force_rewrite: bool = False,
 ) -> list[sqlite3.Row]:
     if review_only:
         conditions = ["cm.notes IS NOT NULL", "cm.verified_by_human = 0"]
+    elif force_rewrite:
+        conditions = ["cm.verified_by_human = 0"]  # rewrite existing + new
     else:
         conditions = ["cm.notes IS NULL", "cm.verified_by_human = 0"]
     params: list = []
@@ -147,6 +150,8 @@ def main() -> None:
     parser.add_argument("--band", choices=["high", "mid", "low"], default=None)
     parser.add_argument("--review-only", action="store_true",
                         help="Re-score already-annotated mappings (for flagging bad ones)")
+    parser.add_argument("--force-rewrite", action="store_true",
+                        help="Regenerate notes even when they already exist (upgrade quality)")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -156,7 +161,7 @@ def main() -> None:
     conn.execute("PRAGMA busy_timeout = 30000")
 
     rows = sample_mappings(conn, args.sample, args.system, args.target, args.band,
-                           review_only=args.review_only)
+                           review_only=args.review_only, force_rewrite=args.force_rewrite)
     total = len(rows)
     print(f"Processing {total} mappings with {OLLAMA_MODEL} @ {OLLAMA_BASE_URL}")
     print(f"  Filter — system: {args.sample or 'all'}, band: {args.band or 'all'}")
