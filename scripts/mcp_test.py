@@ -59,6 +59,21 @@ def _has_mapping(data: dict | list | None) -> bool:
     )
 
 
+def _best_confidence(data: dict | list | None) -> float:
+    """Return the highest confidence score in any map_standard response format."""
+    if not isinstance(data, dict):
+        return 0.0
+    if data.get("mapping_method") == "precomputed_crosswalk":
+        mappings = data.get("mappings", [])
+        return max((m.get("confidence", 0.0) for m in mappings), default=0.0)
+    best = 0.0
+    for m in data.get("two_hop_via_ccss", []):
+        best = max(best, m.get("combined_confidence", 0.0))
+    for m in data.get("nearest_by_concept", []):
+        best = max(best, m.get("semantic_similarity", 0.0))
+    return best
+
+
 def _is_precomputed(data: dict | list | None) -> bool:
     return bool(
         isinstance(data, dict) and
@@ -735,6 +750,109 @@ for label, sid, from_sys, to_sys in CROSS_CASES:
     check(f"{label} — returns source", has_source)
     check(f"{label} — finds match",    any_match,
           f"method={data.get('mapping_method','?') if data else 'error'}", warn=not any_match)
+
+
+# ── 15. US Math → AP Math pinned pairs ───────────────────────────────────────
+section("US Math → AP Math pinned mapping pairs")
+
+# Each tuple: (label, source_id, to_system, min_confidence)
+# These are known-good pedagogical connections that must survive crosswalk changes.
+CCSS_TO_AP_PAIRS = [
+    # Functions → AP Calc
+    ("CCSS fn definition → AP Calc AB function",
+     "CCSS.MATH.8.F.A.1",       "ap-calc-ab",  0.65),
+    # Polynomial zeros → curve sketching
+    ("CCSS polynomial zeros → AP Calc AB curve analysis",
+     "CCSS.MATH.HSA.APR.B.3",   "ap-calc-ab",  0.65),
+    # Scatter plots / regression → AP Stats
+    ("CCSS scatter plots → AP Stats regression",
+     "CCSS.MATH.HSS.ID.B.6",    "ap-stats",    0.72),
+    # Exponential functions → AP Calc
+    ("CCSS exponential functions → AP Calc AB",
+     "CCSS.MATH.HSF.LE.A.1",    "ap-calc-ab",  0.65),
+    # Trigonometric functions → AP Precalc
+    ("CCSS trig functions → AP Precalc",
+     "CCSS.MATH.HSF.TF.A.1",    "ap-precalc",  0.70),
+]
+
+for label, sid, to_sys, min_conf in CCSS_TO_AP_PAIRS:
+    raw  = map_standard(standard_id=sid, from_system="ccss", to_system=to_sys,
+                        confidence_threshold=0.50)
+    data = parse(raw)
+    has_match = isinstance(data, dict) and _has_mapping(data) and "error" not in data
+    if has_match:
+        best_conf = _best_confidence(data)
+    else:
+        best_conf = 0.0
+    check(f"{label} — has match",    has_match,    warn=not has_match)
+    check(f"{label} — conf ≥ {min_conf}", best_conf >= min_conf,
+          f"best={best_conf:.3f}", warn=best_conf < min_conf)
+
+
+# ── 16. NGSS → AP Science pinned pairs ───────────────────────────────────────
+section("NGSS → AP Science pinned mapping pairs")
+
+NGSS_TO_AP_PAIRS = [
+    # Energy in living systems → AP Bio
+    ("NGSS photosynthesis/respiration → AP Bio energy",
+     "NGSS.HS-LS1-6",           "ap-bio",      0.65),
+    # Chemical equilibrium → AP Chem
+    ("NGSS chemical reactions → AP Chem",
+     "NGSS.HS-PS1-6",           "ap-chem",     0.65),
+    # Newton's laws → AP Physics 1
+    ("NGSS forces and motion → AP Phys 1",
+     "NGSS.HS-PS2-1",           "ap-phys-1",   0.65),
+    # Waves → AP Physics 1
+    ("NGSS wave properties → AP Phys 1",
+     "NGSS.HS-PS4-1",           "ap-phys-1",   0.65),
+    # Ecosystems / matter cycles → AP Bio
+    ("NGSS ecosystems → AP Bio",
+     "NGSS.HS-LS2-3",           "ap-bio",      0.65),
+]
+
+for label, sid, to_sys, min_conf in NGSS_TO_AP_PAIRS:
+    raw  = map_standard(standard_id=sid, from_system="ngss", to_system=to_sys,
+                        confidence_threshold=0.50)
+    data = parse(raw)
+    has_match = isinstance(data, dict) and _has_mapping(data) and "error" not in data
+    if has_match:
+        best_conf = _best_confidence(data)
+    else:
+        best_conf = 0.0
+    check(f"{label} — has match",    has_match,    warn=not has_match)
+    check(f"{label} — conf ≥ {min_conf}", best_conf >= min_conf,
+          f"best={best_conf:.3f}", warn=best_conf < min_conf)
+
+
+# ── 17. IB → AP pinned pairs ──────────────────────────────────────────────────
+section("IB Math → AP Math pinned mapping pairs")
+
+IB_TO_AP_PAIRS = [
+    # Series convergence: IB-DP AHL → AP Calc BC
+    ("IB-DP series convergence → AP Calc BC",
+     "IB_DP.MATH.AHL.5.19b",    "ap-calc-bc",  0.75),
+    # IB-DP calculus → AP Calc AB
+    ("IB-DP integration → AP Calc AB",
+     "IB_DP.MATH.SL.5.1a",      "ap-calc-ab",  0.75),
+    # IB-MYP functions → AP Precalc
+    ("IB-MYP functions → AP Precalc",
+     "IB_MYP.MATH.8.D3",        "ap-precalc",  0.65),
+]
+
+for label, sid, to_sys, min_conf in IB_TO_AP_PAIRS:
+    parts = sid.split(".")
+    from_sys = "ib-dp" if "IB_DP" in sid else "ib-myp"
+    raw  = map_standard(standard_id=sid, from_system=from_sys, to_system=to_sys,
+                        confidence_threshold=0.50)
+    data = parse(raw)
+    has_match = isinstance(data, dict) and _has_mapping(data) and "error" not in data
+    if has_match:
+        best_conf = _best_confidence(data)
+    else:
+        best_conf = 0.0
+    check(f"{label} — has match",    has_match,    warn=not has_match)
+    check(f"{label} — conf ≥ {min_conf}", best_conf >= min_conf,
+          f"best={best_conf:.3f}", warn=best_conf < min_conf)
 
 
 # ── Summary ───────────────────────────────────────────────────────────────────
