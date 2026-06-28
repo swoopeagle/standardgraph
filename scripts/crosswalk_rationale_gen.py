@@ -74,7 +74,7 @@ def _call_model(prompt: str) -> dict | None:
         "options": {"temperature": 0.0, "num_ctx": 4096},
     }
     try:
-        resp = httpx.post(f"{OLLAMA_BASE_URL}/api/chat", json=payload, timeout=120)
+        resp = httpx.post(f"{OLLAMA_BASE_URL}/api/chat", json=payload, timeout=600)
         resp.raise_for_status()
     except Exception as e:
         print(f"  Model error: {e}", file=sys.stderr)

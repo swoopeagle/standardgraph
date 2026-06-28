@@ -35,6 +35,22 @@ echo "Overnight rationale run started at $(date)" | tee "$LOG"
 echo "DB:    $DB_PATH" | tee -a "$LOG"
 echo "Model: $OLLAMA_MODEL @ $OLLAMA_BASE_URL" | tee -a "$LOG"
 
+# Warm up the model — evicting previous model and loading qwen2.5:72b can take
+# 5+ minutes. Ping it once and wait until we get a response before processing.
+echo "" | tee -a "$LOG"
+echo "Warming up $OLLAMA_MODEL (may take several minutes) …" | tee -a "$LOG"
+python3 -c "
+import httpx, sys, os
+url = os.environ['OLLAMA_BASE_URL'] + '/api/chat'
+model = os.environ['OLLAMA_MODEL']
+resp = httpx.post(url, json={
+    'model': model, 'messages': [{'role': 'user', 'content': 'Hello'}],
+    'stream': False, 'options': {'num_ctx': 128}
+}, timeout=600)
+print('Model ready: ' + resp.json()['message']['content'][:60])
+" 2>&1 | tee -a "$LOG"
+echo "" | tee -a "$LOG"
+
 # ── Phase 1: AP Math → CCSS — high confidence first ──────────────────────────
 # AP courses are the SOURCE; CCSS is the target hub.
 run "AP Calc AB → CCSS  [high]"   --system ap-calc-ab  --band high  --sample 0
