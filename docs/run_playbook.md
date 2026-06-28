@@ -46,9 +46,11 @@ Token steps always pause and prompt separately, even mid-run.
 **Steps**: fetch → embed → relate → crosswalk → eval → (if clean) ship
 
 **Routing**:
-- Fetcher with PDF extraction → mini sends LLM calls to Mac Studio (`gemma4:31b`)
-- Fetcher with structured data (web scrape, JSON) → mini only, no Studio needed
-- Multiple fetchers → one per mini, both queue to Studio simultaneously
+- Fetcher with heavy PDFs (dense, multi-hundred-page) → Mac Studio (`gemma4:31b`)
+- Fetcher with lighter PDFs (single subject, <100 pages) → IWPC (`gemma4:12b`) — saves Studio queue
+  - `OLLAMA_BASE_URL=http://100.70.170.62:11434 OLLAMA_MODEL=gemma4:12b`
+- Fetcher with structured data (web scrape, JSON) → mini only, no LLM needed
+- Multiple fetchers → split across Studio + IWPC; both queue independently
 
 **Watch for**:
 - 0 standards extracted after 5+ chunks → PDF structure doesn't match parser; check the fetcher's page-range config
@@ -58,10 +60,9 @@ Token steps always pause and prompt separately, even mid-run.
 
 **When to use**: after any new standards are ingested, or if embeddings are missing.
 
-**Routing**: always local Ollama on each mini (`localhost:11434`, `nomic-embed-text`).
-Never route to Studio for this — Studio's nomic instance exists only as fallback.
+**Routing**: prefer IWPC (`http://100.70.170.62:11434`) when online — CUDA batch throughput is faster than Apple Silicon for embeddings. Falls back to local Ollama on each mini automatically via `post_ingest_pipeline.sh`. Never route to Mac Studio for embed.
 
-**Parallelism**: run on Mini 2 and Mini 3 simultaneously. Each processes its own DB.
+**Parallelism**: both minis run embed simultaneously, both pointing at the same IWPC endpoint. IWPC serializes the requests; net result is still faster than two local M4/M4 Pro runs.
 
 ### Relate (`ingestion.shared.relate`)
 
@@ -228,9 +229,11 @@ Use when fixing issues and shipping a version:
 
 | Task | Model | Device | Why |
 |---|---|---|---|
-| PDF → standards extraction | `gemma4:31b-it-q8_0` | Mac Studio | Fast, good at JSON extraction from messy PDFs |
-| Rationale generation | `qwen2.5:72b` | Mac Studio | Better reasoning; pedagogical context requires nuance |
+| PDF → standards extraction (heavy) | `gemma4:31b-it-q8_0` | Mac Studio | Dense/long PDFs; best extraction quality |
+| PDF → standards extraction (lighter) | `gemma4:12b` | IWPC | Saves Studio queue; good for single-subject PDFs |
+| Rationale gen (high/mid band) | `qwen2.5:72b` | Mac Studio | Quality over speed; AP/IB accuracy matters |
+| Rationale gen (low band / states) | `qwen2.5:14b` | IWPC | Parallel with Studio; acceptable quality for low-confidence mappings |
 | Crosswalk review / scoring | `qwen2.5:72b` | Mac Studio | Same — quality over speed for human-facing notes |
-| Embeddings | `nomic-embed-text` | Mini (local) | 274 MB, runs anywhere; no network hop |
-| Quick eval / classification | `qwen2.5:14b` | Mini 2 | Fits in 24 GB; fast for batch checks |
+| Embeddings | `nomic-embed-text` | IWPC (CUDA) | Fastest batch throughput; falls back to mini local if offline |
+| Quick eval / classification | `qwen2.5:14b` | IWPC or Mini 2 | Fast, fits comfortably |
 | Anything on Mini 3 | `qwen2.5:14b` max | Mini 3 | 16 GB hard ceiling; never exceed 10 GB model |

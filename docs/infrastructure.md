@@ -48,22 +48,32 @@ Mac Studio hosts Ollama exclusively — no standardgraph repo lives there. 64 GB
 | Mac Studio | 64 GB | 47 GB | `gemma4:31b`, `qwen2.5:72b`, `gemma3:27b`, `nomic-embed-text`, `llama3.2` |
 | Mac mini 2 | 24 GB | ~18 GB | `gemma4:26b` (17 GB), `qwen2.5:14b` (9 GB), `nomic-embed-text` |
 | Mac mini 3 | 16 GB | ~10 GB | `qwen2.5:14b` (9 GB), `nomic-embed-text` |
-| IWPC | 12 GB VRAM (CUDA) | ~11 GB | `qwen2.5:14b` (9 GB), `nomic-embed-text` |
+| IWPC | 12 GB VRAM + 32 GB RAM (CUDA) | ~11 GB VRAM / ~20 GB RAM | `qwen2.5:14b`, `qwen2.5:7b`, `gemma4:12b`, `gemma4:e4b`, `nomic-embed-text` |
 
 Both Mac minis have Ollama running at `localhost:11434`. The pipeline's overnight_run.sh defaults to `localhost:11434` — each mini embeds locally rather than hitting Mac Studio over the network.
 
 ## Ollama (IWPC — Windows/CUDA)
 
-IWPC runs Ollama for Windows with CUDA acceleration on an RTX 3060 (12 GB VRAM).
+IWPC runs Ollama for Windows with CUDA acceleration on an RTX 3060 (12 GB VRAM, 32 GB system RAM).
 No repo lives on IWPC — the minis call it over Tailscale, just like Mac Studio.
 
 - **Tailscale URL:** `http://100.70.170.62:11434`
-- **Installed models:** `nomic-embed-text`, `qwen2.5:14b`
 - **Setup guide:** [docs/iwpc_setup.md](iwpc_setup.md)
 
+**Installed models:**
+
+| Model | Size | Use |
+|---|---|---|
+| `nomic-embed-text` | 274 MB | Batch embeddings (CUDA faster than Apple Silicon) |
+| `qwen2.5:14b` | 9 GB | Low/mid-band rationale gen, eval |
+| `qwen2.5:7b` | 4.7 GB | Fast classification, lightweight tasks |
+| `gemma4:12b` | 7.6 GB | PDF extraction (lighter jobs — saves Studio for 31b-only PDFs) |
+| `gemma4:e4b` | 9.6 GB | Fast multimodal, alternative extraction |
+
 **When the pipeline uses IWPC:**
-- `post_ingest_pipeline.sh` auto-detects it (3-second curl) and routes embed calls there instead of localhost — CUDA throughput is faster for batch embedding
-- `overnight_rationale.sh` offloads low-band US state mappings to IWPC (qwen2.5:14b) while Studio handles high/mid-band AP/IB (qwen2.5:72b) simultaneously
+- `post_ingest_pipeline.sh` auto-detects it (3-second curl) and routes embed calls there — CUDA batch throughput beats Apple Silicon for this workload
+- `overnight_rationale.sh` offloads low-band US state mappings to IWPC (`qwen2.5:14b`) while Studio handles high/mid-band AP/IB (`qwen2.5:72b`) simultaneously
+- Fetchers with lighter PDFs can target `gemma4:12b` on IWPC instead of queuing on Mac Studio — use `OLLAMA_BASE_URL=http://100.70.170.62:11434 OLLAMA_MODEL=gemma4:12b`
 
 ```bash
 # Check IWPC Ollama from anywhere on Tailscale
@@ -104,7 +114,7 @@ echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP53tUmEA81HZQWErdYK/BcRc+lNOTaC0/YCj5
 - Mac Studio (`ianwangm1max@100.77.63.73`) ✓ authorized
 - Mac mini 2 (`devos@100.101.100.96`) ✓ authorized
 - Mac mini 3 (`devos@100.123.114.101`) ✓ authorized
-- IWPC — not yet authorized
+- IWPC — no SSH (Ollama-only host; reach via `curl http://100.70.170.62:11434/api/tags`)
 
 ## Common remote commands
 
