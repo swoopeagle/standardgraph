@@ -7,19 +7,34 @@
 # Run from Mini 2:
 #   OLLAMA_BASE_URL=http://100.77.63.73:11434 bash scripts/overnight_rationale.sh
 #
-# Runtime: ~8–12 hours (5,000+ mappings at ~6–8/min with qwen2.5:72b)
+# If IWPC is online, low-band state mappings run there (qwen2.5:14b) in
+# parallel while Studio handles high/mid-band (qwen2.5:72b).
+#
+# Runtime: ~8–12 hours single-host; ~5–7 hours with IWPC assisting.
 
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DB_PATH="${DB_PATH:-$REPO_DIR/data/common_core.db}"
-OLLAMA_BASE_URL="${OLLAMA_BASE_URL:-http://100.77.63.73:11434}"
-OLLAMA_MODEL="${OLLAMA_MODEL:-qwen2.5:72b}"
+STUDIO_URL="${OLLAMA_BASE_URL:-http://100.77.63.73:11434}"
+IWPC_URL="http://100.70.170.62:11434"
+STUDIO_MODEL="qwen2.5:72b"
+IWPC_MODEL="qwen2.5:14b"
 LOG_DIR="$REPO_DIR/logs"
 LOG="$LOG_DIR/rationale_$(date +%Y%m%d_%H%M%S).log"
 
 mkdir -p "$LOG_DIR"
-export DB_PATH OLLAMA_BASE_URL OLLAMA_MODEL
+
+# Auto-detect IWPC
+if curl -sf --max-time 3 "$IWPC_URL/api/tags" >/dev/null 2>&1; then
+    IWPC_ONLINE=true
+else
+    IWPC_ONLINE=false
+fi
+
+export DB_PATH
+export OLLAMA_BASE_URL="$STUDIO_URL"
+export OLLAMA_MODEL="$STUDIO_MODEL"
 
 run() {
     local label="$1"; shift
@@ -31,69 +46,111 @@ run() {
     uv run python scripts/crosswalk_rationale_gen.py "$@" 2>&1 | tee -a "$LOG"
 }
 
-echo "Overnight rationale run started at $(date)" | tee "$LOG"
-echo "DB:    $DB_PATH" | tee -a "$LOG"
-echo "Model: $OLLAMA_MODEL @ $OLLAMA_BASE_URL" | tee -a "$LOG"
+# Run via IWPC (qwen2.5:14b) — called only when IWPC is online
+run_iwpc() {
+    local label="$1"; shift
+    echo "" | tee -a "$LOG"
+    echo "══════════════════════════════════════════════════════════" | tee -a "$LOG"
+    echo "  $label  [IWPC / qwen2.5:14b]" | tee -a "$LOG"
+    echo "  $(date)" | tee -a "$LOG"
+    echo "══════════════════════════════════════════════════════════" | tee -a "$LOG"
+    OLLAMA_BASE_URL="$IWPC_URL" OLLAMA_MODEL="$IWPC_MODEL" \
+        uv run python scripts/crosswalk_rationale_gen.py "$@" 2>&1 | tee -a "$LOG"
+}
 
-# Warm up the model — evicting previous model and loading qwen2.5:72b can take
-# 5+ minutes. Ping it once and wait until we get a response before processing.
-echo "" | tee -a "$LOG"
-echo "Warming up $OLLAMA_MODEL (may take several minutes) …" | tee -a "$LOG"
-python3 -c "
-import httpx, sys, os
-url = os.environ['OLLAMA_BASE_URL'] + '/api/chat'
-model = os.environ['OLLAMA_MODEL']
-resp = httpx.post(url, json={
-    'model': model, 'messages': [{'role': 'user', 'content': 'Hello'}],
+warmup() {
+    local url="$1" model="$2"
+    echo "Warming up $model @ $url …" | tee -a "$LOG"
+    python3 -c "
+import httpx, sys
+resp = httpx.post('$url/api/chat', json={
+    'model': '$model', 'messages': [{'role': 'user', 'content': 'Hello'}],
     'stream': False, 'options': {'num_ctx': 128}
 }, timeout=600)
-print('Model ready: ' + resp.json()['message']['content'][:60])
+print('Ready: ' + resp.json()['message']['content'][:60])
 " 2>&1 | tee -a "$LOG"
+}
+
+echo "Overnight rationale run started at $(date)" | tee "$LOG"
+echo "DB:     $DB_PATH" | tee -a "$LOG"
+echo "Studio: $STUDIO_MODEL @ $STUDIO_URL" | tee -a "$LOG"
+echo "IWPC:   $($IWPC_ONLINE && echo "$IWPC_MODEL @ $IWPC_URL" || echo 'offline — Studio only')" | tee -a "$LOG"
+
+# Warm up Studio (evicting gemma4:31b → loading qwen2.5:72b takes 3–5 min)
+echo "" | tee -a "$LOG"
+warmup "$STUDIO_URL" "$STUDIO_MODEL"
+
+# Warm up IWPC if online
+if $IWPC_ONLINE; then
+    warmup "$IWPC_URL" "$IWPC_MODEL"
+fi
 echo "" | tee -a "$LOG"
 
-# ── Phase 1: AP Math → CCSS — high confidence first ──────────────────────────
-# AP courses are the SOURCE; CCSS is the target hub.
+# ── Phase 1: AP Math → CCSS — high confidence (Studio) ───────────────────────
 run "AP Calc AB → CCSS  [high]"   --system ap-calc-ab  --band high  --sample 0
 run "AP Calc BC → CCSS  [high]"   --system ap-calc-bc  --band high  --sample 0
 run "AP Stats → CCSS    [high]"   --system ap-stats    --band high  --sample 0
 run "AP Precalc → CCSS  [high]"   --system ap-precalc  --band high  --sample 0
 
-# ── Phase 2: AP Science → NGSS — high confidence ─────────────────────────────
+# ── Phase 2: AP Science → NGSS — high confidence (Studio) ────────────────────
 run "AP Bio → NGSS      [high]"   --system ap-bio      --band high  --sample 0
 run "AP Chem → NGSS     [high]"   --system ap-chem     --band high  --sample 0
 run "AP Phys 1 → NGSS   [high]"   --system ap-phys-1   --band high  --sample 0
 run "AP Phys 2 → NGSS   [high]"   --system ap-phys-2   --band high  --sample 0
 run "AP Env → NGSS      [high]"   --system ap-env      --band high  --sample 0
 
-# ── Phase 3: IB Math → CCSS — high confidence ────────────────────────────────
+# ── Phase 3: IB Math → CCSS — high confidence (Studio) ───────────────────────
 run "IB-DP → CCSS       [high]"   --system ib-dp       --band high  --sample 0
 run "IB-MYP → CCSS      [high]"   --system ib-myp      --band high  --sample 0
 
-# ── Phase 4: AP Math → CCSS — mid confidence ─────────────────────────────────
+# ── Phase 4: AP Math → CCSS — mid confidence (Studio) ────────────────────────
 run "AP Calc AB → CCSS  [mid]"    --system ap-calc-ab  --band mid   --sample 0
 run "AP Calc BC → CCSS  [mid]"    --system ap-calc-bc  --band mid   --sample 0
 run "AP Stats → CCSS    [mid]"    --system ap-stats    --band mid   --sample 0
 run "AP Precalc → CCSS  [mid]"    --system ap-precalc  --band mid   --sample 0
 
-# ── Phase 5: AP Science → NGSS — mid confidence ──────────────────────────────
+# ── Phase 5: AP Science → NGSS — mid confidence (Studio) ─────────────────────
 run "AP Bio → NGSS      [mid]"    --system ap-bio      --band mid   --sample 0
 run "AP Chem → NGSS     [mid]"    --system ap-chem     --band mid   --sample 0
 run "AP Phys 1 → NGSS   [mid]"    --system ap-phys-1   --band mid   --sample 0
 run "AP Phys 2 → NGSS   [mid]"    --system ap-phys-2   --band mid   --sample 0
 run "AP Env → NGSS      [mid]"    --system ap-env      --band mid   --sample 0
 
-# ── Phase 6: IB Math — mid confidence ────────────────────────────────────────
+# ── Phase 6: IB Math — mid confidence (Studio) ───────────────────────────────
 run "IB-DP → CCSS       [mid]"    --system ib-dp       --band mid   --sample 0
 run "IB-MYP → CCSS      [mid]"    --system ib-myp      --band mid   --sample 0
 
-# ── Phase 7: US state math high-volume sample (all bands, sampled) ────────────
-# States have many mappings — sample 200 each from the largest.
-for state in ca tx ny fl ga wa ma nc pa oh; do
-    run "State $state → CCSS [all bands, n=200]" \
-        --system "$state" --sample 200
-done
+# ── Phase 7: US state sample ──────────────────────────────────────────────────
+# High-volume states sampled at 200 each.
+# If IWPC is online: Studio and IWPC run different states in parallel.
+# If offline: Studio runs all states sequentially.
+if $IWPC_ONLINE; then
+    # Even states → Studio (72b); odd states → IWPC (14b), interleaved
+    STUDIO_STATES=(ca ny wa ma pa)
+    IWPC_STATES=(tx fl ga nc oh)
 
-# ── Phase 8: Review — re-score mid-band to flag bad mappings ─────────────────
+    for state in "${STUDIO_STATES[@]}"; do
+        run "State $state → CCSS [n=200, Studio]" --system "$state" --sample 200 &
+        STUDIO_BG=$!
+        # Pull one IWPC state while Studio runs
+        if [ ${#IWPC_STATES[@]} -gt 0 ]; then
+            iwpc_state="${IWPC_STATES[0]}"
+            IWPC_STATES=("${IWPC_STATES[@]:1}")
+            run_iwpc "State $iwpc_state → CCSS [n=200, IWPC]" --system "$iwpc_state" --sample 200
+        fi
+        wait $STUDIO_BG
+    done
+    # Any remaining IWPC states
+    for state in "${IWPC_STATES[@]}"; do
+        run_iwpc "State $state → CCSS [n=200, IWPC]" --system "$state" --sample 200
+    done
+else
+    for state in ca tx ny fl ga wa ma nc pa oh; do
+        run "State $state → CCSS [n=200]" --system "$state" --sample 200
+    done
+fi
+
+# ── Phase 8: Review — re-score to flag bad mappings (Studio) ─────────────────
 run "Review: AP math mid [flag bad]" \
     --system ap-calc-ab --band mid --review-only --sample 0
 run "Review: AP sci mid  [flag bad]" \

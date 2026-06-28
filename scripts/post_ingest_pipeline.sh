@@ -11,9 +11,19 @@ REPO="$HOME/projects/intl-math-standards-mcp"
 DB_PATH="${DB_PATH:-$REPO/data/common_core.db}"
 MINI3="devos@100.123.114.101"
 STUDIO_URL="http://100.77.63.73:11434"
+IWPC_URL="http://100.70.170.62:11434"
 LOG="$REPO/logs/post_ingest_$(date +%Y%m%d_%H%M%S).log"
 
 export DB_PATH
+
+# Auto-detect IWPC — use it for embed if reachable, else fall back to localhost
+if curl -sf --max-time 3 "$IWPC_URL/api/tags" >/dev/null 2>&1; then
+    EMBED_URL="$IWPC_URL"
+    log "IWPC reachable — routing embed to IWPC (CUDA)"
+else
+    EMBED_URL="http://localhost:11434"
+    log "IWPC offline — embed will use local Ollama on each mini"
+fi
 
 log() { echo "[$(date '+%H:%M:%S')] $*" | tee -a "$LOG"; }
 section() {
@@ -49,7 +59,7 @@ ssh -o ConnectTimeout=10 "$MINI3" "
 log "Mini 3 pulled."
 
 # ── Step 2: embed on both minis in parallel ───────────────────────────────────
-section "Step 2: embed (Mini 2 + Mini 3 in parallel)"
+section "Step 2: embed (Mini 2 + Mini 3 in parallel, embed via $EMBED_URL)"
 
 export PATH="/Users/devos/.local/bin:$PATH"
 
@@ -57,12 +67,13 @@ export PATH="/Users/devos/.local/bin:$PATH"
 ssh -o ConnectTimeout=10 "$MINI3" "
   export PATH='/Users/devos/.local/bin:\$PATH'
   cd ~/projects/intl-math-standards-mcp
-  uv run python -m ingestion.shared.embed 2>&1
+  OLLAMA_BASE_URL=$EMBED_URL uv run python -m ingestion.shared.embed 2>&1
 " | sed 's/^/[mini3-embed] /' | tee -a "$LOG" &
 MINI3_EMBED_PID=$!
 
-# Mini 2 embed locally
-uv run python -m ingestion.shared.embed 2>&1 | sed 's/^/[mini2-embed] /' | tee -a "$LOG"
+# Mini 2 embed locally, also pointing at EMBED_URL
+OLLAMA_BASE_URL="$EMBED_URL" uv run python -m ingestion.shared.embed 2>&1 \
+    | sed 's/^/[mini2-embed] /' | tee -a "$LOG"
 
 wait $MINI3_EMBED_PID
 log "Both embeds complete."

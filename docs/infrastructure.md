@@ -8,7 +8,7 @@
 | Mac Studio | M1 Max | 64 GB | 100.77.63.73 | `ianwangm1max` | Ollama host (LLM inference only) |
 | Mac mini 2 | M4 Pro | 24 GB | 100.101.100.96 | `devos` | Pipeline runner, MCP server |
 | Mac mini 3 | M4 | 16 GB | 100.123.114.101 | `devos` | Pipeline runner, MCP server |
-| IWPC | — | — | 100.70.170.62 | — | Remote Windows PC |
+| IWPC | RTX 3060 | 12 GB VRAM | 100.70.170.62 | — | Ollama host (Windows/CUDA) — embed + low-band rationale |
 
 > The project lives at `~/projects/intl-math-standards-mcp/` on both Mac minis (old project name — same codebase as `standardgraph`).
 
@@ -48,8 +48,27 @@ Mac Studio hosts Ollama exclusively — no standardgraph repo lives there. 64 GB
 | Mac Studio | 64 GB | 47 GB | `gemma4:31b`, `qwen2.5:72b`, `gemma3:27b`, `nomic-embed-text`, `llama3.2` |
 | Mac mini 2 | 24 GB | ~18 GB | `gemma4:26b` (17 GB), `qwen2.5:14b` (9 GB), `nomic-embed-text` |
 | Mac mini 3 | 16 GB | ~10 GB | `qwen2.5:14b` (9 GB), `nomic-embed-text` |
+| IWPC | 12 GB VRAM (CUDA) | ~11 GB | `qwen2.5:14b` (9 GB), `nomic-embed-text` |
 
 Both Mac minis have Ollama running at `localhost:11434`. The pipeline's overnight_run.sh defaults to `localhost:11434` — each mini embeds locally rather than hitting Mac Studio over the network.
+
+## Ollama (IWPC — Windows/CUDA)
+
+IWPC runs Ollama for Windows with CUDA acceleration on an RTX 3060 (12 GB VRAM).
+No repo lives on IWPC — the minis call it over Tailscale, just like Mac Studio.
+
+- **Tailscale URL:** `http://100.70.170.62:11434`
+- **Installed models:** `nomic-embed-text`, `qwen2.5:14b`
+- **Setup guide:** [docs/iwpc_setup.md](iwpc_setup.md)
+
+**When the pipeline uses IWPC:**
+- `post_ingest_pipeline.sh` auto-detects it (3-second curl) and routes embed calls there instead of localhost — CUDA throughput is faster for batch embedding
+- `overnight_rationale.sh` offloads low-band US state mappings to IWPC (qwen2.5:14b) while Studio handles high/mid-band AP/IB (qwen2.5:72b) simultaneously
+
+```bash
+# Check IWPC Ollama from anywhere on Tailscale
+curl -sf http://100.70.170.62:11434/api/tags | python3 -m json.tool
+```
 
 ```bash
 # Check what's loaded (no SSH needed)

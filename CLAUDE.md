@@ -43,12 +43,13 @@ scripts/
 | Mac Studio | M1 Max | 64 GB | 100.77.63.73 | `ianwangm1max` | Ollama host only (no repo) |
 | Mac mini 2 | M4 Pro | 24 GB | 100.101.100.96 | `devos` | pipeline runner, MCP server |
 | Mac mini 3 | M4 | 16 GB | 100.123.114.101 | `devos` | pipeline runner, MCP server |
-| IWPC | — | — | 100.70.170.62 | — | remote Windows PC |
+| IWPC | RTX 3060 | 12 GB VRAM | 100.70.170.62 | — | Ollama host (Windows, CUDA) — embed + low-band rationale |
 
 Model roster per device (do not exceed safe limits):
 - **Mac Studio (64 GB):** `gemma4:31b-it-q8_0`, `qwen2.5:72b`, `gemma3:27b`, `nomic-embed-text`, `llama3.2` — any model up to 47 GB
 - **Mac mini 2 (24 GB M4 Pro):** `gemma4:26b` (17 GB), `qwen2.5:14b` (9 GB), `nomic-embed-text` — limit ~18 GB
 - **Mac mini 3 (16 GB M4):** `qwen2.5:14b` (9 GB), `nomic-embed-text` — limit ~10 GB; never install 17+ GB models
+- **IWPC (12 GB VRAM, CUDA):** `nomic-embed-text`, `qwen2.5:14b` — fits comfortably; never exceed 11 GB
 
 Both Mac minis run Ollama at `localhost:11434`. Pipeline defaults to local Ollama for embeddings; Mac Studio handles PDF extraction (gemma4:31b).
 
