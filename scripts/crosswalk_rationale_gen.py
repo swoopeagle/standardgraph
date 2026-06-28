@@ -230,6 +230,9 @@ def main() -> None:
 
     print(f"\n── Results ─────────────────────────────────────────────────────────")
     print(f"  Processed:   {total} mappings in {elapsed_total/60:.1f}m")
+    if total == 0:
+        print("  No mappings matched the filter — check --system/--target/--band arguments.")
+        return
     print(f"  Score 4-5:   {scored_4_5} ({100*scored_4_5/total:.1f}%)  [good/exact]")
     print(f"  Score 3:     {scored_3} ({100*scored_3/total:.1f}%)  [plausible]")
     print(f"  Score 1-2:   {scored_1_2} ({100*scored_1_2/total:.1f}%)  [flagged for review]")

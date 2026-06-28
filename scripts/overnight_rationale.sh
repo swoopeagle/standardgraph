@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 # Overnight rationale generation + crosswalk review for US math/science focus.
 #
-# Run this on Mac mini 2 (or any machine with access to Mac Studio):
+# Crosswalk direction: non-hub systems → hub (CCSS, NGSS, etc.)
+# So --system is always the non-hub (AP, state, IB), not the hub itself.
+#
+# Run from Mini 2:
 #   OLLAMA_BASE_URL=http://100.77.63.73:11434 bash scripts/overnight_rationale.sh
 #
-# Runtime: ~10–14 hours (5,000–6,000 mappings at ~6/min with qwen2.5:72b)
-# All jobs queue to Mac Studio's Ollama — no coordination needed.
+# Runtime: ~8–12 hours (5,000+ mappings at ~6–8/min with qwen2.5:72b)
 
 set -euo pipefail
 
@@ -33,53 +35,62 @@ echo "Overnight rationale run started at $(date)" | tee "$LOG"
 echo "DB:    $DB_PATH" | tee -a "$LOG"
 echo "Model: $OLLAMA_MODEL @ $OLLAMA_BASE_URL" | tee -a "$LOG"
 
-# ── Phase 1: US Math hierarchy — high confidence first ────────────────────────
-# CCSS ↔ AP Math
-run "CCSS → AP Calc AB  [high]"   --system ccss  --target ap-calc-ab  --band high
-run "CCSS → AP Calc BC  [high]"   --system ccss  --target ap-calc-bc  --band high
-run "CCSS → AP Stats    [high]"   --system ccss  --target ap-stats     --band high
-run "CCSS → AP Precalc  [high]"   --system ccss  --target ap-precalc   --band high
+# ── Phase 1: AP Math → CCSS — high confidence first ──────────────────────────
+# AP courses are the SOURCE; CCSS is the target hub.
+run "AP Calc AB → CCSS  [high]"   --system ap-calc-ab  --band high  --sample 0
+run "AP Calc BC → CCSS  [high]"   --system ap-calc-bc  --band high  --sample 0
+run "AP Stats → CCSS    [high]"   --system ap-stats    --band high  --sample 0
+run "AP Precalc → CCSS  [high]"   --system ap-precalc  --band high  --sample 0
 
-# AP Math ↔ IB Math
-run "AP Calc AB → IB-DP [high]"   --system ap-calc-ab  --target ib-dp  --band high
-run "AP Calc BC → IB-DP [high]"   --system ap-calc-bc  --target ib-dp  --band high
-run "AP Stats → IB-DP   [high]"   --system ap-stats    --target ib-dp  --band high
-run "CCSS → IB-MYP      [high]"   --system ccss        --target ib-myp --band high
-run "CCSS → IB-DP       [high]"   --system ccss        --target ib-dp  --band high
+# ── Phase 2: AP Science → NGSS — high confidence ─────────────────────────────
+run "AP Bio → NGSS      [high]"   --system ap-bio      --band high  --sample 0
+run "AP Chem → NGSS     [high]"   --system ap-chem     --band high  --sample 0
+run "AP Phys 1 → NGSS   [high]"   --system ap-phys-1   --band high  --sample 0
+run "AP Phys 2 → NGSS   [high]"   --system ap-phys-2   --band high  --sample 0
+run "AP Env → NGSS      [high]"   --system ap-env      --band high  --sample 0
 
-# ── Phase 2: Science hierarchy — high confidence ──────────────────────────────
-run "NGSS → AP Bio      [high]"   --system ngss  --target ap-bio      --band high
-run "NGSS → AP Chem     [high]"   --system ngss  --target ap-chem     --band high
-run "NGSS → AP Phys 1   [high]"   --system ngss  --target ap-phys-1   --band high
-run "NGSS → AP Phys 2   [high]"   --system ngss  --target ap-phys-2   --band high
-run "NGSS → AP Env      [high]"   --system ngss  --target ap-env      --band high
+# ── Phase 3: IB Math → CCSS — high confidence ────────────────────────────────
+run "IB-DP → CCSS       [high]"   --system ib-dp       --band high  --sample 0
+run "IB-MYP → CCSS      [high]"   --system ib-myp      --band high  --sample 0
 
-# ── Phase 3: US Math — mid confidence (catches useful near-matches) ───────────
-run "CCSS → AP Calc AB  [mid]"    --system ccss  --target ap-calc-ab  --band mid
-run "CCSS → AP Calc BC  [mid]"    --system ccss  --target ap-calc-bc  --band mid
-run "CCSS → AP Stats    [mid]"    --system ccss  --target ap-stats     --band mid
-run "CCSS → IB-DP       [mid]"    --system ccss  --target ib-dp       --band mid
-run "CCSS → IB-MYP      [mid]"    --system ccss  --target ib-myp      --band mid
+# ── Phase 4: AP Math → CCSS — mid confidence ─────────────────────────────────
+run "AP Calc AB → CCSS  [mid]"    --system ap-calc-ab  --band mid   --sample 0
+run "AP Calc BC → CCSS  [mid]"    --system ap-calc-bc  --band mid   --sample 0
+run "AP Stats → CCSS    [mid]"    --system ap-stats    --band mid   --sample 0
+run "AP Precalc → CCSS  [mid]"    --system ap-precalc  --band mid   --sample 0
 
-# ── Phase 4: Science — mid confidence ────────────────────────────────────────
-run "NGSS → AP Bio      [mid]"    --system ngss  --target ap-bio      --band mid
-run "NGSS → AP Chem     [mid]"    --system ngss  --target ap-chem     --band mid
-run "NGSS → AP Phys 1   [mid]"    --system ngss  --target ap-phys-1   --band mid
+# ── Phase 5: AP Science → NGSS — mid confidence ──────────────────────────────
+run "AP Bio → NGSS      [mid]"    --system ap-bio      --band mid   --sample 0
+run "AP Chem → NGSS     [mid]"    --system ap-chem     --band mid   --sample 0
+run "AP Phys 1 → NGSS   [mid]"    --system ap-phys-1   --band mid   --sample 0
+run "AP Phys 2 → NGSS   [mid]"    --system ap-phys-2   --band mid   --sample 0
+run "AP Env → NGSS      [mid]"    --system ap-env      --band mid   --sample 0
 
-# ── Phase 5: Crosswalk review — re-score annotated mid-band to flag bad ones ──
-# (Same model, same queue — runs after rationale gen completes above)
-run "Review: CCSS↔AP math mid"    --system ccss  --band mid  --review-only  --sample 1000
-run "Review: NGSS↔AP sci  mid"    --system ngss  --band mid  --review-only  --sample 500
+# ── Phase 6: IB Math — mid confidence ────────────────────────────────────────
+run "IB-DP → CCSS       [mid]"    --system ib-dp       --band mid   --sample 0
+run "IB-MYP → CCSS      [mid]"    --system ib-myp      --band mid   --sample 0
+
+# ── Phase 7: US state math high-volume sample (all bands, sampled) ────────────
+# States have many mappings — sample 200 each from the largest.
+for state in ca tx ny fl ga wa ma nc pa oh; do
+    run "State $state → CCSS [all bands, n=200]" \
+        --system "$state" --sample 200
+done
+
+# ── Phase 8: Review — re-score mid-band to flag bad mappings ─────────────────
+run "Review: AP math mid [flag bad]" \
+    --system ap-calc-ab --band mid --review-only --sample 0
+run "Review: AP sci mid  [flag bad]" \
+    --system ap-bio     --band mid --review-only --sample 0
 
 echo "" | tee -a "$LOG"
 echo "══════════════════════════════════════════════════════════" | tee -a "$LOG"
 echo "  ALL DONE $(date)" | tee -a "$LOG"
 echo "══════════════════════════════════════════════════════════" | tee -a "$LOG"
 
-# Print summary from DB
-sqlite3 "$DB_PATH" "
-  SELECT
-    'Mappings with rationale: ' || COUNT(*) FROM crosswalk_mappings WHERE notes IS NOT NULL AND notes != '';
-  SELECT
-    'Mappings flagged for review: ' || COUNT(*) FROM crosswalk_mappings WHERE flagged_for_review = 1;
-" | tee -a "$LOG"
+sqlite3 "$DB_PATH" \
+    "SELECT 'Mappings with rationale: ' || COUNT(*) FROM crosswalk_mappings WHERE notes IS NOT NULL AND notes != '';" \
+    2>/dev/null | tee -a "$LOG"
+sqlite3 "$DB_PATH" \
+    "SELECT 'Mappings flagged for review: ' || COUNT(*) FROM crosswalk_mappings WHERE flagged_for_review = 1;" \
+    2>/dev/null | tee -a "$LOG"
