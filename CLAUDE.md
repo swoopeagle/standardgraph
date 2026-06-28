@@ -112,6 +112,8 @@ Two distinct JSON schemas — always use `_is_precomputed()` / `_has_mapping()` 
 
 ## Batch execution workflow
 
+Full details in `docs/run_playbook.md`. Short version:
+
 For longer runs, use this two-phase pattern:
 
 ### Phase 1 — Planning (get approval upfront)
