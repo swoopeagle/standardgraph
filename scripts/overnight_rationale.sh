@@ -61,7 +61,7 @@ run_iwpc() {
 warmup() {
     local url="$1" model="$2"
     echo "Warming up $model @ $url …" | tee -a "$LOG"
-    python3 -c "
+    uv run python3 -c "
 import httpx, sys
 resp = httpx.post('$url/api/chat', json={
     'model': '$model', 'messages': [{'role': 'user', 'content': 'Hello'}],
