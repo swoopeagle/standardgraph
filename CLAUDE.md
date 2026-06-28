@@ -31,7 +31,7 @@ scripts/
 - **Standards:** 157,101 across 298 systems
 - **Crosswalk rows:** ~93,385 (hub-centric: CCSS for math, NGSS for science, etc.)
 - **Relationships:** ~3.7M rows (prerequisites/successors)
-- **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge)
+- **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge from Mini 2 — 0.4ms RTT)
 - **HuggingFace dataset:** `swoopeagle/standardgraph` (file: `common_core.db`)
 - **PyPI package:** `standardgraph`
 

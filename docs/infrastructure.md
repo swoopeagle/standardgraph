@@ -15,15 +15,15 @@
 ## Network topology
 
 ```
-MacBook Pro ──── Thunderbolt Bridge (169.254.1.1) ──── Mac Studio (Ollama)
+Mac mini 2 (169.254.1.2) ──── Thunderbolt Bridge ──── Mac Studio (169.254.1.1 / Ollama)
      │                                                       │
-     └────────────── Tailscale VPN ─────────────────────────┘
-                          │
-               Mac mini 2 (.96), Mac mini 3 (.101), IWPC
+     └────────────────── Tailscale VPN ─────────────────────┘
+                                │
+              Mac mini 3 (.101), IWPC (.62), MacBook Pro (.10)
 ```
 
-- **Thunderbolt Bridge** — low-latency direct link between MacBook Pro and Mac Studio. The overnight pipeline uses `http://169.254.1.1:11434` to reach Mac Studio's Ollama.
-- **Tailscale** — SSH access and general connectivity across all devices. Mac Studio Ollama also reachable at `http://100.77.63.73:11434`.
+- **Thunderbolt Bridge** — direct low-latency link between Mac mini 2 and Mac Studio (0.4ms RTT vs ~50ms over Tailscale). Mini 2's pipeline defaults to `http://169.254.1.1:11434` for all Ollama calls. Keep this cable — across thousands of batch LLM requests the network overhead compounds significantly.
+- **Tailscale** — SSH access and general connectivity. Mac Studio also reachable at `http://100.77.63.73:11434` for Mini 3, IWPC, and MacBook Pro.
 
 ## Ollama (Mac Studio)
 
