@@ -109,6 +109,87 @@ ssh devos@100.101.100.96 "ls -t ~/projects/intl-math-standards-mcp/logs/*.log | 
 ssh devos@100.101.100.96 "sqlite3 ~/projects/intl-math-standards-mcp/data/common_core.db \"SELECT COUNT(*) || ' standards, ' || COUNT(DISTINCT system) || ' systems' FROM standards;\""
 ```
 
+## Division of labor
+
+Each device has a distinct role based on its memory ceiling and what's physically connected.
+
+### Quick reference
+
+| Work type | Device | Why |
+|---|---|---|
+| PDF → JSON extraction (LLM) | Mac Studio | Only machine with enough VRAM for `gemma4:31b` / `qwen2.5:72b` |
+| Crosswalk rationale generation | Mac Studio | Needs `qwen2.5:72b` (47 GB); quality reasoning for pedagogical context |
+| Embedding standards (`nomic-embed-text`) | Mac mini (local) | 274 MB model fits anywhere; avoid network hop to Studio |
+| `relate` (prereq/successor graph) | Mac mini (CPU) | Pure numpy/SQLite, no GPU needed; runs well on M4 Pro/M4 |
+| `crosswalk_engine.nlp_pass` | Mac mini (CPU) | Cosine similarity over pre-computed vectors; CPU-bound, parallelizable |
+| MCP server (Claude Desktop) | Mac mini | Always-on; Studio is kept free for inference, not serving |
+| Development, git, test runs | MacBook Pro | Full repo lives here; minis are clones |
+
+### The mental model
+
+**Mac Studio is a job queue, not a workhorse.**
+It does one thing — run large LLMs — and everything else waits in line. Ollama serializes requests to the same model, so Mini 2 and Mini 3 can both send extraction jobs simultaneously and they'll be processed one at a time. The minis don't block each other; they just share Studio's throughput.
+
+**Mac minis run in parallel by default.**
+Any CPU-bound step (embed locally, relate, crosswalk) can run on both minis simultaneously against their own DBs. This effectively doubles throughput. Mini 2 is the authoritative source for publishing (its DB is what gets pushed to HuggingFace).
+
+**The MacBook is development-only.**
+Never run the pipeline on the MacBook against the real DB — it lacks persistent storage for a 1.8 GB DB and you'd block your dev environment. Use it to push code, run `mcp_test.py` against a pulled snapshot, and build packages.
+
+### Routing new work
+
+When adding a new curriculum system, ask:
+
+1. **Does it need PDF extraction?**
+   - Yes → run the fetcher on a mini, point `OLLAMA_BASE_URL` at Mac Studio: `OLLAMA_BASE_URL=http://100.77.63.73:11434 OLLAMA_MODEL=gemma4:31b-it-q8_0`
+   - No (web scrape / structured data) → run on either mini, no Studio needed
+
+2. **Multiple fetchers at once?**
+   - Run one fetcher per mini (Mini 2 → system A, Mini 3 → system B). Both send LLM calls to Studio; Studio serializes them. Net result: effectively single-threaded LLM work with zero idle time.
+
+3. **After ingestion: embed → relate → crosswalk?**
+   - Run on **both minis in parallel** — they each process their own DB and catch up to the same state.
+   - Embed uses local Ollama (`localhost:11434`) — no Studio needed.
+   - Relate and crosswalk are CPU-only — both minis run simultaneously.
+
+4. **Rationale generation?**
+   - Queue after fetchers finish (same Studio endpoint, serializes automatically).
+   - Start with `--band high` to annotate confident mappings first.
+
+### Model assignment
+
+```
+Mac Studio (64 GB):
+  gemma4:31b-it-q8_0   ← PDF extraction (default for fetchers)
+  qwen2.5:72b          ← rationale generation, heavy reasoning
+  gemma3:27b           ← lighter extraction / eval
+  nomic-embed-text     ← if minis are busy (rare)
+
+Mac mini 2 (24 GB M4 Pro):
+  gemma4:26b           ← can handle medium extraction locally if Studio is busy
+  qwen2.5:14b          ← general tasks, eval
+  nomic-embed-text     ← standard embeddings (always use local)
+
+Mac mini 3 (16 GB M4):
+  qwen2.5:14b          ← general tasks, eval
+  nomic-embed-text     ← standard embeddings (always use local)
+  ← never install models > 10 GB here
+```
+
+### Typical pipeline sequence
+
+```
+1. Fetcher(s)       → Mini 2 + Mini 3 simultaneously → LLM calls → Mac Studio
+2. embed            → Mini 2 + Mini 3 simultaneously → local Ollama (nomic)
+3. relate           → Mini 2 + Mini 3 simultaneously → CPU only
+4. crosswalk        → Mini 2 + Mini 3 simultaneously → CPU only
+5. rationale gen    → Mac Studio (qwen2.5:72b), sample --band high first
+6. eval suite       → Mini 2 (authoritative DB)
+7. pull DB          → MacBook ← sqlite3 .backup from Mini 2
+8. mcp_test.py      → MacBook
+9. ship             → MacBook (build + PyPI + HuggingFace)
+```
+
 ## Slash command
 
 Run `/devices` in Claude Code for a live status report across all machines.
