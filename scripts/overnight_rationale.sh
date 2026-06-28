@@ -66,10 +66,10 @@ run "NGSS → AP Bio      [mid]"    --system ngss  --target ap-bio      --band m
 run "NGSS → AP Chem     [mid]"    --system ngss  --target ap-chem     --band mid
 run "NGSS → AP Phys 1   [mid]"    --system ngss  --target ap-phys-1   --band mid
 
-# ── Phase 5: Crosswalk review — flag bad mappings in mid band ─────────────────
+# ── Phase 5: Crosswalk review — re-score annotated mid-band to flag bad ones ──
 # (Same model, same queue — runs after rationale gen completes above)
-run "Review: CCSS↔AP math mid"    --system ccss  --target ap-calc-ab  --band mid  --review-only
-run "Review: NGSS↔AP sci  mid"    --system ngss  --target ap-bio      --band mid  --review-only
+run "Review: CCSS↔AP math mid"    --system ccss  --band mid  --review-only  --sample 1000
+run "Review: NGSS↔AP sci  mid"    --system ngss  --band mid  --review-only  --sample 500
 
 echo "" | tee -a "$LOG"
 echo "══════════════════════════════════════════════════════════" | tee -a "$LOG"

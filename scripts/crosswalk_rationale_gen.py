@@ -96,14 +96,23 @@ def sample_mappings(
     conn: sqlite3.Connection,
     n: int,
     system: str | None,
+    target: str | None,
     band: str | None,
+    review_only: bool = False,
 ) -> list[sqlite3.Row]:
-    conditions = ["cm.notes IS NULL", "cm.verified_by_human = 0"]
+    if review_only:
+        conditions = ["cm.notes IS NOT NULL", "cm.verified_by_human = 0"]
+    else:
+        conditions = ["cm.notes IS NULL", "cm.verified_by_human = 0"]
     params: list = []
 
     if system:
         conditions.append("cm.source_system = ?")
         params.append(system)
+
+    if target:
+        conditions.append("cm.target_system = ?")
+        params.append(target)
 
     if band == "high":
         conditions.append("cm.confidence_score >= 0.85")
@@ -124,7 +133,7 @@ def sample_mappings(
             JOIN standards s1 ON s1.id = cm.source_id
             JOIN standards s2 ON s2.id = cm.target_id
             WHERE {where}
-            ORDER BY RANDOM()
+            ORDER BY cm.confidence_score DESC
             {limit_clause}""",
         params,
     ).fetchall()
@@ -134,7 +143,10 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Generate crosswalk rationales via LLM")
     parser.add_argument("--sample", type=int, default=500, help="Mappings to process (0=all)")
     parser.add_argument("--system", type=str, default=None, help="Filter by source system")
+    parser.add_argument("--target", type=str, default=None, help="Filter by target system")
     parser.add_argument("--band", choices=["high", "mid", "low"], default=None)
+    parser.add_argument("--review-only", action="store_true",
+                        help="Re-score already-annotated mappings (for flagging bad ones)")
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
 
@@ -143,7 +155,8 @@ def main() -> None:
     conn.execute("PRAGMA journal_mode = WAL")
     conn.execute("PRAGMA busy_timeout = 30000")
 
-    rows = sample_mappings(conn, args.sample, args.system, args.band)
+    rows = sample_mappings(conn, args.sample, args.system, args.target, args.band,
+                           review_only=args.review_only)
     total = len(rows)
     print(f"Processing {total} mappings with {OLLAMA_MODEL} @ {OLLAMA_BASE_URL}")
     print(f"  Filter — system: {args.sample or 'all'}, band: {args.band or 'all'}")
