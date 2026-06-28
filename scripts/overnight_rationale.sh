@@ -102,12 +102,14 @@ echo "Stream B (Mini 2):  $MINI2_MODEL @ $MINI2_URL    → AP Science + IB" | te
 echo "Stream C (IWPC):    $($IWPC_ONLINE && echo "$IWPC_MODEL @ $IWPC_URL → US state sample" || echo 'offline — Studio handles states')" | tee -a "$LOG"
 echo "Mini 2 log: $LOG_M2" | tee -a "$LOG"
 
-# Warm up all three hosts in parallel
+# Warm up all three hosts in parallel (failures are non-fatal — model still loads on first request)
 echo "" | tee -a "$LOG"
-warmup "$STUDIO_URL" "$STUDIO_MODEL" "$LOG" &
-warmup "$MINI2_URL"  "$MINI2_MODEL"  "$LOG_M2" &
-$IWPC_ONLINE && warmup "$IWPC_URL" "$IWPC_MODEL" "$LOG" &
-wait
+warmup "$STUDIO_URL" "$STUDIO_MODEL" "$LOG" & W1=$!
+warmup "$MINI2_URL"  "$MINI2_MODEL"  "$LOG_M2" & W2=$!
+if $IWPC_ONLINE; then warmup "$IWPC_URL" "$IWPC_MODEL" "$LOG" & W3=$!; else W3=""; fi
+wait $W1 || echo "[WARN] Studio warmup failed — will retry on first inference call" | tee -a "$LOG"
+wait $W2 || echo "[WARN] Mini 2 warmup failed — will retry on first inference call" | tee -a "$LOG_M2"
+[ -n "$W3" ] && { wait $W3 || echo "[WARN] IWPC warmup failed" | tee -a "$LOG"; }
 echo "" | tee -a "$LOG"
 
 # ── Streams A + B: high band (parallel) ──────────────────────────────────────
