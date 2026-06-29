@@ -50,7 +50,7 @@ LEVELS = [
         "C2", "Cycle 2 — CP, CE1, CE2 (grades 1–3)",
         "1", "1-3",
         "fr_men_maths_cycle2.pdf",
-        "https://eduscol.education.fr/document/8398/download",
+        "https://cache.media.education.gouv.fr/file/MEN_SPE_11/75/6/Programme_cycle_2_pour_B.O._1424756.pdf",
         0, 999,
     ),
     (
@@ -64,14 +64,14 @@ LEVELS = [
         "C4", "Cycle 4 — 5e, 4e, 3e (grades 7–9)",
         "7", "7-9",
         "fr_men_maths_cycle4.pdf",
-        "https://eduscol.education.fr/document/8400/download",
+        "https://pedagogie.ac-strasbourg.fr/fileadmin/pedagogie/mathematiques/College/Programmes_Documents_officiels/Maths_cycle4_BO_SPE_11_26-11-2015.pdf",
         0, 999,
     ),
     (
         "LYC", "Lycée Spécialité Mathématiques (grades 10–12)",
         "10", "10-12",
         "fr_men_maths_lycee.pdf",
-        "https://www.education.gouv.fr/sites/default/files/2019-07/programme-mathematiques-lycee-general-108944.pdf",
+        "https://cache.media.education.gouv.fr/file/SPE8_MENJ_25_7_2019/90/7/spe246_annexe_1158907.pdf",
         0, 999,
     ),
 ]
