@@ -29,6 +29,8 @@ import urllib.request
 from datetime import date
 from pathlib import Path
 
+import ssl
+
 import fitz  # PyMuPDF
 import httpx
 
@@ -44,19 +46,22 @@ LEVELS = [
         "C1", "Primer Ciclo — grades 1–3",
         "1", "1-3",
         "ar_nap_math_ciclo1.pdf",
-        "https://www.argentina.gob.ar/sites/default/files/nap_matematica_nivel_primario_primer_ciclo.pdf",
+        # Moved from argentina.gob.ar; now hosted at Biblioteca Nacional del Maestro
+        "https://www.bnm.me.gov.ar/giga1/documentos/EL000977.pdf",
     ),
     (
         "C2", "Segundo Ciclo — grades 4–6",
         "4", "4-6",
         "ar_nap_math_ciclo2.pdf",
-        "https://www.argentina.gob.ar/sites/default/files/nap_matematica_nivel_primario_segundo_ciclo.pdf",
+        # Moved from argentina.gob.ar; now hosted at Biblioteca Nacional del Maestro
+        "https://www.bnm.me.gov.ar/giga1/documentos/EL000972.pdf",
     ),
     (
         "C3", "Tercer Ciclo/ESB — grades 7–9",
         "7", "7-9",
         "ar_nap_math_ciclo3.pdf",
-        "https://www.argentina.gob.ar/sites/default/files/nap_matematica_nivel_secundario_ciclo_basico.pdf",
+        # Moved from argentina.gob.ar; now hosted at Biblioteca Nacional del Maestro
+        "https://www.bnm.me.gov.ar/giga1/documentos/EL000973.pdf",
     ),
 ]
 
@@ -122,9 +127,13 @@ def _download(url: str, path: Path) -> bool:
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
         "Accept": "application/pdf,*/*",
     }
+    # bnm.me.gov.ar has a TLS hostname mismatch (government cert covers a different subdomain)
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
     try:
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, timeout=120) as r, open(path, "wb") as f:
+        with urllib.request.urlopen(req, timeout=120, context=ctx) as r, open(path, "wb") as f:
             f.write(r.read())
         print(f"  Saved {path.stat().st_size:,} bytes")
         return True
