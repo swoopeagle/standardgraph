@@ -20,7 +20,7 @@ set -uo pipefail
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DB_PATH="${DB_PATH:-$REPO_DIR/data/common_core.db}"
 
-STUDIO_URL="${OLLAMA_BASE_URL:-http://169.254.1.1:11434}"
+STUDIO_URL="${OLLAMA_BASE_URL:-http://100.77.63.73:11434}"
 STUDIO_MODEL="qwen2.5:72b"
 
 MINI2_URL="http://localhost:11434"
