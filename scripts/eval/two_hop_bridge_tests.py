@@ -116,14 +116,14 @@ TESTS = [
     {
         "name": "in-ncert → cambridge (measurement)",
         "description": "India Gr3 standard units of length → Cambridge equivalent",
-        "kwargs": {"source_id": "IN_NCERT.MATH.3.3646", "from_system": "in-ncert", "to_system": "cambridge"},
+        "kwargs": {"source_id": "IN_NCERT.MATH.3.34775", "from_system": "in-ncert", "to_system": "cambridge"},
         "min_combined": 0.70,
         "expect_concept": "length measurement centimetres metres",
     },
     {
         "name": "in-ncert → uk-nc (addition/subtraction)",
         "description": "India Gr2 addition/subtraction → UK National Curriculum",
-        "kwargs": {"source_id": "IN_NCERT.MATH.2.60213", "from_system": "in-ncert", "to_system": "uk-nc"},
+        "kwargs": {"source_id": "IN_NCERT.MATH.2.26524", "from_system": "in-ncert", "to_system": "uk-nc"},
         "min_combined": 0.70,
         "expect_concept": "addition subtraction problems",
     },
