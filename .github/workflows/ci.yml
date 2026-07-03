@@ -1,0 +1,69 @@
+name: CI
+
+# Fast, DB-free checks that run on every push / PR:
+#   * byte-compile every Python file (syntax errors)
+#   * import-smoke the MCP server and all eval modules (none connect to a DB at
+#     import time, so this needs no 1.8 GB database)
+#   * build the publishable package
+#
+# The data-dependent eval suite (scripts/eval/run_all.py) needs the real DB and a
+# running Ollama, so it is NOT run here — run it locally against a fresh snapshot
+# (see docs/eval_baseline.md).
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Sync workspace
+        run: uv sync --all-extras --dev
+
+      - name: Byte-compile all sources
+        run: uv run python -m compileall -q packages scripts
+
+      - name: Import-smoke MCP server
+        run: |
+          uv run python -c "import sys; sys.path.insert(0, 'packages/common-core/src'); \
+            from common_core import server; \
+            print('server tools:', [t for t in ('lookup_standard','search_standards','get_progression','map_standard','list_systems') if hasattr(server, t)])"
+
+      - name: Import-smoke eval modules
+        run: |
+          uv run python - <<'PY'
+          import importlib, sys
+          sys.path.insert(0, ".")
+          mods = [
+              "coverage", "duplicates", "crosswalk_quality", "db_integrity",
+              "search_quality", "search_filter_tests", "coverage_matrix",
+              "lookup_standard_tests", "map_fallback_tests", "subject_crosswalk_tests",
+              "crosswalk_semantic_tests", "two_hop_bridge_tests",
+              "progression_coherence_tests", "adversarial_tests", "persona_tests",
+              "e2e_claude_test", "run_all",
+          ]
+          failed = []
+          for m in mods:
+              try:
+                  mod = importlib.import_module(f"scripts.eval.{m}")
+                  assert hasattr(mod, "main"), f"{m} has no main()"
+              except Exception as e:
+                  failed.append(f"{m}: {e}")
+          if failed:
+              print("IMPORT FAILURES:"); [print("  ", f) for f in failed]; sys.exit(1)
+          print(f"OK: {len(mods)} eval modules import cleanly")
+          PY
+
+      - name: Build package
+        run: cd packages/common-core && uv build --out-dir ../../dist
