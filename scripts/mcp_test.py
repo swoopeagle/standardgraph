@@ -439,6 +439,83 @@ for label, sid, from_sys, to_sys, min_conf in PRECOMPUTED_CASES:
           f"method={data.get('mapping_method','?') if data else 'error'}", warn=not precomputed_result)
     check(f"{label} — has match ≥ {min_conf}", has_any_match)
 
+    if _is_precomputed(data):
+        for m in data.get("mappings", []):
+            qs = m.get("quality_score")
+            check(f"{label} ({sid[:20]}) — quality_score is int or None",
+                  qs is None or (isinstance(qs, int) and 1 <= qs <= 5),
+                  f"got {qs!r}")
+            check(f"{label} ({sid[:20]}) — flagged is bool",
+                  isinstance(m.get("flagged"), bool),
+                  f"got {m.get('flagged')!r}")
+            break  # one mapping is enough
+
+
+# ── Quality score fields — precomputed path ──────────────────────────────────
+section("map_standard — quality_score and flagged fields")
+
+# Pick a clean (non-flagged) precomputed mapping to verify quality_score / flagged
+_clean_row = _DB.execute(
+    "SELECT source_id, source_system, target_system FROM crosswalk_mappings "
+    "WHERE flagged_for_review=0 AND confidence_score >= 0.75 "
+    "AND notes LIKE '%[LLM score%' LIMIT 1"
+).fetchone()
+
+if _clean_row:
+    _src, _fsys, _tsys = _clean_row[0], _clean_row[1], _clean_row[2]
+    _raw = map_standard(standard_id=_src, from_system=_fsys, to_system=_tsys,
+                        confidence_threshold=0.70)
+    _data = parse(_raw)
+    if _is_precomputed(_data):
+        _m = _data["mappings"][0]
+        check("quality_score is int 1–5",
+              isinstance(_m.get("quality_score"), int) and 1 <= _m["quality_score"] <= 5,
+              f"got {_m.get('quality_score')!r}")
+        check("flagged is False for non-flagged row",
+              _m.get("flagged") is False,
+              f"got {_m.get('flagged')!r}")
+    else:
+        check("quality_score test — got precomputed result", False,
+              f"method={_data.get('mapping_method','?') if _data else 'error'}", warn=True)
+else:
+    check("quality_score test — found scored non-flagged row in DB", False,
+          "no row found", warn=True)
+
+# Flagged rows are excluded by default
+_flagged_row = _DB.execute(
+    "SELECT source_id, source_system, target_system FROM crosswalk_mappings "
+    "WHERE flagged_for_review=1 AND confidence_score >= 0.70 LIMIT 1"
+).fetchone()
+
+if _flagged_row:
+    _src, _fsys, _tsys = _flagged_row[0], _flagged_row[1], _flagged_row[2]
+    # Default call — flagged rows should be excluded
+    _raw_default = map_standard(standard_id=_src, from_system=_fsys, to_system=_tsys,
+                                confidence_threshold=0.60)
+    _data_default = parse(_raw_default)
+    _default_has_flagged = (
+        _is_precomputed(_data_default) and
+        any(m.get("flagged") for m in _data_default.get("mappings", []))
+    )
+    check("include_flagged=False (default) excludes flagged rows",
+          not _default_has_flagged,
+          f"found flagged mapping in default result" if _default_has_flagged else "ok")
+
+    # include_flagged=True — flagged rows should appear
+    _raw_incl = map_standard(standard_id=_src, from_system=_fsys, to_system=_tsys,
+                             confidence_threshold=0.60, include_flagged=True)
+    _data_incl = parse(_raw_incl)
+    _incl_has_flagged = (
+        _is_precomputed(_data_incl) and
+        any(m.get("flagged") for m in _data_incl.get("mappings", []))
+    )
+    check("include_flagged=True returns flagged rows",
+          _incl_has_flagged,
+          f"no flagged mapping found" if not _incl_has_flagged else "ok")
+else:
+    check("flagged filter test — found flagged row in DB", False,
+          "no flagged row found", warn=True)
+
 
 # ── 11. US Math — rigorous ───────────────────────────────────────────────────
 section("US Math — standard counts (all 50 states + DC)")
