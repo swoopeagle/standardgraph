@@ -813,6 +813,8 @@ def map_standard(
             "target_id":            best_below["target_id"],
             "target_standard_text": best_below["target_text"],
             "confidence":           round(best_below["confidence_score"], 4),
+            "quality_score":        _parse_quality(best_below["notes"]),
+            "flagged":              bool(best_below["flagged_for_review"]),
             "below_threshold":      True,
             "threshold_used":       confidence_threshold,
         }
