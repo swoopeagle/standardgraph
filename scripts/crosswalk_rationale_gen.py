@@ -106,7 +106,7 @@ def sample_mappings(
     elif force_rewrite:
         conditions = ["cm.verified_by_human = 0"]  # rewrite existing + new
     else:
-        conditions = ["cm.notes IS NULL", "cm.verified_by_human = 0"]
+        conditions = ["(cm.notes IS NULL OR cm.notes LIKE 'nlp_pass cosine%')", "cm.verified_by_human = 0"]
     params: list = []
 
     if system:
