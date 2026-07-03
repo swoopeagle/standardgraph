@@ -20,8 +20,10 @@ from shared.config import DB_PATH
 
 # Only generate mappings above this cosine similarity threshold
 DEFAULT_THRESHOLD = 0.70
-# How many CCSS candidates to store per state standard
+# How many hub candidates to store per source standard
 DEFAULT_TOP_N = 1
+# Skip mappings where abs(grade_delta) exceeds this (e.g. K↔HS is delta=9, too noisy)
+DEFAULT_GRADE_DELTA_MAX = 5
 
 
 def _load_embeddings(conn: sqlite3.Connection, system: str) -> tuple[np.ndarray, list[str]]:
@@ -75,10 +77,15 @@ def generate_crosswalk(
     conn: sqlite3.Connection,
     threshold: float = DEFAULT_THRESHOLD,
     top_n: int = DEFAULT_TOP_N,
+    grade_delta_max: int = DEFAULT_GRADE_DELTA_MAX,
 ) -> int:
     """
     Map all standards from source_system to its hub (CCSS for math, NGSS for science)
     via cosine similarity. Returns number of mappings inserted.
+
+    grade_delta_max: skip candidate pairs where abs(grade_delta) > this value.
+    Filters out systematically bad matches (e.g. K-level source → HS hub) that
+    pass the cosine threshold due to generic vocabulary overlap.
     """
     hub_system = _hub_for_system(source_system, conn)
     src_matrix, src_ids = _load_embeddings(conn, source_system)
@@ -121,6 +128,8 @@ def generate_crosswalk(
                 break
             tgt_id = hub_ids[j]
             delta  = _grade_delta(src_grades.get(src_id, ""), hub_grades.get(tgt_id, ""))
+            if abs(delta) > grade_delta_max:
+                continue
             mappings.append((
                 src_id,
                 source_system,
@@ -151,7 +160,10 @@ def main() -> None:
     parser.add_argument("--system", default=None, help="Single system to map (default: all non-CCSS)")
     parser.add_argument("--threshold", type=float, default=DEFAULT_THRESHOLD)
     parser.add_argument("--top", type=int, default=DEFAULT_TOP_N, dest="top_n",
-                        help="Top-N CCSS matches per standard (default: 1)")
+                        help="Top-N hub matches per standard (default: 1)")
+    parser.add_argument("--grade-delta-max", type=int, default=DEFAULT_GRADE_DELTA_MAX,
+                        dest="grade_delta_max",
+                        help="Max abs(grade_delta) before skipping a candidate (default: 5)")
     args = parser.parse_args()
 
     conn = sqlite3.connect(DB_PATH)
@@ -167,10 +179,12 @@ def main() -> None:
             ).fetchall()
         ]
 
-    print(f"Generating NLP crosswalk for {len(systems)} systems (threshold={args.threshold}, top={args.top_n})...")
+    print(f"Generating NLP crosswalk for {len(systems)} systems "
+          f"(threshold={args.threshold}, top={args.top_n}, grade_delta_max={args.grade_delta_max})...")
     total = 0
     for system in systems:
-        n = generate_crosswalk(system, conn, threshold=args.threshold, top_n=args.top_n)
+        n = generate_crosswalk(system, conn, threshold=args.threshold,
+                               top_n=args.top_n, grade_delta_max=args.grade_delta_max)
         total += n
         if n:
             print(f"  {system}: {n} mappings")

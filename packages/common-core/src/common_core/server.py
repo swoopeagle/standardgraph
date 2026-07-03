@@ -149,6 +149,16 @@ _AP_META       = {"country": "United States", "country_code": "US", "region": "N
 _US_STATE_SUFFIXES = {"-sci", "-ela", "-ss", "-cs"}
 
 
+_SCORE_RE = re.compile(r"\[LLM score (\d)/5\]")
+
+
+def _parse_quality(notes: str | None) -> int | None:
+    if not notes:
+        return None
+    m = _SCORE_RE.search(notes)
+    return int(m.group(1)) if m else None
+
+
 def _meta(system: str) -> dict:
     if system in SYSTEM_META:
         return SYSTEM_META[system]
@@ -607,6 +617,7 @@ def map_standard(
     from_system: str,
     to_system: str,
     confidence_threshold: float = 0.7,
+    include_flagged: bool = False,
 ) -> str:
     """Find the closest equivalent to a standard in a different curriculum system.
 
@@ -624,8 +635,11 @@ def map_standard(
     from_system: system code of the source standard (e.g. 'tx', 'ca-on', 'sg-moe').
     to_system: target system code (any indexed system).
     confidence_threshold: minimum cosine similarity for primary results (default 0.7).
+    include_flagged: if True, include mappings flagged for review (LLM quality score 1-2).
+      Default False returns only verified-quality mappings.
 
-    Returns matched standards with confidence score, grade alignment, and mapping method.
+    Returns matched standards with confidence score, grade alignment, quality_score (1-5),
+    flagged status, and mapping method.
     """
     sid = _expand_id(standard_id, from_system)
     conn = _db()
@@ -638,40 +652,46 @@ def map_standard(
     src_dict = dict(src)
 
     # ── 1. Precomputed crosswalk above threshold ───────────────────────────────
+    flagged_clause = "" if include_flagged else "AND cm.flagged_for_review = 0"
     mappings = conn.execute(
-        """SELECT cm.*, s.standard_text AS target_text, s.grade AS target_grade,
+        f"""SELECT cm.*, s.standard_text AS target_text, s.grade AS target_grade,
                   s.domain AS target_domain
            FROM crosswalk_mappings cm
            JOIN standards s ON s.id = cm.target_id
            WHERE cm.source_id = ?
              AND cm.target_system = ?
              AND cm.confidence_score >= ?
+             {flagged_clause}
            ORDER BY cm.confidence_score DESC""",
         (sid, to_system, confidence_threshold),
     ).fetchall()
 
     if mappings:
         conn.close()
+        result_list = [
+            {
+                "target_id":            m["target_id"],
+                "target_standard_text": m["target_text"],
+                "relationship":         m["relationship"],
+                "confidence":           m["confidence_score"],
+                "quality_score":        _parse_quality(m["notes"]),
+                "flagged":              bool(m["flagged_for_review"]),
+                "grade_delta":          m["grade_delta"],
+                "grade_alignment":      "exact" if m["grade_delta"] == 0 else (
+                    f"{abs(m['grade_delta'])} year{'s' if abs(m['grade_delta']) > 1 else ''} "
+                    f"{'later' if m['grade_delta'] > 0 else 'earlier'} in target"
+                ),
+                "verified_by_human":    bool(m["verified_by_human"]),
+                "notes":                m["notes"],
+            }
+            for m in mappings
+        ]
+        result_list.sort(key=lambda x: (x["quality_score"] or 0, x["confidence"]), reverse=True)
         return json.dumps({
             "source_id":         src_dict["id"],
             "target_curriculum": to_system,
             "mapping_method":    "precomputed_crosswalk",
-            "mappings": [
-                {
-                    "target_id":            m["target_id"],
-                    "target_standard_text": m["target_text"],
-                    "relationship":         m["relationship"],
-                    "confidence":           m["confidence_score"],
-                    "grade_delta":          m["grade_delta"],
-                    "grade_alignment":      "exact" if m["grade_delta"] == 0 else (
-                        f"{abs(m['grade_delta'])} year{'s' if abs(m['grade_delta']) > 1 else ''} "
-                        f"{'later' if m['grade_delta'] > 0 else 'earlier'} in target"
-                    ),
-                    "verified_by_human":    bool(m["verified_by_human"]),
-                    "notes":                m["notes"],
-                }
-                for m in mappings
-            ],
+            "mappings":          result_list,
         }, indent=2)
 
     # ── 2. Best precomputed result below threshold ─────────────────────────────
@@ -793,6 +813,8 @@ def map_standard(
             "target_id":            best_below["target_id"],
             "target_standard_text": best_below["target_text"],
             "confidence":           round(best_below["confidence_score"], 4),
+            "quality_score":        _parse_quality(best_below["notes"]),
+            "flagged":              bool(best_below["flagged_for_review"]),
             "below_threshold":      True,
             "threshold_used":       confidence_threshold,
         }
