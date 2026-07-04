@@ -80,6 +80,26 @@ def main() -> int:
         "UPDATE crosswalk_mappings SET notes = ?, updated_at = datetime('now') WHERE id = ?",
         [(NOTE_NORM if i in norm_ids else NOTE, i) for i in ids],
     )
+
+    # Correct byte-identical rows an LLM mis-scored ≤2: identical text is a
+    # definitional 5/5 equivalence, so a low score + flag is a model error. Reset
+    # them to exact-match 5/5 and clear the false flag.
+    mislabeled = conn.execute(
+        """SELECT cm.id FROM crosswalk_mappings cm
+           JOIN standards s ON s.id = cm.source_id
+           JOIN standards t ON t.id = cm.target_id
+           WHERE s.standard_text = t.standard_text
+             AND cm.notes LIKE '[LLM score %'
+             AND CAST(substr(cm.notes, 12, 1) AS INT) <= 2"""
+    ).fetchall()
+    mislabeled_ids = [r[0] for r in mislabeled]
+    if mislabeled_ids:
+        conn.executemany(
+            "UPDATE crosswalk_mappings SET notes = ?, flagged_for_review = 0, "
+            "updated_at = datetime('now') WHERE id = ?",
+            [(NOTE, i) for i in mislabeled_ids],
+        )
+        print(f"Corrected {len(mislabeled_ids):,} identical-text rows mis-scored ≤2 → exact-match 5/5 (unflagged).")
     conn.commit()
     scored_after = conn.execute(
         "SELECT COUNT(*) FROM crosswalk_mappings WHERE notes LIKE '%LLM score%' OR notes LIKE '%exact-match%'"
