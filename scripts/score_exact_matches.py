@@ -20,16 +20,24 @@ from pathlib import Path
 
 DB_PATH = Path(os.environ.get("DB_PATH", Path.home() / ".standardgraph" / "common_core.db")).expanduser()
 
-NOTE = "[exact-match 5/5] Source and target standard text are identical."
+NOTE      = "[exact-match 5/5] Source and target standard text are identical."
+NOTE_NORM = "[exact-match 5/5] Source and target text are identical apart from whitespace/case."
 
-# Rows to score: unscored (nlp_pass) crosswalks whose source/target text match exactly.
-SELECT_SQL = """
-    SELECT cm.id, cm.grade_delta
+# A whitespace/case-insensitive normalization: same words, same order → same standard.
+def _norm(col: str) -> str:
+    return (f"lower(trim(replace(replace(replace({col},char(10),' '),char(9),' '),'  ',' ')))")
+
+# Rows to score: unscored (nlp_pass) crosswalks whose source/target text match exactly,
+# or match after whitespace/case normalization (still a definitional equivalence).
+SELECT_SQL = f"""
+    SELECT cm.id, cm.grade_delta,
+           CASE WHEN s.standard_text = t.standard_text THEN 0 ELSE 1 END AS normalized
     FROM crosswalk_mappings cm
     JOIN standards s ON cm.source_id = s.id
     JOIN standards t ON cm.target_id = t.id
     WHERE cm.notes LIKE 'nlp_pass%'
-      AND s.standard_text = t.standard_text
+      AND (s.standard_text = t.standard_text
+           OR {_norm('s.standard_text')} = {_norm('t.standard_text')})
 """
 
 
@@ -47,11 +55,13 @@ def main() -> int:
     conn = sqlite3.connect(DB_PATH)
     rows = conn.execute(SELECT_SQL).fetchall()
     ids = [r[0] for r in rows]
+    norm_ids = {r[0] for r in rows if r[2] == 1}
     gd_gt1 = sum(1 for r in rows if abs(r[1]) > 1)
 
     print(f"DB: {DB_PATH}")
     print(f"Exact-match unscored rows found: {len(ids):,}  "
-          f"(grade_delta ≤1: {len(ids) - gd_gt1:,}, >1: {gd_gt1:,})")
+          f"(byte-identical: {len(ids) - len(norm_ids):,}, whitespace/case-only: {len(norm_ids):,}; "
+          f"grade_delta ≤1: {len(ids) - gd_gt1:,}, >1: {gd_gt1:,})")
 
     scored_before = conn.execute(
         "SELECT COUNT(*) FROM crosswalk_mappings WHERE notes LIKE '%LLM score%' OR notes LIKE '%exact-match%'"
@@ -68,7 +78,7 @@ def main() -> int:
     # --apply
     conn.executemany(
         "UPDATE crosswalk_mappings SET notes = ?, updated_at = datetime('now') WHERE id = ?",
-        [(NOTE, i) for i in ids],
+        [(NOTE_NORM if i in norm_ids else NOTE, i) for i in ids],
     )
     conn.commit()
     scored_after = conn.execute(

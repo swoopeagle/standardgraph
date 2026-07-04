@@ -689,7 +689,14 @@ def map_standard(
             }
             for m in mappings
         ]
-        result_list.sort(key=lambda x: (x["quality_score"] or 0, x["confidence"]), reverse=True)
+        # Rank by quality then confidence. Unscored rows (quality_score is None) are
+        # of *unknown* quality, not zero quality — treat them as a neutral midpoint so
+        # a high-cosine unscored match isn't buried beneath a mediocre scored one.
+        # (Score-1/2 rows are already filtered out by default via flagged_clause.)
+        result_list.sort(
+            key=lambda x: (x["quality_score"] if x["quality_score"] is not None else 3, x["confidence"]),
+            reverse=True,
+        )
         return json.dumps({
             "source_id":         src_dict["id"],
             "target_curriculum": to_system,
