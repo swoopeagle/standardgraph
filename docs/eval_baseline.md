@@ -1,3 +1,29 @@
+# Eval baseline — 2026-07-04 (current publish candidate)
+
+Run: `uv run python scripts/eval/run_all.py --tier structural` against the promoted
+installed DB (Mini 2 lineage + in-session scoring): **157,101 standards / 298 systems
+/ 103,751 crosswalks / 68,171 scored (65.7%) / 5,153 flagged**. All AP/IB source
+crosswalks are now LLM-scored. `mcp_test.py`: 312 pass, 0 fail, 0 warn.
+
+**Structural: 2/4 pass — both fails are known and client-safe:**
+- **DB integrity ❌** — 71 standards with text <5 chars. These are ingestion
+  artifacts: glossary/vocabulary terms and acronyms captured as standards
+  (`[MAX]`, `[SUM]`, `[Bias]`, `[NASA]`, `[9/11]`, `[MRSA]`), concentrated in
+  ut-ela/ut-cs/tn-ss. Only 1 crosswalk among all 71, so no crosswalk pollution;
+  they can pollute `search_standards`. Candidate for a one-off DELETE.
+- **Crosswalk quality ❌** — the structural counter flags 489 ELA + 138 SS
+  crosswalks routed to the `ccss` (math) hub. The genuinely-wrong ones (ELA
+  vocabulary → math word problems) are already **scored 1/5 and flagged**
+  (ELA 482/489, SS 108/138), so they are hidden from `map_standard` by default.
+  The ~37 unflagged residual are legitimate interdisciplinary links (geography
+  lat/long → coordinate graphing, SS statistics → math statistics, early-ELA
+  sorting → math classification) that the LLM scorer correctly kept. So the
+  client-facing surface is clean; the eval counter is simply flag-unaware.
+
+Older baseline (Mini 3 lineage) preserved below for reference.
+
+---
+
 # Eval baseline — 2026-06-30
 
 Run: `uv run python scripts/eval/run_all.py --tier default` (structural + semantic,
