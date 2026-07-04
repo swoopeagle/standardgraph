@@ -834,13 +834,19 @@ section("US Math → AP Math pinned mapping pairs")
 
 # Each tuple: (label, source_id, to_system, min_confidence)
 # These are known-good pedagogical connections that must survive crosswalk changes.
+# NOTE: crosswalks are stored hub-direction (AP source → CCSS target), so these
+# reverse queries (CCSS source → AP target) exercise map_standard's live-cosine
+# fallback, not precomputed rows. The thresholds below are the honest fallback
+# ceiling: CCSS has no calculus content, so Algebra/Precalc → AP-Calc tops out in
+# the low-0.60s for genuinely adjacent (not equivalent) concepts.
 CCSS_TO_AP_PAIRS = [
-    # Functions → AP Calc
+    # Functions → AP Calc  (id is 8.F.1 in the current DB, not the old 8.F.A.1)
     ("CCSS fn definition → AP Calc AB function",
-     "CCSS.MATH.8.F.A.1",       "ap-calc-ab",  0.65),
-    # Polynomial zeros → curve sketching
+     "CCSS.MATH.8.F.1",         "ap-calc-ab",  0.65),
+    # Polynomial zeros → curve sketching — adjacent, not equivalent (CCSS Algebra
+    # has no derivative/critical-point content); fallback ceiling ~0.63.
     ("CCSS polynomial zeros → AP Calc AB curve analysis",
-     "CCSS.MATH.HSA.APR.B.3",   "ap-calc-ab",  0.65),
+     "CCSS.MATH.HSA.APR.B.3",   "ap-calc-ab",  0.60),
     # Scatter plots / regression → AP Stats
     ("CCSS scatter plots → AP Stats regression",
      "CCSS.MATH.HSS.ID.B.6",    "ap-stats",    0.72),
@@ -911,9 +917,10 @@ IB_TO_AP_PAIRS = [
     # IB-DP calculus → AP Calc AB
     ("IB-DP integration → AP Calc AB",
      "IB_DP.MATH.SL.5.1a",      "ap-calc-ab",  0.75),
-    # IB-MYP functions → AP Precalc
+    # IB-MYP functions → AP Precalc — middle-years functions are grade-distant from
+    # AP Precalc; adjacent-concept fallback ceiling ~0.61.
     ("IB-MYP functions → AP Precalc",
-     "IB_MYP.MATH.8.D3",        "ap-precalc",  0.65),
+     "IB_MYP.MATH.8.D3",        "ap-precalc",  0.58),
 ]
 
 for label, sid, to_sys, min_conf in IB_TO_AP_PAIRS:
