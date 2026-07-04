@@ -1,8 +1,8 @@
 # standardgraph
 
-**20,000+ math standards across 75+ curriculum systems, accessible as a Claude MCP server.**
+**157,000+ education standards across 298 curriculum systems, accessible as a Claude MCP server.**
 
-Covers the US (CCSS + all 50 states), Canada, Australia, UK, Singapore, Japan, New Zealand, Ireland, Hong Kong, India, Ghana, South Africa, Rwanda, Cambridge International, IB MYP/DP, and more — all cross-referenced to CCSS via NLP semantic similarity.
+Covers seven subjects — Mathematics, Science, ELA, Social Studies, Computer Science, Arts, and World Languages — across the US (CCSS + all 50 states), Canada, Australia, UK, Singapore, Japan, New Zealand, Ireland, Hong Kong, India, Ghana, South Africa, Rwanda, Cambridge International, IB MYP/DP, AP, and more. Standards are cross-referenced to subject hubs (CCSS for math, NGSS for science, etc.) via semantic similarity, with LLM quality scores on the strongest mappings.
 
 ## Install (macOS)
 

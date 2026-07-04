@@ -149,7 +149,10 @@ _AP_META       = {"country": "United States", "country_code": "US", "region": "N
 _US_STATE_SUFFIXES = {"-sci", "-ela", "-ss", "-cs"}
 
 
-_SCORE_RE = re.compile(r"\[LLM score (\d)/5\]")
+# Quality scores come from two sources: LLM rubric scoring ("[LLM score N/5]") and
+# deterministic exact-match scoring ("[exact-match N/5]", assigned when source and
+# target standard text are byte-identical). Both are surfaced as quality_score.
+_SCORE_RE = re.compile(r"\[(?:LLM score|exact-match) (\d)/5\]")
 
 
 def _parse_quality(notes: str | None) -> int | None:
