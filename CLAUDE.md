@@ -30,7 +30,7 @@ scripts/
 - **DB size:** ~1.8 GB
 - **Standards:** 157,101 across 298 systems
 - **Crosswalk rows:** ~103,751 (hub-centric: CCSS for math, NGSS for science, etc.)
-- **Crosswalk quality scores:** ~67,324 rows (~64.9%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality). ~5,028 flagged for review (score 1–2, hidden by default in `map_standard`).
+- **Crosswalk quality scores:** ~68,171 rows (~65.7%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); all AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality). ~5,153 flagged for review (score 1–2, hidden by default in `map_standard`).
 - **Relationships:** ~3.79M rows (prerequisites/successors)
 - **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge from Mini 2 — 0.4ms RTT)
 - **HuggingFace dataset:** `swoopeagle/standardgraph` (file: `common_core.db`)
