@@ -1922,7 +1922,7 @@ wheels = [
 
 [[package]]
 name = "standardgraph"
-version = "1.1.2"
+version = "1.2.1"
 source = { editable = "packages/common-core" }
 dependencies = [
     { name = "fastmcp" },

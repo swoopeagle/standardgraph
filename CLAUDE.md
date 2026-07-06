@@ -2,7 +2,7 @@
 
 ## What this is
 
-FastMCP server exposing 157,000+ education standards across 298 curriculum systems as five MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
+FastMCP server exposing 158,000+ education standards across 300 curriculum systems as five MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
 
 ## Architecture
 
@@ -19,7 +19,7 @@ data/common_core.db          → dev/pipeline DB (used by overnight_run.sh)
 ~/.standardgraph/common_core.db  → installed user DB (used by MCP server)
 
 scripts/
-  mcp_test.py        → 272-test suite (imports server directly, no MCP protocol)
+  mcp_test.py        → 309-test suite (imports server directly, no MCP protocol)
   overnight_run.sh   → full ingestion pipeline (run on Mac Studio overnight)
   dashboard.sh       → hardware + pipeline progress dashboard
   progress.sh        → pipeline-only progress view
@@ -28,9 +28,9 @@ scripts/
 ## Key facts
 
 - **DB size:** ~1.8 GB
-- **Standards:** 157,030 across 298 systems
-- **Crosswalk rows:** ~103,750 (hub-centric: CCSS for math, NGSS for science, etc.)
-- **Crosswalk quality scores:** ~68,194 rows (~65.7%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); all AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality). ~5,153 flagged for review (score 1–2, hidden by default in `map_standard`).
+- **Standards:** 158,718 across 300 systems
+- **Crosswalk rows:** ~96,961 (hub-centric: CCSS for math, NGSS for science, etc.)
+- **Crosswalk quality scores:** ~76,878 rows (~79.3%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); all AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality).
 - **Relationships:** ~3.79M rows (prerequisites/successors)
 - **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge from Mini 2 — 0.4ms RTT)
 - **HuggingFace dataset:** `swoopeagle/standardgraph` (file: `common_core.db`)
@@ -43,7 +43,7 @@ scripts/
 | MacBook Pro | — | — | 100.118.151.10 | `ianwang` | dev machine |
 | Mac Studio | M1 Max | 64 GB | 100.77.63.73 | `ianwangm1max` | Ollama host only (no repo) |
 | Mac mini 2 | M4 Pro | 24 GB | 100.101.100.96 | `devos` | pipeline runner, MCP server |
-| Mac mini 3 | M4 | 16 GB | 100.123.114.101 | `devos` | pipeline runner, MCP server |
+| Mac mini 3 | M4 | 16 GB | 100.81.61.57 | `devos` | pipeline runner, MCP server (Tailscale down — use LAN 192.168.12.222) |
 | IWPC | RTX 3060 | 12 GB VRAM / 32 GB RAM | 100.70.170.62 | — | Ollama host (Windows, CUDA) — embed + extraction + low-band rationale |
 
 Model roster per device (do not exceed safe limits):
