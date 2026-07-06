@@ -28,6 +28,7 @@ Repository = "https://github.com/swoopeagle/standardgraph"
 
 [project.scripts]
 standardgraph = "common_core.server:main"
+standardgraph-serve = "common_core.server:serve_http"
 
 [build-system]
 requires = ["setuptools>=61"]

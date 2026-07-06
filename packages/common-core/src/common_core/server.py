@@ -966,5 +966,27 @@ def main() -> None:
     mcp.run()
 
 
+def serve_http() -> None:
+    """Run the server over streamable-HTTP for remote/hosted deployments.
+
+    Reads SG_HTTP_HOST / SG_HTTP_PORT (defaults 0.0.0.0:8010). Intended to sit
+    behind a TLS-terminating tunnel (Cloudflare Tunnel / Tailscale Funnel), so
+    Host/Origin are wildcarded to let the proxied hostname through FastMCP's
+    DNS-rebinding guard. Only expose read-only, non-secret data this way.
+    """
+    import os
+
+    host = os.getenv("SG_HTTP_HOST", "0.0.0.0")
+    port = int(os.getenv("SG_HTTP_PORT", "8010"))
+    print(f"StandardGraph HTTP MCP → http://{host}:{port}/mcp  (DB={DB_PATH})")
+    mcp.run(
+        transport="http",
+        host=host,
+        port=port,
+        allowed_hosts=["*"],
+        allowed_origins=["*"],
+    )
+
+
 if __name__ == "__main__":
     main()
