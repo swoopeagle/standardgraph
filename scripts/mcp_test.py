@@ -308,6 +308,35 @@ for label, sid, from_sys, to_sys, expect_mapping in MAP_CASES:
               f"{top.get('confidence') or top.get('combined_confidence') or top.get('semantic_similarity','?')}")
 
 
+# ── 6b. ID-drift tolerance regression (cluster-letter + case) ─────────────────
+# Both bugs surfaced 2026-07-06: map_standard 404'd on the canonical cluster-letter
+# form (CCSS.MATH.6.RP.A.3), and lowercase IDs failed in both tools. Resolution
+# now pins every variant to the canonical stored ID via _resolve_id.
+section("ID-drift tolerance (cluster-letter + case)")
+
+_CANON = "CCSS.MATH.6.RP.3"
+for label, variant in [
+    ("cluster-letter full", "CCSS.MATH.6.RP.A.3"),
+    ("cluster-letter short", "6.RP.A.3"),
+    ("lowercase",            "ccss.math.6.rp.a.3"),
+]:
+    d = parse(lookup_standard(standard_id=variant, system="ccss"))
+    resolved = isinstance(d, dict) and "error" not in d and d.get("id") == _CANON
+    check(f"lookup {label} → {_CANON}", resolved,
+          f"got {d.get('id', d.get('error')) if isinstance(d, dict) else d}")
+    # The cluster-letter form must still surface the 4 sub-standards, which are
+    # keyed off the canonical parent id — the latent bug this fix also closed.
+    if resolved and "A" in variant.upper():
+        check(f"lookup {label} — sub-standards populated",
+              len(d.get("sub_standards", [])) == 4,
+              f"got {len(d.get('sub_standards', []))}")
+
+    m = parse(map_standard(standard_id=variant, from_system="ccss", to_system="sg-moe"))
+    map_ok = isinstance(m, dict) and "error" not in m
+    check(f"map {label} — resolves (no 404)", map_ok,
+          f"got {m.get('error', 'ok') if isinstance(m, dict) else m}")
+
+
 import sqlite3 as _sqlite3
 _DB = _sqlite3.connect(os.environ["DB_PATH"])
 _DB.row_factory = _sqlite3.Row

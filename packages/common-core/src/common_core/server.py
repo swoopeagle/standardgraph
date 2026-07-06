@@ -223,7 +223,34 @@ _CLUSTER_LETTER = re.compile(r"\.[A-Z](?=\.\d)")
 
 
 def _loose_id(sid: str) -> str:
-    return _CLUSTER_LETTER.sub("", sid)
+    # Upper-case so the compare is case-insensitive and lowercase cluster
+    # letters ('6.rp.a.3') still match the [A-Z] cluster pattern.
+    return _CLUSTER_LETTER.sub("", sid.upper())
+
+
+def _resolve_id(conn: sqlite3.Connection, sid: str, system: str) -> str | None:
+    """Return the canonical stored ID matching sid, or None.
+
+    Tries, in order: exact match, case-insensitive exact match, then a
+    cluster-letter-tolerant loose match (so '6.RP.A.3' finds a stored
+    '6.RP.3' and vice versa, regardless of case). Shared by lookup_standard
+    and map_standard so both tolerate the same ID drift.
+    """
+    row = conn.execute("SELECT id FROM standards WHERE id = ?", (sid,)).fetchone()
+    if row:
+        return row[0]
+    row = conn.execute(
+        "SELECT id FROM standards WHERE id = ? COLLATE NOCASE", (sid,)
+    ).fetchone()
+    if row:
+        return row[0]
+    target = _loose_id(sid)
+    return next(
+        (cid for (cid,) in conn.execute(
+            "SELECT id FROM standards WHERE system = ?", (system,))
+         if _loose_id(cid) == target),
+        None,
+    )
 
 
 # ── Embedding ─────────────────────────────────────────────────────────────────
@@ -385,19 +412,17 @@ def lookup_standard(
     sid = _expand_id(standard_id, system)
     conn = _db()
 
-    row = conn.execute("SELECT * FROM standards WHERE id = ?", (sid,)).fetchone()
-    if not row:
-        # Tolerate cluster-letter drift: match ignoring the single-letter cluster
-        # segment, so '6.RP.A.3' finds a stored '6.RP.3' (and vice versa).
-        target = _loose_id(sid)
-        match_id = next(
-            (cid for (cid,) in conn.execute(
-                "SELECT id FROM standards WHERE system=?", (system,))
-             if _loose_id(cid) == target),
-            None,
-        )
-        if match_id:
-            row = conn.execute("SELECT * FROM standards WHERE id = ?", (match_id,)).fetchone()
+    # Resolve to the canonical stored ID (tolerating cluster-letter/case drift),
+    # then use it for every downstream lookup so sub-standards, prerequisites and
+    # successors are keyed off the real ID rather than the drifted input.
+    canonical = _resolve_id(conn, sid, system)
+    row = (
+        conn.execute("SELECT * FROM standards WHERE id = ?", (canonical,)).fetchone()
+        if canonical
+        else None
+    )
+    if row:
+        sid = canonical
     if not row:
         # Suggest nearby IDs
         suggestions = [
@@ -670,11 +695,19 @@ def map_standard(
     sid = _expand_id(standard_id, from_system)
     conn = _db()
 
-    src = conn.execute("SELECT * FROM standards WHERE id=?", (sid,)).fetchone()
+    # Same cluster-letter/case tolerance as lookup_standard, then pin sid to the
+    # canonical ID so the crosswalk/embedding queries below hit the stored rows.
+    canonical = _resolve_id(conn, sid, from_system)
+    src = (
+        conn.execute("SELECT * FROM standards WHERE id=?", (canonical,)).fetchone()
+        if canonical
+        else None
+    )
     if not src:
         conn.close()
         return json.dumps({"error": "standard_not_found", "queried_id": sid})
 
+    sid = canonical
     src_dict = dict(src)
 
     # ── 1. Precomputed crosswalk above threshold ───────────────────────────────
