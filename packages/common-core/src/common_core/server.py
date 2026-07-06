@@ -215,6 +215,50 @@ def _grade_key(g: str) -> int:
         return 99
 
 
+# Separator between the two ends of a grade range ('3-6', '3–6', '6 to 8').
+_RANGE_SEP = re.compile(r"\s*(?:-|–|—|\.\.|to|through)\s*", re.I)
+
+
+def _coerce_grade(v) -> str | None:
+    """Map an int/str grade to a canonical GRADE_ORDER code, else None.
+
+    Accepts ints, numeric strings ('5', '5.0'), grade codes ('K', 'HS',
+    case-insensitive) and high-school year numbers (9–12 → 'HS').
+    """
+    if v is None:
+        return None
+    s = str(v).strip().upper()
+    s = re.sub(r"^(?:GRADES?|GR)\.?\s*", "", s)  # 'Grade 3' / 'Gr. 3' → '3'
+    if s in GRADE_ORDER:
+        return s
+    if s in ("K", "KG", "KINDERGARTEN"):
+        return "K"
+    if s in ("HS", "HIGH SCHOOL"):
+        return "HS"
+    try:
+        n = int(float(s))
+    except (ValueError, TypeError):
+        return None
+    if str(n) in GRADE_ORDER:
+        return str(n)
+    return "HS" if n >= 9 else "K" if n < 0 else None
+
+
+def _norm_grade_bounds(grade_start, grade_end) -> tuple[str | None, str | None]:
+    """Coerce loose grade_start/grade_end args into canonical grade-code bounds.
+
+    Tolerates a range string passed in either slot — LLM callers frequently send
+    grade_start='3-6' despite the integer signature, which previously slipped past
+    _grade_key as 99 and silently filtered out every grade. Split it into two ends.
+    """
+    for val in (grade_start, grade_end):
+        if isinstance(val, str) and _RANGE_SEP.search(val.strip()):
+            parts = _RANGE_SEP.split(val.strip(), maxsplit=1)
+            if len(parts) == 2 and parts[0] and parts[1]:
+                return _coerce_grade(parts[0]), _coerce_grade(parts[1])
+    return _coerce_grade(grade_start), _coerce_grade(grade_end)
+
+
 # A single-letter CCSS cluster segment sitting directly before the final numeric
 # ordinal (e.g. the 'A' in '6.RP.A.3'). The DB is inconsistent about retaining it
 # — most IDs keep it ('5.NF.A.2') but some dropped it on ingest ('6.RP.3') — so
@@ -233,24 +277,38 @@ def _resolve_id(conn: sqlite3.Connection, sid: str, system: str) -> str | None:
 
     Tries, in order: exact match, case-insensitive exact match, then a
     cluster-letter-tolerant loose match (so '6.RP.A.3' finds a stored
-    '6.RP.3' and vice versa, regardless of case). Shared by lookup_standard
-    and map_standard so both tolerate the same ID drift.
+    '6.RP.3' and vice versa, regardless of case). Each tier is retried with
+    trailing punctuation stripped ('6.RP.A.3.' pasted from prose) — but the
+    raw ID is always tried first, so IDs that legitimately end in punctuation
+    (e.g. Alberta 'CA-AB.MATH.K.MAT.5.1.3.a.') still match exactly. Shared by
+    lookup_standard and map_standard so both tolerate the same ID drift.
     """
-    row = conn.execute("SELECT id FROM standards WHERE id = ?", (sid,)).fetchone()
-    if row:
-        return row[0]
-    row = conn.execute(
-        "SELECT id FROM standards WHERE id = ? COLLATE NOCASE", (sid,)
-    ).fetchone()
-    if row:
-        return row[0]
-    target = _loose_id(sid)
-    return next(
-        (cid for (cid,) in conn.execute(
-            "SELECT id FROM standards WHERE system = ?", (system,))
-         if _loose_id(cid) == target),
-        None,
-    )
+    candidates = [sid]
+    stripped = sid.rstrip(" .,;:")
+    if stripped and stripped != sid:
+        candidates.append(stripped)
+
+    for cand in candidates:
+        row = conn.execute("SELECT id FROM standards WHERE id = ?", (cand,)).fetchone()
+        if row:
+            return row[0]
+        row = conn.execute(
+            "SELECT id FROM standards WHERE id = ? COLLATE NOCASE", (cand,)
+        ).fetchone()
+        if row:
+            return row[0]
+
+    for cand in candidates:
+        target = _loose_id(cand)
+        match = next(
+            (cid for (cid,) in conn.execute(
+                "SELECT id FROM standards WHERE system = ?", (system,))
+             if _loose_id(cid) == target),
+            None,
+        )
+        if match:
+            return match
+    return None
 
 
 # ── Embedding ─────────────────────────────────────────────────────────────────
@@ -566,8 +624,8 @@ def _parse_grade_filter(grade: str | list) -> set[str]:
 def get_progression(
     concept: str,
     system: str = "ccss",
-    grade_start: int | None = None,
-    grade_end: int | None = None,
+    grade_start: int | str | None = None,
+    grade_end: int | str | None = None,
 ) -> str:
     """Show how a math concept is introduced and built upon across grade levels.
 
@@ -577,11 +635,13 @@ def get_progression(
     concept: plain English name of the math concept (e.g. 'fractions', 'linear equations',
              'place value', 'geometric transformations').
     system: curriculum to trace (default 'ccss'). Try 'cambridge' or 'ib-myp' for comparison.
-    grade_start / grade_end: optional integer bounds to narrow the range (e.g. 3 and 8).
+    grade_start / grade_end: optional bounds to narrow the range (e.g. 3 and 8). Accepts
+             ints, grade codes ('K', 'HS'), or a single range string like '3-6' / '6 to 8'.
 
     Returns the top matching standards per grade, ordered K through HS, showing how the
     concept deepens over time.
     """
+    g_start, g_end = _norm_grade_bounds(grade_start, grade_end)
     try:
         query_vec = _embed_query(concept)
     except Exception:
@@ -598,8 +658,8 @@ def get_progression(
                 continue
             by_grade.setdefault(g, []).append({"id": r["id"], "text": r["standard_text"]})
 
-        gr_start = str(grade_start) if grade_start is not None else "K"
-        gr_end   = str(grade_end)   if grade_end   is not None else "HS"
+        gr_start = g_start or "K"
+        gr_end   = g_end   or "HS"
 
         return json.dumps({
             "concept":       concept,
@@ -628,9 +688,9 @@ def get_progression(
         std = dict(row)
         g = std["grade"]
 
-        if grade_start is not None and _grade_key(g) < _grade_key(str(grade_start)):
+        if g_start is not None and _grade_key(g) < _grade_key(g_start):
             continue
-        if grade_end is not None and _grade_key(g) > _grade_key(str(grade_end)):
+        if g_end is not None and _grade_key(g) > _grade_key(g_end):
             continue
 
         by_grade.setdefault(g, []).append({
@@ -641,8 +701,8 @@ def get_progression(
 
     conn.close()
 
-    gr_start = str(grade_start) if grade_start is not None else "K"
-    gr_end   = str(grade_end)   if grade_end   is not None else "HS"
+    gr_start = g_start or "K"
+    gr_end   = g_end   or "HS"
 
     stages = []
     for g in sorted(by_grade.keys(), key=_grade_key):

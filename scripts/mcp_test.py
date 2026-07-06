@@ -336,6 +336,42 @@ for label, variant in [
     check(f"map {label} — resolves (no 404)", map_ok,
           f"got {m.get('error', 'ok') if isinstance(m, dict) else m}")
 
+# Trailing punctuation pasted from prose must not break resolution (v1.2.5).
+for variant in ["CCSS.MATH.6.RP.A.3.", "CCSS.MATH.6.RP.A.3,", " 6.RP.A.3 "]:
+    d = parse(lookup_standard(standard_id=variant, system="ccss"))
+    ok = isinstance(d, dict) and d.get("id") == _CANON
+    check(f"lookup trailing-punct {variant!r} → {_CANON}", ok,
+          f"got {d.get('id', d.get('error')) if isinstance(d, dict) else d}")
+
+# ...but an ID that LEGITIMATELY ends in '.' (Alberta CA-AB) must be preserved:
+# the punctuation strip is a fallback only, tried after the raw ID. Regression
+# guard — an over-eager up-front strip previously broke every CA-AB lookup.
+_DOT_ID = "CA-AB.MATH.K.MAT.5.1.3.a."
+_dd = parse(lookup_standard(standard_id=_DOT_ID, system="ca-ab"))
+check(f"lookup dot-terminated {_DOT_ID!r} preserved",
+      isinstance(_dd, dict) and _dd.get("id") == _DOT_ID,
+      f"got {_dd.get('id', _dd.get('error')) if isinstance(_dd, dict) else _dd}")
+
+
+# ── 6c. get_progression grade-bound coercion (v1.2.5) ─────────────────────────
+# grade_start/grade_end previously required ints; a range STRING silently
+# filtered out every grade. Now range strings and grade-code strings are coerced.
+section("get_progression grade-bound coercion")
+
+for label, kw, want_range, want_grades in [
+    ("range string '3-6'",   {"grade_start": "3-6"},                  "3–6", {"3", "4", "5", "6"}),
+    ("'6 to 8'",             {"grade_start": "6 to 8"},               "6–8", {"6", "7", "8"}),
+    ("'Grade 4'..'Grade 7'", {"grade_start": "Grade 4", "grade_end": "Grade 7"}, "4–7", {"4", "5", "6", "7"}),
+    ("ints 3,6 (unchanged)", {"grade_start": 3, "grade_end": 6},      "3–6", {"3", "4", "5", "6"}),
+]:
+    r = parse(get_progression(concept="fractions", system="ccss", **kw))
+    grades = {s["grade"] for s in r.get("stages", [])} if isinstance(r, dict) else set()
+    rng = r.get("grade_range") if isinstance(r, dict) else None
+    check(f"progression {label} — non-empty + in-range",
+          bool(grades) and grades <= want_grades,
+          f"range={rng} grades={sorted(grades)}")
+    check(f"progression {label} — grade_range={want_range}", rng == want_range, f"got {rng}")
+
 
 import sqlite3 as _sqlite3
 _DB = _sqlite3.connect(os.environ["DB_PATH"])
