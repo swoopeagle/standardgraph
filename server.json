@@ -1,0 +1,31 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.swoopeagle/standardgraph",
+  "description": "158,000+ K-12 education standards across 300 curriculum systems, cross-referenced via NLP.",
+  "title": "StandardGraph",
+  "websiteUrl": "https://github.com/swoopeagle/standardgraph",
+  "repository": {
+    "url": "https://github.com/swoopeagle/standardgraph",
+    "source": "github"
+  },
+  "version": "1.2.3",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "registryBaseUrl": "https://pypi.org",
+      "identifier": "standardgraph",
+      "version": "1.2.3",
+      "runtimeHint": "uvx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "DB_PATH",
+          "description": "Path to the common_core.db SQLite database (downloaded by install.sh to ~/.standardgraph/common_core.db)",
+          "isRequired": true
+        }
+      ]
+    }
+  ]
+}

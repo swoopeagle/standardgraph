@@ -1,10 +1,17 @@
 # StandardGraph
 
-**157,000+ standards across 298 curriculum systems, accessible via Claude.**
+**158,000+ standards across 300 curriculum systems, accessible via Claude.**
 
 The alignment layer for the global curriculum.
 
 Covers Mathematics, Science, ELA, Social Studies, and Computer Science — US national and state standards plus major international curricula. Ask Claude to look up any standard, trace a concept across grade levels, or find the equivalent in another country's curriculum.
+
+**Who this is for:**
+
+- **EdTech engineers & curriculum teams** — mapping content to standards, building alignment features, or auditing coverage across states and countries without hand-building a crosswalk.
+- **Teachers and curriculum specialists moving between systems** — "I taught IB in Singapore, now I'm teaching CCSS in Texas — what's actually different at this grade level?"
+
+If you're doing either of those by hand today, this replaces the spreadsheet.
 
 ---
 
@@ -147,7 +154,7 @@ StandardGraph works out of the box once installed, but pasting the following int
 <summary>Copy this into your Claude Project instructions</summary>
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 157,000+ standards across 298 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 158,000+ standards across 300 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
 
 ## When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards

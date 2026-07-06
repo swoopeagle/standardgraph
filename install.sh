@@ -23,7 +23,7 @@ fail() { echo "${red}✗${reset} $*"; exit 1; }
 
 echo
 echo "${bold}StandardGraph installer${reset}"
-echo "146,000+ K-12 curriculum standards across 256 systems for Claude"
+echo "158,000+ K-12 curriculum standards across 300 systems for Claude"
 echo
 
 # ── 1. Check / install uv ─────────────────────────────────────────────────────

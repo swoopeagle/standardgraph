@@ -1,6 +1,6 @@
 # Installing StandardGraph
 
-StandardGraph gives Claude access to 157,000+ education standards across 298 curriculum systems — Mathematics, Science, ELA, Social Studies, Computer Science, Arts, and World Languages. Covers all 50 US states plus major international curricula (Canada, UK, Australia, Singapore, Japan, IB, Cambridge, and more).
+StandardGraph gives Claude access to 158,000+ education standards across 300 curriculum systems — Mathematics, Science, ELA, Social Studies, Computer Science, Arts, and World Languages. Covers all 50 US states plus major international curricula (Canada, UK, Australia, Singapore, Japan, IB, Cambridge, and more).
 
 ## Requirements
 
