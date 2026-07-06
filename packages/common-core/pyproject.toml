@@ -1,7 +1,7 @@
 [project]
 name = "standardgraph"
 version = "1.2.4"
-description = "158,000+ education standards (math, science, ELA, social studies, CS, arts) across 300 curriculum systems, cross-referenced via NLP — accessible as a Claude MCP server"
+description = "153,000+ education standards (math, science, ELA, social studies, CS, arts) across 300 curriculum systems, cross-referenced via NLP — accessible as a Claude MCP server"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"

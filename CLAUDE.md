@@ -2,7 +2,7 @@
 
 ## What this is
 
-FastMCP server exposing 158,000+ education standards across 300 curriculum systems as five MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
+FastMCP server exposing 153,000+ education standards across 300 curriculum systems as five MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
 
 ## Architecture
 
@@ -19,7 +19,7 @@ data/common_core.db          → dev/pipeline DB (used by overnight_run.sh)
 ~/.standardgraph/common_core.db  → installed user DB (used by MCP server)
 
 scripts/
-  mcp_test.py        → 309-test suite (imports server directly, no MCP protocol)
+  mcp_test.py        → 330-test suite (imports server directly, no MCP protocol)
   overnight_run.sh   → full ingestion pipeline (run on Mac Studio overnight)
   dashboard.sh       → hardware + pipeline progress dashboard
   progress.sh        → pipeline-only progress view
@@ -27,11 +27,11 @@ scripts/
 
 ## Key facts
 
-- **DB size:** ~1.8 GB
-- **Standards:** 158,718 across 300 systems
-- **Crosswalk rows:** ~96,961 (hub-centric: CCSS for math, NGSS for science, etc.)
-- **Crosswalk quality scores:** ~76,878 rows (~79.3%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); all AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality).
-- **Relationships:** ~3.79M rows (prerequisites/successors)
+- **DB size:** ~1.5 GB
+- **Standards:** 153,988 across 300 systems
+- **Crosswalk rows:** ~94,754 (hub-centric: CCSS for math, NGSS for science, etc.)
+- **Crosswalk quality scores:** ~75,134 rows (~79.3%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); all AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality).
+- **Relationships:** ~3.15M rows (prerequisites/successors)
 - **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge from Mini 2 — 0.4ms RTT)
 - **HuggingFace dataset:** `swoopeagle/standardgraph` (file: `common_core.db`)
 - **PyPI package:** `standardgraph`

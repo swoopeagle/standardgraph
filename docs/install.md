@@ -1,6 +1,6 @@
 # Installing StandardGraph
 
-StandardGraph gives Claude access to 158,000+ education standards across 300 curriculum systems — Mathematics, Science, ELA, Social Studies, Computer Science, Arts, and World Languages. Covers all 50 US states plus major international curricula (Canada, UK, Australia, Singapore, Japan, IB, Cambridge, and more).
+StandardGraph gives Claude access to 153,000+ education standards across 300 curriculum systems — Mathematics, Science, ELA, Social Studies, Computer Science, Arts, and World Languages. Covers all 50 US states plus major international curricula (Canada, UK, Australia, Singapore, Japan, IB, Cambridge, and more).
 
 ## Requirements
 
@@ -18,7 +18,7 @@ curl -fsSL https://raw.githubusercontent.com/swoopeagle/standardgraph/main/insta
 
 The installer will:
 1. Install [uv](https://docs.astral.sh/uv/) if you don't have it (~30 seconds)
-2. Download the standards database (~1.8 GB)
+2. Download the standards database (~1.5 GB)
 3. Configure Claude Desktop automatically
 
 Then **quit and reopen Claude Desktop**.
@@ -133,7 +133,7 @@ Then open `~/Library/Application Support/Claude/claude_desktop_config.json` and 
 
 **Search returns no results**
 - If Ollama isn't running, keyword search takes over automatically — try more specific terms
-- Confirm the database downloaded fully: `ls -lh ~/.standardgraph/` — the `.db` file should be ~1.8 GB
+- Confirm the database downloaded fully: `ls -lh ~/.standardgraph/` — the `.db` file should be ~1.5 GB
 
 **Ollama not being detected**
 - Make sure `ollama serve` is running (or the Ollama app is open in your menu bar)
