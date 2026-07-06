@@ -215,6 +215,17 @@ def _grade_key(g: str) -> int:
         return 99
 
 
+# A single-letter CCSS cluster segment sitting directly before the final numeric
+# ordinal (e.g. the 'A' in '6.RP.A.3'). The DB is inconsistent about retaining it
+# — most IDs keep it ('5.NF.A.2') but some dropped it on ingest ('6.RP.3') — so
+# lookups normalise it away to match either form.
+_CLUSTER_LETTER = re.compile(r"\.[A-Z](?=\.\d)")
+
+
+def _loose_id(sid: str) -> str:
+    return _CLUSTER_LETTER.sub("", sid)
+
+
 # ── Embedding ─────────────────────────────────────────────────────────────────
 
 def _embed_query(text: str) -> np.ndarray:
@@ -375,6 +386,18 @@ def lookup_standard(
     conn = _db()
 
     row = conn.execute("SELECT * FROM standards WHERE id = ?", (sid,)).fetchone()
+    if not row:
+        # Tolerate cluster-letter drift: match ignoring the single-letter cluster
+        # segment, so '6.RP.A.3' finds a stored '6.RP.3' (and vice versa).
+        target = _loose_id(sid)
+        match_id = next(
+            (cid for (cid,) in conn.execute(
+                "SELECT id FROM standards WHERE system=?", (system,))
+             if _loose_id(cid) == target),
+            None,
+        )
+        if match_id:
+            row = conn.execute("SELECT * FROM standards WHERE id = ?", (match_id,)).fetchone()
     if not row:
         # Suggest nearby IDs
         suggestions = [
