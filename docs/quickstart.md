@@ -118,7 +118,7 @@ How does Ghana's NACCA math curriculum compare to CCSS in terms of when algebra 
 
 ## Tips
 
-**Be specific about grade and subject.** The database covers 153,000+ standards. The more context you give, the better the results.
+**Be specific about grade and subject.** The database covers 154,000+ standards. The more context you give, the better the results.
 
 - Vague: *"Find standards on writing"*
 - Better: *"Find CCSS ELA standards on argumentative writing in grades 9–10"*
@@ -139,7 +139,7 @@ Look up CCSS.MATH.6.RP.A.3, then find the closest equivalent in Singapore MOE, t
 For ongoing curriculum work, paste the following into your Claude Project instructions (Settings → Projects → [your project] → Instructions). This tells Claude how to interpret results without you having to explain it every time.
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 153,000+ standards across 300 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 154,000+ standards across 300 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
 
 When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards

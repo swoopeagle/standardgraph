@@ -223,7 +223,7 @@ LOOKUP_CASES = [
     ("CCSS fractions shortform",  "5.NF.A.1",                  "ccss",    True),
     ("CCSS full ID",              "CCSS.MATH.5.NF.A.1",        "ccss",    True),
     ("Texas math",                "TX.MATH.5.3.K",             "tx",      True),
-    ("Ontario K-8",               "CA-ON.MATH.5.5.B2.5",       "ca-on",   True),
+    ("Ontario K-8",               "CA-ON.MATH.5.B2.5",         "ca-on",   True),
     ("Ontario HS",                "CA-ON.MATH.HS.9.E1.4",      "ca-on",   True),
     ("Singapore",                 "SG_MOE.MATH.5.NA",          "sg-moe",  None),  # may not exist exactly
     ("ELA standard",              "CCSS.ELA.3.W.1",            "ccss-ela",None),  # try
