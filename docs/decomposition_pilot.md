@@ -43,6 +43,26 @@ targeting, disambiguation of multiple source standards onto distinct sub-parts).
 - **Semantic validity:** blind LLM judge agreed the sub-part is the better target
   in **14/15 (93%)** of GA cases.
 
+## Follow-up experiments (same day) that revised the conclusion
+
+**CCSS HS extension — dud.** Promoting HS sub-parts added only 24 rows (HS math is
+mostly single-statement; the letters in `HSA-APR.A.1` are cluster letters, not
+sub-parts). A/B sub-part-beats-parent wins by target band: ga K-8=15 / HS=3,
+tx K-8=12 / HS=0. **HS is not a rollout target.**
+
+**Corpus bundling scan.** ~4,429 math standards corpus-wide carry bundling
+signals (enumeration / semicolons / "including"). The density is on the SOURCE
+side, not the CCSS hub: tx 371, nz-moe 354, ca-on 261, ca-qc 210, India 61% of
+its standards; CCSS itself only 96.
+
+**Source-side split validation (10 bundled TX standards, LLM-split + re-embed).**
+8/10 resolved to MULTIPLE distinct CCSS targets when split (coverage the single
+blurry mapping lost) — but only 2/10 improved top-1 confidence, and two failure
+modes appeared: (a) process/practice standards (`TX.MATH.K.1.D`) fragment into
+scattered ~0.70 noise, (b) the LLM over-splits ("create circles/triangles/
+rectangles" → 3 redundant parts). Source decomposition is a **recall** gain, and
+only for genuine multi-topic *content* standards.
+
 ## Honest read
 
 - The effect is **real but localized at K-8 scale.** Only 29 of ~343 CCSS
@@ -57,18 +77,33 @@ targeting, disambiguation of multiple source standards onto distinct sub-parts).
 - No downside observed: fine grain never *lost* a mapping (fine mapped ≥ coarse
   in all three systems); it only added precision.
 
-## Recommendation
+## Recommendation (revised after follow-ups)
 
-**Proceed to a broader rollout, staged by sub-structure density**, not a flat
-corpus-wide pass. Order: (1) CCSS HS, (2) AP/IB and other richly-lettered
-frameworks, (3) the long tail. Each stage: promote sub-parts to first-class rows
-additively, embed, regenerate affected crosswalks, measure the same way.
+**Decomposition is a surgical accuracy tool, not a blanket operation.** A flat
+corpus-wide pass would inject noise (process/practice standards, LLM over-split)
+and hurt accuracy. Do TARGETED, guardrailed decomposition where the evidence
+shows a win:
 
-Open items to fold into the rollout:
-- **Cluster-letter drift** normalization (grade 1 stores `1.G.A.1`, grade 6
-  `6.EE.1`) — cheap, unblocks clean external joins.
-- Decide crosswalk policy: keep parent-level mappings *and* sub-part mappings, or
-  prefer sub-part when it wins. (Pilot kept both; A/B only compared.)
+1. **Target-side (CCSS hub):** K-8 sub-part promotion is done in the pilot and is
+   a genuine sharpening win. Skip HS. This slice is essentially complete.
+2. **Source-side (states/international):** the larger opportunity, but gated. Only
+   decompose multi-topic **content** standards; **exclude process/practice
+   standards** (TEKS process, MP, generic "communicate/select tools" repeaters).
+   Constrain the LLM split to distinct-topic boundaries and dedupe near-identical
+   parts. Benefit is crosswalk **recall** (a bundled standard yields several
+   targeted mappings instead of one blurry one).
+
+**Crosswalk storage policy: hierarchical.** Store the precise winning edge at leaf
+grain; materialize parent↔child containment so map_standard can roll up (preserves
+cross-system transitivity) and so confidence isn't misrepresented. Do NOT store
+redundant weak parent edges, and do NOT delete parent edges outright (breaks
+transitivity + parent-level lookups). Type source→leaf `equivalent`, induced
+source→parent `overlapping`.
+
+Open items:
+- **Cluster-letter drift** normalization (grade 1 `1.G.A.1` vs grade 6 `6.EE.1`).
+- Build a **process/practice-standard classifier** (the guardrail) before any
+  source-side pass.
 - Published `standards` count will grow — update stats/docs accordingly.
 
 ## Reproduce
