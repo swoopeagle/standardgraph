@@ -448,6 +448,37 @@ def _fts_search(
     return results
 
 
+# ── Relationship helpers (shared by lookup_standard + get_learning_path) ──────
+
+# Minimum confidence_score for an LLM-validated edge to count as a HARD (default)
+# prerequisite. SOFT edges are stored at 0.5 and only surfaced with include_soft.
+_HARD_CONF = 0.9
+_SOFT_CONF = 0.5
+
+
+def _related(conn, sid: str, relationship: str, prefer_validated: bool):
+    """Return (ids, source) for a standard's prerequisite/successor edges.
+
+    When prefer_validated is True and any method='llm_validated' edges exist for
+    this standard, return those (source='llm_validated'); otherwise fall back to
+    the grade-heuristic edges (source='grade_heuristic'). Falling back preserves
+    non-empty prerequisite lists for standards the pilot never re-validated.
+    """
+    if prefer_validated:
+        val = [r[0] for r in conn.execute(
+            "SELECT target_id FROM standard_relationships "
+            "WHERE source_id=? AND relationship=? AND method='llm_validated' "
+            "ORDER BY confidence_score DESC, target_id",
+            (sid, relationship)).fetchall()]
+        if val:
+            return val, "llm_validated"
+    allrows = [r[0] for r in conn.execute(
+        "SELECT target_id FROM standard_relationships "
+        "WHERE source_id=? AND relationship=? ORDER BY target_id",
+        (sid, relationship)).fetchall()]
+    return allrows, "grade_heuristic"
+
+
 # ── Tool 1: lookup_standard ───────────────────────────────────────────────────
 
 @mcp.tool()
@@ -455,6 +486,7 @@ def lookup_standard(
     standard_id: str,
     system: str = "ccss",
     include_elaborations: bool = False,
+    prefer_validated: bool = True,
 ) -> str:
     """Fetch the full text, domain, cluster, prerequisites, and successors for a single standard.
 
@@ -463,6 +495,10 @@ def lookup_standard(
     standard_id: full ID like 'CCSS.MATH.6.RP.A.3' or shortform '6.RP.A.3' (for CCSS).
                  For other systems use the full ID, e.g. 'TX.MATH.5.3.K' or 'CA_BC.MATH.3.a'.
     system: curriculum system code (default 'ccss'). See server instructions for all codes.
+    prefer_validated: when True (default), return the LLM-validated prerequisite/successor
+                 edges if any exist for this standard (higher precision, may be cross-domain);
+                 otherwise fall back to the grade-heuristic edges. The response reports which
+                 source was used via `prerequisites_method`.
 
     Returns the standard text, grade, domain, cluster, sub-standards (if any),
     prerequisite standard IDs from the prior grade, and successor IDs for the next grade.
@@ -499,18 +535,8 @@ def lookup_standard(
         (sid,),
     ).fetchall()
 
-    prerequisites = [
-        r[0] for r in conn.execute(
-            "SELECT target_id FROM standard_relationships WHERE source_id=? AND relationship='prerequisite'",
-            (sid,),
-        ).fetchall()
-    ]
-    successors = [
-        r[0] for r in conn.execute(
-            "SELECT target_id FROM standard_relationships WHERE source_id=? AND relationship='successor'",
-            (sid,),
-        ).fetchall()
-    ]
+    prerequisites, prereq_method = _related(conn, sid, "prerequisite", prefer_validated)
+    successors, _ = _related(conn, sid, "successor", prefer_validated)
     conn.close()
 
     return json.dumps({
@@ -522,6 +548,7 @@ def lookup_standard(
         "standard_text": std["standard_text"],
         "sub_standards": [f"{r['id']} — {r['text']}" for r in sub_stds],
         "prerequisites": prerequisites,
+        "prerequisites_method": prereq_method,
         "successors":    successors,
         "source_url":   std["source_url"],
         "elaborations":  None,
@@ -720,7 +747,135 @@ def get_progression(
     }, indent=2)
 
 
-# ── Tool 4: map_standard ──────────────────────────────────────────────────────
+# ── Tool 4: get_learning_path ─────────────────────────────────────────────────
+
+@mcp.tool()
+def get_learning_path(
+    target: str,
+    system: str = "ccss",
+    from_standard: str | None = None,
+    max_depth: int = 20,
+    include_soft: bool = False,
+) -> str:
+    """Build an ordered, grade-increasing sequence of standards to learn to reach a target.
+
+    Walks the LLM-validated prerequisite graph backward from the target standard and
+    returns every prerequisite (transitively) as a topologically ordered study plan —
+    the substrate for self-paced acceleration ("what do I need before calculus?").
+    Only method='llm_validated' edges are traversed, so the path is far cleaner than the
+    raw grade-adjacency graph and includes genuine cross-domain dependencies.
+
+    target: the standard to work toward — full ID 'CCSS.MATH.HSF.LE.A.1.b' or shortform.
+    system: curriculum system code (default 'ccss'; validated edges currently exist for CCSS math).
+    from_standard: optional — the standard the learner has already mastered. When given, the
+                   path is pruned to the sub-sequence between that standard and the target.
+    max_depth: max prerequisite levels to walk back (default 20; guards pathological depth).
+    include_soft: when False (default) only HARD prerequisites (direct building blocks) are
+                  followed; when True, SOFT (helpful-background) edges are included too.
+
+    Returns the resolved target, an ordered `path` (each node with id/grade/domain/text and its
+    immediate in-path prerequisites), plus counts. If the target has no validated prerequisites
+    the path is just the target with an explanatory note.
+    """
+    conn = _db()
+    tgt = _resolve_id(conn, _expand_id(target, system), system)
+    if not tgt:
+        conn.close()
+        return json.dumps({"error": "standard_not_found", "queried_id": _expand_id(target, system)})
+
+    min_conf = _SOFT_CONF if include_soft else _HARD_CONF
+
+    def prereqs_of(node: str) -> list[str]:
+        return [r[0] for r in conn.execute(
+            "SELECT target_id FROM standard_relationships "
+            "WHERE source_id=? AND relationship='prerequisite' "
+            "AND method='llm_validated' AND confidence_score >= ?",
+            (node, min_conf)).fetchall()]
+
+    # Reverse-BFS the prerequisite closure of the target, bounded by max_depth.
+    seen = {tgt}
+    edges: dict[str, list[str]] = {}
+    frontier = [tgt]
+    depth = 0
+    while frontier and depth < max_depth:
+        nxt: list[str] = []
+        for n in frontier:
+            ps = prereqs_of(n)
+            edges[n] = ps
+            for p in ps:
+                if p not in seen:
+                    seen.add(p)
+                    nxt.append(p)
+        frontier = nxt
+        depth += 1
+
+    # Optional from_standard pruning: keep only nodes on a chain from_standard → target.
+    from_resolved = None
+    from_reachable = None
+    if from_standard:
+        src = _resolve_id(conn, _expand_id(from_standard, system), system)
+        from_resolved = src
+        from_reachable = bool(src and src in seen)
+        if from_reachable:
+            # Forward reachability from src via validated successor edges, within the closure.
+            fwd = {src}
+            fr = [src]
+            while fr:
+                nx: list[str] = []
+                for n in fr:
+                    for r in conn.execute(
+                        "SELECT target_id FROM standard_relationships "
+                        "WHERE source_id=? AND relationship='successor' "
+                        "AND method='llm_validated' AND confidence_score >= ?",
+                        (n, min_conf)).fetchall():
+                        s = r[0]
+                        if s in seen and s not in fwd:
+                            fwd.add(s)
+                            nx.append(s)
+                fr = nx
+            keep = (fwd & seen) | {tgt}
+            seen = {n for n in seen if n in keep}
+
+    # Materialise node rows and order by grade (every validated edge increases grade,
+    # so grade order is a valid topological order; ties broken by id for determinism).
+    nodes = []
+    for n in seen:
+        row = conn.execute(
+            "SELECT id, grade, domain, standard_text FROM standards WHERE id=?", (n,)
+        ).fetchone()
+        if row:
+            nodes.append(dict(row))
+    conn.close()
+    nodes.sort(key=lambda d: (_grade_key(d["grade"]), d["id"]))
+
+    setids = {d["id"] for d in nodes}
+    path = [{
+        "id":            d["id"],
+        "grade":         d["grade"],
+        "domain":        d["domain"],
+        "standard_text": d["standard_text"],
+        "prerequisites_in_path": [p for p in edges.get(d["id"], []) if p in setids],
+    } for d in nodes]
+
+    result = {
+        "target":       tgt,
+        "system":       system,
+        "edge_strength": "hard+soft" if include_soft else "hard_only",
+        "path_length":  len(path),
+        "path":         path,
+    }
+    if len(path) == 1 and path[0]["id"] == tgt:
+        result["note"] = ("no validated prerequisites found for this target"
+                          + (" at hard strength — retry with include_soft=True" if not include_soft else ""))
+    if from_standard:
+        result["from_standard"] = from_resolved or _expand_id(from_standard, system)
+        result["from_standard_reachable"] = from_reachable
+        if from_resolved and not from_reachable:
+            result["note"] = "from_standard is not a validated prerequisite of the target; returning the full prerequisite path"
+    return json.dumps(result, indent=2)
+
+
+# ── Tool 5: map_standard ──────────────────────────────────────────────────────
 
 @mcp.tool()
 def map_standard(
@@ -974,7 +1129,7 @@ def map_standard(
     return json.dumps(response, indent=2)
 
 
-# ── Tool 5: list_systems ──────────────────────────────────────────────────────
+# ── Tool 6: list_systems ──────────────────────────────────────────────────────
 
 @mcp.tool()
 def list_systems(

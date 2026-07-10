@@ -12,7 +12,7 @@ import httpx
 
 STUDIO = "http://100.77.63.73:11434"
 MODEL = "qwen2.5:72b"
-SAMPLE = "/private/tmp/claude-501/-Users-ianwang-projects-standardgraph/5e706f47-a543-4d24-9d36-7f015a2c052c/scratchpad/prereq_gold_sample.json"
+SAMPLE = "/private/tmp/claude-501/-Users-ianwang-projects-standardgraph/f868f626-976d-4442-8c22-df9f64ad907b/scratchpad/prereq_gold_sample.json"
 P = "CCSS.MATH."
 
 # gold labels keyed by (target_suffix, prereq_suffix)
@@ -51,19 +51,30 @@ MUST_HARD = {("HSA.SSE.A.1","6.EE.9"),("5.NF.B.5","3.OA.A.3"),
 
 PROMPT = """You are validating a candidate PREREQUISITE relationship between two math \
 standards from the same curriculum (Common Core). Standard B is proposed as a prerequisite \
-for standard A. Judge it:
+for standard A. Judge whether B must come before A, using this operational test:
 
-- HARD: a student genuinely needs the skill/understanding in B BEFORE they can succeed at A. \
-B is a real mathematical building block for A.
-- SOFT: B is helpful background for A, but a student could reasonably succeed at A without \
-first mastering B.
-- NONE: B is NOT a prerequisite for A — they are unrelated, merely share topic area or \
-vocabulary, are parallel skills rather than dependent, or the real dependency runs the OTHER \
-direction.
+- HARD: B is a genuine building block that A directly depends on. Either performing A's task \
+requires invoking B's skill, OR A is explicitly an extension, generalization, or application \
+of B's concept. Test: could a coherent curriculum teach A to a student who has NOT yet learned \
+B? If not, it is HARD. (Generic examples: adding two fractions HARD-requires understanding what \
+a fraction is; solving a multi-step equation HARD-requires solving a single-step equation; any \
+standard whose text says it "applies and extends previous understandings of X" HARD-requires X.) \
+A real building block counts as HARD even if an exceptional student might improvise around it.
+
+- SOFT: B is helpful background that builds general fluency or a related idea, but A's core \
+procedure does not invoke B and A rests on other foundations. A student could be taught A \
+successfully without having mastered B first.
+
+- NONE: B is NOT a prerequisite for A. This includes pairs that merely share a topic area or \
+key vocabulary, are ANALOGOUS ideas in different domains (e.g. an "is additive" property of one \
+quantity vs. the same-sounding property of an unrelated quantity — parallel concepts, not \
+dependent), are parallel/sibling skills at similar difficulty, or where the real dependency \
+runs the OTHER direction.
 
 Judge actual mathematical dependency, NOT topical or textual similarity. Two standards in the \
-same domain at adjacent grades are NOT automatically prerequisites — a real prerequisite means \
-the target genuinely cannot be learned without the candidate's skill first.
+same domain, at adjacent grades, or sharing key words are NOT automatically prerequisites. \
+Ask specifically: does doing A require having B's skill, or is A built by extending B? \
+If yes -> HARD. If B merely helps -> SOFT. If B is only adjacent, parallel, or analogous -> NONE.
 
 Return STRICT JSON {"label": "HARD"|"SOFT"|"NONE", "reason": str}.
 

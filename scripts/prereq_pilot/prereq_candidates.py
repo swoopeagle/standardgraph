@@ -11,7 +11,7 @@ import json
 import sqlite3
 import numpy as np
 
-DB = "/private/tmp/claude-501/-Users-ianwang-projects-standardgraph/5e706f47-a543-4d24-9d36-7f015a2c052c/scratchpad/prereq_pilot.db"
+DB = "/private/tmp/claude-501/-Users-ianwang-projects-standardgraph/f868f626-976d-4442-8c22-df9f64ad907b/scratchpad/prereq_pilot.db"
 FLOOR = 0.45
 GRADE_WINDOW = 3
 TOP_K = 6
@@ -61,7 +61,7 @@ def main():
                 "cross_domain": domains[i] != domains[j],
             })
 
-    out = "/private/tmp/claude-501/-Users-ianwang-projects-standardgraph/5e706f47-a543-4d24-9d36-7f015a2c052c/scratchpad/prereq_candidates.json"
+    out = "/private/tmp/claude-501/-Users-ianwang-projects-standardgraph/f868f626-976d-4442-8c22-df9f64ad907b/scratchpad/prereq_candidates.json"
     json.dump(candidates, open(out, "w"), ensure_ascii=False)
 
     same = sum(c["same_grade"] for c in candidates)
