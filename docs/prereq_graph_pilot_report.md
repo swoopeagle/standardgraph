@@ -271,6 +271,46 @@ building block" bar than the two independent judges applied):
 `[promoted_soft_to_hard via qwen|marble]` marker for auditability — nothing is silently
 relabeled.
 
+## Science (NGSS) opportunity-sizing study (2026-07-10, `scripts/prereq_pilot/marble_benchmark_science.py`)
+
+**This is a different kind of study than everything above — flagging clearly.** We have
+**no LLM-validated science prerequisite graph**; the pilot was CCSS-math only. This
+compares our *existing* `grade_heuristic` NGSS edges (the same relate.py grade-adjacency
+heuristic whose CCSS-math weaknesses motivated the whole pilot) against Marble's
+hand-curated NGSS edges (`ngss-k5` + `ngss-ms`, codes-only, no topic text). Purpose: size
+whether a future science prereq-validation pilot is worth running — not to validate
+anything built for science, because nothing has been.
+
+| | value |
+|---|---:|
+| Our NGSS standards | 208 |
+| Our grade_heuristic NGSS prerequisite edges | 475 (max fan-out 8, avg 4.06, 117/208 standards covered) |
+| **Our cross-domain share** | **0.0%** (same structural gap as math had pre-pilot) |
+| Marble NGSS-aligned concepts | 135 → 112 of our standards, 130 implied edges (95 hard / 35 soft = 73% hard) |
+| **Marble's cross-domain share** | **10.0%** (13/130) |
+| Recall of Marble edges by our heuristic graph | **14.6%** (19/130) |
+| Direct/transitive corroboration on shared region (387 pairs) | 4.9% / 8.5%, **0 reversed** |
+
+**Reading this honestly:**
+- The **same structural gap exists** (heuristic = 0% cross-domain) and our heuristic graph
+  misses **85%+ of Marble's hand-curated edges** — real headroom for a pilot.
+- But the **opportunity looks smaller than math's**: Marble's own NGSS cross-domain rate is
+  only 10% (vs 51.5% for our validated math HARD edges) — NGSS's four domains (Physical,
+  Life, Earth/Space Science, Engineering) appear to be more naturally separable than math's
+  domains are, so a science pilot's *ceiling* on the cross-domain win is likely lower.
+- Low corroboration (4.9%/8.5%) is **expected, not alarming** — we're comparing an
+  unvalidated heuristic to hand-curation, the same comparison that motivated the math
+  pilot in the first place. It is not comparable to the 60%+ figure above, which compares
+  an *LLM-validated* graph to Marble.
+- Sample is thinner than math's (130 edges / 112 nodes vs 216/133) and Marble's NGSS data
+  is codes-only (no topic text) plus K-5+MS only (no HS) — any future pilot's own gate/gold
+  set would need separately-authored science-domain gold pairs, not a port of the math ones.
+
+**Recommendation:** a science pilot has genuine headroom (85% edge-recall gap) but a more
+modest expected cross-domain payoff than math delivered. Worth doing eventually (item #4
+on the six-item roadmap — "extend to more systems/subjects") but not as urgent as
+finishing/merging the math pilot first.
+
 ## Artifacts
 
 - Scratch DB with validated edges: session scratchpad `prereq_pilot.db` (a `.backup`
