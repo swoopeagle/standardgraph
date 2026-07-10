@@ -1,6 +1,6 @@
 # StandardGraph
 
-**154,000+ standards across 300 curriculum systems, accessible via Claude.**
+**156,000+ standards across 300 curriculum systems, accessible via Claude.**
 
 The alignment layer for the global curriculum.
 
@@ -154,7 +154,7 @@ StandardGraph works out of the box once installed, but pasting the following int
 <summary>Copy this into your Claude Project instructions</summary>
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 154,000+ standards across 300 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 156,000+ standards across 300 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
 
 ## When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards

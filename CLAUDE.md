@@ -28,9 +28,9 @@ scripts/
 ## Key facts
 
 - **DB size:** ~1.5 GB
-- **Standards:** 154,318 across 300 systems (incl. Ontario K-8 math, 330 expectations)
-- **Crosswalk rows:** ~95,019 (hub-centric: CCSS for math, NGSS for science, etc.)
-- **Crosswalk quality scores:** ~74,918 rows (~78.8%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); all AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality).
+- **Standards:** 156,774 across 300 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, and CCSS Mathematical Practice standards — added 2026-07)
+- **Crosswalk rows:** ~102,686 (hub-centric: CCSS for math, NGSS for science, etc.)
+- **Crosswalk quality scores:** ~74,918 rows (~73.0%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); pre-existing AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality) — includes new math mappings added by the 2026-07 decomposition/MP regeneration.
 - **Relationships:** ~3.16M rows (prerequisites/successors)
 - **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge from Mini 2 — 0.4ms RTT)
 - **HuggingFace dataset:** `swoopeagle/standardgraph` (file: `common_core.db`)
