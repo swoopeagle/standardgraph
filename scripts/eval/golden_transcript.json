@@ -1,0 +1,268 @@
+{
+  "list_systems": {
+    "has_ccss_math": true,
+    "len": 55403
+  },
+  "lookup_fallback": {
+    "domain": "Number and Operations (Fractions)",
+    "grade": "5",
+    "id": "CCSS.MATH.5.NF.A.1",
+    "n_successors": 1,
+    "prerequisites": [
+      "CCSS.MATH.3.NF.A.3.d",
+      "CCSS.MATH.4.NF.A.2",
+      "CCSS.MATH.4.NF.B.3.b",
+      "CCSS.MATH.4.NF.B.3.c",
+      "CCSS.MATH.4.NF.B.3.d",
+      "CCSS.MATH.4.NF.C.5"
+    ],
+    "prerequisites_method": "llm_validated"
+  },
+  "lookup_validated": {
+    "domain": "Number and Operations (Fractions)",
+    "grade": "5",
+    "id": "CCSS.MATH.5.NF.B.7.b",
+    "n_successors": 6,
+    "prerequisites": [
+      "CCSS.MATH.3.NF.A.3.b",
+      "CCSS.MATH.3.NF.A.3.c",
+      "CCSS.MATH.4.NBT.B.6",
+      "CCSS.MATH.4.NF.B.4",
+      "CCSS.MATH.4.NF.B.4.a",
+      "CCSS.MATH.4.NF.B.4.b"
+    ],
+    "prerequisites_method": "llm_validated"
+  },
+  "lp_fraction_division": {
+    "edge_strength": "hard_only",
+    "path": [
+      {
+        "grade": "1",
+        "id": "CCSS.MATH.1.G.A.3",
+        "pr": []
+      },
+      {
+        "grade": "2",
+        "id": "CCSS.MATH.2.G.A.3",
+        "pr": [
+          "CCSS.MATH.1.G.A.3"
+        ]
+      },
+      {
+        "grade": "3",
+        "id": "CCSS.MATH.3.NF.A.1",
+        "pr": [
+          "CCSS.MATH.1.G.A.3",
+          "CCSS.MATH.2.G.A.3"
+        ]
+      },
+      {
+        "grade": "4",
+        "id": "CCSS.MATH.4.NF.B.4.b",
+        "pr": [
+          "CCSS.MATH.3.NF.A.1"
+        ]
+      },
+      {
+        "grade": "5",
+        "id": "CCSS.MATH.5.NF.B.7.b",
+        "pr": [
+          "CCSS.MATH.4.NF.B.4.b"
+        ]
+      }
+    ],
+    "target": "CCSS.MATH.5.NF.B.7.b"
+  },
+  "lp_from_prune": {
+    "edge_strength": "hard_only",
+    "path": [
+      {
+        "grade": "7",
+        "id": "CCSS.MATH.7.EE.4.a",
+        "pr": []
+      },
+      {
+        "grade": "8",
+        "id": "CCSS.MATH.8.EE.7.b",
+        "pr": [
+          "CCSS.MATH.7.EE.4.a"
+        ]
+      }
+    ],
+    "target": "CCSS.MATH.8.EE.7.b"
+  },
+  "lp_linear_recognition": {
+    "edge_strength": "hard_only",
+    "path": [
+      {
+        "grade": "5",
+        "id": "CCSS.MATH.5.G.A.1",
+        "pr": []
+      },
+      {
+        "grade": "6",
+        "id": "CCSS.MATH.6.EE.9",
+        "pr": [
+          "CCSS.MATH.5.G.A.1"
+        ]
+      },
+      {
+        "grade": "6",
+        "id": "CCSS.MATH.6.RP.1",
+        "pr": []
+      },
+      {
+        "grade": "7",
+        "id": "CCSS.MATH.7.RP.2",
+        "pr": [
+          "CCSS.MATH.6.EE.9",
+          "CCSS.MATH.6.RP.1"
+        ]
+      },
+      {
+        "grade": "8",
+        "id": "CCSS.MATH.8.F.4",
+        "pr": [
+          "CCSS.MATH.6.EE.9",
+          "CCSS.MATH.7.RP.2"
+        ]
+      },
+      {
+        "grade": "HS",
+        "id": "CCSS.MATH.HSF.LE.A.1.b",
+        "pr": [
+          "CCSS.MATH.8.F.4"
+        ]
+      }
+    ],
+    "target": "CCSS.MATH.HSF.LE.A.1.b"
+  },
+  "lp_rational_exponents": {
+    "edge_strength": "hard_only",
+    "path": [
+      {
+        "grade": "5",
+        "id": "CCSS.MATH.5.OA.A.1",
+        "pr": []
+      },
+      {
+        "grade": "6",
+        "id": "CCSS.MATH.6.EE.1",
+        "pr": [
+          "CCSS.MATH.5.OA.A.1"
+        ]
+      },
+      {
+        "grade": "8",
+        "id": "CCSS.MATH.8.EE.1",
+        "pr": [
+          "CCSS.MATH.6.EE.1"
+        ]
+      },
+      {
+        "grade": "8",
+        "id": "CCSS.MATH.8.EE.2",
+        "pr": []
+      },
+      {
+        "grade": "HS",
+        "id": "CCSS.MATH.HSN.RN.A.2",
+        "pr": [
+          "CCSS.MATH.8.EE.1",
+          "CCSS.MATH.8.EE.2"
+        ]
+      }
+    ],
+    "target": "CCSS.MATH.HSN.RN.A.2"
+  },
+  "lp_shortform": {
+    "edge_strength": "hard_only",
+    "path": [
+      {
+        "grade": "1",
+        "id": "CCSS.MATH.1.G.A.3",
+        "pr": []
+      },
+      {
+        "grade": "2",
+        "id": "CCSS.MATH.2.G.A.3",
+        "pr": [
+          "CCSS.MATH.1.G.A.3"
+        ]
+      },
+      {
+        "grade": "3",
+        "id": "CCSS.MATH.3.NF.A.1",
+        "pr": [
+          "CCSS.MATH.1.G.A.3",
+          "CCSS.MATH.2.G.A.3"
+        ]
+      },
+      {
+        "grade": "4",
+        "id": "CCSS.MATH.4.NF.B.4.b",
+        "pr": [
+          "CCSS.MATH.3.NF.A.1"
+        ]
+      },
+      {
+        "grade": "5",
+        "id": "CCSS.MATH.5.NF.B.7.b",
+        "pr": [
+          "CCSS.MATH.4.NF.B.4.b"
+        ]
+      }
+    ],
+    "target": "CCSS.MATH.5.NF.B.7.b"
+  },
+  "lp_systems": {
+    "edge_strength": "hard_only",
+    "path": [
+      {
+        "grade": "6",
+        "id": "CCSS.MATH.6.EE.7",
+        "pr": []
+      },
+      {
+        "grade": "7",
+        "id": "CCSS.MATH.7.EE.4.a",
+        "pr": [
+          "CCSS.MATH.6.EE.7"
+        ]
+      },
+      {
+        "grade": "8",
+        "id": "CCSS.MATH.8.EE.8.b",
+        "pr": [
+          "CCSS.MATH.7.EE.4.a"
+        ]
+      }
+    ],
+    "target": "CCSS.MATH.8.EE.8.b"
+  },
+  "map_apcalc_ccss": {
+    "result": "no_precomputed_mapping_above_threshold"
+  },
+  "progression_fractions": {
+    "grades": [
+      "K",
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "HS"
+    ],
+    "n_stages": 10
+  },
+  "search_fractions": {
+    "ids": [
+      "CCSS.MATH.5.NF.A.1",
+      "CCSS.MATH.4.NF.B.3.c",
+      "CCSS.MATH.4.NF.C.5"
+    ]
+  }
+}

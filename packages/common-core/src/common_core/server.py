@@ -1,4 +1,5 @@
 """StandardGraph MCP server — education standards across 7 subjects."""
+import functools
 import json
 import re
 import sqlite3
@@ -1191,6 +1192,48 @@ def map_standard(
 
 # ── Tool 6: list_systems ──────────────────────────────────────────────────────
 
+@functools.lru_cache(maxsize=1)
+def _systems_snapshot():
+    """Per-process cache of system-level aggregates + corpus totals.
+
+    These come from full-table scans (GROUP BY over ~157k standards, a JOIN+GROUP
+    over ~103k crosswalks, a COUNT over ~3.2M relationships) that are *static* for a
+    server's lifetime — the DB is read-only while serving and the hosted process
+    restarts on any DB refresh. Caching turns list_systems from ~250ms into ~0.1ms
+    on repeat calls and removes it as a GIL bottleneck under concurrent load.
+    Returns (rows, totals); rows carry a private `subject_set` for the subject filter.
+    """
+    conn = _db()
+    systems = conn.execute(
+        "SELECT system, GROUP_CONCAT(DISTINCT subject) AS subjects, COUNT(id) AS standards "
+        "FROM standards GROUP BY system ORDER BY system").fetchall()
+    xwalk_counts = dict(conn.execute(
+        "SELECT s.system, COUNT(*) FROM crosswalk_mappings cm "
+        "INNER JOIN standards s ON s.id = cm.source_id GROUP BY s.system").fetchall())
+    totals = {
+        "systems":            len(systems),
+        "standards":          conn.execute("SELECT COUNT(*) FROM standards").fetchone()[0],
+        "embeddings":         conn.execute("SELECT COUNT(*) FROM embeddings").fetchone()[0],
+        "crosswalk_mappings": conn.execute("SELECT COUNT(*) FROM crosswalk_mappings").fetchone()[0],
+        "relationships":      conn.execute("SELECT COUNT(*) FROM standard_relationships").fetchone()[0],
+    }
+    conn.close()
+
+    rows = []
+    for r in systems:
+        m = _meta(r["system"])
+        rows.append({
+            "system":      r["system"],
+            "subjects":    r["subjects"],
+            "subject_set": set((r["subjects"] or "").split(",")),
+            "standards":   r["standards"],
+            "crosswalked": xwalk_counts.get(r["system"], 0),
+            "country":     m.get("country"),
+            "region":      m.get("region", "") or None,
+        })
+    return rows, totals
+
+
 @mcp.tool()
 def list_systems(
     subject: str | None = None,
@@ -1207,63 +1250,19 @@ def list_systems(
 
     Returns: system code, subjects covered, standard count, crosswalk coverage, country, region.
     """
-    conn = _db()
-
-    # Build subject-filtered system list from the standards table
-    if subject:
-        subject_systems = {
-            r[0] for r in conn.execute(
-                "SELECT DISTINCT system FROM standards WHERE subject = ?", (subject,)
-            ).fetchall()
-        }
-    else:
-        subject_systems = None
-
-    # Counts split into separate fast queries to avoid expensive 3-way JOIN.
-    systems = conn.execute(
-        """SELECT system,
-                  GROUP_CONCAT(DISTINCT subject) AS subjects,
-                  COUNT(id) AS standards
-           FROM standards
-           GROUP BY system
-           ORDER BY system"""
-    ).fetchall()
-    xwalk_counts = dict(conn.execute(
-        "SELECT s.system, COUNT(*) FROM crosswalk_mappings cm "
-        "INNER JOIN standards s ON s.id = cm.source_id GROUP BY s.system"
-    ).fetchall())
-
-    total_std = conn.execute("SELECT COUNT(*) FROM standards").fetchone()[0]
-    total_emb = conn.execute("SELECT COUNT(*) FROM embeddings").fetchone()[0]
-    total_xwalk = conn.execute("SELECT COUNT(*) FROM crosswalk_mappings").fetchone()[0]
-    total_rel = conn.execute("SELECT COUNT(*) FROM standard_relationships").fetchone()[0]
-    conn.close()
+    all_rows, totals = _systems_snapshot()
 
     system_rows = []
-    for r in systems:
-        if subject_systems is not None and r["system"] not in subject_systems:
+    for r in all_rows:
+        if subject and subject not in r["subject_set"]:
             continue
-        m = _meta(r["system"])
-        sys_region = m.get("region", "")
-        if region and region.lower() not in sys_region.lower():
+        if region and region.lower() not in (r["region"] or "").lower():
             continue
-        system_rows.append({
-            "system":      r["system"],
-            "subjects":    r["subjects"],
-            "standards":   r["standards"],
-            "crosswalked": xwalk_counts.get(r["system"], 0),
-            "country":     m.get("country"),
-            "region":      sys_region or None,
-        })
+        system_rows.append({k: r[k] for k in
+                            ("system", "subjects", "standards", "crosswalked", "country", "region")})
 
     return json.dumps({
-        "totals": {
-            "systems":            len(systems),
-            "standards":          total_std,
-            "embeddings":         total_emb,
-            "crosswalk_mappings": total_xwalk,
-            "relationships":      total_rel,
-        },
+        "totals": totals,
         "filters_applied": {k: v for k, v in {"subject": subject, "region": region}.items() if v},
         "matched_systems":  len(system_rows),
         "systems": system_rows,

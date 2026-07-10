@@ -311,6 +311,47 @@ modest expected cross-domain payoff than math delivered. Worth doing eventually 
 on the six-item roadmap — "extend to more systems/subjects") but not as urgent as
 finishing/merging the math pilot first.
 
+## Pre-roadshow QC (2026-07-10)
+
+Full quality-control pass on the merged prod DB before public release.
+
+**Correctness / security (all clean):** `mcp_test.py` 333/333 + `learning_path_tests.py`
+47/47 on the live DB; all 6 tools smoke-green; 8 `get_learning_path` edge cases handled
+(bogus id, shortform, K-standard, `max_depth=0`, unreachable `from_standard`, non-CCSS
+system, `from==target`); DB `integrity_check` ok + `foreign_key_check` clean; **0
+grade-decreasing validated edges** (DAG invariant holds in prod); zero string-built SQL
+and adversarial inputs (`'; DROP TABLE ...`) return `standard_not_found` with the table
+intact; no secrets in the `notes` column.
+
+**Performance — new tools are fast:** single-request latency `get_learning_path` 2–33 ms
+(worst case 146-node HS path + `include_soft` = 42 ms), `lookup_standard` 2–4 ms. The
+merge added 3,460 rows to a 3.16M-row table — immaterial to search/embedding paths.
+
+**Concurrency (`scripts/eval/concurrency_check.py`):** correctness is **bulletproof under
+load** — 0 errors / 0 wrong-results at 64 workers × 2,000 calls, no `database is locked`
+(SQLite's multi-reader model holds; each tool call uses its own connection, read-only).
+Throughput caps at **~110 calls/s per process and does not scale with worker count** —
+the expected **GIL ceiling** for synchronous Python tool bodies (CPU-bound work like the
+146-node BFS + JSON build can't run in parallel across threads). Under saturation, tail
+latency degrades (p95 ~1.5–3 s). This is **not a regression from the merge** and does not
+affect realistic demo load (a handful of sporadic users stay at single-request latency).
+**Deployment guidance for a truly public launch:** run the hosted MCP with multiple worker
+processes (e.g. `uvicorn --workers 4`) for ~N× throughput — safe here because the DB is
+read-only.
+
+**Fixed in QC:** profiling flagged `list_systems` at ~250–320 ms (pre-existing; heavy
+static full-table scans — GROUP BY over 157k standards, JOIN+GROUP over 103k crosswalks, a
+3.2M-row COUNT). Memoized the static aggregate per process (`_systems_snapshot`,
+`functools.lru_cache`) → **316 ms cold → 1.1 ms warm** (~300×), removing it as a GIL
+bottleneck under load. Filters and output shape unchanged; 333/333 preserved. Also
+clarified the `get_learning_path` note for the `from_standard == target` case.
+
+**Roadshow artifacts:** `scripts/eval/golden_transcript.py` pins canonical outputs of 12
+representative demo queries (deterministic path/lookup/map/list fields; structural
+comparison for the Ollama-dependent search/progression) — run `--record` to pin, then run
+bare to diff before a demo. Currently 12/12. `scripts/eval/concurrency_check.py` is the
+reusable load harness (re-point at the live tunnel once hosted serves the new DB).
+
 ## Artifacts
 
 - Scratch DB with validated edges: session scratchpad `prereq_pilot.db` (a `.backup`
