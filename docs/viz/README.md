@@ -30,11 +30,20 @@ A world map (D3 geo + land basemap) with a dot per country sized by mapping volu
 **click a country to fan out arcs to every other curriculum it can map to**. Offline
 single file. The "look how expansive the mapping gets between countries" view.
 
-## `crosswalk_chord.html` — country interoperability (alternative aesthetic)
+## `crosswalk_chord.html` — country interoperability (animated, filterable)
 
 The same 28 countries around a circle; ribbons = the number of hub subjects two countries
-share (how many subjects are mutually mappable). A denser, more abstract "everything
-connects to everything" view. Hover a country arc to isolate its links.
+share. **Filter by region** (All / North America / Latin America / Europe / Asia-Pacific /
+Sub-Saharan Africa) — the chord **morphs with a smooth transition** to that region's internal
+interconnection (e.g. Europe → the 9 European curricula, Asia-Pacific → Singapore/Japan/
+Korea/HK/NZ/Australia). **▶ autoplay** cycles the regions hands-free (the intro animation).
+Hover a country to isolate its links.
+
+Note on the axis: country-to-country interoperability currently runs through **CCSS Math**
+— the only hub with multi-country coverage. ELA / science / social-studies / CS crosswalks
+are US-only today (the hubs are US frameworks), so *region* is the meaningful filter axis for
+this view, not subject. Extending international science→NGSS crosswalks is a documented
+follow-up that would make a subject filter here meaningful too.
 
 Regenerate both crosswalk views (defaults to dev DB; pass prod for the shipped copy):
 

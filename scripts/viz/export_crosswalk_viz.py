@@ -90,14 +90,14 @@ def main():
     from collections import defaultdict
     c_systems = defaultdict(set)
     c_mappings = defaultdict(int)
-    c_hubs = defaultdict(set)
+    c_hubvol = defaultdict(lambda: defaultdict(int))  # country -> hub -> volume
     for sysc, hub, n in rows:
         c = country_of(sysc)
         if not c or c not in COUNTRY:
             continue
         c_systems[c].add(sysc)
         c_mappings[c] += n
-        c_hubs[c].add(hub)
+        c_hubvol[c][hub] += n
 
     countries = []
     for c, (lat, lon, region) in COUNTRY.items():
@@ -106,20 +106,11 @@ def main():
         countries.append({
             "name": c, "lat": lat, "lon": lon, "region": region,
             "systems": len(c_systems[c]), "mappings": c_mappings[c],
-            "hubs": sorted(c_hubs[c]),
+            "hubs": sorted(c_hubvol[c]),
+            "hubvol": dict(c_hubvol[c]),
         })
     countries.sort(key=lambda d: -d["mappings"])
-
-    # chord matrix: shared hub-subjects between each country pair
     names = [c["name"] for c in countries]
-    idx = {n: i for i, n in enumerate(names)}
-    matrix = [[0] * len(names) for _ in names]
-    for a in countries:
-        for b in countries:
-            if a["name"] == b["name"]:
-                continue
-            shared = len(set(a["hubs"]) & set(b["hubs"]))
-            matrix[idx[a["name"]]][idx[b["name"]]] = shared
 
     stats = {
         "systems": sum(len(v) for v in c_systems.values()),
@@ -128,7 +119,7 @@ def main():
         "regions": len({c["region"] for c in countries}),
     }
     payload = {
-        "countries": countries, "matrix": matrix, "names": names,
+        "countries": countries, "names": names,
         "region_color": REGION_COLOR, "hub_anchor": HUB_ANCHOR,
         "hubs": HUBS, "stats": stats,
     }
@@ -218,38 +209,88 @@ Object.entries(region_color).forEach(([r,col])=>{const el=lg.insert('div',':firs
 </script></body></html>"""
 
 CHORD = _HEAD.replace("__TITLE__", "StandardGraph — Country Interoperability") \
-    .replace("__H1__", "StandardGraph — Country Interoperability (shared hub subjects)") \
-    .replace("__HINT__", "ribbon = number of hub subjects two countries share (how many subjects are mutually mappable) · hover a country arc") + r"""
+    .replace("__H1__", "StandardGraph — Country Interoperability") \
+    .replace("__HINT__", "filter by region · ▶ autoplay cycles regions (the animation) · hover a country to isolate its links") + r"""
+<style>
+ #ctl{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 20px;border-bottom:1px solid var(--line)}
+ .fbtn{font-size:12px;padding:4px 11px;border-radius:14px;border:1px solid var(--line);background:#161b22;color:var(--muted);cursor:pointer}
+ .fbtn.on{background:#1f6feb;border-color:#1f6feb;color:#fff}
+</style>
+<div id="ctl"><span style="color:var(--muted);font-size:12px">Region:</span><span id="fbtns"></span>
+  <button class="fbtn" id="play" style="margin-left:6px">▶ autoplay</button></div>
 <script>
 const DATA=__DATA__;
-const {countries,names,matrix,region_color,stats}=DATA;
+const {countries,names,region_color,hubs,stats}=DATA;
 const regionOf=Object.fromEntries(countries.map(c=>[c.name,c.region]));
-document.getElementById('sub').textContent=
- `${stats.countries} countries linked through 5 shared hubs — ribbons show subjects mutually mappable between each pair`;
+const col=n=>region_color[regionOf[n]]||'#8b949e';
+const subEl=document.getElementById('sub');
 const vw=window.innerWidth||document.documentElement.clientWidth||1000;
 const vh=window.innerHeight||document.documentElement.clientHeight||800;
-const sz=Math.max(520,Math.min(720,vw-40,vh-200)), R=sz/2, inner=R-96, outer=inner+12;
+const sz=Math.max(500,Math.min(700,vw-40,vh-260)), R=sz/2, inner=R-96, outer=inner+12;
 const svg=d3.select('#wrap').append('svg').attr('width',sz).attr('height',sz)
-  .style('display','block').style('margin','10px auto')
-  .append('g').attr('transform',`translate(${R},${R})`);
-const chord=d3.chordDirected().padAngle(0.03).sortSubgroups(d3.descending)(matrix);
+  .style('display','block').style('margin','8px auto').append('g').attr('transform',`translate(${R},${R})`);
+const gR=svg.append('g').attr('fill-opacity',0.5), gG=svg.append('g'), gT=svg.append('g');
+const chord=d3.chord().padAngle(0.025).sortSubgroups(d3.descending);
 const arc=d3.arc().innerRadius(inner).outerRadius(outer);
-const ribbon=d3.ribbonArrow().radius(inner-2);
-const col=n=>region_color[regionOf[n]]||'#8b949e';
-svg.append('g').selectAll('path').data(chord.groups).join('path').attr('d',arc)
-  .attr('fill',d=>col(names[d.index])).attr('stroke','#0d1117')
-  .on('mouseover',(e,d)=>{svg.selectAll('.rb').attr('opacity',r=>(r.source.index===d.index||r.target.index===d.index)?0.9:0.06);})
-  .on('mouseout',()=>svg.selectAll('.rb').attr('opacity',0.45));
-svg.append('g').attr('fill-opacity',0.45).selectAll('path').data(chord).join('path').attr('class','rb')
-  .attr('d',ribbon).attr('fill',d=>col(names[d.source.index])).attr('opacity',0.45).attr('stroke','none');
-svg.append('g').selectAll('text').data(chord.groups).join('text')
-  .each(d=>{d.a=(d.startAngle+d.endAngle)/2;})
-  .attr('transform',d=>`rotate(${d.a*180/Math.PI-90}) translate(${outer+6}) ${d.a>Math.PI?'rotate(180)':''}`)
-  .attr('text-anchor',d=>d.a>Math.PI?'end':'start').attr('dy','0.35em')
-  .attr('fill','#e6edf3').style('font-size','10px').text(d=>names[d.index]);
+const ribbon=d3.ribbon().radius(inner-2);
+
+// filter by region: All + every region with >=2 countries (a chord needs a pair).
+// (Country-to-country interoperability runs through CCSS Math — the only hub with
+//  multi-country coverage — so region is the meaningful cut, not subject.)
+const regionCount={}; countries.forEach(c=>regionCount[c.region]=(regionCount[c.region]||0)+1);
+const FILTERS=[["all","All countries"],
+  ...Object.keys(region_color).filter(r=>regionCount[r]>=2).map(r=>[r,r])];
+function shared(i,j){const hi=countries[i].hubvol,hj=countries[j].hubvol;return Object.keys(hi).filter(h=>h in hj).length;}
+function build(f){const N=names.length,m=Array.from({length:N},()=>Array(N).fill(0));
+  for(let i=0;i<N;i++)for(let j=0;j<N;j++){if(i===j)continue;
+    if(f!=="all" && (regionOf[names[i]]!==f || regionOf[names[j]]!==f))continue;
+    m[i][j]=shared(i,j);}
+  return m;}
+function nParticipants(f){return f==="all"?names.length:regionCount[f];}
+function arcTween(d){const i=d3.interpolate(this._c||d,d);this._c=d;return t=>arc(i(t));}
+function ribTween(d){const i=d3.interpolate(this._c||d,d);this._c=d;return t=>ribbon(i(t));}
+function midAngle(d){return (d.startAngle+d.endAngle)/2;}
+function update(f,dur=850){
+  subEl.textContent = f==="all"
+    ? `${stats.countries} countries interoperable through the shared hubs — filter to a region to see its internal interconnection`
+    : `${f}: ${nParticipants(f)} countries' curricula mutually mappable`;
+  const ch=chord(build(f));
+  gG.selectAll('path').data(ch.groups,d=>d.index).join(
+     e=>e.append('path').attr('fill',d=>col(names[d.index])).attr('stroke','#0d1117').each(function(d){this._c=d;})
+        .on('mouseover',(ev,d)=>gR.selectAll('path').attr('opacity',r=>(r.source.index===d.index||r.target.index===d.index)?0.95:0.05))
+        .on('mouseout',()=>gR.selectAll('path').attr('opacity',0.5)),
+     u=>u).transition().duration(dur).attrTween('d',arcTween);
+  gR.selectAll('path').data(ch,d=>d.source.index+'-'+d.target.index).join(
+     e=>e.append('path').attr('fill',d=>col(names[d.source.index])).attr('stroke','none').attr('opacity',0).each(function(d){this._c=d;}),
+     u=>u, x=>x.transition().duration(dur*0.6).attr('opacity',0).remove())
+   .transition().duration(dur).attr('opacity',0.5).attr('fill',d=>col(names[d.source.index])).attrTween('d',ribTween);
+  gT.selectAll('text').data(ch.groups,d=>d.index).join(
+     e=>e.append('text').attr('fill','#e6edf3').style('font-size','10px').attr('dy','0.35em').text(d=>names[d.index]).each(function(d){this._c=d;}),
+     u=>u)
+   .attr('text-anchor',d=>midAngle(d)>Math.PI?'end':'start')
+   .transition().duration(dur)
+   .style('opacity',d=>(d.endAngle-d.startAngle)>0.006?1:0)
+   .attrTween('transform',function(d){const i=d3.interpolate(this._c||d,d);this._c=d;
+     return t=>{const a=midAngle(i(t));return `rotate(${a*180/Math.PI-90}) translate(${outer+6}) ${a>Math.PI?'rotate(180)':''}`;};});
+}
+
+let cur="all", timer=null;
+const fb=d3.select('#fbtns');
+FILTERS.forEach(([k,label])=>fb.append('button').attr('class','fbtn'+(k==='all'?' on':'')).attr('data-k',k)
+  .text(label).on('click',()=>{cur=k;stop();sel();update(k);}));
+function sel(){d3.selectAll('.fbtn').classed('on',function(){return this.getAttribute('data-k')===cur;});}
+function stop(){if(timer){clearInterval(timer);timer=null;}d3.select('#play').text('▶ autoplay').classed('on',false);}
+d3.select('#play').on('click',function(){
+  if(timer){stop();return;}
+  d3.select(this).text('❚❚ pause').classed('on',true);
+  let i=FILTERS.findIndex(x=>x[0]===cur);
+  timer=setInterval(()=>{i=(i+1)%FILTERS.length;cur=FILTERS[i][0];sel();update(cur);},2400);
+});
+
 const lg=d3.select('#legend');
 Object.entries(region_color).forEach(([r,c])=>{const el=lg.insert('div',':first-child').attr('class','lg');
   el.append('div').attr('class','sw').style('background',c);el.append('span').text(r);});
+update("all",1200);
 </script></body></html>"""
 
 
