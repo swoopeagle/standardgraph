@@ -920,14 +920,18 @@ def get_learning_path(
         "path_length":  len(path),
         "path":         path,
     }
-    if len(path) == 1 and path[0]["id"] == tgt:
-        result["note"] = ("no validated prerequisites found for this target"
-                          + (" at hard strength — retry with include_soft=True" if not include_soft else ""))
     if from_standard:
         result["from_standard"] = from_resolved or _expand_id(from_standard, system)
         result["from_standard_reachable"] = from_reachable
-        if from_resolved and not from_reachable:
-            result["note"] = "from_standard is not a validated prerequisite of the target; returning the full prerequisite path"
+    # Notes, most-specific first.
+    if from_standard and from_reachable and len(path) == 1:
+        # from_standard prunes everything else away → learner is already at/past the target.
+        result["note"] = "from_standard already reaches the target — no intermediate steps needed"
+    elif len(path) == 1 and path[0]["id"] == tgt:
+        result["note"] = ("no validated prerequisites found for this target"
+                          + (" at hard strength — retry with include_soft=True" if not include_soft else ""))
+    elif from_standard and from_resolved and not from_reachable:
+        result["note"] = "from_standard is not a validated prerequisite of the target; returning the full prerequisite path"
     return json.dumps(result, indent=2)
 
 
