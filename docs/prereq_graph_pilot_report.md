@@ -62,8 +62,8 @@ Same pipeline as the three pilots merged the day before.
 
 | Label | Count | Disposition |
 |---|---:|---|
-| HARD | 402 | inserted, `confidence_score=0.9` (default path) |
-| SOFT | 1,614 | inserted, `confidence_score=0.5` (behind `include_soft`) |
+| HARD | 402 → **481** after promotion (below) | inserted, `confidence_score=0.9` (default path) |
+| SOFT | 1,614 → **1,535** after promotion | inserted, `confidence_score=0.5` (behind `include_soft`) |
 | NONE | 552 | dropped |
 
 Inserted as `method='llm_validated'`: **2,016 edges → 4,032 rows** (each edge stored as
@@ -239,6 +239,37 @@ explainable. Eval extended to **47/47**; `mcp_test` still **333/333**.
 0-spurious across three checks (gold gate, qwen, Marble), direction is ~99% agreed, and the
 graph is quantifiably complementary to the closest curated alternative. Recommendation to
 merge (still HOLD for approval) stands, strengthened.
+
+## SOFT→HARD promotion (2026-07-10, `scripts/prereq_pilot/prereq_promote.py`)
+
+Since three independent signals agreed our HARD set is conservative, we ran a small,
+principled promotion pass: a Claude-SOFT edge is promoted to HARD iff **at least one**
+independent source (qwen HARD, or Marble has the identical directed pair as `hard`)
+confirms it **and neither** source contradicts it (qwen NONE, or Marble has the pair
+reversed). This deliberately leaves the vast majority of SOFT edges untouched — most
+have no independent check at all (only 133/1,614 SOFT edges fall in the qwen-284 overlap,
+8 in Marble's direct-pair set), and we do not manufacture confidence from nothing.
+
+- **79 of 1,614 SOFT edges promoted** (4.9%) — 72 via qwen, 8 via Marble, 1 confirmed by
+  both. HARD count: **402 → 481** (+19.7%); SOFT: 1,614 → 1,535.
+- **Regression clean:** `mcp_test.py` 333/333, `learning_path_tests.py` 47/47, **0
+  two-cycles** (still acyclic).
+- **Re-ran the Marble benchmark post-promotion** (sanity check, not new evidence — Marble
+  contributed only 8 of the 79 promotions): HARD-in-shared-region grew 106→179 nodes
+  (expected, promoted edges pull in more Marble-aligned pairs); transitive corroboration
+  52.0% (vs 60.4% pre-promotion — the denominator grew faster than the Marble-confirmed
+  numerator, as expected since most promotions came from qwen not Marble); reversed count
+  unchanged at 2 for HARD. **Overall edge-corroboration (`our ALL`) is unchanged** —
+  39/351 direct, 133/351 transitive — because promotion relabels strength, not which
+  pairs exist.
+
+Sample promoted edges (previously judged SOFT, held to a stricter "is this the *direct*
+building block" bar than the two independent judges applied):
+`1.NBT.B.2←K.CC.B.4` (cardinality→tens/ones structure), `1.OA.A.1←K.OA.A.3`
+(part-whole decomposition→add/sub word problems), `1.MD.A.1←K.MD.A.1`
+(length-as-attribute→comparison/transitivity). Promoted notes carry an explicit
+`[promoted_soft_to_hard via qwen|marble]` marker for auditability — nothing is silently
+relabeled.
 
 ## Artifacts
 
