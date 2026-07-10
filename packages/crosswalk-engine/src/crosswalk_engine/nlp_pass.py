@@ -144,11 +144,25 @@ def generate_crosswalk(
             added += 1
 
     with conn:
+        # UPSERT rather than INSERT OR REPLACE: on an existing (source_id,
+        # target_id) pair, refresh the cosine confidence/grade_delta but PRESERVE
+        # the notes if they already carry an LLM quality score, and never clobber
+        # human-curation columns (verified_by_human, flagged_for_review, verified_*).
+        # INSERT OR REPLACE deletes+reinserts the row, silently wiping all of that
+        # — see feedback_nlp_pass_overwrites_scores (2026-07 regression).
         conn.executemany(
-            """INSERT OR REPLACE INTO crosswalk_mappings
+            """INSERT INTO crosswalk_mappings
                (source_id, source_system, target_id, target_system, relationship,
                 confidence_score, grade_delta, verified_by_human, notes)
-               VALUES (?,?,?,?,?,?,?,?,?)""",
+               VALUES (?,?,?,?,?,?,?,?,?)
+               ON CONFLICT(source_id, target_id) DO UPDATE SET
+                 confidence_score = excluded.confidence_score,
+                 grade_delta      = excluded.grade_delta,
+                 notes            = CASE
+                     WHEN crosswalk_mappings.notes LIKE '%LLM score%'
+                     THEN crosswalk_mappings.notes
+                     ELSE excluded.notes END,
+                 updated_at       = datetime('now')""",
             mappings,
         )
 

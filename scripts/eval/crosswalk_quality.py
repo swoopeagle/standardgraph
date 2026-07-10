@@ -92,6 +92,31 @@ def main() -> int:
             failures += 1
         print(f"  [{tag}] {subject:20s} → {hub:10s}  ({wrong} mis-routed)")
 
+    # ── 5. Quality-score coverage (regression guard) ─────────────────────────
+    # A math crosswalk regeneration once silently wiped LLM quality scores by
+    # overwriting the notes column (see feedback_nlp_pass_overwrites_scores).
+    # These checks catch that: overall coverage is informational; AP/IB source
+    # rows are expected to be well-scored (they were 100% before the wipe, 9%
+    # during it), so a low ratio there is a hard FAIL.
+    print("\n── Quality-score coverage ───────────────────────────────────────────")
+    scored = conn.execute(
+        "SELECT COUNT(*) FROM crosswalk_mappings WHERE notes LIKE '%LLM score%'"
+    ).fetchone()[0]
+    cov = 100 * scored / total if total else 0
+    print(f"  [{OK}]  {scored:,}/{total:,} rows carry a 1–5 quality score ({cov:.1f}%)")
+
+    apib = conn.execute(
+        """SELECT COUNT(*) total, SUM(CASE WHEN notes LIKE '%LLM score%' THEN 1 ELSE 0 END) scored
+           FROM crosswalk_mappings
+           WHERE source_system LIKE 'ap-%' OR source_system LIKE 'ib-%'"""
+    ).fetchone()
+    apib_total, apib_scored = apib[0], (apib[1] or 0)
+    apib_cov = 100 * apib_scored / apib_total if apib_total else 0
+    apib_tag = FAIL if apib_cov < 70 else OK
+    if apib_cov < 70:
+        failures += 1
+    print(f"  [{apib_tag}] AP/IB source rows scored: {apib_scored:,}/{apib_total:,} ({apib_cov:.1f}%) — expect ≥70%")
+
     conn.close()
     print(f"\n  {'FAIL' if failures else 'OK'}  {failures} check(s) failed\n")
     return 1 if failures else 0
