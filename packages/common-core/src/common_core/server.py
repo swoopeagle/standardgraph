@@ -479,6 +479,20 @@ def _related(conn, sid: str, relationship: str, prefer_validated: bool):
     return allrows, "grade_heuristic"
 
 
+def _parse_prereq_note(notes: str | None) -> tuple[str | None, str | None]:
+    """Split a validated-edge note into (strength, rationale).
+
+    Stored form: 'llm_prereq cosine=0.83 hard: <why>' — surfaced so callers can
+    show *why* a prerequisite was included (the provenance/trust story).
+    """
+    if not notes:
+        return None, None
+    m = re.search(r"\b(hard|soft):\s*(.*)$", notes, re.S)
+    if m:
+        return m.group(1), m.group(2).strip() or None
+    return None, notes.strip() or None
+
+
 # ── Tool 1: lookup_standard ───────────────────────────────────────────────────
 
 @mcp.tool()
@@ -537,6 +551,21 @@ def lookup_standard(
 
     prerequisites, prereq_method = _related(conn, sid, "prerequisite", prefer_validated)
     successors, _ = _related(conn, sid, "successor", prefer_validated)
+
+    # Provenance: when the prerequisites are LLM-validated, surface *why* each was
+    # included (rationale + hard/soft strength) so callers can show/trust the edge.
+    prereq_rationales = None
+    if prereq_method == "llm_validated":
+        prereq_rationales = {}
+        for r in conn.execute(
+            "SELECT target_id, confidence_score, notes FROM standard_relationships "
+            "WHERE source_id=? AND relationship='prerequisite' AND method='llm_validated'",
+            (sid,)).fetchall():
+            strength, why = _parse_prereq_note(r[2])
+            prereq_rationales[r[0]] = {
+                "strength": strength or ("hard" if (r[1] or 0) >= _HARD_CONF else "soft"),
+                "why": why,
+            }
     conn.close()
 
     return json.dumps({
@@ -549,6 +578,7 @@ def lookup_standard(
         "sub_standards": [f"{r['id']} — {r['text']}" for r in sub_stds],
         "prerequisites": prerequisites,
         "prerequisites_method": prereq_method,
+        "prerequisite_rationales": prereq_rationales,
         "successors":    successors,
         "source_url":   std["source_url"],
         "elaborations":  None,
@@ -784,13 +814,25 @@ def get_learning_path(
         return json.dumps({"error": "standard_not_found", "queried_id": _expand_id(target, system)})
 
     min_conf = _SOFT_CONF if include_soft else _HARD_CONF
+    # (learner, prereq) -> {strength, why, confidence} for provenance in the output.
+    edge_meta: dict[tuple[str, str], dict] = {}
 
     def prereqs_of(node: str) -> list[str]:
-        return [r[0] for r in conn.execute(
-            "SELECT target_id FROM standard_relationships "
+        rows = conn.execute(
+            "SELECT target_id, confidence_score, notes FROM standard_relationships "
             "WHERE source_id=? AND relationship='prerequisite' "
             "AND method='llm_validated' AND confidence_score >= ?",
-            (node, min_conf)).fetchall()]
+            (node, min_conf)).fetchall()
+        out = []
+        for p, conf, notes in rows:
+            strength, why = _parse_prereq_note(notes)
+            edge_meta[(node, p)] = {
+                "strength": strength or ("hard" if (conf or 0) >= _HARD_CONF else "soft"),
+                "why": why,
+                "confidence": conf,
+            }
+            out.append(p)
+        return out
 
     # Reverse-BFS the prerequisite closure of the target, bounded by max_depth.
     seen = {tgt}
@@ -849,12 +891,26 @@ def get_learning_path(
     nodes.sort(key=lambda d: (_grade_key(d["grade"]), d["id"]))
 
     setids = {d["id"] for d in nodes}
+
+    def _prereq_entries(learner: str):
+        entries = []
+        for p in edges.get(learner, []):
+            if p not in setids:
+                continue
+            meta = edge_meta.get((learner, p), {})
+            entries.append({
+                "id":       p,
+                "strength": meta.get("strength"),
+                "why":      meta.get("why"),
+            })
+        return entries
+
     path = [{
         "id":            d["id"],
         "grade":         d["grade"],
         "domain":        d["domain"],
         "standard_text": d["standard_text"],
-        "prerequisites_in_path": [p for p in edges.get(d["id"], []) if p in setids],
+        "prerequisites_in_path": _prereq_entries(d["id"]),
     } for d in nodes]
 
     result = {

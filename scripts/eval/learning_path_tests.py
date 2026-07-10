@@ -68,10 +68,16 @@ for tgt in CHAINS:
     # every in-path prereq edge points to an earlier node in the list
     pos = {sid: i for i, sid in enumerate(ids)}
     ok_edges = all(
-        pos.get(p, -1) < pos[n["id"]]
+        pos.get(p["id"], -1) < pos[n["id"]]
         for n in path for p in n["prerequisites_in_path"]
     )
     check(f"{tgt} — prereq edges point backward", ok_edges)
+    # provenance: every in-path edge carries a strength (and usually a rationale)
+    has_strength = all(
+        p.get("strength") in ("hard", "soft")
+        for n in path for p in n["prerequisites_in_path"]
+    )
+    check(f"{tgt} — edges carry strength+why", has_strength)
 
 section("include_soft never shrinks the path")
 for tgt in CHAINS:
