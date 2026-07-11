@@ -11,9 +11,14 @@ Steps to follow in order:
 7. Commit the version bump: `git add packages/common-core/pyproject.toml && git commit -m "Bump version to {VERSION}"`
 8. Push to GitHub: `git push origin main`
 9. Ask: "Did the DB change since last release? If yes, upload to HuggingFace."
-10. If yes: ask for HuggingFace token, then run:
-    `uvx huggingface-cli upload swoopeagle/standardgraph ~/.standardgraph/common_core.db common_core.db --repo-type dataset`
-    with the token as HF_TOKEN env var. Remind to rotate token.
+10. If yes: ask for HuggingFace token, then run (note: `huggingface-cli` is deprecated and no
+    longer works — use the modern `hf` CLI instead, and export the token rather than passing
+    `--token` inline, which has a quoting bug that silently sends an empty bearer token):
+    ```
+    export HF_TOKEN='<token>'
+    uvx --from huggingface_hub hf upload swoopeagle/standardgraph ~/.standardgraph/common_core.db common_core.db --repo-type dataset
+    ```
+    Remind to rotate token.
 11. Run `/stats` to verify docs numbers match the live DB.
 12. Report: PyPI URL, GitHub commit, and whether HF was updated.
 
