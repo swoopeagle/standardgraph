@@ -26,6 +26,18 @@ import pdfplumber
 
 from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
+def _norm(text: str) -> str:
+    """Some official PDFs (education.gov.za CAPS, ZIMSEC) store glyphs character-reversed
+    inside rotated tables. Detect that and reverse each whitespace token back. No-op for
+    normal text."""
+    import re as _re
+    toks = _re.findall(r"[a-z]{2,}", text.lower())
+    rev = sum(t in ("eht","dna","rof","era","htiw","ot","fo","srenrael") for t in toks)
+    fwd = sum(t in ("the","and","for","are","with","to","of","learners") for t in toks)
+    if rev > fwd and rev >= 3:
+        return chr(10).join(" ".join(w[::-1] for w in ln.split()) for ln in text.splitlines())
+    return text
+
 SYSTEM = "za-caps"
 SOURCE_URL = "https://www.education.gov.za/Curriculum/NationalCurriculumStatementsGradesR-12.aspx"
 VERIFIED_DATE = date.today().isoformat()
@@ -104,7 +116,7 @@ def _extract_pages(pdf_path: Path) -> list[tuple[int, str]]:
     results = []
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages):
-            text = page.extract_text() or ""
+            text = _norm(page.extract_text() or "")
             if text.strip():
                 results.append((i + 1, text))
     return results
@@ -133,7 +145,7 @@ def _split_by_grade(pages: list[tuple[int, str]], expected: list[str]) -> dict[s
 
 
 def _call_gemma(grade: str, grade_label: str, text: str) -> list[dict]:
-    prompt = EXTRACT_PROMPT.format(grade_label=grade_label, text=text[:4000])
+    prompt = EXTRACT_PROMPT.format(grade_label=grade_label, text=text[:12000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],

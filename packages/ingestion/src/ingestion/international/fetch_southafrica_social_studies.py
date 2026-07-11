@@ -23,6 +23,18 @@ import pdfplumber
 
 from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
+def _norm(text: str) -> str:
+    """Some official PDFs (education.gov.za CAPS, ZIMSEC) store glyphs character-reversed
+    inside rotated tables. Detect that and reverse each whitespace token back. No-op for
+    normal text."""
+    import re as _re
+    toks = _re.findall(r"[a-z]{2,}", text.lower())
+    rev = sum(t in ("eht","dna","rof","era","htiw","ot","fo","srenrael") for t in toks)
+    fwd = sum(t in ("the","and","for","are","with","to","of","learners") for t in toks)
+    if rev > fwd and rev >= 3:
+        return chr(10).join(" ".join(w[::-1] for w in ln.split()) for ln in text.splitlines())
+    return text
+
 SYSTEM = "za-caps-ss"
 SOURCE_URL = "https://www.education.gov.za/Curriculum/NationalCurriculumStatementsGradesR-12.aspx"
 VERIFIED_DATE = date.today().isoformat()
@@ -31,22 +43,17 @@ RAW_DIR = DB_PATH.parent / "raw" / "southafrica_ss"
 PHASES = [
     (
         "ip.pdf",
-        "https://www.education.gov.za/Portals/0/CD/National%20Curriculum%20Statements%20and%20Vocational/CAPS%20IP%20%20SOCIAL%20SCIENCES%20GR%204-6%20WEB.pdf",
+        "https://sahistory.org.za/sites/default/files/archive-files/caps_gr4-6.pdf",
         ["4", "5", "6"],
-        "Intermediate Phase (Grade 4-6)",
-    ),
-    (
-        "sp.pdf",
-        "https://www.education.gov.za/Portals/0/CD/National%20Curriculum%20Statements%20and%20Vocational/CAPS%20SP%20%20SOCIAL%20SCIENCES%20GR%207-9%20WEB.pdf",
-        ["7", "8", "9"],
-        "Senior Phase (Grade 7-9)",
+        "Intermediate Phase Social Sciences (Grade 4-6)",
     ),
     (
         "fet.pdf",
-        "https://www.education.gov.za/Portals/0/CD/National%20Curriculum%20Statements%20and%20Vocational/CAPS%20FET%20_%20HISTORY%20GR%2010-12%20WEB.pdf",
+        "https://www.education.gov.za/Portals/0/CD/National%20Curriculum%20Statements%20and%20Vocational/CAPS%20FET%20%20HISTORY%20GR%2010-12%20%20WEB.pdf",
         ["HS"],
-        "FET Phase (Grade 10-12)",
+        "FET Phase History (Grade 10-12)",
     ),
+    # SP 7-9 Social Sciences: education.gov.za path unresolved — extend when URL confirmed
 ]
 
 STOP_WORDS = {
@@ -84,7 +91,9 @@ CAPS SOCIAL SCIENCES TEXT (Grade {grade_label}):
 def _download_pdf(url: str, path: Path) -> None:
     print(f"  Downloading {url} ...")
     RAW_DIR.mkdir(parents=True, exist_ok=True)
-    urllib.request.urlretrieve(url, path, timeout=30)
+    _req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(_req, timeout=60) as _r, open(path, "wb") as _f:
+        _f.write(_r.read())
     print(f"  Saved: {path.stat().st_size:,} bytes")
 
 
@@ -92,14 +101,14 @@ def _extract_pages(pdf_path: Path) -> list[tuple[int, str]]:
     results = []
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages):
-            text = page.extract_text() or ""
+            text = _norm(page.extract_text() or "")
             if text.strip():
                 results.append((i + 1, text))
     return results
 
 
 def _call_gemma(text: str, grade_label: str) -> list[dict]:
-    prompt = EXTRACT_PROMPT.format(grade_label=grade_label, text=text[:4000])
+    prompt = EXTRACT_PROMPT.format(grade_label=grade_label, text=text[:12000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],

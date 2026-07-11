@@ -23,6 +23,18 @@ import pdfplumber
 
 from shared.config import DB_PATH, OLLAMA_BASE_URL, OLLAMA_MODEL
 
+def _norm(text: str) -> str:
+    """Some official PDFs (education.gov.za CAPS, ZIMSEC) store glyphs character-reversed
+    inside rotated tables. Detect that and reverse each whitespace token back. No-op for
+    normal text."""
+    import re as _re
+    toks = _re.findall(r"[a-z]{2,}", text.lower())
+    rev = sum(t in ("eht","dna","rof","era","htiw","ot","fo","srenrael") for t in toks)
+    fwd = sum(t in ("the","and","for","are","with","to","of","learners") for t in toks)
+    if rev > fwd and rev >= 3:
+        return chr(10).join(" ".join(w[::-1] for w in ln.split()) for ln in text.splitlines())
+    return text
+
 SYSTEM = "za-caps-ela"
 SOURCE_URL = "https://www.education.gov.za/Curriculum/NationalCurriculumStatementsGradesR-12.aspx"
 VERIFIED_DATE = date.today().isoformat()
@@ -84,7 +96,9 @@ CAPS ELA TEXT (Grade {grade_label}):
 def _download_pdf(url: str, path: Path) -> None:
     print(f"  Downloading {url} ...")
     RAW_DIR.mkdir(parents=True, exist_ok=True)
-    urllib.request.urlretrieve(url, path, timeout=30)
+    _req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(_req, timeout=60) as _r, open(path, "wb") as _f:
+        _f.write(_r.read())
     print(f"  Saved: {path.stat().st_size:,} bytes")
 
 
@@ -92,14 +106,14 @@ def _extract_pages(pdf_path: Path) -> list[tuple[int, str]]:
     results = []
     with pdfplumber.open(pdf_path) as pdf:
         for i, page in enumerate(pdf.pages):
-            text = page.extract_text() or ""
+            text = _norm(page.extract_text() or "")
             if text.strip():
                 results.append((i + 1, text))
     return results
 
 
 def _call_gemma(text: str, grade_label: str) -> list[dict]:
-    prompt = EXTRACT_PROMPT.format(grade_label=grade_label, text=text[:4000])
+    prompt = EXTRACT_PROMPT.format(grade_label=grade_label, text=text[:12000])
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [{"role": "user", "content": prompt}],
