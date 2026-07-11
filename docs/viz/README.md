@@ -1,5 +1,29 @@
 # StandardGraph visualizations
 
+## `concept_map.html` — 3D interactive concept map (the "Marble" view)
+
+A single, self-contained HTML file (canvas 3D force layout + data inlined — **works fully
+offline**, no server or CDN). The depth story rendered the way [Marble](https://withmarble.com/curriculum/)
+renders it: a rotatable point-cloud of the **449 CCSS-math concepts** joined by the
+**2,016 LLM-validated prerequisite links**.
+
+- **Layout:** 3D force-directed cloud, gently stratified K (bottom) → HS (top); nodes coloured
+  along a K→HS grade spectrum.
+- **Interactions:** drag to rotate · scroll to zoom · double-click to reset · **tap a node to
+  light its full dependency chain** — every recursive prerequisite (blue) and everything it
+  unlocks (orange) highlight while the rest dims. The side panel shows the standard text plus
+  **"Requires first"** / **"Unlocks next"**, each edge tagged hard/soft with the LLM's
+  one-line rationale ("what must come first, and why"). Click any related standard to walk the chain.
+
+Regenerate from a DB (defaults to the installed DB; pass the prod DB for the shipped copy):
+
+```bash
+uv run python scripts/viz/export_concept_map.py ~/.standardgraph/common_core.db docs/viz/concept_map.html
+```
+
+`scripts/viz/export_concept_map.py` pulls the `method='llm_validated'` prerequisite edges,
+parses the hard/soft rationale out of the `notes` column, and inlines everything.
+
 ## `prereq_graph.html` — interactive CCSS-math prerequisite graph
 
 A single, self-contained HTML file (D3 + data inlined — **works fully offline**,
