@@ -57,7 +57,9 @@ def main() -> None:
                     add(id2, id1, "prerequisite", system)
 
     with conn:
-        conn.execute("DELETE FROM standard_relationships")
+        # Scoped to this script's own output only — never touch llm_validated rows
+        # (e.g. the prereq-graph pilot's HARD/SOFT relationships).
+        conn.execute("DELETE FROM standard_relationships WHERE method='grade_heuristic'")
         conn.executemany(
             """INSERT OR IGNORE INTO standard_relationships
                (source_id, target_id, relationship, system)
