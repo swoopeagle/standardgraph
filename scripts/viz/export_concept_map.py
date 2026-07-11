@@ -398,6 +398,9 @@ def build(db_path: str, out_path: str) -> None:
         separators=(",", ":"),
         ensure_ascii=False,
     )
+    # Strip U+FFFD replacement chars (pre-existing mojibake in a few source texts,
+    # e.g. Alberta "Métis"); they break downstream consumers like Artifact publishing.
+    data = data.replace("�", "")
     html = TEMPLATE.replace("__DATA__", data)
     Path(out_path).write_text(html)
     n_rows = sum(len(v) for v in intl.values())
