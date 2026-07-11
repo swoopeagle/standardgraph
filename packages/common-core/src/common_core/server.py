@@ -182,6 +182,42 @@ mcp = FastMCP(
 )
 
 
+# ── Static viz route ──────────────────────────────────────────────────────────
+
+def _viz_dir() -> "os.PathLike | None":
+    """Directory holding the pre-built viz HTML.
+
+    Uses SG_VIZ_DIR when set; otherwise falls back to ``<repo>/docs/viz`` derived
+    from DB_PATH (which, in the hosted deployment, lives in ``<repo>/data``).
+    """
+    import os
+    from pathlib import Path
+
+    override = os.getenv("SG_VIZ_DIR")
+    if override:
+        return Path(override)
+    candidate = Path(DB_PATH).resolve().parent.parent / "docs" / "viz"
+    return candidate if candidate.is_dir() else None
+
+
+@mcp.custom_route("/concept-map", methods=["GET"])
+async def _concept_map(request):  # noqa: ANN001 — Starlette Request
+    """Serve the self-contained interactive concept map (offline single file)."""
+    from pathlib import Path
+
+    from starlette.responses import HTMLResponse, PlainTextResponse
+
+    viz = _viz_dir()
+    if viz is not None:
+        f = Path(viz) / "concept_map.html"
+        if f.is_file():
+            return HTMLResponse(
+                f.read_text(encoding="utf-8"),
+                headers={"Cache-Control": "public, max-age=300"},
+            )
+    return PlainTextResponse("Concept map not available on this deployment.", status_code=404)
+
+
 # ── DB helpers ────────────────────────────────────────────────────────────────
 
 def _db() -> sqlite3.Connection:
