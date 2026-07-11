@@ -67,12 +67,14 @@ STOP_WORDS = {
 }
 
 EXTRACT_PROMPT = """\
-Extract all mathematics learning objectives from this South Africa CAPS curriculum text for Grade {grade_label}.
+Extract ALL mathematics skills, concepts, and learning objectives from this South Africa CAPS curriculum text for Grade {grade_label}.
 
 The CAPS document organises content into:
 - Content areas (e.g. "Numbers, Operations and Relationships", "Patterns, Functions and Algebra", "Space and Shape (Geometry)", "Measurement", "Data Handling")
 - Topics within each content area
 - Specific skills/concepts listed as bullet points or numbered items
+
+You MUST extract EVERY single listed skill and concept, even if there are many.
 
 Return ONLY a JSON array (no other text, no markdown). Each element must have:
   "content_area" : content area name (e.g. "Numbers Operations and Relationships")
@@ -81,7 +83,8 @@ Return ONLY a JSON array (no other text, no markdown). Each element must have:
   "obj_text"     : full text of the learning objective or skill
 
 Rules:
-- Extract every specific skill, concept, or learning objective listed.
+- Extract EVERY specific skill, concept, or learning objective listed — do not skip or summarize.
+- Include single-word concepts, short phrases, and full sentences.
 - Do NOT include time allocations, assessment notes, or general phase descriptions.
 - Preserve exact wording.
 

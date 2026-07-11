@@ -33,6 +33,7 @@ PDFS = [
         "https://elearning.reb.rw/pluginfile.php/177314/mod_folder/content/0/P4-P6%20Mathematics%20Syllabus.pdf",
         {"P4": "4", "P5": "5", "P6": "6"},
     ),
+    # Optional: P1-P3 and secondary syllabi may be at elearning.reb.rw — add if found
 ]
 
 EXTRACT_PROMPT = """\

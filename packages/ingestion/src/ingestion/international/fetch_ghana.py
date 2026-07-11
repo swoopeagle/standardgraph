@@ -41,6 +41,7 @@ PHASES = [
     {"label": "SHS1", "grade": "10",  "start": 24,  "end": 155},
     {"label": "SHS2", "grade": "11",  "start": 156, "end": 303},
     {"label": "SHS3", "grade": "HS",  "start": 304, "end": 384},
+    # TODO: B1-B9 (Primary/JHS) materials — check nacca.gov.gh for new URLs
 ]
 
 EXTRACT_PROMPT = """\
