@@ -32,13 +32,14 @@ Hub-and-spoke crosswalk architecture:
 
 ### MCP server
 
-FastMCP over stdio (`packages/common-core/src/common_core/server.py`). Five tools:
+FastMCP over stdio (`packages/common-core/src/common_core/server.py`). Six tools:
 
 | Tool | Purpose |
 |---|---|
 | `search_standards` | Semantic search over all standards |
 | `lookup_standard` | Fetch by ID with full text, prerequisites, successors |
 | `get_progression` | Trace a concept across grade levels |
+| `get_learning_path` | Ordered prerequisite study plan for a target standard |
 | `map_standard` | Find closest equivalent in another curriculum |
 | `list_systems` | Live system/standard counts |
 

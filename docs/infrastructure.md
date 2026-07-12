@@ -163,7 +163,7 @@ It does one thing — run large LLMs — and everything else waits in line. Olla
 Any CPU-bound step (embed locally, relate, crosswalk) can run on both minis simultaneously against their own DBs. This effectively doubles throughput. Mini 2 is the authoritative source for publishing (its DB is what gets pushed to HuggingFace).
 
 **The MacBook is development-only.**
-Never run the pipeline on the MacBook against the real DB — it lacks persistent storage for a 1.5 GB DB and you'd block your dev environment. Use it to push code, run `mcp_test.py` against a pulled snapshot, and build packages.
+Never run the pipeline on the MacBook against the real DB — it lacks persistent storage for a 1.9 GB DB and you'd block your dev environment. Use it to push code, run `mcp_test.py` against a pulled snapshot, and build packages.
 
 ### Routing new work
 

@@ -2,7 +2,7 @@
 
 ## What this is
 
-FastMCP server exposing 154,000+ education standards across 300 curriculum systems as five MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
+FastMCP server exposing 162,000+ education standards across 310 curriculum systems as six MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
 
 ## Architecture
 
@@ -10,7 +10,7 @@ FastMCP server exposing 154,000+ education standards across 300 curriculum syste
 packages/
   common-core/       → PyPI package "standardgraph" — the MCP server
     src/common_core/
-      server.py      → all five MCP tools (search, lookup, progression, map, list)
+      server.py      → all six MCP tools (search, lookup, progression, learning_path, map, list)
       config.py      → DB_PATH resolution (~/.standardgraph/common_core.db)
   ingestion/         → pipeline: fetchers → embed → relate → crosswalk
   shared/            → shared DB helpers
@@ -27,8 +27,8 @@ scripts/
 
 ## Key facts
 
-- **DB size:** ~1.5 GB
-- **Standards:** 156,774 across 300 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, and CCSS Mathematical Practice standards — added 2026-07)
+- **DB size:** ~1.9 GB
+- **Standards:** 162,923 across 310 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, CCSS Mathematical Practice standards, and the 2026-07 international expansion incl. 10 African systems)
 - **Crosswalk rows:** ~102,686 (hub-centric: CCSS for math, NGSS for science, etc.)
 - **Crosswalk quality scores:** ~74,918 rows (~73.0%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); pre-existing AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality) — includes new math mappings added by the 2026-07 decomposition/MP regeneration.
 - **Relationships:** ~3.16M rows (prerequisites/successors)

@@ -1,6 +1,6 @@
 # StandardGraph
 
-**156,000+ standards across 300 curriculum systems, accessible via Claude.**
+**162,000+ standards across 310 curriculum systems, accessible via Claude.**
 
 The alignment layer for the global curriculum.
 
@@ -25,7 +25,7 @@ curl -fsSL https://raw.githubusercontent.com/swoopeagle/standardgraph/main/insta
 
 Then **quit and reopen Claude Desktop**. Look for the 🔨 icon in a new conversation.
 
-> The installer handles everything: downloads the pre-built database (~1.5 GB), installs dependencies, and patches your Claude config automatically.
+> The installer handles everything: downloads the pre-built database (~1.9 GB), installs dependencies, and patches your Claude config automatically.
 
 **Optional: better semantic search**
 
@@ -154,12 +154,13 @@ StandardGraph works out of the box once installed, but pasting the following int
 <summary>Copy this into your Claude Project instructions</summary>
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 156,000+ standards across 300 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 162,000+ standards across 310 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
 
 ## When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards
 - lookup_standard — when they cite a specific standard ID (e.g. CCSS.MATH.6.RP.A.3)
 - get_progression — when they ask how a topic develops across grade levels
+- get_learning_path — when they want an ordered study plan of prerequisites for a target standard
 - map_standard — when they want the equivalent standard in another curriculum or country
 - list_systems — when they want to know which systems are available
 
@@ -196,6 +197,7 @@ StandardGraph also ships three **MCP prompt templates** that Claude can invoke d
 | `search_standards` | Find standards matching a concept or skill in plain English |
 | `lookup_standard` | Fetch a standard by ID with full text, prerequisites, and successors |
 | `get_progression` | Trace how a concept develops across grade levels |
+| `get_learning_path` | Return an ordered study plan — every prerequisite for a target standard, from the LLM-validated prerequisite graph |
 | `map_standard` | Find the closest equivalent in another curriculum system |
 | `list_systems` | Live count of all indexed systems and standards |
 
@@ -226,7 +228,7 @@ StandardGraph also ships three **MCP prompt templates** that Claude can invoke d
 
 `map_standard` supports direct lookup, two-hop bridging (any-to-any via hub), and semantic embedding fallback.
 
-**MCP server** — FastMCP over stdio, five tools.
+**MCP server** — FastMCP over stdio, six tools.
 
 ---
 

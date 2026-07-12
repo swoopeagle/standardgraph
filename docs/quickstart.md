@@ -4,15 +4,16 @@ You've installed StandardGraph and you see the 🔨 icon in Claude Desktop. Here
 
 ---
 
-## The five tools
+## The six tools
 
-StandardGraph gives Claude five tools. You never call them directly — just ask Claude a question in plain English and it picks the right one.
+StandardGraph gives Claude six tools. You never call them directly — just ask Claude a question in plain English and it picks the right one.
 
 | Tool | What it does | When Claude uses it |
 |---|---|---|
 | `search_standards` | Find standards matching a concept | "Find NGSS standards on ecosystems in middle school" |
 | `lookup_standard` | Fetch a standard by ID | "What does CCSS.MATH.6.RP.A.3 say?" |
 | `get_progression` | Trace a concept across grade levels | "How does fraction understanding build from grades 3–6?" |
+| `get_learning_path` | Ordered study plan of prerequisites for a target | "What do I need to learn before CCSS.MATH.8.EE.7?" |
 | `map_standard` | Find the closest equivalent in another curriculum | "What's the Singapore equivalent of this Texas standard?" |
 | `list_systems` | Show all available curriculum systems | "What science curricula do you have?" |
 
@@ -118,7 +119,7 @@ How does Ghana's NACCA math curriculum compare to CCSS in terms of when algebra 
 
 ## Tips
 
-**Be specific about grade and subject.** The database covers 154,000+ standards. The more context you give, the better the results.
+**Be specific about grade and subject.** The database covers 162,000+ standards. The more context you give, the better the results.
 
 - Vague: *"Find standards on writing"*
 - Better: *"Find CCSS ELA standards on argumentative writing in grades 9–10"*
@@ -139,12 +140,13 @@ Look up CCSS.MATH.6.RP.A.3, then find the closest equivalent in Singapore MOE, t
 For ongoing curriculum work, paste the following into your Claude Project instructions (Settings → Projects → [your project] → Instructions). This tells Claude how to interpret results without you having to explain it every time.
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 154,000+ standards across 300 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 162,000+ standards across 310 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
 
 When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards
 - lookup_standard — when they cite a specific standard ID
 - get_progression — when they ask how a topic develops across grade levels
+- get_learning_path — when they want an ordered study plan of prerequisites for a target standard
 - map_standard — when they want the equivalent standard in another curriculum
 - list_systems — when they want to know which systems are available
 
