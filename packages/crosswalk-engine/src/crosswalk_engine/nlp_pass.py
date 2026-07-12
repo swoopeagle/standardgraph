@@ -26,15 +26,37 @@ DEFAULT_TOP_N = 1
 DEFAULT_GRADE_DELTA_MAX = 5
 
 
-def _load_embeddings(conn: sqlite3.Connection, system: str) -> tuple[np.ndarray, list[str]]:
-    """Load all embeddings for one curriculum system. Returns (matrix, ids)."""
-    rows = conn.execute(
-        """SELECT e.standard_id, e.vector, e.dimensions
-           FROM embeddings e
-           JOIN standards s ON s.id = e.standard_id
-           WHERE s.system = ?""",
-        (system,),
-    ).fetchall()
+# Canonical crosswalk hub per subject. Lets a multi-subject system (e.g. uk-nc
+# holding math + science + ela) crosswalk each subject to the right hub.
+_SUBJECT_HUB = {
+    "mathematics":    "ccss",
+    "science":        "ngss",
+    "ela":            "ccss-ela",
+    "social-studies": "c3",
+    "cs":             "csta",
+}
+
+
+def _load_embeddings(
+    conn: sqlite3.Connection, system: str, subject: str | None = None
+) -> tuple[np.ndarray, list[str]]:
+    """Load embeddings for one curriculum system (optionally one subject). Returns (matrix, ids)."""
+    if subject:
+        rows = conn.execute(
+            """SELECT e.standard_id, e.vector, e.dimensions
+               FROM embeddings e
+               JOIN standards s ON s.id = e.standard_id
+               WHERE s.system = ? AND s.subject = ?""",
+            (system, subject),
+        ).fetchall()
+    else:
+        rows = conn.execute(
+            """SELECT e.standard_id, e.vector, e.dimensions
+               FROM embeddings e
+               JOIN standards s ON s.id = e.standard_id
+               WHERE s.system = ?""",
+            (system,),
+        ).fetchall()
     if not rows:
         return np.empty((0, 0), dtype=np.float32), []
     dim = rows[0][2]
@@ -99,17 +121,22 @@ def generate_crosswalk(
     threshold: float = DEFAULT_THRESHOLD,
     top_n: int = DEFAULT_TOP_N,
     grade_delta_max: int = DEFAULT_GRADE_DELTA_MAX,
+    subject: str | None = None,
 ) -> int:
     """
-    Map all standards from source_system to its hub (CCSS for math, NGSS for science)
-    via cosine similarity. Returns number of mappings inserted.
+    Map standards from source_system to its subject hub (CCSS math, NGSS science,
+    CCSS-ELA, C3, CSTA) via cosine similarity. Returns number of mappings inserted.
+
+    subject: when given, only that subject's standards are mapped, to the subject's
+    hub — required for multi-subject systems (e.g. uk-nc math+science+ela). When
+    omitted, the hub is inferred from an arbitrary standard of the system.
 
     grade_delta_max: skip candidate pairs where abs(grade_delta) > this value.
     Filters out systematically bad matches (e.g. K-level source → HS hub) that
     pass the cosine threshold due to generic vocabulary overlap.
     """
-    hub_system = _hub_for_system(source_system, conn)
-    src_matrix, src_ids = _load_embeddings(conn, source_system)
+    hub_system = _SUBJECT_HUB.get(subject, "ccss") if subject else _hub_for_system(source_system, conn)
+    src_matrix, src_ids = _load_embeddings(conn, source_system, subject=subject)
     hub_matrix, hub_ids = _load_embeddings(conn, hub_system)
 
     if src_matrix.size == 0 or hub_matrix.size == 0:
@@ -193,6 +220,8 @@ def generate_crosswalk(
 def main() -> None:
     parser = argparse.ArgumentParser(description="NLP-based crosswalk generation")
     parser.add_argument("--system", default=None, help="Single system to map (default: all non-CCSS)")
+    parser.add_argument("--subject", default=None,
+                        help="Only map this subject to its hub (default: each subject of the system)")
     parser.add_argument("--threshold", type=float, default=DEFAULT_THRESHOLD)
     parser.add_argument("--top", type=int, default=DEFAULT_TOP_N, dest="top_n",
                         help="Top-N hub matches per standard (default: 1)")
@@ -218,11 +247,21 @@ def main() -> None:
           f"(threshold={args.threshold}, top={args.top_n}, grade_delta_max={args.grade_delta_max})...")
     total = 0
     for system in systems:
-        n = generate_crosswalk(system, conn, threshold=args.threshold,
-                               top_n=args.top_n, grade_delta_max=args.grade_delta_max)
-        total += n
-        if n:
-            print(f"  {system}: {n} mappings")
+        if args.subject:
+            subjects = [args.subject]
+        else:
+            subjects = [
+                r[0] for r in conn.execute(
+                    "SELECT DISTINCT subject FROM standards WHERE system=?", (system,)
+                ).fetchall()
+            ]
+        for subj in subjects:
+            n = generate_crosswalk(system, conn, threshold=args.threshold,
+                                   top_n=args.top_n, grade_delta_max=args.grade_delta_max,
+                                   subject=subj)
+            total += n
+            if n:
+                print(f"  {system}/{subj}: {n} mappings")
 
     conn.close()
     print(f"\nTotal: {total} crosswalk mappings written.")
