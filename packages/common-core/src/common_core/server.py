@@ -361,16 +361,43 @@ def _embed_query(text: str) -> np.ndarray:
     return np.array(resp.json()["embeddings"][0], dtype=np.float32)
 
 
+# Canonical crosswalk-hub system per subject. A bare search (no system/subject)
+# ranks across all hubs so it is not silently limited to math.
+SUBJECT_HUB = {
+    "mathematics":    "ccss",
+    "science":        "ngss",
+    "ela":            "ccss-ela",
+    "social-studies": "c3",
+    "cs":             "csta",
+}
+HUB_SYSTEMS = list(SUBJECT_HUB.values())
+
+
 def _cosine_scores(
     query_vec: np.ndarray,
     conn: sqlite3.Connection,
     system: str | None = None,
+    systems: list[str] | None = None,
+    subject: str | None = None,
 ) -> list[tuple[float, str]]:
     if system:
         rows = conn.execute(
             "SELECT e.standard_id, e.vector, e.dimensions FROM embeddings e "
             "JOIN standards s ON s.id = e.standard_id WHERE s.system = ?",
             (system,),
+        ).fetchall()
+    elif systems:
+        ph = ",".join("?" * len(systems))
+        rows = conn.execute(
+            "SELECT e.standard_id, e.vector, e.dimensions FROM embeddings e "
+            f"JOIN standards s ON s.id = e.standard_id WHERE s.system IN ({ph})",
+            list(systems),
+        ).fetchall()
+    elif subject:
+        rows = conn.execute(
+            "SELECT e.standard_id, e.vector, e.dimensions FROM embeddings e "
+            "JOIN standards s ON s.id = e.standard_id WHERE s.subject = ?",
+            (subject,),
         ).fetchall()
     else:
         rows = conn.execute("SELECT standard_id, vector, dimensions FROM embeddings").fetchall()
@@ -425,12 +452,14 @@ def _ensure_fts(conn: sqlite3.Connection) -> bool:
 def _fts_search(
     query: str,
     conn: sqlite3.Connection,
-    system: str,
+    system: str | None = None,
+    systems: list[str] | None = None,
+    subject: str | None = None,
     grade_filter: set[str] | None = None,
     domain_filter: str | None = None,
     limit: int = 5,
 ) -> list[dict]:
-    """BM25-ranked FTS5 keyword search, filtered to a single curriculum system."""
+    """BM25-ranked FTS5 keyword search, scoped to a system, set of systems, or subject."""
     if not _ensure_fts(conn):
         return []
     fts_q = _fts_query(query)
@@ -453,13 +482,22 @@ def _fts_search(
 
     rowids = [r[0] for r in ranked]
     placeholders = ",".join("?" * len(rowids))
+    if system:
+        scope_sql, scope_args = "AND system = ?", [system]
+    elif systems:
+        ph = ",".join("?" * len(systems))
+        scope_sql, scope_args = f"AND system IN ({ph})", list(systems)
+    elif subject:
+        scope_sql, scope_args = "AND subject = ?", [subject]
+    else:
+        scope_sql, scope_args = "", []
     try:
         rows_by_id = {
             r["rowid"]: r
             for r in conn.execute(
                 f"SELECT rowid, id, grade, domain, standard_text"
-                f" FROM standards WHERE rowid IN ({placeholders}) AND system = ?",
-                rowids + [system],
+                f" FROM standards WHERE rowid IN ({placeholders}) {scope_sql}",
+                rowids + scope_args,
             ).fetchall()
         }
     except Exception:
@@ -627,7 +665,8 @@ def lookup_standard(
 @mcp.tool()
 def search_standards(
     query: str,
-    system: str = "ccss",
+    system: str | None = None,
+    subject: str | None = None,
     grade: str | None = None,
     domain: str | None = None,
     limit: int = 5,
@@ -638,8 +677,15 @@ def search_standards(
     Works across all subjects: mathematics, science, ELA, social studies, CS, arts, world-languages.
     Examples: "adding fractions with unlike denominators", "photosynthesis", "argumentative writing grade 8".
 
+    Search scope is resolved in this order:
+      • system given  → search that one curriculum (e.g. 'ngss', 'sg-moe', 'de' = Delaware).
+      • subject given → search that subject's canonical hub ('mathematics'→ccss, 'science'→ngss,
+        'ela'→ccss-ela, 'social-studies'→c3, 'cs'→csta; 'arts'/'world-languages' search subject-wide).
+      • neither       → rank across all five subject hubs, so a bare query is never limited to math.
+
     query: plain English description of the concept or skill.
-    system: which curriculum to search (default 'ccss'). Call multiple times to compare systems.
+    system: optional — a single curriculum code. Call multiple times to compare systems.
+    subject: optional — 'mathematics', 'science', 'ela', 'social-studies', 'cs', 'arts', 'world-languages'.
     grade: optional filter — single grade '5', range '6-8', or 'HS'. Grade codes: K 1 2 3 4 5 6 7 8 HS.
     domain: optional keyword to restrict by domain name (e.g. 'geometry', 'algebra').
     limit: number of results (default 5, max sensible ~10).
@@ -647,12 +693,28 @@ def search_standards(
     Uses semantic similarity (requires Ollama) with automatic keyword FTS fallback when Ollama is unavailable.
     Returns standards ranked by relevance with scores (0–1).
     """
+    # Resolve scope: explicit system > subject (→ its hub, or subject-wide if hubless) > all hubs.
+    scope_system: str | None = None
+    scope_systems: list[str] | None = None
+    scope_subject: str | None = None
+    if system:
+        scope_system = system
+    elif subject:
+        hub = SUBJECT_HUB.get(subject.lower())
+        if hub:
+            scope_system = hub
+        else:
+            scope_subject = subject.lower()  # arts / world-languages: no hub, search the subject
+    else:
+        scope_systems = HUB_SYSTEMS
+
     try:
         query_vec = _embed_query(query)
     except Exception:
         conn = _db()
         results = _fts_search(
-            query, conn, system,
+            query, conn,
+            system=scope_system, systems=scope_systems, subject=scope_subject,
             grade_filter=_parse_grade_filter(grade) if grade else None,
             domain_filter=domain,
             limit=limit,
@@ -664,7 +726,7 @@ def search_standards(
             "results": results,
         }, indent=2)
     conn = _db()
-    scored = _cosine_scores(query_vec, conn, system=system)
+    scored = _cosine_scores(query_vec, conn, system=scope_system, systems=scope_systems, subject=scope_subject)
 
     results = []
     for score, sid in scored:

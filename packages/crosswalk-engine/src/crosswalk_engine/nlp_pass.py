@@ -43,11 +43,32 @@ def _load_embeddings(conn: sqlite3.Connection, system: str) -> tuple[np.ndarray,
     return matrix, ids
 
 
+_WORD_GRADES = {
+    "kindergarten": 0, "first": 1, "second": 2, "third": 3, "fourth": 4,
+    "fifth": 5, "sixth": 6, "seventh": 7, "eighth": 8, "ninth": 9,
+    "tenth": 10, "eleventh": 11, "twelfth": 12,
+}
+
+
 def _grade_key(g: str) -> int:
-    order = ["K", "1", "2", "3", "4", "5", "6", "7", "8", "HS"]
+    # K=0, numeric grades map to their year (1..12), HS≈9 (kept for back-compat with
+    # the old K,1..8,HS ordering). Also tolerates spelled-out grades and ranges
+    # ("6-8", "K-12" → low end). Grades 9-12 and these formats were previously
+    # unmapped → 99, producing spurious grade_delta values of -90..-99.
+    if not g:
+        return 99
+    g = g.strip()
+    if g == "K":
+        return 0
+    if g == "HS":
+        return 9
+    if g.lower() in _WORD_GRADES:
+        return _WORD_GRADES[g.lower()]
+    if "-" in g:  # range like "6-8" or "K-12": use the low end
+        return _grade_key(g.split("-")[0].strip())
     try:
-        return order.index(g)
-    except ValueError:
+        return int(g)
+    except (ValueError, TypeError):
         return 99
 
 
