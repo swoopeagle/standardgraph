@@ -1,6 +1,6 @@
 # StandardGraph
 
-**162,000+ standards across 310 curriculum systems, accessible via Claude.**
+**172,000+ standards across 310 curriculum systems, accessible via Claude.**
 
 The alignment layer for the global curriculum.
 
@@ -25,7 +25,7 @@ curl -fsSL https://raw.githubusercontent.com/swoopeagle/standardgraph/main/insta
 
 Then **quit and reopen Claude Desktop**. Look for the 🔨 icon in a new conversation.
 
-> The installer handles everything: downloads the pre-built database (~1.9 GB), installs dependencies, and patches your Claude config automatically.
+> The installer handles everything: downloads the pre-built database (~2.0 GB), installs dependencies, and patches your Claude config automatically.
 
 **Optional: better semantic search**
 
@@ -154,7 +154,7 @@ StandardGraph works out of the box once installed, but pasting the following int
 <summary>Copy this into your Claude Project instructions</summary>
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 162,000+ standards across 310 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 172,000+ standards across 310 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
 
 ## When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards
