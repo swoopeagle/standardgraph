@@ -4,6 +4,8 @@
 
 172,579 standards across 310 curriculum systems in 50+ countries, cross-walked into a single graph and accessible via Claude.
 
+> ⚡ **Try it in 30 seconds — no install.** In Claude, go to **Settings → Connectors → Add custom connector** and paste `https://standardgraph.walkmakewalk.com/mcp`. No download, no token. ([full instructions ↓](#install))
+
 Covers Mathematics, Science, ELA, Social Studies, and Computer Science — US national and state standards plus major international curricula. Ask Claude to look up any standard, trace a concept across grade levels, or find the equivalent in another country's curriculum.
 
 **Who this is for:**
