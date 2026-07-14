@@ -13,11 +13,30 @@ Covers Mathematics, Science, ELA, Social Studies, and Computer Science — US na
 
 If you're doing either of those by hand today, this replaces the spreadsheet.
 
+<!-- DEMO: capture a short GIF/screenshot in Claude of the query
+     "What's the Singapore equivalent of CCSS.MATH.6.RP.A.3?", save as docs/demo.gif,
+     then uncomment the line below (delete this comment block):
+![StandardGraph in Claude — mapping a Singapore math standard to its US Common Core equivalent, with confidence and grade offset](docs/demo.gif)
+-->
+
+
 ---
 
 ## Install
 
-Requires [Claude Desktop](https://claude.ai/download). Open Terminal and run:
+### Option A — Hosted connector (no install) ⚡
+
+The fastest way to try it — no download, no terminal. In Claude, go to **Settings → Connectors → Add custom connector**, name it `StandardGraph`, and paste this URL:
+
+```
+https://standardgraph.walkmakewalk.com/mcp
+```
+
+Connect, and StandardGraph's tools are available in any conversation. Works in Claude on web, desktop, and mobile. *(Custom connectors require a paid Claude plan. The hosted server runs on modest hardware — ideal for trying it out and light use; for heavy or offline use, install locally below.)*
+
+### Option B — Local install (offline / self-host)
+
+Runs entirely on your machine against a local copy of the database. Requires [Claude Desktop](https://claude.ai/download). Open Terminal and run:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/swoopeagle/standardgraph/main/install.sh | bash
@@ -61,6 +80,8 @@ How does the C3 Framework approach civics compared to California's social studie
 
 ## Coverage
 
+> International coverage is deepest in **Mathematics, Science, and ELA**. Social Studies, Computer Science, World Languages, and Arts are US/AP-focused today, with international expansion in progress.
+
 ### Mathematics
 
 | Region | Systems |
@@ -101,16 +122,16 @@ How does the C3 Framework approach civics compared to California's social studie
 | 🇺🇸 United States | `ngss` (hub, K–12) + all 50 states + DC |
 | 🎓 Advanced Placement | `ap-bio` `ap-chem` `ap-phys-1` `ap-phys-2` `ap-phys-c-mech` `ap-phys-c-em` `ap-env` |
 | 🌍 International Baccalaureate | `ib-dp-bio` `ib-dp-chem` `ib-dp-physics` `ib-dp-ess` `ib-myp-science` |
+| 🌍 International | `au-acara` `ca-on` `gb-sco` `gh-nacca` `ie-ncca` `ke-kicd` `na-nied` `ng-nerdc` `sg-moe` `tz-tie` `ug-ncdc` `uk-nc` `zm-cdc` `zw-zimsec` |
 
 ### ELA (English Language Arts)
-
-US state coverage only; international ELA is planned.
 
 | Region | Systems |
 |---|---|
 | 🇺🇸 United States | `ccss-ela` (hub, K–12) + 49 states |
 | 🎓 Advanced Placement | `ap-english-lang` `ap-english-lit` |
 | 🌍 International Baccalaureate | `ib-dp-english-a` `ib-myp-english` |
+| 🌍 International | `au-acara` `ca-on` `gb-sco` `gh-nacca` `ie-ncca` `ke-kicd` `na-nied` `ng-nerdc` `sg-moe` `tz-tie` `ug-ncdc` `uk-nc` `zm-cdc` `zw-zimsec` |
 
 ### Social Studies
 
