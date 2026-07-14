@@ -200,6 +200,18 @@ When grade_delta ≠ 0, note which curriculum introduces the concept earlier or 
 - Deep dive on a standard: lookup_standard → follow prerequisites/successors → map_standard to compare
 - Cross-curriculum progression: get_progression in CCSS, then map key grade stages to another system
 
+## Known limitations — read before using map_standard or list_systems:
+- **Crosswalks are stored one-directional** (non-hub → hub, e.g. sg-moe → ccss), not mirrored. Mapping
+  *from* a hub to a non-hub system (e.g. "what's the Singapore equivalent of this CCSS standard?") often
+  falls through to a weaker semantic fallback even when a strong reverse mapping exists. **Always call
+  map_standard with the non-hub/state/international/AP system as from_system and the subject's hub
+  (ccss, ngss, ccss-ela, c3, csta) as to_system** — flip the user's framing if needed, then present the
+  result in the direction the user actually asked about. Mapping between two non-hub systems directly
+  (e.g. Singapore → UK) is also less reliable than routing through the hub.
+- **list_systems' region filter has metadata gaps** — some international systems are tagged inconsistently
+  and a region like "Sub-Saharan Africa" may under-match. Prefer filtering by subject alone, or reference
+  systems by their code directly, rather than relying on region to enumerate everything available.
+
 ## Always note:
 Crosswalk mappings are NLP-generated (cosine similarity), not human-verified. Present them as "closest available match" rather than "equivalent." For high-stakes decisions — student placement, curriculum adoption, teacher credentialing — recommend expert review for any mapping below 0.85 confidence.
 ```
