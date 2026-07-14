@@ -2,7 +2,7 @@
 
 ## What this is
 
-FastMCP server exposing 162,000+ education standards across 310 curriculum systems as six MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
+FastMCP server exposing 172,000+ education standards across 310 curriculum systems as six MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
 
 ## Architecture
 
@@ -28,9 +28,9 @@ scripts/
 ## Key facts
 
 - **DB size:** ~1.9 GB
-- **Standards:** 162,923 across 310 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, CCSS Mathematical Practice standards, and the 2026-07 international expansion incl. 10 African systems)
-- **Crosswalk rows:** ~102,686 (hub-centric: CCSS for math, NGSS for science, etc.)
-- **Crosswalk quality scores:** ~74,918 rows (~73.0%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); pre-existing AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality) — includes new math mappings added by the 2026-07 decomposition/MP regeneration.
+- **Standards:** 172,579 across 310 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, CCSS Mathematical Practice standards, and the 2026-07 international expansion incl. 10 African systems)
+- **Crosswalk rows:** ~117,699 (hub-centric: CCSS for math, NGSS for science, etc.)
+- **Crosswalk quality scores:** ~75,055 rows (~63.8%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); pre-existing AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality) — includes new math mappings added by the 2026-07 decomposition/MP regeneration.
 - **Relationships:** ~3.16M rows (prerequisites/successors)
 - **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge from Mini 2 — 0.4ms RTT)
 - **HuggingFace dataset:** `swoopeagle/standardgraph` (file: `common_core.db`)

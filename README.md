@@ -1,8 +1,8 @@
 # StandardGraph
 
-**172,000+ standards across 310 curriculum systems, accessible via Claude.**
+**The alignment layer for the global curriculum.** Map any standard to its equivalent in another country or exam board — cross-border alignment no single-country tool provides.
 
-The alignment layer for the global curriculum.
+172,579 standards across 310 curriculum systems in 50+ countries, cross-walked into a single graph and accessible via Claude.
 
 Covers Mathematics, Science, ELA, Social Studies, and Computer Science — US national and state standards plus major international curricula. Ask Claude to look up any standard, trace a concept across grade levels, or find the equivalent in another country's curriculum.
 
