@@ -15,11 +15,7 @@ Covers Mathematics, Science, ELA, Social Studies, and Computer Science — US na
 
 If you're doing either of those by hand today, this replaces the spreadsheet.
 
-<!-- DEMO: capture a short GIF/screenshot in Claude of the query
-     "What's the Singapore equivalent of CCSS.MATH.6.RP.A.3?", save as docs/demo.gif,
-     then uncomment the line below (delete this comment block):
-![StandardGraph in Claude — mapping a Singapore math standard to its US Common Core equivalent, with confidence and grade offset](docs/demo.gif)
--->
+![StandardGraph in Claude — mapping a Singapore math standard to its Common Core equivalent, with confidence, grade alignment, and a nuance note on scope differences](docs/demo.gif)
 
 
 ---
