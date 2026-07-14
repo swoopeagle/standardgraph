@@ -557,12 +557,15 @@ def _related(conn, sid: str, relationship: str, prefer_validated: bool):
 def _parse_prereq_note(notes: str | None) -> tuple[str | None, str | None]:
     """Split a validated-edge note into (strength, rationale).
 
-    Stored form: 'llm_prereq cosine=0.83 hard: <why>' — surfaced so callers can
-    show *why* a prerequisite was included (the provenance/trust story).
+    Stored form: 'llm_prereq cosine=0.83 hard: <why>'. Promoted edges insert a
+    provenance bracket between the strength and the colon — 'hard [promoted_
+    soft_to_hard via qwen]: <why>' — which the regex must tolerate and discard,
+    or it falls through and surfaces the whole internal-process string as the
+    rationale (see feedback_leaked_promotion_note).
     """
     if not notes:
         return None, None
-    m = re.search(r"\b(hard|soft):\s*(.*)$", notes, re.S)
+    m = re.search(r"\b(hard|soft)\b(?:\s*\[[^\]]*\])?:\s*(.*)$", notes, re.S)
     if m:
         return m.group(1), m.group(2).strip() or None
     return None, notes.strip() or None
@@ -592,6 +595,7 @@ def lookup_standard(
     Returns the standard text, grade, domain, cluster, sub-standards (if any),
     prerequisite standard IDs from the prior grade, and successor IDs for the next grade.
     """
+    system = system.strip().lower()
     sid = _expand_id(standard_id, system)
     conn = _db()
 
@@ -698,7 +702,7 @@ def search_standards(
     scope_systems: list[str] | None = None
     scope_subject: str | None = None
     if system:
-        scope_system = system
+        scope_system = system.strip().lower()
     elif subject:
         hub = SUBJECT_HUB.get(subject.lower())
         if hub:
@@ -762,16 +766,27 @@ def search_standards(
 
 def _parse_grade_filter(grade: str | list) -> set[str]:
     if isinstance(grade, list):
-        return set(grade)
-    if "-" in grade and not grade.startswith("K"):
-        # range like "6-8"
-        parts = grade.split("-")
-        try:
-            lo, hi = int(parts[0]), int(parts[1])
-            return {str(g) for g in range(lo, hi + 1)}
-        except ValueError:
-            pass
-    return {grade}
+        coerced = {c for g in grade if (c := _coerce_grade(g))}
+        return coerced or set(grade)
+
+    s = str(grade).strip()
+    if _RANGE_SEP.search(s):
+        # Range like "6-8" or "9-10". Coerce each end through _coerce_grade so a
+        # bound of 9-12 normalises to "HS" — every HS-band standard is stored
+        # with grade="HS", never "9"/"10"/"11"/"12", so without this a range
+        # like "9-10" silently matched zero rows (see feedback_grade_hs_range).
+        parts = _RANGE_SEP.split(s, maxsplit=1)
+        if len(parts) == 2 and parts[0] and parts[1]:
+            lo, hi = _coerce_grade(parts[0]), _coerce_grade(parts[1])
+            if lo is not None and hi is not None:
+                lo_i, hi_i = GRADE_ORDER.index(lo), GRADE_ORDER.index(hi)
+                if lo_i <= hi_i:
+                    return set(GRADE_ORDER[lo_i : hi_i + 1])
+
+    # Single value, e.g. "9" — also needs HS normalisation (bare high-school
+    # grade numbers never appear in stored data as anything but "HS").
+    c = _coerce_grade(s)
+    return {c} if c else {s}
 
 
 # ── Tool 3: get_progression ───────────────────────────────────────────────────
@@ -797,6 +812,7 @@ def get_progression(
     Returns the top matching standards per grade, ordered K through HS, showing how the
     concept deepens over time.
     """
+    system = system.strip().lower()
     g_start, g_end = _norm_grade_bounds(grade_start, grade_end)
     try:
         query_vec = _embed_query(concept)
@@ -906,6 +922,7 @@ def get_learning_path(
     immediate in-path prerequisites), plus counts. If the target has no validated prerequisites
     the path is just the target with an explanatory note.
     """
+    system = system.strip().lower()
     conn = _db()
     tgt = _resolve_id(conn, _expand_id(target, system), system)
     if not tgt:
@@ -1066,6 +1083,8 @@ def map_standard(
     Returns matched standards with confidence score, grade alignment, quality_score (1-5),
     flagged status, and mapping method.
     """
+    from_system = from_system.strip().lower()
+    to_system = to_system.strip().lower()
     sid = _expand_id(standard_id, from_system)
     conn = _db()
 
@@ -1352,7 +1371,7 @@ def list_systems(
 
     system_rows = []
     for r in all_rows:
-        if subject and subject not in r["subject_set"]:
+        if subject and subject.strip().lower() not in r["subject_set"]:
             continue
         if region and region.lower() not in (r["region"] or "").lower():
             continue
