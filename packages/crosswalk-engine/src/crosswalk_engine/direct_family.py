@@ -19,11 +19,24 @@ import numpy as np
 from shared.config import DB_PATH
 from crosswalk_engine.nlp_pass import _grade_delta
 
+# Families discovered by clustering curricula on content-affinity residual (2026-07-15).
+# ccss is deliberately excluded from every family — it is the global hub, not a member.
 FAMILIES = {
     "commonwealth": [
         "uk-nc", "au-acara", "nz-moe", "sg-moe", "in-ncert", "ke-kicd", "tz-tie",
         "ug-ncdc", "gh-nacca", "ng-nerdc", "za-caps", "zm-cdc", "na-nied",
     ],
+    # Tightest-affinity family: terse, atomic, skill-based standards across 3 continents.
+    "atomic_style": ["cl-mineduc", "jp-mext", "kr-ncf"],
+    # Content-dense European tradition + its Iberian and Andean descendants.
+    "iberian_continental": [
+        "pe-minedu", "co-men", "es-lomloe", "pt-dge", "de-kmk", "it-miur",
+        "fi-oph", "gb-sco", "rw-reb",
+    ],
+    # Lusophone / southern-cone competency curricula (+ Czech outlier).
+    "latin_southern": ["mx-sep-2017", "br-bncc", "uy-anep", "cz-msmt"],
+    # Anglophone but structurally apart from the Commonwealth core.
+    "anglophone_distinct": ["ca-on", "ie-ncca", "hk-edb", "zw-zimsec"],
 }
 
 DEFAULT_THRESHOLD = 0.70
