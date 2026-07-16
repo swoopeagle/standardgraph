@@ -2,7 +2,7 @@
 
 ## What this is
 
-FastMCP server exposing 172,000+ education standards across 310 curriculum systems as six MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
+FastMCP server exposing 175,000+ education standards across 310 curriculum systems as six MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
 
 ## Architecture
 
@@ -28,9 +28,9 @@ scripts/
 ## Key facts
 
 - **DB size:** ~1.9 GB
-- **Standards:** 172,579 across 310 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, CCSS Mathematical Practice standards, and the 2026-07 international expansion incl. 10 African systems)
-- **Crosswalk rows:** ~117,699 (hub-centric: CCSS for math, NGSS for science, etc.)
-- **Crosswalk quality scores:** ~75,055 rows (~63.8%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); pre-existing AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality) — includes new math mappings added by the 2026-07 decomposition/MP regeneration.
+- **Standards:** 175,738 across 310 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, CCSS Mathematical Practice standards, the 2026-07 international expansion incl. 10 African systems, and the 2026-07-15 math grade-coverage fill-in for 11 countries)
+- **Crosswalk rows:** ~208,442 — hub-centric (CCSS for math, NGSS for science, etc.) PLUS ~88,944 direct within-family country-to-country math edges (see `crosswalk_engine/direct_family.py`; tagged `direct_family` in notes). map_standard serves direct edges automatically, two-hop-via-CCSS is the fallback.
+- **Crosswalk quality scores:** ~79,873 rows carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); pre-existing AP/IB source rows are scored. Remainder unscored (`nlp_pass` + `direct_family`, ranked by cosine, treated as neutral quality). Direct-family edges are cosine-thresholded (≥0.70) and validated at ~4.1/5 mean on a rubric sample; full LLM scoring of them is a pending fleet job.
 - **Relationships:** ~3.16M rows (prerequisites/successors)
 - **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge from Mini 2 — 0.4ms RTT)
 - **HuggingFace dataset:** `swoopeagle/standardgraph` (file: `common_core.db`)
