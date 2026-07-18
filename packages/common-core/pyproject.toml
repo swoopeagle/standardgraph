@@ -1,6 +1,6 @@
 [project]
 name = "standardgraph"
-version = "1.6.0"
+version = "1.6.1"
 description = "Map any curriculum standard to its equivalent in another country or exam board — 175,000+ standards across 310 systems in 50+ countries, cross-walked into one graph (incl. direct within-family country-to-country edges) and served as a Claude MCP server"
 readme = "README.md"
 requires-python = ">=3.11"

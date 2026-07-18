@@ -6,7 +6,7 @@
 
 Covers seven subjects — Mathematics, Science, ELA, Social Studies, Computer Science, Arts, and World Languages — across the US (CCSS + all 50 states), Canada, Australia, UK, Singapore, Japan, New Zealand, Ireland, Hong Kong, India, Ghana, South Africa, Rwanda, Cambridge International, IB MYP/DP, AP, and more. Standards are cross-referenced to subject hubs (CCSS for math, NGSS for science, etc.) via semantic similarity, with LLM quality scores on the strongest mappings.
 
-**New in v1.6.0:** every one of the 88,944 direct country-to-country math crosswalk edges now carries a 1–5 LLM quality score (100% coverage), and weak matches are automatically suppressed from default results — bringing the graph to 166,745 quality-scored crosswalks overall.
+**Now fully quality-scored:** all 208,442 crosswalks carry a 1–5 LLM quality score (100% coverage) — the 88,944 direct country-to-country math edges plus every hub-centric mapping across all seven subjects. Weak matches are automatically suppressed from default results, and mappings are ranked by alignment quality.
 
 ## Install (macOS)
 

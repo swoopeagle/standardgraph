@@ -4,7 +4,7 @@
 
 175,738 standards across 310 curriculum systems in 50+ countries, cross-walked into a single graph and accessible via Claude.
 
-> 🎯 **New in v1.6.0 — every direct country-to-country math crosswalk is now quality-scored.** All 88,944 within-family direct edges carry a 1–5 LLM quality score (100% coverage); weak matches are automatically suppressed from results, so what you get back is ranked by real alignment quality. That's 166,745 quality-scored crosswalks graph-wide (80% of all crosswalks).
+> 🎯 **Every crosswalk in the graph is now quality-scored.** All 208,442 crosswalks carry a 1–5 LLM quality score (100% coverage) — spanning the 88,944 direct country-to-country math edges and every hub-centric mapping across all seven subjects. Weak matches are automatically suppressed and results are ranked by real alignment quality, so what you get back is the strongest match first.
 
 > ⚡ **Try it in 30 seconds — no install.** In Claude, go to **Settings → Connectors → Add custom connector** and paste `https://standardgraph.walkmakewalk.com/mcp`. No download, no token. ([full instructions ↓](#install))
 
