@@ -1004,6 +1004,119 @@ for label, sid, to_sys, min_conf in IB_TO_AP_PAIRS:
           f"best={best_conf:.3f}", warn=best_conf < min_conf)
 
 
+# ── 18. Direct-family crosswalk quality scoring ──────────────────────────────
+section("Direct-family crosswalk quality scoring")
+
+# Keep these families in sync with crosswalk_engine.direct_family.FAMILIES. The
+# selected fixtures are real non-hub rows, so they exercise Strategy 1 instead
+# of the two-hop CCSS fallback.
+DIRECT_FAMILIES = [
+    ("uk-nc", "au-acara", "nz-moe", "sg-moe", "in-ncert", "ke-kicd",
+     "tz-tie", "ug-ncdc", "gh-nacca", "ng-nerdc", "za-caps", "zm-cdc", "na-nied"),
+    ("cl-mineduc", "jp-mext", "kr-ncf"),
+    ("pe-minedu", "co-men", "es-lomloe", "pt-dge", "de-kmk", "it-miur",
+     "fi-oph", "gb-sco", "rw-reb"),
+    ("mx-sep-2017", "br-bncc", "uy-anep", "cz-msmt"),
+    ("ca-on", "ie-ncca", "hk-edb", "zw-zimsec"),
+]
+
+
+def _direct_family_fixture(flagged: bool) -> _sqlite3.Row | None:
+    """Return a scored, non-hub direct-family edge for map_standard coverage."""
+    for family in DIRECT_FAMILIES:
+        placeholders = ", ".join("?" for _ in family)
+        row = _DB.execute(
+            f"""SELECT source_id, source_system, target_id, target_system
+                FROM crosswalk_mappings
+                WHERE source_system IN ({placeholders})
+                  AND target_system IN ({placeholders})
+                  AND source_system != target_system
+                  AND notes LIKE '%[LLM score %/5]%'
+                  AND flagged_for_review = ?
+                ORDER BY confidence_score DESC
+                LIMIT 1""",
+            (*family, *family, int(flagged)),
+        ).fetchone()
+        if row:
+            return row
+    return None
+
+
+def test_direct_family_quality_score_is_surfaced() -> None:
+    row = _direct_family_fixture(flagged=False)
+    if not row:
+        check("direct-family scored fixture exists", False, "no scored unflagged edge found", warn=True)
+        return
+
+    data = parse(map_standard(
+        standard_id=row["source_id"], from_system=row["source_system"],
+        to_system=row["target_system"], confidence_threshold=0.70,
+    ))
+    direct = _is_precomputed(data)
+    mapping = next((
+        m for m in data.get("mappings", [])
+        if m.get("target_id") == row["target_id"]
+    ), {}) if direct else {}
+    check("direct-family scored edge is precomputed", direct,
+          f"method={data.get('mapping_method', '?') if data else 'error'}")
+    check("direct-family score is surfaced from LLM notes",
+          isinstance(mapping.get("quality_score"), int) and
+          1 <= mapping["quality_score"] <= 5 and
+          "[LLM score " in mapping.get("notes", ""),
+          f"quality_score={mapping.get('quality_score')!r}")
+
+
+def test_direct_family_flagged_edge_is_suppressed_by_default() -> None:
+    row = _direct_family_fixture(flagged=True)
+    if not row:
+        check("direct-family flagged fixture exists", False, "no scored flagged edge found", warn=True)
+        return
+
+    default_data = parse(map_standard(
+        standard_id=row["source_id"], from_system=row["source_system"],
+        to_system=row["target_system"], confidence_threshold=0.70,
+    ))
+    included_data = parse(map_standard(
+        standard_id=row["source_id"], from_system=row["source_system"],
+        to_system=row["target_system"], confidence_threshold=0.70,
+        include_flagged=True,
+    ))
+    default_mappings = default_data.get("mappings", []) if _is_precomputed(default_data) else []
+    included_mapping = next((
+        m for m in included_data.get("mappings", [])
+        if m.get("target_id") == row["target_id"]
+    ), {}) if _is_precomputed(included_data) else {}
+    check("direct-family flagged edge is absent by default",
+          all(m.get("target_id") != row["target_id"] for m in default_mappings))
+    check("include_flagged=True returns direct-family flagged edge",
+          _is_precomputed(included_data) and included_mapping.get("flagged") is True and
+          included_mapping.get("quality_score") in (1, 2),
+          f"quality_score={included_mapping.get('quality_score')!r}")
+
+
+def test_direct_family_mapping_beats_ccss_fallback() -> None:
+    row = _direct_family_fixture(flagged=False)
+    if not row:
+        check("direct-family precomputed fixture exists", False, "no scored unflagged edge found", warn=True)
+        return
+
+    data = parse(map_standard(
+        standard_id=row["source_id"], from_system=row["source_system"],
+        to_system=row["target_system"], confidence_threshold=0.70,
+    ))
+    targets = data.get("mappings", []) if _is_precomputed(data) else []
+    check("direct-family non-hub mapping uses precomputed schema", _is_precomputed(data),
+          f"method={data.get('mapping_method', '?') if data else 'error'}")
+    check("direct-family mapping returns its direct target",
+          any(m.get("target_id") == row["target_id"] for m in targets),
+          f"target={row['target_id']}")
+
+
+test_direct_family_quality_score_is_surfaced()
+test_direct_family_flagged_edge_is_suppressed_by_default()
+test_direct_family_mapping_beats_ccss_fallback()
+
+
 # ── Summary ───────────────────────────────────────────────────────────────────
 print(f"\n{'═' * 64}")
 passed  = sum(1 for _, tag, _ in results if "PASS" in tag)
