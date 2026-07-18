@@ -1,8 +1,8 @@
-# StandardGraph — Claude Code context
+# StandardGraph — Codex context
 
 ## What this is
 
-FastMCP server exposing 175,000+ education standards across 310 curriculum systems as six MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
+FastMCP server exposing 175,000+ education standards across 310 curriculum systems as six MCP tools for Codex Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
 
 ## Architecture
 
@@ -28,9 +28,9 @@ scripts/
 ## Key facts
 
 - **DB size:** ~1.9 GB
-- **Standards:** 175,738 across 310 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, CCSS Mathematical Practice standards, the 2026-07 international expansion incl. 10 African systems, and the 2026-07-15 math grade-coverage fill-in for 11 countries)
-- **Crosswalk rows:** ~208,442 — hub-centric (CCSS for math, NGSS for science, etc.) PLUS ~88,944 direct within-family country-to-country math edges (see `crosswalk_engine/direct_family.py`; tagged `direct_family` in notes). map_standard serves direct edges automatically, two-hop-via-CCSS is the fallback.
-- **Crosswalk quality scores:** ~166,745 rows carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match), 80% of all 208,442 crosswalks. **All 88,944 direct-family edges are now fully LLM-scored** (100%, completed 2026-07-17 via overnight Ollama fleet run on Studio+Mini2, qwen2.5:14b); 35,031 weak edges (score ≤2) carry `flagged_for_review=1` and are suppressed from default `map_standard` results. Remaining ~41,697 unscored are hub-centric `nlp_pass` rows (mostly non-math subjects), ranked by cosine, treated as neutral quality. Note: scored rows span two calibration regimes (earlier Sonnet, mode=4; fleet 14b, generous top-end) — directional weak/strong signal intact.
+- **Standards:** 175,738 across 310 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, CCSS Mathematical Practice standards, and the 2026-07 international expansion incl. 10 African systems)
+- **Crosswalk rows:** ~117,699 (hub-centric: CCSS for math, NGSS for science, etc.)
+- **Crosswalk quality scores:** ~75,055 rows (~63.8%) carry a 1–5 quality score (LLM rubric scoring + deterministic exact-match); pre-existing AP/IB source rows are scored. Remainder unscored (`nlp_pass`, ranked by cosine, treated as neutral quality) — includes new math mappings added by the 2026-07 decomposition/MP regeneration.
 - **Relationships:** ~3.79M rows (prerequisites/successors)
 - **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge from Mini 2 — 0.4ms RTT)
 - **HuggingFace dataset:** `swoopeagle/standardgraph` (file: `common_core.db`)

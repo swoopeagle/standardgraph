@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StandardGraph — Curriculum Standards for AI</title>
-  <meta name="description" content="17,743 math standards across 64 curriculum systems, semantically cross-referenced and accessible via MCP." />
+  <meta name="description" content="175,738 education standards across 310 curriculum systems in 50+ countries, semantically cross-referenced with LLM quality scores and accessible via MCP." />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -92,8 +92,9 @@
         <span class="gradient-text">One graph.</span>
       </h1>
       <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-        StandardGraph indexes 17,743 math standards across 64 curriculum systems — CCSS, all 50 US states,
-        Canada, Australia, Cambridge, IB, and the UK — semantically cross-referenced and accessible via Claude MCP.
+        StandardGraph indexes 175,738 education standards across 310 curriculum systems in 50+ countries —
+        CCSS, all 50 US states, Canada, the UK, Australia, Singapore, Japan, India, IB, Cambridge, and more —
+        across seven subjects, semantically cross-referenced and accessible via Claude MCP.
       </p>
       <div class="flex flex-wrap items-center justify-center gap-4">
         <a href="#quickstart"
@@ -109,21 +110,32 @@
       <!-- Stats -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 text-left">
         <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
-          <div class="text-3xl font-bold text-white">17,743</div>
+          <div class="text-3xl font-bold text-white">175,738</div>
           <div class="text-sm text-slate-400 mt-1">Standards indexed</div>
         </div>
         <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
-          <div class="text-3xl font-bold text-white">64</div>
+          <div class="text-3xl font-bold text-white">310</div>
           <div class="text-sm text-slate-400 mt-1">Curriculum systems</div>
         </div>
         <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
-          <div class="text-3xl font-bold text-white">15,256</div>
+          <div class="text-3xl font-bold text-white">208,442</div>
           <div class="text-sm text-slate-400 mt-1">Crosswalk mappings</div>
         </div>
         <div class="bg-slate-900/60 border border-slate-800 rounded-xl p-5">
-          <div class="text-3xl font-bold text-white">233k</div>
+          <div class="text-3xl font-bold text-white">3.8M</div>
           <div class="text-sm text-slate-400 mt-1">Relationships</div>
         </div>
+      </div>
+
+      <!-- Quality scoring highlight -->
+      <div class="mt-6 flex items-start gap-3 bg-brand-950/60 border border-brand-800 rounded-xl p-5 text-left">
+        <span class="text-2xl leading-none">🎯</span>
+        <p class="text-sm text-slate-300 leading-relaxed">
+          <span class="font-semibold text-white">New — every direct country-to-country math crosswalk is now quality-scored.</span>
+          All 88,944 within-family direct edges carry a 1–5 LLM quality score (100% coverage), and weak
+          matches are automatically suppressed — so results come back ranked by real alignment quality.
+          166,745 quality-scored crosswalks graph-wide.
+        </p>
       </div>
     </div>
   </section>
@@ -152,8 +164,9 @@
           </div>
           <h3 class="font-semibold text-white mb-2">Crosswalk mapping</h3>
           <p class="text-sm text-slate-400 leading-relaxed">
-            CCSS is the hub. Every standard in every other system is mapped to its nearest
-            CCSS equivalent via NLP similarity, with confidence scores and grade-delta flags.
+            Each subject maps to its hub (CCSS for math, NGSS for science, and so on) via NLP
+            similarity, with confidence scores, grade-delta flags, and 1–5 LLM quality scores.
+            Sibling curricula also get direct country-to-country edges.
           </p>
         </div>
         <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 card-glow transition-all">
@@ -177,7 +190,7 @@
     <div class="max-w-5xl mx-auto">
       <div class="mb-12">
         <h2 class="text-3xl font-bold text-white mb-3">Coverage</h2>
-        <p class="text-slate-400">Standards from 7 countries and regions, all cross-referenced to CCSS.</p>
+        <p class="text-slate-400">Standards from 50+ countries and regions across seven subjects, cross-referenced to subject hubs. A sample of the 310 systems is shown below.</p>
       </div>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
@@ -186,7 +199,7 @@
           <div class="flex items-center gap-2 mb-3">
             <span class="text-xl">🇺🇸</span>
             <h3 class="font-semibold text-white">United States</h3>
-            <span class="ml-auto text-xs text-slate-500 font-mono">12,405 stds</span>
+            <span class="ml-auto text-xs text-slate-500 font-mono">143,652 stds</span>
           </div>
           <p class="text-xs text-slate-400 mb-3">CCSS hub + all 50 states + DC. Sourced from commonstandardsproject.com.</p>
           <div class="flex flex-wrap gap-1">
@@ -204,7 +217,7 @@
           <div class="flex items-center gap-2 mb-3">
             <span class="text-xl">🇨🇦</span>
             <h3 class="font-semibold text-white">Canada</h3>
-            <span class="ml-auto text-xs text-slate-500 font-mono">3,522 stds</span>
+            <span class="ml-auto text-xs text-slate-500 font-mono">8,275 stds</span>
           </div>
           <p class="text-xs text-slate-400 mb-3">Six provincial curricula.</p>
           <div class="flex flex-wrap gap-1">
@@ -222,9 +235,9 @@
           <div class="flex items-center gap-2 mb-3">
             <span class="text-xl">🇬🇧</span>
             <h3 class="font-semibold text-white">United Kingdom</h3>
-            <span class="ml-auto text-xs text-slate-500 font-mono">414 stds</span>
+            <span class="ml-auto text-xs text-slate-500 font-mono">1,668 stds</span>
           </div>
-          <p class="text-xs text-slate-400 mb-3">England National Curriculum (Years 1–6) and AQA GCSE Mathematics.</p>
+          <p class="text-xs text-slate-400 mb-3">England National Curriculum, AQA GCSE, and Scotland's Curriculum for Excellence.</p>
           <div class="flex flex-wrap gap-1">
             <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-xs font-mono">uk-nc</span>
             <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-xs font-mono">uk-aqa</span>

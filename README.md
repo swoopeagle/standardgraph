@@ -2,11 +2,13 @@
 
 **The alignment layer for the global curriculum.** Map any standard to its equivalent in another country or exam board — cross-border alignment no single-country tool provides.
 
-172,579 standards across 310 curriculum systems in 50+ countries, cross-walked into a single graph and accessible via Claude.
+175,738 standards across 310 curriculum systems in 50+ countries, cross-walked into a single graph and accessible via Claude.
+
+> 🎯 **New in v1.6.0 — every direct country-to-country math crosswalk is now quality-scored.** All 88,944 within-family direct edges carry a 1–5 LLM quality score (100% coverage); weak matches are automatically suppressed from results, so what you get back is ranked by real alignment quality. That's 166,745 quality-scored crosswalks graph-wide (80% of all crosswalks).
 
 > ⚡ **Try it in 30 seconds — no install.** In Claude, go to **Settings → Connectors → Add custom connector** and paste `https://standardgraph.walkmakewalk.com/mcp`. No download, no token. ([full instructions ↓](#install))
 
-Covers Mathematics, Science, ELA, Social Studies, and Computer Science — US national and state standards plus major international curricula. Ask Claude to look up any standard, trace a concept across grade levels, or find the equivalent in another country's curriculum.
+Covers Mathematics, Science, ELA, Social Studies, Computer Science, Arts, and World Languages — US national and state standards plus major international curricula. Ask Claude to look up any standard, trace a concept across grade levels, or find the equivalent in another country's curriculum.
 
 **Who this is for:**
 
@@ -173,7 +175,7 @@ StandardGraph works out of the box once installed, but pasting the following int
 <summary>Copy this into your Claude Project instructions</summary>
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 172,000+ standards across 310 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 175,000+ standards across 310 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
 
 ## When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards

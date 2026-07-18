@@ -2,9 +2,11 @@
 
 <!-- mcp-name: io.github.swoopeagle/standardgraph -->
 
-**154,000+ education standards across 300 curriculum systems, accessible as a Claude MCP server.**
+**175,000+ education standards across 310 curriculum systems, accessible as a Claude MCP server.**
 
 Covers seven subjects — Mathematics, Science, ELA, Social Studies, Computer Science, Arts, and World Languages — across the US (CCSS + all 50 states), Canada, Australia, UK, Singapore, Japan, New Zealand, Ireland, Hong Kong, India, Ghana, South Africa, Rwanda, Cambridge International, IB MYP/DP, AP, and more. Standards are cross-referenced to subject hubs (CCSS for math, NGSS for science, etc.) via semantic similarity, with LLM quality scores on the strongest mappings.
+
+**New in v1.6.0:** every one of the 88,944 direct country-to-country math crosswalk edges now carries a 1–5 LLM quality score (100% coverage), and weak matches are automatically suppressed from default results — bringing the graph to 166,745 quality-scored crosswalks overall.
 
 ## Install (macOS)
 
