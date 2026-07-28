@@ -72,14 +72,24 @@ K, 1, 2, 3, 4, 5, 6, 7, 8, HS
 - **search_standards**: user describes a concept and wants matching standards
 - **get_progression**: user asks how a topic develops across grade levels
 - **map_standard**: user wants to find the equivalent standard in another system
+- **get_learning_path**: user wants an ordered prerequisite study plan for a target standard
 - **list_systems**: get live counts; filter by subject or region to keep response small
 
+## Crosswalk quality
+Every crosswalk mapping carries two independent signals:
+- `confidence_score` — embedding cosine similarity. ≥ 0.85 is a strong match; 0.70–0.80 is plausible.
+- `quality_score` — a 1–5 LLM judgement of whether the two standards really teach the same
+  thing, with a written rationale in `notes`. All 208,442 mappings are scored.
+Weak mappings are marked `flagged: true` and are **suppressed by default**; pass
+`include_flagged=True` to see them. Results are ranked by quality first, then confidence.
+Scores are LLM-generated, not human-verified — treat 4–5 as reliable and 3 as worth checking.
+`grade_delta ≠ 0` means the two systems introduce the concept at different grade levels.
+
 ## Tips
-- Crosswalk mappings are NLP-generated (cosine similarity), not human-verified.
-  Confidence ≥ 0.85 is a strong match; 0.70–0.80 is plausible.
-  grade_delta ≠ 0 means systems introduce the concept at different grade levels.
 - map_standard tries: (1) precomputed crosswalk; (2) two-hop hub bridge; (3) semantic
   embedding fallback. Below-threshold precomputed results are included with "below_threshold": true.
+- For math, many country-to-country pairs have **direct** crosswalks that skip the CCSS hub
+  entirely (e.g. nz-moe ↔ sg-moe). map_standard uses these automatically when they exist.
 - search_standards falls back to keyword FTS if Ollama is unavailable — install Ollama
   for richer semantic search.
 - search_standards queries one system at a time; call multiple times to compare curricula.
