@@ -42,9 +42,16 @@ scripts/
 |---|---|---|---|---|---|
 | MacBook Pro | — | — | 100.118.151.10 | `ianwang` | dev machine |
 | Mac Studio | M1 Max | 64 GB | 100.77.63.73 | `ianwangm1max` | Ollama host only (no repo) |
-| Mac mini 2 | M4 Pro | 24 GB | 100.101.100.96 | `devos` | pipeline runner, MCP server |
-| Mac mini 3 | M4 | 16 GB | 100.81.61.57 | `devos` | pipeline runner, MCP server (Tailscale down — use LAN 192.168.12.222) |
+| Mac mini 2 | M4 Pro | 24 GB | 100.101.100.96 (LAN 192.168.12.135) | `devos` | pipeline runner, **hosted MCP server** |
+| Mac mini 3 | M4 | 16 GB | 100.91.162.102 | `devos` | pipeline runner; **former** MCP host — unreliable, see below |
+| Mac mini 4 | M4 | 16 GB | 100.106.61.114 (LAN 192.168.12.112) | `devos` | undocumented; SSH reachable over LAN only |
 | IWPC | RTX 3060 | 12 GB VRAM / 32 GB RAM | 100.70.170.62 | — | Ollama host (Windows, CUDA) — embed + extraction + low-band rationale |
+
+⚠️ **Mac mini 3 is not dependable as a service host.** Its LaunchAgents only load
+inside a logged-in GUI session, so any unattended reboot silently takes the hosted
+endpoint down (a ~5h outage on 2026-07-18, another on 2026-07-28). Its Tailscale IP
+also changed from the long-documented `100.81.61.57` to `100.91.162.102`. The hosted
+MCP server was moved to Mac mini 2 on 2026-07-28 for this reason.
 
 Model roster per device (do not exceed safe limits):
 - **Mac Studio (64 GB):** `gemma4:31b-it-q8_0`, `qwen2.5:72b`, `gemma3:27b`, `nomic-embed-text`, `llama3.2` — any model up to 47 GB
@@ -56,6 +63,32 @@ Both Mac minis run Ollama at `localhost:11434`. Pipeline defaults to local Ollam
 
 Project on Mac minis: `~/projects/intl-math-standards-mcp/` (old name, same codebase).
 SSH authorized on Mac Studio and both Mac minis as of 2026-06-26.
+
+## Hosted MCP endpoint
+
+Public URL: `https://standardgraph.walkmakewalk.com/mcp` (Cloudflare tunnel →
+`localhost:8010`). Landing page: https://swoopeagle.github.io/standardgraph/
+(GitHub Pages, `main` `/docs`).
+
+Two launchd jobs make it work:
+- `life.devos.standardgraph-serve` — runs `~/sg-serve-env/bin/standardgraph-serve`
+  with `DB_PATH` pointed at the repo's `data/common_core.db` and `SG_HTTP_PORT=8010`.
+- `life.walkmakewalk.standardgraph-tunnel` — runs `cloudflared` with an **isolated**
+  `HOME=~/sg-home` so it never touches the `devos-johnny` tunnel. Never touch that one.
+
+⚠️ **The tunnel credentials are a single point of failure.** Tunnel
+`4312deb9-f5e4-40e4-b396-aa1a87a695ac`'s credentials JSON lives only in
+`~/sg-home/.cloudflared/` on whichever machine hosts it. There is no backup. When
+Mac mini 3 went offline on 2026-07-28 the endpoint could not be moved because the
+credentials were unreachable. **Keep a copy somewhere else**, or recover via the
+Cloudflare dashboard (Zero Trust → Networks → Tunnels → Configure → token, then
+`cloudflared tunnel run --token <TOKEN>`), which reuses the same tunnel and needs
+no DNS change.
+
+⚠️ **LaunchAgents do not survive an unattended reboot** — they only load inside a
+logged-in GUI session. Prefer LaunchDaemons in `/Library/LaunchDaemons` with
+`UserName: devos` set (without it they run as root and the venv/DB paths break).
+Installing them needs sudo.
 
 ## Common commands
 
