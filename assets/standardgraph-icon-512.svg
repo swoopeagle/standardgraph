@@ -1,0 +1,35 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#243273"/>
+      <stop offset="1" stop-color="#151d4a"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="114" fill="url(#bg)"/>
+  <!-- faint candidate crosswalks -->
+  <g stroke="#8fa0d8" stroke-opacity="0.38" stroke-width="10" stroke-linecap="round">
+    <line x1="148" y1="140" x2="364" y2="140"/>
+    <line x1="148" y1="256" x2="364" y2="372"/>
+    <line x1="148" y1="372" x2="364" y2="256"/>
+    <line x1="148" y1="372" x2="364" y2="372"/>
+  </g>
+  <!-- the strongest match -->
+  <line x1="148" y1="140" x2="364" y2="256" stroke="#FFB02E" stroke-width="22" stroke-linecap="round"/>
+  <!-- left system -->
+  <g fill="#EAF0FF">
+    <circle cx="148" cy="140" r="36"/>
+    <circle cx="148" cy="256" r="36"/>
+    <circle cx="148" cy="372" r="36"/>
+  </g>
+  <!-- right system -->
+  <g fill="#EAF0FF">
+    <circle cx="364" cy="140" r="36"/>
+    <circle cx="364" cy="256" r="36"/>
+    <circle cx="364" cy="372" r="36"/>
+  </g>
+  <!-- accent endpoints -->
+  <circle cx="148" cy="140" r="36" fill="#FFB02E"/>
+  <circle cx="364" cy="256" r="36" fill="#FFB02E"/>
+  <circle cx="148" cy="140" r="16" fill="#151d4a"/>
+  <circle cx="364" cy="256" r="16" fill="#151d4a"/>
+</svg>
