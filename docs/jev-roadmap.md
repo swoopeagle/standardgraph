@@ -230,3 +230,51 @@ and still came out uncalibrated, and the prerequisite layer was never attempted 
 - **The invariants are necessary, not sufficient.** A crosswalk layer could be
   self-consistent and uniformly wrong. Invariants catch contradiction, not shared bias.
   Phase 1's 30-row hand read is what guards against that, and it should not be skipped.
+
+---
+
+## Update 2026-09-26 — what changed since drafting
+
+The world moved in the four days after this was written. Re-checked 2026-09-26;
+the phases stand, four of the six risks above are resolved or reduced.
+
+**Resolved:**
+
+- **Access.** TypeSafe dropped the waitlist on 2026-09-21 (console keys for
+  everyone), and Jev landed on OpenRouter on 2026-09-25 (`typesafe/jev-1.13`,
+  dated build `jev-1.13-20260917`, `jev-latest`) — no TypeSafe account needed.
+  Pin the dated build for anything we want reproducible. Caveat: through
+  OpenRouter you cannot see where you sit against TypeSafe's own limits.
+- **Rate limits are published now:** 250k tokens/s and 1,200 requests/min.
+  Phase 3's ~95k calls is ≥ ~80 min at the rpm ceiling — the overnight estimate
+  holds with slack. Still back off on 429.
+- **State cap: 32k confirmed** (OpenRouter's Jev doc: state + questions ≤ 32,000
+  tokens). The 32k/64k contradiction is settled; design-to-32k was right.
+- **Vendor concentration is now a category, not a single product.** An open
+  ecosystem formed within days: Laya (open weights, Apache 2.0), NanoJev and
+  Nimble (full train/serve pipelines), Kev/Von (API-compatible shims). The
+  separate-columns hedge stays, but there is now a plausible self-host fallback
+  if TypeSafe disappears. This also fires the Jev repo's "second vendor enters
+  the category" restart trigger — `~/projects/Jev/CONTEXT.md` needs its
+  correction pass (it still says nobody has run Jev and we're waitlisted).
+
+**Hardened:**
+
+- **The ToU ban is real and absolute.** MCA 2.3(f) prohibits customers
+  "publishing benchmarks or performance information about the Services," no
+  carve-out. Concretely for this repo: the 78/78 SBAC figure and any
+  `jev_score` agreement stats are performance information. They must never
+  reach README, release notes, the landing page, or **any file the `/stats`
+  skill reads** — /stats auto-propagates figures to both public surfaces and
+  would leak them mechanically. Private docs like this one are fine.
+
+**Still open, but now testable:**
+
+- **Cross-call caching** remains unanswered by any primary source (one SEO
+  restatement claims "caching and discounts"; treat as noise). Access being
+  open makes this a 10-minute pre-flight: send the same state twice from the
+  console account and compare billed tokens. Do that before trusting the
+  Phase 3 cost estimate.
+
+**Noise:** `typesafe/jev-router` (2026-09-25) is an LLM-routing product built
+on Jev — picks which chat model serves a request. Irrelevant here.
