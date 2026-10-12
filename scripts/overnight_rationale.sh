@@ -5,26 +5,35 @@
 # --system is always the non-hub system code.
 #
 # Stream A — Mac Studio   qwen2.5:72b   AP Math high+mid       (best model for calculus→algebra)
-# Stream B — Mini 2 local gemma4:26b    AP Science + IB high+mid (parallel with A; best Mini 2 can fit)
+# Stream B — see LANEB_URL below          AP Science + IB high+mid
 # Stream C — IWPC         qwen2.5:14b   US state sample        (CUDA volume throughput)
 #
-# A and B run in parallel. C interleaves with A during the state phase.
+# C interleaves with A during the state phase.
 #
-# Run from Mini 2:
-#   OLLAMA_BASE_URL=http://169.254.1.1:11434 bash scripts/overnight_rationale.sh
+# Run from the Mac Studio:
+#   bash scripts/overnight_rationale.sh
 #
-# Runtime: ~4–6 hours (vs ~8–12 single-stream)
+# Runtime: ~8–12 hours by default. Stream B used mini2's local gemma4:26b for a
+# genuine second lane (~4–6 h total); mini2 is being sold and the consolidated
+# fleet has no second always-on Mac, so B now shares the Studio with A and the
+# two serialize. Set LANEB_URL/LANEB_MODEL to a real second Ollama host -- the
+# M4 Max MacBook once OLLAMA_HOST=0.0.0.0 puts it on the mesh -- to get the
+# parallel runtime back.
 
 set -uo pipefail
 
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 DB_PATH="${DB_PATH:-$REPO_DIR/data/common_core.db}"
 
-STUDIO_URL="${OLLAMA_BASE_URL:-http://100.77.63.73:11434}"
+# This script now runs ON the Studio, so its Ollama is local. (It used to run
+# from mini2 over the Thunderbolt bridge, which retires with mini2.)
+STUDIO_URL="${OLLAMA_BASE_URL:-http://localhost:11434}"
 STUDIO_MODEL="qwen2.5:72b"
 
-MINI2_URL="http://localhost:11434"
-MINI2_MODEL="gemma4:26b"
+# Stream B's endpoint. Defaults to the Studio, i.e. no second lane -- same model,
+# so Ollama just queues B behind A rather than thrashing two big models.
+LANEB_URL="${LANEB_URL:-$STUDIO_URL}"
+LANEB_MODEL="${LANEB_MODEL:-$STUDIO_MODEL}"
 
 IWPC_URL="http://100.70.170.62:11434"
 IWPC_MODEL="qwen2.5:14b"
@@ -32,7 +41,7 @@ IWPC_MODEL="qwen2.5:14b"
 LOG_DIR="$REPO_DIR/logs"
 TS="$(date +%Y%m%d_%H%M%S)"
 LOG="$LOG_DIR/rationale_${TS}.log"
-LOG_M2="$LOG_DIR/rationale_mini2_${TS}.log"
+LOG_M2="$LOG_DIR/rationale_laneb_${TS}.log"
 
 mkdir -p "$LOG_DIR"
 
@@ -64,11 +73,11 @@ run() {
         uv run python scripts/crosswalk_rationale_gen.py "$@" 2>&1 | tee -a "$LOG"
 }
 
-# Stream B: Mini 2 local (gemma4:26b)
+# Stream B: LANEB_URL (defaults to the Studio)
 run_mini2() {
     local label="$1"; shift
-    banner "$label  [Mini 2 / $MINI2_MODEL]" "$LOG_M2"
-    OLLAMA_BASE_URL="$MINI2_URL" OLLAMA_MODEL="$MINI2_MODEL" \
+    banner "$label  [Lane B / $LANEB_MODEL @ $LANEB_URL]" "$LOG_M2"
+    OLLAMA_BASE_URL="$LANEB_URL" OLLAMA_MODEL="$LANEB_MODEL" \
         uv run python scripts/crosswalk_rationale_gen.py "$@" 2>&1 | tee -a "$LOG_M2"
 }
 
@@ -98,17 +107,17 @@ print('Ready: ' + resp.json()['message']['content'][:60])
 echo "Overnight rationale run started at $(date)" | tee "$LOG"
 echo "DB:     $DB_PATH" | tee -a "$LOG"
 echo "Stream A (Studio):  $STUDIO_MODEL @ $STUDIO_URL  → AP Math" | tee -a "$LOG"
-echo "Stream B (Mini 2):  $MINI2_MODEL @ $MINI2_URL    → AP Science + IB" | tee -a "$LOG"
+echo "Stream B (Lane B):  $LANEB_MODEL @ $LANEB_URL    → AP Science + IB" | tee -a "$LOG"
 echo "Stream C (IWPC):    $($IWPC_ONLINE && echo "$IWPC_MODEL @ $IWPC_URL → US state sample" || echo 'offline — Studio handles states')" | tee -a "$LOG"
-echo "Mini 2 log: $LOG_M2" | tee -a "$LOG"
+echo "Lane B log: $LOG_M2" | tee -a "$LOG"
 
 # Warm up all three hosts in parallel (failures are non-fatal — model still loads on first request)
 echo "" | tee -a "$LOG"
 warmup "$STUDIO_URL" "$STUDIO_MODEL" "$LOG" & W1=$!
-warmup "$MINI2_URL"  "$MINI2_MODEL"  "$LOG_M2" & W2=$!
+warmup "$LANEB_URL"  "$LANEB_MODEL"  "$LOG_M2" & W2=$!
 if $IWPC_ONLINE; then warmup "$IWPC_URL" "$IWPC_MODEL" "$LOG" & W3=$!; else W3=""; fi
 wait $W1 || echo "[WARN] Studio warmup failed — will retry on first inference call" | tee -a "$LOG"
-wait $W2 || echo "[WARN] Mini 2 warmup failed — will retry on first inference call" | tee -a "$LOG_M2"
+wait $W2 || echo "[WARN] Lane B warmup failed — will retry on first inference call" | tee -a "$LOG_M2"
 [ -n "$W3" ] && { wait $W3 || echo "[WARN] IWPC warmup failed" | tee -a "$LOG"; }
 echo "" | tee -a "$LOG"
 
@@ -116,7 +125,7 @@ echo "" | tee -a "$LOG"
 # A: AP Math high — Studio
 # B: AP Science + IB high — Mini 2 (background)
 
-echo "[$(date)] Starting high-band phase: A=AP Math (Studio) || B=AP Science+IB (Mini 2)" | tee -a "$LOG"
+echo "[$(date)] Starting high-band phase: A=AP Math (Studio) || B=AP Science+IB (Lane B)" | tee -a "$LOG"
 
 (
     run_mini2 "AP Bio → NGSS      [high]"  --system ap-bio     --band high --sample 0 --force-rewrite
@@ -134,12 +143,12 @@ run "AP Calc BC → CCSS  [high]"  --system ap-calc-bc  --band high --sample 0 -
 run "AP Stats → CCSS    [high]"  --system ap-stats    --band high --sample 0 --force-rewrite
 run "AP Precalc → CCSS  [high]"  --system ap-precalc  --band high --sample 0 --force-rewrite
 
-wait $MINI2_HIGH_PID || echo "[WARN] Mini 2 high-band stream had errors — check $LOG_M2" | tee -a "$LOG"
+wait $MINI2_HIGH_PID || echo "[WARN] Lane B high-band stream had errors — check $LOG_M2" | tee -a "$LOG"
 echo "[$(date)] High-band phase complete" | tee -a "$LOG"
 
 # ── Streams A + B: mid band (parallel) ───────────────────────────────────────
 
-echo "[$(date)] Starting mid-band phase: A=AP Math (Studio) || B=AP Science+IB (Mini 2)" | tee -a "$LOG"
+echo "[$(date)] Starting mid-band phase: A=AP Math (Studio) || B=AP Science+IB (Lane B)" | tee -a "$LOG"
 
 (
     run_mini2 "AP Bio → NGSS      [mid]"   --system ap-bio     --band mid  --sample 0 --force-rewrite
@@ -157,7 +166,7 @@ run "AP Calc BC → CCSS  [mid]"   --system ap-calc-bc  --band mid  --sample 0 -
 run "AP Stats → CCSS    [mid]"   --system ap-stats    --band mid  --sample 0 --force-rewrite
 run "AP Precalc → CCSS  [mid]"   --system ap-precalc  --band mid  --sample 0 --force-rewrite
 
-wait $MINI2_MID_PID || echo "[WARN] Mini 2 mid-band stream had errors — check $LOG_M2" | tee -a "$LOG"
+wait $MINI2_MID_PID || echo "[WARN] Lane B mid-band stream had errors — check $LOG_M2" | tee -a "$LOG"
 echo "[$(date)] Mid-band phase complete" | tee -a "$LOG"
 
 # ── Stream A + C: US state sample ─────────────────────────────────────────────

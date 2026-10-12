@@ -1,30 +1,31 @@
 #!/usr/bin/env bash
-# Runs automatically after a fetcher completes on Mini 3.
-# Chain: wait → git pull (both) → embed → relate → crosswalk → rationale gen
+# Post-ingest chain: git pull → embed → relate → crosswalk → rationale gen.
 #
-# Usage (from Mini 2):
-#   nohup bash scripts/post_ingest_pipeline.sh > logs/post_ingest_YYYYMMDD.log 2>&1 &
+# Usage (from the Mac Studio):
+#   nohup bash scripts/post_ingest_pipeline.sh > logs/post_ingest.log 2>&1 &
+#
+# This used to run from mini2 and fan embed/relate/crosswalk out to mini3 in
+# parallel, each mini working its own copy of the DB and the halves merged
+# afterwards with scripts/merge_dbs.py. mini3 was sold 2026-08-12 and mini2 is
+# pending sale, so the chain is now sequential on the Studio against the one
+# DB -- which also means there is no longer a merge step to forget.
+#
+# It also no longer waits on a fetcher on mini3, and the repo path is derived
+# from this script's own location instead of being hardcoded to mini2's
+# ~/projects/intl-math-standards-mcp.
 
 set -euo pipefail
 
-REPO="$HOME/projects/intl-math-standards-mcp"
+REPO="${REPO:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 DB_PATH="${DB_PATH:-$REPO/data/common_core.db}"
-MINI3="devos@100.123.114.101"
-STUDIO_URL="http://100.77.63.73:11434"
 IWPC_URL="http://100.70.170.62:11434"
 LOG="$REPO/logs/post_ingest_$(date +%Y%m%d_%H%M%S).log"
 
 export DB_PATH
+mkdir -p "$REPO/logs"
 
-# Auto-detect IWPC — use it for embed if reachable, else fall back to localhost
-if curl -sf --max-time 3 "$IWPC_URL/api/tags" >/dev/null 2>&1; then
-    EMBED_URL="$IWPC_URL"
-    log "IWPC reachable — routing embed to IWPC (CUDA)"
-else
-    EMBED_URL="http://localhost:11434"
-    log "IWPC offline — embed will use local Ollama on each mini"
-fi
-
+# Defined before first use: the old version called log() six lines above this
+# point, which under `set -e` killed the script with "log: command not found".
 log() { echo "[$(date '+%H:%M:%S')] $*" | tee -a "$LOG"; }
 section() {
     echo "" | tee -a "$LOG"
@@ -34,94 +35,38 @@ section() {
     echo "══════════════════════════════════════════════════════════" | tee -a "$LOG"
 }
 
+# Embeddings prefer IWPC's CUDA node (2-3x faster), else the local Ollama.
+if curl -sf --max-time 3 "$IWPC_URL/api/tags" >/dev/null 2>&1; then
+    EMBED_URL="$IWPC_URL"
+    EMBED_WHERE="IWPC (CUDA)"
+else
+    EMBED_URL="http://localhost:11434"
+    EMBED_WHERE="local Ollama (IWPC offline)"
+fi
+
 log "Post-ingest pipeline started"
-log "DB: $DB_PATH"
-log "Watching Mini 3 for Portugal fetcher to complete…"
+log "Repo: $REPO"
+log "DB:   $DB_PATH"
 
-# ── Step 0: Wait for Portugal to finish on Mini 3 ────────────────────────────
-while ssh -o ConnectTimeout=5 "$MINI3" "pgrep -f fetch_portugal > /dev/null 2>&1"; do
-    log "Portugal still running on Mini 3 — sleeping 60s"
-    sleep 60
-done
-log "Portugal done on Mini 3."
-
-# ── Step 1: git pull on both minis ───────────────────────────────────────────
 section "Step 1: git pull"
-
 cd "$REPO"
 git pull --ff-only 2>&1 | tee -a "$LOG"
-log "Mini 2 pulled."
 
-ssh -o ConnectTimeout=10 "$MINI3" "
-  cd ~/projects/intl-math-standards-mcp
-  git pull --ff-only 2>&1
-" | tee -a "$LOG"
-log "Mini 3 pulled."
+section "Step 2: embed via $EMBED_WHERE"
+OLLAMA_BASE_URL="$EMBED_URL" uv run python -m ingestion.shared.embed 2>&1 | tee -a "$LOG"
 
-# ── Step 2: embed on both minis in parallel ───────────────────────────────────
-section "Step 2: embed (Mini 2 + Mini 3 in parallel, embed via $EMBED_URL)"
+section "Step 3: relate"
+uv run python -m ingestion.shared.relate 2>&1 | tee -a "$LOG"
 
-export PATH="/Users/devos/.local/bin:$PATH"
+section "Step 4: crosswalk nlp_pass"
+uv run python -m crosswalk_engine.nlp_pass 2>&1 | tee -a "$LOG"
 
-# Mini 3 embed in background
-ssh -o ConnectTimeout=10 "$MINI3" "
-  export PATH='/Users/devos/.local/bin:\$PATH'
-  cd ~/projects/intl-math-standards-mcp
-  OLLAMA_BASE_URL=$EMBED_URL uv run python -m ingestion.shared.embed 2>&1
-" | sed 's/^/[mini3-embed] /' | tee -a "$LOG" &
-MINI3_EMBED_PID=$!
-
-# Mini 2 embed locally, also pointing at EMBED_URL
-OLLAMA_BASE_URL="$EMBED_URL" uv run python -m ingestion.shared.embed 2>&1 \
-    | sed 's/^/[mini2-embed] /' | tee -a "$LOG"
-
-wait $MINI3_EMBED_PID
-log "Both embeds complete."
-
-# ── Step 3: relate on both minis in parallel ──────────────────────────────────
-section "Step 3: relate (Mini 2 + Mini 3 in parallel)"
-
-ssh -o ConnectTimeout=10 "$MINI3" "
-  export PATH='/Users/devos/.local/bin:\$PATH'
-  cd ~/projects/intl-math-standards-mcp
-  uv run python -m ingestion.shared.relate 2>&1
-" | sed 's/^/[mini3-relate] /' | tee -a "$LOG" &
-MINI3_RELATE_PID=$!
-
-uv run python -m ingestion.shared.relate 2>&1 | sed 's/^/[mini2-relate] /' | tee -a "$LOG"
-
-wait $MINI3_RELATE_PID
-log "Both relate passes complete."
-
-# ── Step 4: crosswalk on both minis in parallel ───────────────────────────────
-section "Step 4: crosswalk nlp_pass (Mini 2 + Mini 3 in parallel)"
-
-ssh -o ConnectTimeout=10 "$MINI3" "
-  export PATH='/Users/devos/.local/bin:\$PATH'
-  cd ~/projects/intl-math-standards-mcp
-  uv run python -m crosswalk_engine.nlp_pass 2>&1
-" | sed 's/^/[mini3-xwalk] /' | tee -a "$LOG" &
-MINI3_XWALK_PID=$!
-
-uv run python -m crosswalk_engine.nlp_pass 2>&1 | sed 's/^/[mini2-xwalk] /' | tee -a "$LOG"
-
-wait $MINI3_XWALK_PID
-log "Both crosswalk passes complete."
-
-# ── Step 5: start rationale gen overnight ────────────────────────────────────
-section "Step 5: rationale gen (Mini 2 → Mac Studio qwen2.5:72b)"
-
+section "Step 5: rationale gen (background)"
 RATIONALE_LOG="$REPO/logs/rationale_$(date +%Y%m%d_%H%M%S).log"
-nohup bash -c "
-  export PATH='/Users/devos/.local/bin:\$PATH'
-  OLLAMA_BASE_URL=$STUDIO_URL \
-  DB_PATH=$DB_PATH \
-  bash $REPO/scripts/overnight_rationale.sh
-" > "$RATIONALE_LOG" 2>&1 &
-RATIONALE_PID=$!
-log "Rationale gen started → PID $RATIONALE_PID → $RATIONALE_LOG"
+nohup env DB_PATH="$DB_PATH" bash "$REPO/scripts/overnight_rationale.sh" \
+    > "$RATIONALE_LOG" 2>&1 &
+log "Rationale gen started → PID $! → $RATIONALE_LOG"
 
-# ── Done ─────────────────────────────────────────────────────────────────────
 section "Pipeline handed off"
 log "Steps 1-4 complete. Rationale gen running in background."
 log "Monitor: tail -f $RATIONALE_LOG"
