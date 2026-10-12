@@ -19,11 +19,16 @@ Strategy (see docs/db_merge_strategy.md):
 
 Usage:
   uv run python scripts/merge_dbs.py \
-      --base /tmp/mini3_current.db --overlay /tmp/mini2_current.db \
+      --base /tmp/base_current.db --overlay /tmp/overlay_current.db \
       --out /tmp/merged.db [--apply-missing] [--dry-run]
 
+The divergence this fixes came from the old two-mini fan-out, where mini2 and
+mini3 each worked their own copy. The pipeline is single-host on the Studio as
+of 2026-10-12, so it should not recur -- this stays for merging any two copies
+that have already diverged (e.g. a laptop copy against the Studio's).
+
 The script never touches --base or --overlay (read-only); it copies --base to --out
-and mutates only the copy. Promotion (install / push to minis / upload to HF) is a
+and mutates only the copy. Promotion (install / distribute / upload to HF) is a
 separate, deliberate step.
 """
 import argparse
