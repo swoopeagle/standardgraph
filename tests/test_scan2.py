@@ -1,9 +1,14 @@
 """World-coverage scan 2: new subjects/systems (au-acara, uk-nc, gb-sco, es-lomloe other subjects; no-udir; pl-men).
 DB tests skip on a DB built before this ingest."""
 import json
+import sys
 from pathlib import Path
 
 import pytest
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+from withhold_systems import withheld  # noqa: E402
+WITHHELD = set(withheld())
 
 ROOT = Path(__file__).parent.parent
 # (system, subject, min rows)
@@ -21,6 +26,8 @@ def has_scan(db):
 
 @pytest.mark.parametrize("system,subject,n", EXPECT)
 def test_counts(db, has_scan, system, subject, n):
+    if system in WITHHELD:
+        pytest.skip(f"{system} is withheld from release DBs")
     assert db.execute("SELECT COUNT(*) FROM standards WHERE system=? AND subject=?", (system, subject)).fetchone()[0] >= n
 
 

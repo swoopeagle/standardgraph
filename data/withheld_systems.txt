@@ -6,4 +6,4 @@ rw-reb  # REB syllabi state no licence. Asked REB 2026-10-20
 ke-kicd  # KICD site and curriculum design PDFs: "All rights reserved ... without the prior written permission" (verified 2026-10-20); some rows sourced via a commercial publisher's mirror
 ug-ncdc  # NCDC site and syllabus PDFs: "Copyright (c) NCDC ... All rights reserved: No part ... may be reproduced" (verified 2026-10-20)
 ng-nerdc # NERDC site footer: "NERDC All rights reserved" (verified 2026-10-20)
-pl-men  # statute-route only (Prawo autorskie Art. 4, no licence): ready, pending counsel; reclassified 2026-10-20 in scan 3, see docs/world-coverage-scan-3.md
+pl-men   # Poland: basis is Prawo autorskie Art. 4 (official documents), not a licence. Held pending counsel (decided 2026-10-20)
