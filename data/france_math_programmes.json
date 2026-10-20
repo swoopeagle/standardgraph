@@ -1,0 +1,4888 @@
+[
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer et dénombrer des collections en les organisant.",
+"text_en": "Compare and count collections by organizing them."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Construire des collections de cardinal donné.",
+"text_en": "Build collections of a given cardinal."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre la suite écrite et la suite orale des nombres jusqu’à cent.",
+"text_en": "Know the written sequence and the spoken sequence of numbers up to one hundred."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre et utiliser diverses représentations d’un nombre et passer de l’une à l’autre.",
+"text_en": "Know and use various representations of a number and move from one to another."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre la valeur des chiffres en fonction de leur position (unités, dizaines).",
+"text_en": "Know the value of digits according to their position (units, tens)."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer, encadrer, intercaler des nombres entiers en utilisant les symboles =, < et >.",
+"text_en": "Compare, bracket, and insert whole numbers using the symbols =, < and >."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ordonner des nombres dans l’ordre croissant ou décroissant.",
+"text_en": "Order numbers in increasing or decreasing order."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir placer des nombres sur une demi-droite graduée de un en un.",
+"text_en": "Know how to place numbers on a number half-line graduated in steps of one."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre les nombres ordinaux jusqu’à « vingtième ».",
+"text_en": "Know the ordinal numbers up to \"twentieth\"."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et utiliser les nombres ordinaux.",
+"text_en": "Understand and use ordinal numbers."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Repérer un rang ou une position dans une file orientée ou dans une liste d’objets ou de personnes.",
+"text_en": "Identify a rank or a position in an oriented line or in a list of objects or people."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Faire le lien entre le rang d’un objet dans une liste et le nombre d’éléments qui le précèdent.",
+"text_en": "Make the link between the rank of an object in a list and the number of elements that precede it."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Utiliser les nombres ordinaux dans le cadre de l’étude de suites de symboles, de formes, de lettres ou de nombres.",
+"text_en": "Use ordinal numbers in the study of sequences of symbols, shapes, letters or numbers."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre le sens de l’addition et de la soustraction.",
+"text_en": "Understand the meaning of addition and subtraction."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et utiliser les symboles « + », « - » et « = ».",
+"text_en": "Understand and use the symbols \"+\", \"-\" and \"=\"."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer des additions en colonnes.",
+"text_en": "Set up and perform additions in columns."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre le sens de la multiplication.",
+"text_en": "Understand the meaning of multiplication."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre dans les deux sens les tables d’addition.",
+"text_en": "Know the addition tables in both directions."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre les doubles et les moitiés de nombres usuels.",
+"text_en": "Know the doubles and halves of common numbers."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter ou soustraire 1 ou 2 à un nombre.",
+"text_en": "Add or subtract 1 or 2 to a number."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter ou soustraire 10 à un nombre.",
+"text_en": "Add or subtract 10 to a number."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter ou soustraire 20, 30, 40, 50, 60, 70, 80 ou 90 à un nombre.",
+"text_en": "Add or subtract 20, 30, 40, 50, 60, 70, 80 or 90 to a number."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Trouver le complément d’un nombre à la dizaine supérieure.",
+"text_en": "Find the complement of a number to the next ten."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter un nombre inférieur à 9 à un nombre.",
+"text_en": "Add a number less than 9 to a number."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter 9 à un nombre.",
+"text_en": "Add 9 to a number."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter deux nombres inférieurs à 100.",
+"text_en": "Add two numbers less than 100."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer la moitié d’un nombre pair.",
+"text_en": "Determine the half of an even number."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Soustraire un nombre inférieur à 10 à un nombre entier de dizaines.",
+"text_en": "Subtract a number less than 10 from a whole number of tens."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes additifs en une étape du type parties-tout.",
+"text_en": "Solve one-step additive problems of the part-whole type."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes additifs en deux étapes (champ numérique inférieur ou égal à 30).",
+"text_en": "Solve two-step additive problems (number range less than or equal to 30)."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes multiplicatifs en une étape (champ numérique inférieur ou égal à 30).",
+"text_en": "Solve one-step multiplicative problems (number range less than or equal to 30)."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Dénombrer des collections en les organisant.",
+"text_en": "Count collections by organizing them."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Construire des collections de cardinal donné.",
+"text_en": "Build collections of a given cardinal."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre et utiliser la relation entre unités et dizaines, entre dizaines et centaines, entre unités et centaines.",
+"text_en": "Know and use the relationship between units and tens, between tens and hundreds, between units and hundreds."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre la suite écrite et la suite orale des nombres jusqu’à mille.",
+"text_en": "Know the written sequence and the spoken sequence of numbers up to one thousand."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre et utiliser diverses représentations d’un nombre et passer de l’une à l’autre.",
+"text_en": "Know and use various representations of a number and move from one to another."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre la valeur des chiffres en fonction de leur position dans un nombre.",
+"text_en": "Know the value of digits according to their position in a number."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer, encadrer, intercaler des nombres entiers en utilisant les symboles (=, <, >).",
+"text_en": "Compare, bracket, and insert whole numbers using the symbols (=, <, >)."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ordonner des nombres dans l’ordre croissant ou décroissant.",
+"text_en": "Order numbers in increasing or decreasing order."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et savoir utiliser les expressions « égal à », « supérieur à », « inférieur à », « compris entre … et … ».",
+"text_en": "Understand and know how to use the expressions \"equal to\", \"greater than\", \"less than\", \"between ... and ...\"."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir placer des nombres sur une demi-droite graduée.",
+"text_en": "Know how to place numbers on a graduated number half-line."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre les nombres ordinaux jusqu’à cent.",
+"text_en": "Know the ordinal numbers up to one hundred."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et utiliser les nombres ordinaux.",
+"text_en": "Understand and use ordinal numbers."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Repérer un rang ou une position dans une file orientée ou dans une liste d’objets ou de personnes.",
+"text_en": "Identify a rank or a position in an oriented line or in a list of objects or people."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Faire le lien entre le rang d’un objet dans une liste et le nombre d’éléments qui le précèdent.",
+"text_en": "Make the link between the rank of an object in a list and the number of elements that precede it."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Utiliser les nombres ordinaux dans le cadre de suite de symboles, de lettres ou de nombres.",
+"text_en": "Use ordinal numbers in the context of sequences of symbols, letters or numbers."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir interpréter, représenter, écrire et lire les fractions 1/2, 1/3, 1/4, 1/5, 1/6, 1/8 et 1/10.",
+"text_en": "Know how to interpret, represent, write and read the fractions 1/2, 1/3, 1/4, 1/5, 1/6, 1/8 and 1/10."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir interpréter, représenter, écrire et lire des fractions inférieures ou égales à 1.",
+"text_en": "Know how to interpret, represent, write and read fractions less than or equal to 1."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre et utiliser les mots « dénominateur » et « numérateur ».",
+"text_en": "Know and use the words \"denominator\" and \"numerator\"."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer des fractions ayant le même dénominateur.",
+"text_en": "Compare fractions having the same denominator."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer des fractions dont le numérateur est 1.",
+"text_en": "Compare fractions whose numerator is 1."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Additionner et soustraire des fractions de même dénominateur.",
+"text_en": "Add and subtract fractions with the same denominator."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer des additions et des soustractions en colonnes.",
+"text_en": "Set up and perform additions and subtractions in columns."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et utiliser le symbole « × ».",
+"text_en": "Understand and use the symbol \"×\"."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et savoir que la multiplication est commutative.",
+"text_en": "Understand and know that multiplication is commutative."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre la notion de parité d’un nombre.",
+"text_en": "Know the notion of parity of a number."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre dans les deux sens les tables d’addition.",
+"text_en": "Know the addition tables in both directions."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre dans les deux sens les tables de multiplication.",
+"text_en": "Know the multiplication tables in both directions."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre des faits multiplicatifs usuels.",
+"text_en": "Know common multiplicative facts."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes additifs en une étape de type parties-tout.",
+"text_en": "Solve one-step additive problems of the part-whole type."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes additifs de comparaison en une étape.",
+"text_en": "Solve one-step additive comparison problems."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes additifs en deux étapes.",
+"text_en": "Solve two-step additive problems."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes multiplicatifs en une étape.",
+"text_en": "Solve one-step multiplicative problems."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes mixtes en deux étapes (une étape additive et une étape multiplicative).",
+"text_en": "Solve two-step mixed problems (one additive step and one multiplicative step)."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Dénombrer des collections.",
+"text_en": "Count collections."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Construire des collections de cardinal donné.",
+"text_en": "Build collections of a given cardinal."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre et utiliser les relations entre les unités de numération.",
+"text_en": "Know and use the relationships between the units of numeration."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre la suite écrite et la suite orale des nombres jusqu’à dix-mille.",
+"text_en": "Know the written sequence and the spoken sequence of numbers up to ten thousand."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre et utiliser diverses représentations d’un nombre et passer de l’une à l’autre.",
+"text_en": "Know and use various representations of a number and move from one to another."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre la valeur des chiffres en fonction de leur position dans un nombre.",
+"text_en": "Know the value of digits according to their position in a number."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer, encadrer, intercaler des nombres entiers en utilisant les symboles (=, <, >).",
+"text_en": "Compare, bracket, and insert whole numbers using the symbols (=, <, >)."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ordonner des nombres dans l’ordre croissant ou décroissant.",
+"text_en": "Order numbers in increasing or decreasing order."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et savoir utiliser les expressions « égal à », « supérieur à », « inférieur à », « compris entre … et … ».",
+"text_en": "Understand and know how to use the expressions \"equal to\", \"greater than\", \"less than\", \"between ... and ...\"."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir placer des nombres sur une demi-droite graduée.",
+"text_en": "Know how to place numbers on a graduated number half-line."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir établir des égalités de fractions inférieures ou égales à 1.",
+"text_en": "Know how to establish equalities of fractions less than or equal to 1."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Partager une unité de longueur en fractions d’unité et mesurer des longueurs non entières par rapport à cette unité.",
+"text_en": "Divide a unit of length into fractions of the unit and measure non-whole lengths relative to this unit."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer des fractions inférieures à 1.",
+"text_en": "Compare fractions less than 1."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Additionner et soustraire des fractions.",
+"text_en": "Add and subtract fractions."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et utiliser les mots « terme », « somme » et « différence ».",
+"text_en": "Understand and use the words \"term\", \"sum\" and \"difference\"."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer des additions et des soustractions en colonnes.",
+"text_en": "Set up and perform additions and subtractions in columns."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et utiliser les mots « facteur », « produit » et « multiple ».",
+"text_en": "Understand and use the words \"factor\", \"product\" and \"multiple\"."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre le sens de la division et utiliser le symbole « ÷ ».",
+"text_en": "Understand the meaning of division and use the symbol \"÷\"."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer des multiplications d’un nombre à deux ou trois chiffres par un nombre à un ou deux chiffres.",
+"text_en": "Set up and perform multiplications of a two- or three-digit number by a one- or two-digit number."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre dans les deux sens les tables d’addition.",
+"text_en": "Know the addition tables in both directions."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre dans les deux sens les tables de multiplication.",
+"text_en": "Know the multiplication tables in both directions."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaitre des faits multiplicatifs usuels.",
+"text_en": "Know common multiplicative facts."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes additifs en une étape de types parties-tout et comparaison.",
+"text_en": "Solve one-step additive problems of the part-whole and comparison types."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes additifs en deux étapes.",
+"text_en": "Solve two-step additive problems."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes multiplicatifs en une étape.",
+"text_en": "Solve one-step multiplicative problems."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes mixtes en deux ou trois étapes.",
+"text_en": "Solve mixed problems in two or three steps."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes de comparaison multiplicative en une étape.",
+"text_en": "Solve one-step multiplicative comparison problems."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes mettant en jeu des produits cartésiens.",
+"text_en": "Solve problems involving Cartesian products."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Utiliser le lexique spécifique associé aux longueurs.",
+"text_en": "Use the specific vocabulary associated with lengths."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des objets selon leur longueur.",
+"text_en": "Compare objects according to their length."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des segments selon leur longueur.",
+"text_en": "Compare segments according to their length."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Savoir mesurer la longueur d’un segment en utilisant une règle graduée.",
+"text_en": "Know how to measure the length of a segment using a graduated ruler."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaitre et utiliser les unités mètre et centimètre et les symboles associés (m et cm).",
+"text_en": "Know and use the units metre and centimetre and the associated symbols (m and cm)."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaitre quelques longueurs de référence.",
+"text_en": "Know some reference lengths."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Savoir qu’un mètre est égal à cent centimètres.",
+"text_en": "Know that one metre is equal to one hundred centimetres."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Utiliser le lexique spécifique lié à la monnaie.",
+"text_en": "Use the specific vocabulary related to money."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer les valeurs de deux ensembles constitués de pièces de monnaie ou de deux ensembles constitués de pièces et de billets.",
+"text_en": "Compare the values of two sets made up of coins or of two sets made up of coins and banknotes."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Déterminer la valeur en euro d’un ensemble constitué de pièces et de billets.",
+"text_en": "Determine the value in euros of a set made up of coins and banknotes."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Constituer une somme d’argent donnée avec des pièces et des billets.",
+"text_en": "Make up a given sum of money with coins and banknotes."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Simuler des achats en manipulant des pièces et des billets fictifs. Rendre la monnaie.",
+"text_en": "Simulate purchases by handling play coins and banknotes. Give change."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Lire sur une horloge à aiguilles une heure donnée en heures entières.",
+"text_en": "Read a given time in whole hours on an analogue clock."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Positionner les aiguilles d’une horloge correspondant à une heure donnée (uniquement des heures entières inférieures ou égales à douze).",
+"text_en": "Position the hands of a clock corresponding to a given time (only whole hours less than or equal to twelve)."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Grandeurs et mesures",
+"text_fr": "Associer une heure à un moment de la journée.",
+"text_en": "Associate a time with a moment of the day."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaitre et utiliser les unités mètre, centimètre, kilomètre et les symboles associés (m, cm et km).",
+"text_en": "Know and use the units metre, centimetre, kilometre and the associated symbols (m, cm and km)."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Choisir l’unité la mieux adaptée pour exprimer une longueur.",
+"text_en": "Choose the most suitable unit to express a length."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaitre les relations entre les unités de longueur usuelles.",
+"text_en": "Know the relationships between the common units of length."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Savoir mesurer la longueur d’un segment en utilisant une règle graduée.",
+"text_en": "Know how to measure the length of a segment using a graduated ruler."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des longueurs.",
+"text_en": "Compare lengths."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaitre quelques longueurs de référence.",
+"text_en": "Know some reference lengths."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Estimer la longueur d’un objet du quotidien.",
+"text_en": "Estimate the length of an everyday object."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaitre le lien entre les euros et les centimes.",
+"text_en": "Know the link between euros and cents."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer les valeurs en euro de deux ensembles constitués de pièces et de billets.",
+"text_en": "Compare the values in euros of two sets made up of coins and banknotes."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Déterminer la valeur en euro et centime d’euro d’un ensemble constitué de pièces et de billets.",
+"text_en": "Determine the value in euros and cents of a set made up of coins and banknotes."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Constituer avec des euros et des centimes d’euro une somme d’argent d’une valeur donnée.",
+"text_en": "Make up a sum of money of a given value with euros and cents."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Simuler des achats en manipulant des pièces et des billets fictifs. Rendre la monnaie.",
+"text_en": "Simulate purchases by handling play coins and banknotes. Give change."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaitre le sens de l’écriture à virgule d’une somme d’argent.",
+"text_en": "Know the meaning of the decimal-point notation of a sum of money."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaitre et utiliser les unités mètre, décimètre, centimètre, millimètre, kilomètre et les symboles associés (m, dm, cm, mm, km).",
+"text_en": "Know and use the units metre, decimetre, centimetre, millimetre, kilometre and the associated symbols (m, dm, cm, mm, km)."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaitre les relations entre les unités de longueur.",
+"text_en": "Know the relationships between the units of length."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Choisir l’unité la mieux adaptée pour exprimer une longueur.",
+"text_en": "Choose the most suitable unit to express a length."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des longueurs.",
+"text_en": "Compare lengths."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Tracer un segment de longueur donnée.",
+"text_en": "Draw a segment of a given length."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Disposer de quelques longueurs de référence.",
+"text_en": "Have some reference lengths available."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Estimer la longueur d’un objet ou une distance.",
+"text_en": "Estimate the length of an object or a distance."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Savoir ce qu’est le périmètre d’une figure plane.",
+"text_en": "Know what the perimeter of a plane figure is."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer le périmètre de plusieurs polygones sans règle graduée, en utilisant un compas.",
+"text_en": "Compare the perimeter of several polygons without a graduated ruler, using a compass."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Déterminer le périmètre d’un polygone en utilisant une règle graduée.",
+"text_en": "Determine the perimeter of a polygon using a graduated ruler."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Simuler des achats en manipulant des pièces et des billets fictifs. Rendre la monnaie.",
+"text_en": "Simulate purchases by handling play coins and banknotes. Give change."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Poser et effectuer des additions de montants en euro.",
+"text_en": "Set up and perform additions of amounts in euros."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Poser et effectuer des soustractions de montants en euro.",
+"text_en": "Set up and perform subtractions of amounts in euros."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Lire l’heure sur une horloge à aiguilles.",
+"text_en": "Read the time on an analogue clock."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Positionner les aiguilles d’une horloge correspondant à une heure donnée en heures entières ou en heures et minutes.",
+"text_en": "Position the hands of a clock corresponding to a given time in whole hours or in hours and minutes."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer et mesurer des durées écoulées entre deux instants affichés sur une horloge (pour des intervalles de temps situés dans une même journée).",
+"text_en": "Compare and measure durations elapsed between two instants displayed on a clock (for time intervals within a single day)."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Grandeurs et mesures",
+"text_fr": "Résoudre des problèmes à une ou deux étapes impliquant des durées.",
+"text_en": "Solve one- or two-step problems involving durations."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaitre les solides usuels suivants : cube, boule, cône, cylindre, pavé.",
+"text_en": "Recognize the following common solids: cube, sphere, cone, cylinder, rectangular prism (cuboid)."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Nommer un cube, un pavé et une boule.",
+"text_en": "Name a cube, a rectangular prism (cuboid) and a sphere."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Décrire un cube ou un pavé en utilisant le terme « face ». Connaitre le nombre et la nature des faces d’un cube et d’un pavé.",
+"text_en": "Describe a cube or a rectangular prism (cuboid) using the term \"face\". Know the number and nature of the faces of a cube and of a rectangular prism (cuboid)."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Construire des cubes et des pavés.",
+"text_en": "Build cubes and rectangular prisms (cuboids)."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaitre des formes planes (disque, carré, rectangle et triangle) dans un assemblage et dans son environnement proche.",
+"text_en": "Recognize plane shapes (disk, square, rectangle and triangle) in an assembly and in one's immediate environment."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Nommer le disque, le carré, le rectangle et le triangle.",
+"text_en": "Name the disk, the square, the rectangle and the triangle."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Donner une première description du carré, du rectangle, du triangle en utilisant les termes « sommet » et « côté ».",
+"text_en": "Give a first description of the square, the rectangle, the triangle using the terms \"vertex\" and \"side\"."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Repérer visuellement des alignements.",
+"text_en": "Visually identify alignments."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser la règle pour repérer ou vérifier des alignements.",
+"text_en": "Use the ruler to identify or check alignments."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser la règle comme instrument de tracé.",
+"text_en": "Use the ruler as a drawing instrument."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Construire un carré, un rectangle, un triangle ou un assemblage de ces figures sur du papier quadrillé ou pointé.",
+"text_en": "Construct a square, a rectangle, a triangle or an assembly of these figures on squared or dotted paper."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre et utiliser le vocabulaire lié aux positions relatives.",
+"text_en": "Know and use the vocabulary related to relative positions."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Situer des personnes ou des objets les uns par rapport aux autres ou par rapport à d’autres repères dans la classe.",
+"text_en": "Locate people or objects in relation to one another or in relation to other reference points in the classroom."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Construire et utiliser des représentations de la classe pour localiser, mémoriser et communiquer un emplacement.",
+"text_en": "Build and use representations of the classroom to locate, memorize and communicate a location."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Construire et reproduire des assemblages de solides à partir d’un modèle en trois dimensions ou de représentations planes.",
+"text_en": "Build and reproduce assemblies of solids from a three-dimensional model or from plane representations."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Se déplacer et décrire des déplacements dans la classe en s’orientant et en utilisant des repères.",
+"text_en": "Move around and describe movements in the classroom by orienting oneself and using reference points."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Construire et utiliser un plan de la classe pour communiquer un déplacement.",
+"text_en": "Build and use a plan of the classroom to communicate a movement."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser et produire une suite d’instructions qui codent un déplacement en utilisant un vocabulaire spatial précis.",
+"text_en": "Use and produce a sequence of instructions that code a movement using precise spatial vocabulary."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaitre les solides usuels suivants : cube, boule, cône, pyramide, cylindre, pavé.",
+"text_en": "Recognize the following common solids: cube, sphere, cone, pyramid, cylinder, rectangular prism (cuboid)."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Nommer un cube, une boule, un pavé, un cône ou une pyramide.",
+"text_en": "Name a cube, a sphere, a rectangular prism (cuboid), a cone or a pyramid."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Décrire un cube, un pavé ou une pyramide en utilisant les termes « face », « sommet » et « arête ».",
+"text_en": "Describe a cube, a rectangular prism (cuboid) or a pyramid using the terms \"face\", \"vertex\" and \"edge\"."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre le nombre et la nature des faces d’un cube ou d’un pavé.",
+"text_en": "Know the number and nature of the faces of a cube or a rectangular prism (cuboid)."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Construire un cube, un pavé droit ou une pyramide.",
+"text_en": "Build a cube, a right rectangular prism (cuboid) or a pyramid."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser le vocabulaire géométrique approprié.",
+"text_en": "Use the appropriate geometric vocabulary."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaitre, nommer et décrire un cercle, un carré, un rectangle, un triangle, un triangle rectangle en utilisant le vocabulaire approprié.",
+"text_en": "Recognize, name and describe a circle, a square, a rectangle, a triangle, a right triangle using the appropriate vocabulary."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre les propriétés des angles et des égalités de longueur pour les carrés et les rectangles.",
+"text_en": "Know the properties of angles and of equal lengths for squares and rectangles."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Reproduire ou construire un carré, un rectangle, un triangle, un triangle rectangle et un cercle ou un assemblage de ces figures.",
+"text_en": "Reproduce or construct a square, a rectangle, a triangle, a right triangle and a circle or an assembly of these figures."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser la règle pour vérifier des alignements et l’équerre pour vérifier qu’un angle est droit.",
+"text_en": "Use the ruler to check alignments and the set square to check that an angle is a right angle."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser la règle graduée, l’équerre et le compas comme instruments de tracé.",
+"text_en": "Use the graduated ruler, the set square and the compass as drawing instruments."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre et utiliser le code pour les angles droits.",
+"text_en": "Know and use the code for right angles."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre et utiliser le vocabulaire lié aux positions relatives.",
+"text_en": "Know and use the vocabulary related to relative positions."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Situer des personnes ou des objets les uns par rapport aux autres ou par rapport à d’autres repères dans un espace familier.",
+"text_en": "Locate people or objects in relation to one another or in relation to other reference points in a familiar space."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Construire et utiliser des représentations d’un espace familier pour localiser, mémoriser ou communiquer un emplacement.",
+"text_en": "Build and use representations of a familiar space to locate, memorize or communicate a location."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Construire des assemblages de cubes et de pavés.",
+"text_en": "Build assemblies of cubes and rectangular prisms (cuboids)."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Espace et géométrie",
+"text_fr": "Comprendre, utiliser et produire une suite d’instructions qui codent un déplacement en utilisant un vocabulaire spatial précis.",
+"text_en": "Understand, use and produce a sequence of instructions that code a movement using precise spatial vocabulary."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Nommer un cube, une boule, un pavé, un cône, une pyramide ou un cylindre.",
+"text_en": "Name a cube, a sphere, a rectangular prism (cuboid), a cone, a pyramid or a cylinder."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Décrire un cube, un pavé ou une pyramide en utilisant les termes « face », « sommet » et « arête ».",
+"text_en": "Describe a cube, a rectangular prism (cuboid) or a pyramid using the terms \"face\", \"vertex\" and \"edge\"."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre le nombre et la nature des faces d’un cube ou d’un pavé.",
+"text_en": "Know the number and nature of the faces of a cube or a rectangular prism (cuboid)."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre la nature des faces d’une pyramide.",
+"text_en": "Know the nature of the faces of a pyramid."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Construire un cube, un pavé ou une pyramide.",
+"text_en": "Build a cube, a rectangular prism (cuboid) or a pyramid."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Construire un cube à partir d’un patron.",
+"text_en": "Build a cube from a net."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser le vocabulaire géométrique approprié.",
+"text_en": "Use the appropriate geometric vocabulary."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaitre, nommer et décrire le carré, le rectangle, le triangle, le triangle rectangle et le losange.",
+"text_en": "Recognize, name and describe the square, the rectangle, the triangle, the right triangle and the rhombus."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre les propriétés des angles et les égalités de longueur pour les carrés, les rectangles et les losanges.",
+"text_en": "Know the properties of angles and equal lengths for squares, rectangles and rhombuses."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Reproduire ou construire un carré, un rectangle, un triangle, un triangle rectangle et un cercle ou des assemblages de ces figures sur tout support (papier quadrillé ou pointé ou papier uni), avec une règle graduée, une équerre ou un compas.",
+"text_en": "Reproduce or construct a square, a rectangle, a triangle, a right triangle and a circle or assemblies of these figures on any support (squared or dotted paper or plain paper), with a graduated ruler, a set square or a compass."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre et utiliser le codage d’un angle droit et celui qui indique que des segments ont la même longueur.",
+"text_en": "Know and use the coding of a right angle and the coding that indicates that segments have the same length."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaitre si une figure possède un ou plusieurs axes de symétrie en utilisant des pliages ou du papier calque.",
+"text_en": "Recognize whether a figure has one or more axes of symmetry using folding or tracing paper."
+},
+{
+"level": "C2",
+"grade": "3",
+"theme": "Espace et géométrie",
+"text_fr": "Compléter, sur une feuille quadrillée ou pointée, une figure simple pour la rendre symétrique par rapport à un axe donné.",
+"text_en": "Complete, on squared or dotted paper, a simple figure to make it symmetrical with respect to a given axis."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Organisation et gestion de données",
+"text_fr": "Collecter des données et présenter ces données sous forme d’un tableau ou d’un diagramme en barres.",
+"text_en": "Collect data and present these data in the form of a table or a bar chart."
+},
+{
+"level": "C2",
+"grade": "1",
+"theme": "Organisation et gestion de données",
+"text_fr": "Construire et compléter un tableau à double entrée.",
+"text_en": "Build and complete a two-way table."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Organisation et gestion de données",
+"text_fr": "Produire un tableau ou un diagramme en barres pour présenter des données recueillies.",
+"text_en": "Produce a table or a bar chart to present collected data."
+},
+{
+"level": "C2",
+"grade": "2",
+"theme": "Organisation et gestion de données",
+"text_fr": "Lire et interpréter les données d’un diagramme en barres. Lire et interpréter les données d’un tableau à double entrée.",
+"text_en": "Read and interpret the data of a bar chart. Read and interpret the data of a two-way table."
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer et dénombrer des collections en les organisant",
+"text_en": "Compare and count collections by organizing them"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Construire des collections de cardinal donné",
+"text_en": "Build collections of a given cardinality"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître et utiliser les relations entre les unités de numération",
+"text_en": "Know and use the relationships between the units of numeration"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître la suite écrite et la suite orale des nombres jusqu’à 999 999",
+"text_en": "Know the written and spoken sequence of numbers up to 999,999"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître la valeur des chiffres en fonction de leur position dans un nombre",
+"text_en": "Know the value of digits according to their position in a number"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître et utiliser diverses représentations d’un nombre et passer de l’une à l’autre",
+"text_en": "Know and use various representations of a number and move from one to another"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et savoir utiliser les expressions « égal à », « supérieur à », « inférieur à », « compris entre … et … »",
+"text_en": "Understand and know how to use the expressions \"equal to\", \"greater than\", \"less than\", \"between … and …\""
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer, encadrer, intercaler des nombres entiers en utilisant les symboles =, < et >",
+"text_en": "Compare, bracket, and insert whole numbers using the symbols =, < and >"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ordonner des nombres dans l’ordre croissant ou décroissant",
+"text_en": "Order numbers in increasing or decreasing order"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir placer des nombres et repérer des points sur une demi-droite graduée",
+"text_en": "Know how to place numbers and locate points on a graduated half-line"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir reconnaître les multiples de 2, de 5 et de 10 à partir de leur écriture chiffrée",
+"text_en": "Know how to recognize multiples of 2, 5 and 10 from their written form in digits"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir déterminer si un nombre entier donné est un multiple d’un nombre entier inférieur ou égal à 10",
+"text_en": "Know how to determine whether a given whole number is a multiple of a whole number less than or equal to 10"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir déterminer si un nombre entier inférieur ou égal à 10 est un diviseur d’un nombre entier donné",
+"text_en": "Know how to determine whether a whole number less than or equal to 10 is a divisor of a given whole number"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir interpréter, représenter, écrire et lire des fractions",
+"text_en": "Know how to interpret, represent, write and read fractions"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir écrire une fraction supérieure à 1 comme la somme d’un entier et d’une fraction inférieure à 1",
+"text_en": "Know how to write a fraction greater than 1 as the sum of a whole number and a fraction less than 1"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir écrire la somme d’un entier et d’une fraction inférieure à 1 comme une unique fraction",
+"text_en": "Know how to write the sum of a whole number and a fraction less than 1 as a single fraction"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir encadrer une fraction par deux nombres entiers consécutifs",
+"text_en": "Know how to bracket a fraction between two consecutive whole numbers"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir placer une fraction ou la somme d’un nombre entier et d’une fraction inférieure à un sur une demi-droite graduée",
+"text_en": "Know how to place a fraction or the sum of a whole number and a fraction less than one on a graduated half-line"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir repérer un point d’une demi-droite graduée par une fraction ou par la somme d’un nombre entier et d’une fraction",
+"text_en": "Know how to locate a point on a graduated half-line by a fraction or by the sum of a whole number and a fraction"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer des fractions",
+"text_en": "Compare fractions"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Additionner et soustraire des fractions",
+"text_en": "Add and subtract fractions"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer une fraction d’une quantité ou d’une grandeur",
+"text_en": "Determine a fraction of a quantity or a magnitude"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Interpréter, représenter, écrire et lire des fractions décimales",
+"text_en": "Interpret, represent, write and read decimal fractions"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître et utiliser les relations entre unités simples, dixièmes et centièmes",
+"text_en": "Know and use the relationships between ones, tenths and hundredths"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Placer une fraction décimale sur une demi-droite graduée et repérer un point d’une demi-droite graduée par une fraction décimale",
+"text_en": "Place a decimal fraction on a graduated half-line and locate a point on a graduated half-line by a decimal fraction"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Écrire une fraction décimale supérieure à 1 comme la somme d’un nombre entier et d’une fraction décimale inférieure à 1",
+"text_en": "Write a decimal fraction greater than 1 as the sum of a whole number and a decimal fraction less than 1"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Écrire une fraction décimale supérieure à 1 comme la somme d’un nombre entier et de fractions décimales ayant un numérateur inférieur à 10",
+"text_en": "Write a decimal fraction greater than 1 as the sum of a whole number and decimal fractions with a numerator less than 10"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer, encadrer, intercaler des fractions décimales en utilisant les symboles =, < et >",
+"text_en": "Compare, bracket, and insert decimal fractions using the symbols =, < and >"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ordonner des fractions décimales dans l’ordre croissant ou décroissant",
+"text_en": "Order decimal fractions in increasing or decreasing order"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Passer d’une écriture sous forme d’une fraction décimale ou d’une somme de fractions décimales à une écriture à virgule et réciproquement",
+"text_en": "Move from a representation as a decimal fraction or a sum of decimal fractions to a representation with a decimal point, and vice versa"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Interpréter, représenter, écrire et lire des nombres décimaux (écriture à virgule)",
+"text_en": "Interpret, represent, write and read decimal numbers (decimal point notation)"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Placer un nombre décimal en écriture à virgule sur une demi-droite graduée et repérer un point d’une demi-droite graduée par un nombre décimal",
+"text_en": "Place a decimal number in decimal point notation on a graduated half-line and locate a point on a graduated half-line by a decimal number"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir donner la partie entière et l’arrondi à l’entier d’un nombre décimal",
+"text_en": "Know how to give the integer part and the rounding to the nearest whole number of a decimal number"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer, encadrer, intercaler, ordonner, par ordre croissant ou décroissant, des nombres décimaux donnés par leur écriture à virgule en utilisant les symboles =, < et >",
+"text_en": "Compare, bracket, insert, and order, in increasing or decreasing order, decimal numbers given in decimal point notation using the symbols =, < and >"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître des faits numériques usuels relatifs aux nombres entiers",
+"text_en": "Know common number facts relating to whole numbers"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître quelques relations entre des fractions usuelles",
+"text_en": "Know some relationships between common fractions"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître l’écriture décimale de fractions usuelles",
+"text_en": "Know the decimal representation of common fractions"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter ou soustraire un nombre entier inférieur à 10, d’unités, de dizaines, de centaines, de dixièmes ou de centièmes à un nombre décimal, lorsqu’il n’y a pas de retenue",
+"text_en": "Add or subtract a whole number less than 10, of ones, tens, hundreds, tenths or hundredths to a decimal number, when there is no carrying"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre entier par 10, 100 ou 1 000",
+"text_en": "Multiply a whole number by 10, 100 or 1,000"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre décimal par 10",
+"text_en": "Multiply a decimal number by 10"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Diviser un nombre décimal par 10",
+"text_en": "Divide a decimal number by 10"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter ou soustraire 8, 9, 18, 19, 28, 29, 38 ou 39, à un nombre",
+"text_en": "Add or subtract 8, 9, 18, 19, 28, 29, 38 or 39, to a number"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre entier inférieur à 10 par un nombre entier de dizaines ou de centaines",
+"text_en": "Multiply a whole number less than 10 by a whole number of tens or hundreds"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre entier par 4 ou par 8",
+"text_en": "Multiply a whole number by 4 or by 8"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre entier par 5",
+"text_en": "Multiply a whole number by 5"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Utiliser la distributivité de la multiplication par rapport à l’addition dans des cas simples",
+"text_en": "Use the distributivity of multiplication over addition in simple cases"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Estimer le résultat d’une opération",
+"text_en": "Estimate the result of an operation"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir effectuer un calcul contenant des parenthèses",
+"text_en": "Know how to perform a calculation containing parentheses"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser en colonnes et effectuer des additions et des soustractions de nombres décimaux",
+"text_en": "Set out in columns and perform additions and subtractions of decimal numbers"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer des multiplications de deux nombres entiers",
+"text_en": "Set out and perform multiplications of two whole numbers"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer des multiplications d’un nombre décimal par un nombre entier inférieur à 10",
+"text_en": "Set out and perform multiplications of a decimal number by a whole number less than 10"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer des divisions euclidiennes avec un diviseur à un chiffre",
+"text_en": "Set out and perform Euclidean divisions with a one-digit divisor"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes additifs en une étape des types « parties-tout » et « comparaison »",
+"text_en": "Solve one-step additive problems of the \"part-whole\" and \"comparison\" types"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Trouver le nombre manquant dans une égalité à trous",
+"text_en": "Find the missing number in an equality with a blank"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer la valeur d’un nombre inconnu en utilisant un symbole ou une lettre pour le représenter",
+"text_en": "Determine the value of an unknown number using a symbol or a letter to represent it"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes algébriques",
+"text_en": "Solve algebraic problems"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Exécuter un programme de calcul",
+"text_en": "Carry out a calculation program"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Identifier et formuler une règle de calcul pour poursuivre une suite de nombres",
+"text_en": "Identify and formulate a calculation rule to continue a sequence of numbers"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Identifier des régularités et poursuivre une suite de motifs évolutive",
+"text_en": "Identify regularities and continue a growing sequence of patterns"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître et utiliser les relations entre les unités de numération",
+"text_en": "Know and use the relationships between the units of numeration"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître la suite écrite et la suite orale des nombres jusqu’à 999 999 999",
+"text_en": "Know the written and spoken sequence of numbers up to 999,999,999"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître et utiliser diverses représentations d’un nombre et passer de l’une à l’autre",
+"text_en": "Know and use various representations of a number and move from one to another"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître la valeur des chiffres en fonction de leur position dans un nombre",
+"text_en": "Know the value of digits according to their position in a number"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer, encadrer, intercaler des nombres entiers en utilisant les symboles =, < et >",
+"text_en": "Compare, bracket, and insert whole numbers using the symbols =, < and >"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ordonner des nombres dans l’ordre croissant ou décroissant",
+"text_en": "Order numbers in increasing or decreasing order"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Placer des nombres et repérer des points sur une demi-droite graduée",
+"text_en": "Place numbers and locate points on a graduated half-line"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer si un nombre entier inférieur ou égal à 10 est un diviseur d’un nombre entier donné ou si un nombre entier donné est un multiple d’un nombre entier inférieur ou égal à 10",
+"text_en": "Determine whether a whole number less than or equal to 10 is a divisor of a given whole number or whether a given whole number is a multiple of a whole number less than or equal to 10"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer des diviseurs d’un nombre entier inférieur ou égal à 100",
+"text_en": "Determine divisors of a whole number less than or equal to 100"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer tous les diviseurs d’un nombre entier inférieur ou égal à 30",
+"text_en": "Determine all the divisors of a whole number less than or equal to 30"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer les diviseurs communs à deux nombres entiers inférieurs ou égaux à 30",
+"text_en": "Determine the common divisors of two whole numbers less than or equal to 30"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer des multiples communs à deux nombres entiers inférieurs à 15",
+"text_en": "Determine common multiples of two whole numbers less than 15"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Interpréter, représenter, écrire et lire des fractions",
+"text_en": "Interpret, represent, write and read fractions"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Écrire une fraction supérieure à 1 comme la somme d’un entier et d’une fraction inférieure à 1",
+"text_en": "Write a fraction greater than 1 as the sum of a whole number and a fraction less than 1"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Écrire la somme d’un entier et d’une fraction inférieure à 1 comme une unique fraction",
+"text_en": "Write the sum of a whole number and a fraction less than 1 as a single fraction"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Encadrer une fraction entre deux nombres entiers consécutifs",
+"text_en": "Bracket a fraction between two consecutive whole numbers"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Placer une fraction ou la somme d’un nombre entier et d’une fraction inférieure à un sur une demi-droite graduée",
+"text_en": "Place a fraction or the sum of a whole number and a fraction less than one on a graduated half-line"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Repérer un point d’une demi-droite graduée par une fraction ou par la somme d’un nombre entier et d’une fraction",
+"text_en": "Locate a point on a graduated half-line by a fraction or by the sum of a whole number and a fraction"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer des fractions",
+"text_en": "Compare fractions"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Additionner et soustraire des fractions",
+"text_en": "Add and subtract fractions"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Calculer le produit d’un entier et d’une fraction",
+"text_en": "Calculate the product of a whole number and a fraction"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer une fraction d’une quantité ou d’une grandeur",
+"text_en": "Determine a fraction of a quantity or a magnitude"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Interpréter, représenter, écrire et lire des fractions décimales",
+"text_en": "Interpret, represent, write and read decimal fractions"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître et utiliser les relations entre unités simples, dixièmes, centièmes et millièmes",
+"text_en": "Know and use the relationships between ones, tenths, hundredths and thousandths"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Placer une fraction décimale sur une demi-droite graduée et repérer un point d’une demi-droite graduée par une fraction décimale",
+"text_en": "Place a decimal fraction on a graduated half-line and locate a point on a graduated half-line by a decimal fraction"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Écrire une fraction décimale supérieure à 1 comme la somme d’un nombre entier et d’une fraction décimale inférieure à 1",
+"text_en": "Write a decimal fraction greater than 1 as the sum of a whole number and a decimal fraction less than 1"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Écrire une fraction décimale supérieure à 1 comme la somme d’un nombre entier et de fractions décimales ayant un numérateur inférieur à 10",
+"text_en": "Write a decimal fraction greater than 1 as the sum of a whole number and decimal fractions with a numerator less than 10"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer, encadrer, intercaler des fractions décimales en utilisant les symboles =, < et >",
+"text_en": "Compare, bracket, and insert decimal fractions using the symbols =, < and >"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ordonner des fractions décimales dans l’ordre croissant ou décroissant",
+"text_en": "Order decimal fractions in increasing or decreasing order"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Passer d’une écriture sous forme d’une fraction décimale ou de la somme de fractions décimales à une écriture à virgule et réciproquement",
+"text_en": "Move from a representation as a decimal fraction or the sum of decimal fractions to a representation with a decimal point, and vice versa"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Interpréter, représenter, écrire et lire des nombres décimaux (écriture à virgule)",
+"text_en": "Interpret, represent, write and read decimal numbers (decimal point notation)"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Placer un nombre décimal en écriture à virgule sur une demi-droite graduée et repérer un point d’une demi-droite graduée par un nombre en écriture à virgule",
+"text_en": "Place a decimal number in decimal point notation on a graduated half-line and locate a point on a graduated half-line by a number in decimal point notation"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir donner la partie entière et l’arrondi à l’entier d’un nombre décimal",
+"text_en": "Know how to give the integer part and the rounding to the nearest whole number of a decimal number"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer, encadrer, intercaler, ordonner par ordre croissant ou décroissant des nombres décimaux donnés par leur écriture à virgule en utilisant les symboles =, < et >",
+"text_en": "Compare, bracket, insert, and order in increasing or decreasing order decimal numbers given in decimal point notation using the symbols =, < and >"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître des faits numériques usuels avec des entiers",
+"text_en": "Know common number facts with whole numbers"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître la moitié des nombres impairs jusqu’à 15",
+"text_en": "Know the half of odd numbers up to 15"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître quelques relations entre des fractions usuelles",
+"text_en": "Know some relationships between common fractions"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître l’écriture décimale de fractions usuelles",
+"text_en": "Know the decimal representation of common fractions"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter ou soustraire un nombre entier à un nombre décimal lorsqu’il n’y a pas de retenue",
+"text_en": "Add or subtract a whole number to a decimal number when there is no carrying"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter un nombre entier à un nombre décimal lorsqu’il y a une retenue",
+"text_en": "Add a whole number to a decimal number when there is carrying"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre décimal par 10, 100 ou 1 000",
+"text_en": "Multiply a decimal number by 10, 100 or 1,000"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Diviser un nombre décimal par 10, 100 ou 1 000",
+"text_en": "Divide a decimal number by 10, 100 or 1,000"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter deux nombres décimaux inférieurs à 10, s’écrivant avec au plus un chiffre après la virgule",
+"text_en": "Add two decimal numbers less than 10, written with at most one digit after the decimal point"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ajouter ou soustraire 8, 9, 18, 19, 28, 29, …, 98 ou 99 à un nombre",
+"text_en": "Add or subtract 8, 9, 18, 19, 28, 29, …, 98 or 99 to a number"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre entier, inférieur à 10, de dizaines, de centaines ou de milliers par un nombre entier, inférieur à 10, de dizaines, de centaines ou de milliers",
+"text_en": "Multiply a whole number, less than 10, of tens, hundreds or thousands by a whole number, less than 10, of tens, hundreds or thousands"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Utiliser la distributivité de la multiplication par rapport à l’addition dans des cas simples",
+"text_en": "Use the distributivity of multiplication over addition in simple cases"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Calculer le double d’un nombre décimal dans des cas simples",
+"text_en": "Calculate the double of a decimal number in simple cases"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Calculer la moitié d’un nombre décimal dans des cas simples",
+"text_en": "Calculate the half of a decimal number in simple cases"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Diviser un nombre entier par 4 ou par 8",
+"text_en": "Divide a whole number by 4 or by 8"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre décimal par 5",
+"text_en": "Multiply a decimal number by 5"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre décimal par 50",
+"text_en": "Multiply a decimal number by 50"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Estimer le résultat d’une opération",
+"text_en": "Estimate the result of an operation"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir réaliser un calcul contenant une ou deux paires de parenthèses",
+"text_en": "Know how to carry out a calculation containing one or two pairs of parentheses"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer la multiplication d’un nombre décimal par un nombre entier",
+"text_en": "Set out and perform the multiplication of a decimal number by a whole number"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer des divisions décimales avec un dividende entier et un diviseur à un chiffre",
+"text_en": "Set out and perform decimal divisions with a whole-number dividend and a one-digit divisor"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Poser et effectuer des divisions décimales avec un dividende décimal et un diviseur à un chiffre",
+"text_en": "Set out and perform decimal divisions with a decimal dividend and a one-digit divisor"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes additifs en une ou plusieurs étapes",
+"text_en": "Solve additive problems in one or more steps"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes multiplicatifs de type « parties-tout » en une étape",
+"text_en": "Solve one-step multiplicative problems of the \"part-whole\" type"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes mixtes en plusieurs étapes",
+"text_en": "Solve mixed multi-step problems"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes de comparaison multiplicative",
+"text_en": "Solve multiplicative comparison problems"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes de dénombrement",
+"text_en": "Solve counting problems"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes d’optimisation",
+"text_en": "Solve optimization problems"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes préparant à l’utilisation d’algorithmes",
+"text_en": "Solve problems preparing for the use of algorithms"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Trouver le nombre manquant dans une égalité à trous",
+"text_en": "Find the missing number in an equality with a blank"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes algébriques",
+"text_en": "Solve algebraic problems"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Exécuter ou produire un programme de calcul",
+"text_en": "Carry out or produce a calculation program"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Identifier et formuler une règle de calcul pour poursuivre une suite de nombres",
+"text_en": "Identify and formulate a calculation rule to continue a sequence of numbers"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Identifier des régularités et poursuivre une suite de motifs évolutive",
+"text_en": "Identify regularities and continue a growing sequence of patterns"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Trouver le nombre d’éléments pour une étape donnée dans une suite de motifs évolutive",
+"text_en": "Find the number of elements for a given step in a growing sequence of patterns"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître et utiliser la valeur des chiffres selon leur rang dans l’écriture d’un nombre",
+"text_en": "Know and use the value of digits according to their place in the writing of a number"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître les liens entre les unités de numération unité, dizaine, centaine, millier, dixième, centième, millième",
+"text_en": "Know the links between the units of numeration: unit, ten, hundred, thousand, tenth, hundredth, thousandth"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître des grands nombres entiers",
+"text_en": "Know large whole numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Reconnaître un nombre décimal",
+"text_en": "Recognize a decimal number"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître la définition d’un pourcentage",
+"text_en": "Know the definition of a percentage"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Associer et utiliser différentes écritures d’un nombre décimal : écriture à virgule, fraction, nombre mixte, pourcentage",
+"text_en": "Associate and use different representations of a decimal number: decimal point notation, fraction, mixed number, percentage"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Placer sur une demi-droite graduée un point dont l’abscisse est un nombre décimal",
+"text_en": "Place on a graduated half-line a point whose abscissa is a decimal number"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Repérer un nombre décimal sur une demi-droite graduée",
+"text_en": "Locate a decimal number on a graduated half-line"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer deux nombres décimaux",
+"text_en": "Compare two decimal numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ordonner une liste de nombres décimaux",
+"text_en": "Order a list of decimal numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Donner la valeur arrondie à l’unité, au dixième ou au centième, d’un nombre décimal",
+"text_en": "Give the value rounded to the unit, tenth or hundredth, of a decimal number"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Déterminer ou connaître la valeur arrondie de certains nombres non décimaux",
+"text_en": "Determine or know the rounded value of certain non-decimal numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Encadrer un nombre décimal par deux nombres décimaux, intercaler un nombre décimal entre deux nombres décimaux",
+"text_en": "Bracket a decimal number between two decimal numbers, insert a decimal number between two decimal numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Additionner et soustraire des nombres décimaux",
+"text_en": "Add and subtract decimal numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier un nombre entier ou un nombre décimal par 0,1, par 0,01, et par 0,001",
+"text_en": "Multiply a whole number or a decimal number by 0.1, by 0.01, and by 0.001"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Connaître le lien avec la division par 10, 100 et par 1 000",
+"text_en": "Know the link with division by 10, 100 and 1,000"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre le sens de la multiplication de deux nombres décimaux",
+"text_en": "Understand the meaning of the multiplication of two decimal numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Calculer le produit de deux nombres décimaux",
+"text_en": "Calculate the product of two decimal numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Contrôler les résultats à l’aide d’ordres de grandeur",
+"text_en": "Check results using orders of magnitude"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes mettant en jeu des multiplications entre des nombres décimaux",
+"text_en": "Solve problems involving multiplications between decimal numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Diviser un nombre décimal par un nombre entier non nul inférieur à 10",
+"text_en": "Divide a decimal number by a non-zero whole number less than 10"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes mettant en jeu des divisions décimales",
+"text_en": "Solve problems involving decimal divisions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Effectuer la division euclidienne d’un nombre entier par un nombre entier inférieur à 100",
+"text_en": "Perform the Euclidean division of a whole number by a whole number less than 100"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes mettant en jeu des divisions euclidiennes",
+"text_en": "Solve problems involving Euclidean divisions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Relier une fraction au résultat exact de la division de son numérateur par son dénominateur",
+"text_en": "Relate a fraction to the exact result of the division of its numerator by its denominator"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre et connaître la définition du quotient d’un entier a par un entier b non nul",
+"text_en": "Understand and know the definition of the quotient of a whole number a by a non-zero whole number b"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Compléter des égalités à trous multiplicatives",
+"text_en": "Complete multiplicative equalities with blanks"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Placer une fraction sur une demi-droite graduée dans des cas simples",
+"text_en": "Place a fraction on a graduated half-line in simple cases"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Graduer un segment de longueur donnée a",
+"text_en": "Graduate a segment of given length a"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Savoir que la fraction peut représenter un nombre entier, un nombre décimal non entier ou un nombre non décimal b",
+"text_en": "Know that the fraction can represent a whole number, a non-whole decimal number or a non-decimal number b"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Utiliser une multiplication pour appliquer une fraction à un nombre entier",
+"text_en": "Use a multiplication to apply a fraction to a whole number"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Établir des égalités de fractions",
+"text_en": "Establish equalities of fractions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comparer et encadrer des fractions",
+"text_en": "Compare and bracket fractions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Ordonner une liste de nombres écrits sous forme de fractions ou de nombres mixtes",
+"text_en": "Order a list of numbers written as fractions or mixed numbers"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Effectuer des opérations sur les fractions",
+"text_en": "Perform operations on fractions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Additionner et soustraire des fractions",
+"text_en": "Add and subtract fractions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Multiplier une fraction par un nombre entier",
+"text_en": "Multiply a fraction by a whole number"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Résoudre des problèmes mettant en jeu des fractions",
+"text_en": "Solve problems involving fractions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Inventer des problèmes mettant en jeu des fractions",
+"text_en": "Invent problems involving fractions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Comprendre le sens d’un pourcentage",
+"text_en": "Understand the meaning of a percentage"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Calculer une proportion (rapport entre une partie et le tout) et l’exprimer sous forme de pourcentage dans des cas simples",
+"text_en": "Calculate a proportion (ratio between a part and the whole) and express it as a percentage in simple cases"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Appliquer un pourcentage à une grandeur ou à un nombre",
+"text_en": "Apply a percentage to a magnitude or to a number"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Utiliser des modèles pré-algébriques pour résoudre des problèmes algébriques",
+"text_en": "Use pre-algebraic models to solve algebraic problems"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Nombres, calcul et résolution de problèmes",
+"text_fr": "Identifier la structure d’un motif évolutif en repérant une régularité et en identifiant une structure",
+"text_en": "Identify the structure of a growing pattern by spotting a regularity and identifying a structure"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître et utiliser les unités de longueur du millimètre au kilomètre et les symboles associés",
+"text_en": "Know and use the units of length from the millimeter to the kilometer and the associated symbols"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître les relations entre les unités de longueur",
+"text_en": "Know the relationships between the units of length"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Choisir une unité adaptée pour exprimer une longueur",
+"text_en": "Choose a suitable unit to express a length"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des longueurs",
+"text_en": "Compare lengths"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Disposer de quelques longueurs de référence",
+"text_en": "Have some reference lengths"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Estimer la longueur d’un objet ou d’une distance",
+"text_en": "Estimate the length of an object or a distance"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Savoir ce qu’est le périmètre d’une figure plane",
+"text_en": "Know what the perimeter of a plane figure is"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Déterminer le périmètre d’un polygone en utilisant une règle graduée",
+"text_en": "Determine the perimeter of a polygon using a graduated ruler"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Résoudre des problèmes mettant en jeu les longueurs des côtés d’un polygone et son périmètre",
+"text_en": "Solve problems involving the side lengths of a polygon and its perimeter"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître et utiliser les unités de masse du milligramme au kilogramme et la tonne, et les symboles associés",
+"text_en": "Know and use the units of mass from the milligram to the kilogram and the tonne, and the associated symbols"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître les relations entre les unités de masse",
+"text_en": "Know the relationships between the units of mass"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Choisir une unité adaptée pour exprimer une masse",
+"text_en": "Choose a suitable unit to express a mass"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des masses",
+"text_en": "Compare masses"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Disposer de quelques masses de référence",
+"text_en": "Have some reference masses"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Estimer la masse d’un objet",
+"text_en": "Estimate the mass of an object"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître et utiliser les unités de contenance du millilitre à l’hectolitre et les symboles associés",
+"text_en": "Know and use the units of capacity from the milliliter to the hectoliter and the associated symbols"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître les relations entre les unités de contenance",
+"text_en": "Know the relationships between the units of capacity"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Choisir une unité adaptée pour exprimer une contenance",
+"text_en": "Choose a suitable unit to express a capacity"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des contenances",
+"text_en": "Compare capacities"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer les aires de différentes figures planes",
+"text_en": "Compare the areas of different plane figures"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Déterminer des aires",
+"text_en": "Determine areas"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître et utiliser les centimètres carrés pour exprimer des aires",
+"text_en": "Know and use square centimeters to express areas"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Utiliser le lexique spécifique associé aux angles",
+"text_en": "Use the specific vocabulary associated with angles"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comprendre et utiliser les notations des angles",
+"text_en": "Understand and use the notations for angles"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des angles",
+"text_en": "Compare angles"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Lire l’heure sur une horloge à aiguilles",
+"text_en": "Read the time on an analog clock"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Positionner les aiguilles d’une horloge correspondant à une heure donnée en heure et minute",
+"text_en": "Position the hands of a clock corresponding to a given time in hours and minutes"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer et mesurer des durées écoulées entre deux instants affichés sur une horloge (instants et durées sont exprimés en heure et minute)",
+"text_en": "Compare and measure elapsed durations between two instants displayed on a clock (instants and durations are expressed in hours and minutes)"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer les aires de différentes figures planes",
+"text_en": "Compare the areas of different plane figures"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Déterminer des aires",
+"text_en": "Determine areas"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître et utiliser les unités centimètre carré, décimètre carré et mètre carré pour exprimer des aires",
+"text_en": "Know and use the units square centimeter, square decimeter and square meter to express areas"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Convertir des aires entre différentes unités",
+"text_en": "Convert areas between different units"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Déterminer l’aire d’un carré ou d’un rectangle",
+"text_en": "Determine the area of a square or a rectangle"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Utiliser le lexique spécifique associé aux angles",
+"text_en": "Use the specific vocabulary associated with angles"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comprendre et utiliser les notations des angles",
+"text_en": "Understand and use the notations for angles"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des angles",
+"text_en": "Compare angles"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Construire un angle égal à la somme de deux angles donnés ou un angle multiple d’un angle donné",
+"text_en": "Construct an angle equal to the sum of two given angles or an angle that is a multiple of a given angle"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Construire par pliage la moitié d’un angle donné",
+"text_en": "Construct by folding the half of a given angle"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Savoir qu’un angle droit mesure 90°",
+"text_en": "Know that a right angle measures 90°"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Lire l’heure sur une horloge à aiguilles",
+"text_en": "Read the time on an analog clock"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Positionner les aiguilles d’une horloge correspondant à une heure donnée en heure, minute et seconde",
+"text_en": "Position the hands of a clock corresponding to a given time in hours, minutes and seconds"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer et mesurer des durées écoulées entre deux instants affichés sur une horloge (instants et durées sont exprimés en heure, minute et seconde)",
+"text_en": "Compare and measure elapsed durations between two instants displayed on a clock (instants and durations are expressed in hours, minutes and seconds)"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Grandeurs et mesures",
+"text_fr": "Résoudre des problèmes à une ou plusieurs étapes impliquant des durées",
+"text_en": "Solve one-step or multi-step problems involving durations"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Savoir que le périmètre du disque est proportionnel à son diamètre",
+"text_en": "Know that the perimeter of a disk is proportional to its diameter"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître la formule du périmètre d’un disque",
+"text_en": "Know the formula for the perimeter of a disk"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Calculer le périmètre d’un disque",
+"text_en": "Calculate the perimeter of a disk"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Calculer des périmètres de figures composées",
+"text_en": "Calculate perimeters of composite figures"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Résoudre des problèmes impliquant des longueurs",
+"text_en": "Solve problems involving lengths"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Effectuer des conversions d’aire",
+"text_en": "Perform area conversions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître la formule de l’aire d’un carré ou d’un rectangle",
+"text_en": "Know the formula for the area of a square or a rectangle"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Calculer l’aire d’un carré ou d’un rectangle",
+"text_en": "Calculate the area of a square or a rectangle"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Connaître l’unité centimètre cube",
+"text_en": "Know the unit cubic centimeter"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Comparer des volumes",
+"text_en": "Compare volumes"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Déterminer un volume",
+"text_en": "Determine a volume"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Effectuer des calculs sur des horaires et des durées",
+"text_en": "Perform calculations on times and durations"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Résoudre des problèmes impliquant des horaires et des durées",
+"text_en": "Solve problems involving times and durations"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Grandeurs et mesures",
+"text_fr": "Convertir des durées",
+"text_en": "Convert durations"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser le vocabulaire géométrique approprié dans le contexte d’apprentissage des notions correspondantes",
+"text_en": "Use the appropriate geometric vocabulary in the context of learning the corresponding concepts"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser les outils géométriques usuels : règle, règle graduée, équerre et compas",
+"text_en": "Use the usual geometric tools: ruler, graduated ruler, set square and compass"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître les codes usuels utilisés en géométrie",
+"text_en": "Know the usual codes used in geometry"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Décrire et reconnaître un cercle et un disque comme un ensemble de points caractérisés par leur distance à un point donné",
+"text_en": "Describe and recognize a circle and a disk as a set of points characterized by their distance from a given point"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaître et utiliser la notion de perpendicularité",
+"text_en": "Recognize and use the notion of perpendicularity"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaître et utiliser la notion de parallélisme",
+"text_en": "Recognize and use the notion of parallelism"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaître et nommer les figures suivantes en faisant référence à leur définition : triangle, triangle rectangle, triangle isocèle, triangle équilatéral, quadrilatère, carré, rectangle et losange",
+"text_en": "Recognize and name the following figures by referring to their definition: triangle, right triangle, isosceles triangle, equilateral triangle, quadrilateral, square, rectangle and rhombus"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître les propriétés de parallélisme des côtés opposés, des égalités de longueurs et d’angles pour les figures usuelles : triangle rectangle, triangle isocèle, triangle équilatéral, carré, rectangle et losange.",
+"text_en": "Know the properties of parallelism of opposite sides, and of equal lengths and angles for the usual figures: right triangle, isosceles triangle, equilateral triangle, square, rectangle and rhombus."
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Reproduire ou construire un carré, un rectangle, un triangle, un triangle rectangle ou un cercle ou des assemblages de ces figures sur tout support (papier quadrillé, pointé ou uni), avec une règle graduée, une équerre ou un compas.",
+"text_en": "Reproduce or construct a square, a rectangle, a triangle, a right triangle or a circle, or assemblies of these figures on any medium (grid paper, dotted paper or plain paper), with a graduated ruler, a set square or a compass."
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Construire une figure géométrique composée de segments, de droites, de polygones usuels et de cercles.",
+"text_en": "Construct a geometric figure composed of segments, lines, usual polygons and circles."
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Nommer un cube, une boule, un pavé, un cône, une pyramide, un cylindre et un prisme droit",
+"text_en": "Name a cube, a ball, a rectangular prism (cuboid), a cone, a pyramid, a cylinder and a right prism"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Décrire un cube, un pavé, une pyramide et un prisme droit en faisant référence à des propriétés et en utilisant le vocabulaire approprié",
+"text_en": "Describe a cube, a rectangular prism (cuboid), a pyramid and a right prism by referring to properties and using the appropriate vocabulary"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître le nombre et la nature des faces d’un cube ou d’un pavé",
+"text_en": "Know the number and nature of the faces of a cube or a rectangular prism (cuboid)"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître la nature des faces d’une pyramide",
+"text_en": "Know the nature of the faces of a pyramid"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître la nature des faces d’un prisme droit",
+"text_en": "Know the nature of the faces of a right prism"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Construire un cube, un pavé, une pyramide ou un prisme droit",
+"text_en": "Construct a cube, a rectangular prism (cuboid), a pyramid or a right prism"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaître un patron d’un cube",
+"text_en": "Recognize a net of a cube"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Construire un patron d’un cube",
+"text_en": "Construct a net of a cube"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître et utiliser le vocabulaire lié aux déplacements",
+"text_en": "Know and use the vocabulary related to movements"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Comprendre, utiliser et produire une suite d’instructions qui décrivent un déplacement en utilisant un vocabulaire spatial précis",
+"text_en": "Understand, use and produce a sequence of instructions that describe a movement using precise spatial vocabulary"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Espace et géométrie",
+"text_fr": "Résoudre des problèmes portant sur des assemblages de cubes",
+"text_en": "Solve problems involving assemblies of cubes"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser le vocabulaire géométrique approprié dans le contexte d’apprentissage des notions correspondantes",
+"text_en": "Use the appropriate geometric vocabulary in the context of learning the corresponding concepts"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser les outils géométriques usuels : règle, règle graduée, équerre et compas",
+"text_en": "Use the usual geometric tools: ruler, graduated ruler, set square and compass"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître les notations et les codes usuels utilisés en géométrie",
+"text_en": "Know the notations and usual codes used in geometry"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaître et utiliser la notion de perpendicularité",
+"text_en": "Recognize and use the notion of perpendicularity"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaître et utiliser la notion de parallélisme",
+"text_en": "Recognize and use the notion of parallelism"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Décrire et reconnaître un cercle et un disque comme un ensemble de points caractérisés par leur distance à un point donné",
+"text_en": "Describe and recognize a circle and a disk as a set of points characterized by their distance from a given point"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaître et nommer les figures suivantes en s’appuyant sur leur définition : triangle, triangle rectangle, triangle isocèle, triangle équilatéral, quadrilatère, carré, rectangle, losange, trapèze, trapèze rectangle, pentagone et hexagone",
+"text_en": "Recognize and name the following figures relying on their definition: triangle, right triangle, isosceles triangle, equilateral triangle, quadrilateral, square, rectangle, rhombus, trapezoid, right trapezoid, pentagon and hexagon"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Nommer un cube, une boule, un pavé, un cône, une pyramide, un cylindre ou un prisme droit",
+"text_en": "Name a cube, a ball, a rectangular prism (cuboid), a cone, a pyramid, a cylinder or a right prism"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Décrire un cube, un pavé, une pyramide ou un prisme droit en faisant référence à des propriétés et en utilisant le vocabulaire approprié",
+"text_en": "Describe a cube, a rectangular prism (cuboid), a pyramid or a right prism by referring to properties and using the appropriate vocabulary"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaître un patron d’un cube",
+"text_en": "Recognize a net of a cube"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Construire un patron d’un cube",
+"text_en": "Construct a net of a cube"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaître un patron d’un pavé",
+"text_en": "Recognize a net of a rectangular prism (cuboid)"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître et utiliser le vocabulaire lié aux déplacements",
+"text_en": "Know and use the vocabulary related to movements"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Comprendre, utiliser et produire une suite d’instructions qui décrivent un déplacement en utilisant un vocabulaire spatial précis",
+"text_en": "Understand, use and produce a sequence of instructions that describe a movement using precise spatial vocabulary"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Espace et géométrie",
+"text_fr": "Résoudre des problèmes portant sur des assemblages de cubes",
+"text_en": "Solve problems involving assemblies of cubes"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître et utiliser la définition de la distance entre deux points",
+"text_en": "Know and use the definition of the distance between two points"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître et utiliser la définition du milieu d’un segment",
+"text_en": "Know and use the definition of the midpoint of a segment"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître les définitions d’un cercle, d’un disque, d’un rayon, d’un diamètre, d’une corde",
+"text_en": "Know the definitions of a circle, a disk, a radius, a diameter, a chord"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Comprendre la définition d’un cercle et celle d’un disque sous la forme d’ensembles de points",
+"text_en": "Understand the definition of a circle and that of a disk as sets of points"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Résoudre des problèmes mettant en jeu des distances à un point",
+"text_en": "Solve problems involving distances from a point"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître la définition de la médiatrice d’un segment",
+"text_en": "Know the definition of the perpendicular bisector of a segment"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Comprendre et utiliser la propriété caractéristique de la médiatrice d’un segment",
+"text_en": "Understand and use the characteristic property of the perpendicular bisector of a segment"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Résoudre des problèmes en s’appuyant sur la propriété caractéristique de la médiatrice",
+"text_en": "Solve problems relying on the characteristic property of the perpendicular bisector"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître et utiliser les angles ainsi que le lexique et les notations qui s’y rapportent : angle droit, angle plat, angle plein, angle nul, angle aigu, angle obtus, angles opposés par le sommet, angles adjacents, angles supplémentaires",
+"text_en": "Know and use angles as well as the vocabulary and notations relating to them: right angle, straight angle, full angle, zero angle, acute angle, obtuse angle, vertically opposite angles, adjacent angles, supplementary angles"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Mesurer un angle",
+"text_en": "Measure an angle"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Construire un angle de mesure donnée",
+"text_en": "Construct an angle of given measure"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître la définition de la bissectrice d’un angle saillant",
+"text_en": "Know the definition of the bisector of a convex angle"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser la définition de la bissectrice d’un angle pour effectuer des constructions et résoudre des problèmes",
+"text_en": "Use the definition of the bisector of an angle to carry out constructions and solve problems"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Construire des triangles",
+"text_en": "Construct triangles"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître et utiliser les propriétés angulaires des triangles particuliers : triangle rectangle, triangle isocèle, triangle équilatéral",
+"text_en": "Know and use the angular properties of special triangles: right triangle, isosceles triangle, equilateral triangle"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître la valeur de la somme des mesures des angles d’un triangle",
+"text_en": "Know the value of the sum of the measures of the angles of a triangle"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "L’utiliser pour calculer des angles, effectuer des constructions et résoudre des problèmes",
+"text_en": "Use it to calculate angles, carry out constructions and solve problems"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Savoir que les médiatrices d’un triangle sont concourantes",
+"text_en": "Know that the perpendicular bisectors of a triangle are concurrent"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître et construire le cercle circonscrit à un triangle",
+"text_en": "Know and construct the circumscribed circle of a triangle"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître la définition du symétrique d’un point par rapport à une droite",
+"text_en": "Know the definition of the symmetric of a point with respect to a line"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Connaître et utiliser les propriétés de la symétrie axiale pour effectuer des constructions",
+"text_en": "Know and use the properties of axial symmetry to carry out constructions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Espace et géométrie",
+"text_fr": "Voir dans l’espace des assemblages de cubes",
+"text_en": "See assemblies of cubes in space"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Recueillir des données et produire un tableau, un diagramme en barres ou un ensemble de points dans un repère pour les présenter",
+"text_en": "Collect data and produce a table, a bar chart or a set of points in a coordinate system to present them"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Lire et interpréter les données d’un tableau à simple ou double entrée, d’un diagramme en barres ou d’une courbe",
+"text_en": "Read and interpret the data of a single- or double-entry table, a bar chart or a curve"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Résoudre des problèmes en une ou plusieurs étapes en utilisant les données d’un tableau à simple ou double entrée, d’un diagramme en barres ou d’une courbe",
+"text_en": "Solve one-step or multi-step problems using the data of a single- or double-entry table, a bar chart or a curve"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Identifier des expériences aléatoires",
+"text_en": "Identify random experiments"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Identifier toutes les issues possibles lors d’une expérience aléatoire simple",
+"text_en": "Identify all the possible outcomes of a simple random experiment"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Comprendre et utiliser le vocabulaire approprié : « impossible », « possible », « certain », « probable », « peu probable », « une chance sur deux »",
+"text_en": "Understand and use the appropriate vocabulary: \"impossible\", \"possible\", \"certain\", \"probable\", \"unlikely\", \"one chance in two\""
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Comparer des issues d’expériences aléatoires ou des évènements selon leur probabilité de réalisation",
+"text_en": "Compare outcomes of random experiments or events according to their probability of occurring"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Comprendre que ce n’est pas parce qu’il y a deux issues possibles que chacune a une chance sur deux de se réaliser",
+"text_en": "Understand that just because there are two possible outcomes does not mean each has a one-in-two chance of occurring"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Reconnaître des situations d’équiprobabilité",
+"text_en": "Recognize situations of equal likelihood"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Recueillir des données et produire un tableau, un diagramme en barres ou un ensemble de points dans un repère pour présenter des données recueillies",
+"text_en": "Collect data and produce a table, a bar chart or a set of points in a coordinate system to present collected data"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Lire et interpréter les données d’un tableau, d’un diagramme en barres, d’un diagramme circulaire ou d’une courbe",
+"text_en": "Read and interpret the data of a table, a bar chart, a pie chart or a curve"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Résoudre des problèmes en une ou deux étapes en utilisant les données d’un tableau, d’un diagramme en barres, d’un diagramme circulaire ou d’une courbe",
+"text_en": "Solve one-step or two-step problems using the data of a table, a bar chart, a pie chart or a curve"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Identifier toutes les issues possibles lors d’une expérience aléatoire simple",
+"text_en": "Identify all the possible outcomes of a simple random experiment"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Identifier toutes les issues réalisant un évènement dans une expérience aléatoire simple",
+"text_en": "Identify all the outcomes realizing an event in a simple random experiment"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Dans une situation d’équiprobabilité, lors d’une expérience aléatoire simple, exprimer la probabilité d’un évènement sous la forme « a chances sur b »",
+"text_en": "In a situation of equal likelihood, in a simple random experiment, express the probability of an event in the form \"a chances in b\""
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Planifier une enquête et recueillir des données",
+"text_en": "Plan a survey and collect data"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Réaliser des mesures et les consigner dans un tableau",
+"text_en": "Take measurements and record them in a table"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Construire un tableau simple pour présenter des données (observations, caractères)",
+"text_en": "Construct a simple table to present data (observations, characteristics)"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Savoir que la probabilité d’un évènement est un nombre compris entre 0 et 1",
+"text_en": "Know that the probability of an event is a number between 0 and 1"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Calculer des probabilités dans des situations simples d’équiprobabilité",
+"text_en": "Calculate probabilities in simple situations of equal likelihood"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Comparer des résultats d’une expérience aléatoire répétée à une probabilité calculée",
+"text_en": "Compare results of a repeated random experiment to a calculated probability"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Identifier une situation de proportionnalité",
+"text_en": "Identify a situation of proportionality"
+},
+{
+"level": "C3",
+"grade": "4",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Savoir résoudre un problème de proportionnalité",
+"text_en": "Know how to solve a proportionality problem"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Identifier une situation de proportionnalité",
+"text_en": "Identify a situation of proportionality"
+},
+{
+"level": "C3",
+"grade": "5",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Savoir résoudre un problème de proportionnalité",
+"text_en": "Know how to solve a proportionality problem"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Connaître la définition de la proportionnalité entre deux grandeurs et la mettre en lien avec des expressions de la vie courante",
+"text_en": "Know the definition of proportionality between two magnitudes and link it to expressions from everyday life"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Identifier si une situation relève du « modèle » de la proportionnalité",
+"text_en": "Identify whether a situation falls under the proportionality \"model\""
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Résoudre un problème de proportionnalité en choisissant une procédure adaptée : propriété de linéarité pour la multiplication ou l’addition, retour à l’unité",
+"text_en": "Solve a proportionality problem by choosing a suitable procedure: linearity property for multiplication or addition, return to the unit"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Représenter une situation de proportionnalité à l’aide d’un tableau ou de notations symboliques",
+"text_en": "Represent a proportionality situation using a table or symbolic notations"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "S’initier à la résolution de problèmes d’échelles",
+"text_en": "Get started with solving scale problems"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Identifier une instruction ou une séquence d’instructions",
+"text_en": "Identify an instruction or a sequence of instructions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Produire et exécuter une séquence d’instructions",
+"text_en": "Produce and execute a sequence of instructions"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Répéter à la main une séquence d’instructions pour accomplir une tâche imposée",
+"text_en": "Repeat by hand a sequence of instructions to accomplish an imposed task"
+},
+{
+"level": "C3",
+"grade": "6",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Programmer la construction d’un chemin simple",
+"text_en": "Program the construction of a simple path"
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Additionner, soustraire, multiplier et diviser pour résoudre des problèmes et contrôler la vraisemblance de son résultat.",
+"text_en": "Add, subtract, multiply and divide to solve problems and check the plausibility of one's result."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Connaitre le sens et les situations d’emploi de ces opérations.",
+"text_en": "Know the meaning and the situations of use of these operations."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Diviser par un nombre décimal.",
+"text_en": "Divide by a decimal number."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Enchainer des opérations.",
+"text_en": "Chain operations."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Traduire un problème, une succession donnée d’opérations, un programme de calcul, en une seule expression, en faisant appel ou non à des parenthèses.",
+"text_en": "Translate a problem, a given succession of operations, a calculation program, into a single expression, with or without using parentheses."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Nommer un calcul, distinguer sommes et produits, termes et facteurs.",
+"text_en": "Name a calculation, distinguish sums and products, terms and factors."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Connaitre et utiliser les priorités opératoires.",
+"text_en": "Know and use the order of operations."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Connaitre et utiliser la distributivité simple sur des exemples numériques.",
+"text_en": "Know and use simple distributivity on numerical examples."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Utiliser les notions de multiples et diviseurs.",
+"text_en": "Use the notions of multiples and divisors."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Connaitre les critères de divisibilité par 3 et par 9.",
+"text_en": "Know the divisibility rules for 3 and 9."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Mobiliser un algorithme dans le cadre du calcul numérique.",
+"text_en": "Use an algorithm in the context of numerical calculation."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Définir les nombres relatifs.",
+"text_en": "Define signed (directed) numbers."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Définir l’opposé et la valeur absolue d’un nombre.",
+"text_en": "Define the opposite and the absolute value of a number."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Définir la notion de nombre positif, strictement positif, négatif, strictement négatif.",
+"text_en": "Define the notion of positive number, strictly positive number, negative number, strictly negative number."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Utiliser les nombres relatifs pour représenter des grandeurs observables qui peuvent prendre des valeurs inférieures à zéro (température, temps, altitude, etc.), en particulier dans le cadre de la résolution de problèmes.",
+"text_en": "Use signed numbers to represent observable quantities that can take values below zero (temperature, time, altitude, etc.), in particular in the context of problem solving."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Comparer des fractions.",
+"text_en": "Compare fractions."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Additionner et soustraire des fractions de dénominateurs quelconques.",
+"text_en": "Add and subtract fractions with any denominators."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Résoudre des problèmes avec des additions et soustractions de fractions.",
+"text_en": "Solve problems involving addition and subtraction of fractions."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Découvrir la notion de puissance d’un nombre et sa notation dans le cas du carré et du cube.",
+"text_en": "Discover the notion of power of a number and its notation in the case of the square and the cube."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Connaitre les carrés des entiers de 0 à 12.",
+"text_en": "Know the squares of the integers from 0 to 12."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Connaitre le cube de 10.",
+"text_en": "Know the cube of 10."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Savoir écrire un nombre sous la forme d’une puissance 2 ou 3.",
+"text_en": "Know how to write a number in the form of a power 2 or 3."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Calculer la valeur numérique d’expressions contenant des puissances simples, additions, soustractions et produits.",
+"text_en": "Calculate the numerical value of expressions containing simple powers, additions, subtractions and products."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Calculer la valeur d’une expression littérale contenant une puissance simple.",
+"text_en": "Calculate the value of a literal expression containing a simple power."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Produire des formules (double, triple, carré, successeur, prédécesseur, aire, périmètre, etc.).",
+"text_en": "Produce formulas (double, triple, square, successor, predecessor, area, perimeter, etc.)."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Nombres et calculs",
+"text_fr": "Calculer la valeur d’une expression littérale par substitution.",
+"text_en": "Calculate the value of a literal expression by substitution."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Multiplier deux nombres relatifs : d’abord dans le cas où un seul des facteurs est négatif, puis, grâce à la distributivité, dans le cas où les deux facteurs sont négatifs.",
+"text_en": "Multiply two signed numbers: first in the case where only one of the factors is negative, then, using distributivity, in the case where both factors are negative."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Diviser deux nombres relatifs.",
+"text_en": "Divide two signed numbers."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Savoir calculer un enchainement d’opérations avec des nombres relatifs.",
+"text_en": "Know how to calculate a chain of operations with signed numbers."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Utiliser le vocabulaire (somme, quotient, etc.) à partir d’un enchainement d’opérations dans un programme de calcul et inversement.",
+"text_en": "Use the vocabulary (sum, quotient, etc.) from a chain of operations in a calculation program and vice versa."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Simplifier une fraction.",
+"text_en": "Simplify a fraction."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Définir la notion de nombre rationnel : le quotient de deux nombres entiers relatifs.",
+"text_en": "Define the notion of rational number: the quotient of two signed integers."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Exprimer l’opposé d’un nombre rationnel.",
+"text_en": "Express the opposite of a rational number."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Calculer le produit de nombres rationnels.",
+"text_en": "Calculate the product of rational numbers."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Calculer et représenter la fraction d’une fraction, d’un nombre, d’une quantité.",
+"text_en": "Calculate and represent the fraction of a fraction, of a number, of a quantity."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Définir l’inverse d’un nombre et connaitre sa notation.",
+"text_en": "Define the inverse of a number and know its notation."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Déterminer l’inverse d’une fraction.",
+"text_en": "Determine the inverse of a fraction."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Diviser des fractions.",
+"text_en": "Divide fractions."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Calculer la valeur d’expressions comportant plusieurs opérations avec des fractions.",
+"text_en": "Calculate the value of expressions involving several operations with fractions."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Résoudre des problèmes mobilisant les opérations sur les fractions : addition, soustraction, multiplication, division, inverse.",
+"text_en": "Solve problems involving operations on fractions: addition, subtraction, multiplication, division, inverse."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Définir les puissances d’exposant positif d’un nombre a.",
+"text_en": "Define the powers with positive exponent of a number a."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Multiplier des puissances d’exposant entier naturel d’un même nombre entre elles.",
+"text_en": "Multiply together powers with natural-number exponent of the same number."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Multiplier des puissances d’un même exposant entier naturel de deux nombres entre elles.",
+"text_en": "Multiply together powers with the same natural-number exponent of two numbers."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Résoudre des problèmes faisant intervenir des puissances.",
+"text_en": "Solve problems involving powers."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Comprendre et connaitre la définition de la racine carrée d’un nombre positif.",
+"text_en": "Understand and know the definition of the square root of a positive number."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Encadrer la racine carrée d’un entier par deux nombres entiers consécutifs.",
+"text_en": "Bound the square root of an integer between two consecutive integers."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Produire des formules et tester leur vraisemblance : aires de formes géométriques simples, nombres pairs/impairs, etc.",
+"text_en": "Produce formulas and test their plausibility: areas of simple geometric shapes, even/odd numbers, etc."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Connaitre et utiliser la distributivité simple pour développer et factoriser une expression algébrique.",
+"text_en": "Know and use simple distributivity to expand and factor an algebraic expression."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Utiliser le calcul algébrique pour produire des démonstrations.",
+"text_en": "Use algebraic calculation to produce proofs."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Résoudre une équation du premier degré du type a𝑥 + b = c.",
+"text_en": "Solve a first-degree equation of the type a𝑥 + b = c."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Mettre en équation un problème et le résoudre à l’aide d’une équation du premier degré du type a𝑥 + b = c𝑥 + d.",
+"text_en": "Set up a problem as an equation and solve it using a first-degree equation of the type a𝑥 + b = c𝑥 + d."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Nombres et calculs",
+"text_fr": "Formuler des conjectures à l’aide d’un algorithme ou d’un tableur pour résoudre de manière exacte ou approchée une équation.",
+"text_en": "Formulate conjectures using an algorithm or a spreadsheet to solve an equation exactly or approximately."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Mettre une fraction sous forme irréductible.",
+"text_en": "Put a fraction in irreducible form."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Rendre irréductible une fraction.",
+"text_en": "Make a fraction irreducible."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Résoudre des problèmes faisant appel à des fractions.",
+"text_en": "Solve problems involving fractions."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Définir les puissances d’exposant négatif d’un nombre.",
+"text_en": "Define the powers with negative exponent of a number."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Multiplier et diviser des puissances.",
+"text_en": "Multiply and divide powers."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Résoudre analytiquement et graphiquement des équations de la forme 𝑥2 = a.",
+"text_en": "Solve equations of the form 𝑥2 = a analytically and graphically."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Résoudre des problèmes utilisant la racine carrée.",
+"text_en": "Solve problems using the square root."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Simplifier des expressions produits ou des rapports comportant des facteurs communs.",
+"text_en": "Simplify product expressions or ratios containing common factors."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Utiliser la double distributivité pour développer et factoriser des expressions dont le facteur est apparent.",
+"text_en": "Use double distributivity to expand and factor expressions in which the factor is apparent."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Résoudre analytiquement et graphiquement une inéquation du premier degré du type a𝑥 ⩾ b.",
+"text_en": "Solve a first-degree inequality of the type a𝑥 ⩾ b analytically and graphically."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Résoudre une équation produit nul.",
+"text_en": "Solve a zero-product equation."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Manipuler les trois identités remarquables pour développer et factoriser : a 2 + 2ab + b 2 = (a + b) 2 a 2 – 2ab + b 2 = (a – b) 2 a 2 – b 2 = (a – b) (a + b)",
+"text_en": "Manipulate the three remarkable identities to expand and factor: a 2 + 2ab + b 2 = (a + b) 2 a 2 – 2ab + b 2 = (a – b) 2 a 2 – b 2 = (a – b) (a + b)"
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Nombres et calculs",
+"text_fr": "Pratiquer un raisonnement par analyse-synthèse dans le cadre d’une résolution d’équation.",
+"text_en": "Practise analysis-synthesis reasoning in the context of solving an equation."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Sur une droite graduée : - lire l’abscisse d’un point donné ; - placer un point d’abscisse donnée.",
+"text_en": "On a graduated line: - read the abscissa of a given point; - plot a point with a given abscissa."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Dans le plan muni d’un repère orthogonal : - lire les coordonnées d’un point donné ; - placer un point de coordonnées données.",
+"text_en": "In the plane equipped with an orthogonal coordinate system: - read the coordinates of a given point; - plot a point with given coordinates."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Construire et mettre en relation différentes représentations en perspectives cavalières des solides suivants : pavé droit, cube, cylindre de révolution, prisme droit.",
+"text_en": "Construct and relate different cavalier perspective representations of the following solids: rectangular cuboid, cube, cylinder of revolution, right prism."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Savoir mettre en relation une représentation en perspective cavalière et un patron d’un pavé, d’un prisme droit ou d’un cylindre de révolution.",
+"text_en": "Know how to relate a cavalier perspective representation and a net of a cuboid, a right prism or a cylinder of revolution."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Calculer le volume du cube, du pavé droit, du prisme droit.",
+"text_en": "Calculate the volume of the cube, the rectangular cuboid, the right prism."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre et convertir des unités usuelles (volume et capacité).",
+"text_en": "Know and convert common units (volume and capacity)."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Calculer l’aire du disque, le volume du cylindre de révolution.",
+"text_en": "Calculate the area of the disc, the volume of the cylinder of revolution."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Définir le demi-tour, ou symétrie centrale.",
+"text_en": "Define the half-turn, or central symmetry."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre les propriétés du demi-tour.",
+"text_en": "Know the properties of the half-turn."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Caractériser le parallélisme par les angles : angles alternes internes, angles correspondants.",
+"text_en": "Characterize parallelism by angles: alternate interior angles, corresponding angles."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre la somme des angles d’un triangle et savoir la démontrer.",
+"text_en": "Know the sum of the angles of a triangle and know how to prove it."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Construire des triangles à partir de données partielles.",
+"text_en": "Construct triangles from partial data."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre les propriétés des médiatrices et du cercle circonscrit dans le cas de triangles particuliers.",
+"text_en": "Know the properties of perpendicular bisectors and of the circumscribed circle in the case of particular triangles."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Calculer l’aire d’un triangle.",
+"text_en": "Calculate the area of a triangle."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Définir et tracer les hauteurs dans un triangle.",
+"text_en": "Define and draw the altitudes in a triangle."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Savoir que les hauteurs d’un triangle sont concourantes.",
+"text_en": "Know that the altitudes of a triangle are concurrent."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Définir et tracer les médianes dans un triangle.",
+"text_en": "Define and draw the medians in a triangle."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Démontrer qu’une médiane partage un triangle en deux triangles d’aires égales.",
+"text_en": "Prove that a median divides a triangle into two triangles of equal areas."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser ces propriétés dans le cas de triangles particuliers.",
+"text_en": "Use these properties in the case of particular triangles."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Définir le parallélogramme.",
+"text_en": "Define the parallelogram."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Construire des parallélogrammes.",
+"text_en": "Construct parallelograms."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre les propriétés caractéristiques des côtés opposés et des diagonales.",
+"text_en": "Know the characteristic properties of opposite sides and of diagonals."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Utiliser une propriété caractéristique sur les diagonales ou les côtés pour les construire ou donner la nature du quadrilatère.",
+"text_en": "Use a characteristic property of the diagonals or the sides to construct them or to give the nature of the quadrilateral."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Définir les parallélogrammes particuliers (rectangle, losange, carré).",
+"text_en": "Define the particular parallelograms (rectangle, rhombus, square)."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre les propriétés caractéristiques.",
+"text_en": "Know the characteristic properties."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Savoir calculer l’aire d’un parallélogramme et de figures complexes.",
+"text_en": "Know how to calculate the area of a parallelogram and of composite figures."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Espace et géométrie",
+"text_fr": "Résoudre des problèmes faisant appel à des conversions d’unités de longueur et d’unités d’aires.",
+"text_en": "Solve problems involving conversions of units of length and units of area."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Reconnaitre des solides (pyramide, cône de révolution).",
+"text_en": "Recognize solids (pyramid, cone of revolution)."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Construire et mettre en relation différentes représentations des solides (pavé droit, cube, cylindre de révolution, prisme droit, pyramides et cônes de révolution).",
+"text_en": "Construct and relate different representations of solids (rectangular cuboid, cube, cylinder of revolution, right prism, pyramids and cones of revolution)."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre le volume de la pyramide et du cône de révolution.",
+"text_en": "Know the volume of the pyramid and of the cone of revolution."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Comprendre l’effet d’une translation.",
+"text_en": "Understand the effect of a translation."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Faire le lien avec les parallélogrammes, les angles.",
+"text_en": "Make the link with parallelograms, angles."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre et utiliser les propriétés de conservations des translations.",
+"text_en": "Know and use the conservation properties of translations."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre les trois théorèmes relatifs à la droite des milieux dans un triangle.",
+"text_en": "Know the three theorems relating to the midline in a triangle."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre le théorème de Pythagore, sa réciproque, sa contraposée.",
+"text_en": "Know the Pythagorean theorem, its converse, its contrapositive."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Mener un travail de logique sur la réciproque et la contraposée.",
+"text_en": "Carry out logic work on the converse and the contrapositive."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Espace et géométrie",
+"text_fr": "Caractériser un triangle rectangle à l’aide de son cercle circonscrit, par son inscription dans un demi-cercle dont le diamètre est un côté du triangle.",
+"text_en": "Characterize a right triangle using its circumscribed circle, by its inscription in a semicircle whose diameter is a side of the triangle."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Espace et géométrie",
+"text_fr": "Définir la boule et la sphère.",
+"text_en": "Define the ball and the sphere."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Espace et géométrie",
+"text_fr": "Définir les grands cercles, le diamètre.",
+"text_en": "Define great circles, the diameter."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Espace et géométrie",
+"text_fr": "Visualiser et réaliser des sections de pavé parallèlement à une face, de cylindre parallèlement ou perpendiculairement à son axe, d’une boule.",
+"text_en": "Visualize and produce sections of a cuboid parallel to a face, of a cylinder parallel or perpendicular to its axis, of a ball."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre et utiliser la formule du volume d’une boule de rayon donné.",
+"text_en": "Know and use the formula for the volume of a ball of given radius."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre et appliquer le théorème de Thalès, sa réciproque, sa contraposée (configurations des triangles emboités et configuration dite du papillon).",
+"text_en": "Know and apply the Thales theorem, its converse, its contrapositive (nested triangles configurations and the so-called butterfly configuration)."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Espace et géométrie",
+"text_fr": "Connaitre et utiliser les lignes trigonométriques dans le triangle rectangle : cosinus, sinus, tangente.",
+"text_en": "Know and use trigonometric ratios in the right triangle: cosine, sine, tangent."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Espace et géométrie",
+"text_fr": "Définir et utiliser la translation : définition ponctuelle avec parallélogramme.",
+"text_en": "Define and use the translation: point-based definition with a parallelogram."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Espace et géométrie",
+"text_fr": "Définir et utiliser les notions de vecteur, de vecteurs égaux, de vecteur nul, d’opposé d’un vecteur.",
+"text_en": "Define and use the notions of vector, equal vectors, zero vector, opposite of a vector."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Recueillir et organiser des données.",
+"text_en": "Collect and organize data."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Calculer des effectifs et des fréquences (exprimées sous forme décimale, fractionnaire ou de pourcentage).",
+"text_en": "Calculate frequencies (counts) and relative frequencies (expressed in decimal, fractional or percentage form)."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Lire et interpréter des informations présentées sous forme de tableaux, de diagrammes et de graphiques.",
+"text_en": "Read and interpret information presented in the form of tables, diagrams and graphs."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Représenter, sur papier ou à l’aide d’un tableur-grapheur, des données sous la forme d’un tableau, d’un diagramme (diagramme en barres, diagramme circulaire) ou d’un graphique cartésien.",
+"text_en": "Represent data on paper or using a spreadsheet-grapher in the form of a table, a diagram (bar chart, pie chart) or a Cartesian graph."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Choisir une représentation adaptée à ce qu’il convient de mettre en avant.",
+"text_en": "Choose a representation suited to what one wants to highlight."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Calculer et interpréter la moyenne simple d’une série de données.",
+"text_en": "Calculate and interpret the simple mean of a data set."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Aborder les questions relatives au hasard à partir de problèmes simples.",
+"text_en": "Approach questions relating to chance starting from simple problems."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Utiliser le vocabulaire des probabilités dans des contextes concrets : expérience aléatoire, issue, évènement.",
+"text_en": "Use the vocabulary of probability in concrete contexts: random experiment, outcome, event."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Attribuer des probabilités dans des cas simples (équiprobabilité).",
+"text_en": "Assign probabilities in simple cases (equiprobability)."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Répéter matériellement une expérience aléatoire simple. Enregistrer les résultats observés dans un tableau d’effectifs et de fréquences.",
+"text_en": "Physically repeat a simple random experiment. Record the observed results in a table of frequencies (counts) and relative frequencies."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Calculer une moyenne pondérée dans le cas d’une série discrète de petits effectifs présentée sous forme de données brutes, d’un tableau ou d’un diagramme en barres.",
+"text_en": "Calculate a weighted mean in the case of a discrete series with small frequencies presented as raw data, a table or a bar chart."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Déterminer une médiane et l’interpréter dans le cas d’une série de petit effectif présentée sous forme de données brutes.",
+"text_en": "Determine a median and interpret it in the case of a series with small frequencies presented as raw data."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Calculer et interpréter l’étendue d’une série présentée sous forme de données brutes, d’un tableau, d’un diagramme en barres, d’un diagramme circulaire.",
+"text_en": "Calculate and interpret the range of a series presented as raw data, a table, a bar chart, a pie chart."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Comprendre l’évolution de la médiane et de la moyenne quand on ajoute une valeur extrême.",
+"text_en": "Understand how the median and the mean change when an extreme value is added."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Résoudre des problèmes faisant intervenir les différents indicateurs.",
+"text_en": "Solve problems involving the different indicators."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Résoudre des problèmes de comparaison de séries statistiques.",
+"text_en": "Solve problems comparing statistical series."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Utiliser le tableur pour calculer une moyenne, une médiane et l’étendue d’une série statistique.",
+"text_en": "Use the spreadsheet to calculate a mean, a median and the range of a statistical series."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Utiliser le vocabulaire et les notations ensemblistes pour décrire une expérience aléatoire dans des cas simples et définir la notion d’évènement.",
+"text_en": "Use set vocabulary and notation to describe a random experiment in simple cases and define the notion of event."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Définir : complémentaire, réunion, intersection, ensemble vide (évènement impossible).",
+"text_en": "Define: complement, union, intersection, empty set (impossible event)."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Calculer la probabilité d’un évènement et de l’évènement contraire.",
+"text_en": "Calculate the probability of an event and of the complementary event."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Calculer des effectifs cumulés croissants.",
+"text_en": "Calculate cumulative frequencies."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Donner les quartiles et la médiane d’une série donnée sous forme de tableau d’effectifs ou de diagramme en barres.",
+"text_en": "Give the quartiles and the median of a series given as a table of frequencies or a bar chart."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Construire et utiliser des boites à moustache pour représenter les valeurs de position d’une série statistique.",
+"text_en": "Construct and use box plots to represent the position values of a statistical series."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Comprendre et interpréter des données statistiques.",
+"text_en": "Understand and interpret statistical data."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Utiliser le tableur pour calculer une moyenne, une médiane et l’étendue d’une série statistique.",
+"text_en": "Use the spreadsheet to calculate a mean, a median and the range of a statistical series."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Connaitre et savoir appliquer la relation 𝑃(𝐴 ∪ 𝐵) + 𝑃(𝐴 ∩ 𝐵) = 𝑃(𝐴) + 𝑃(𝐵).",
+"text_en": "Know and know how to apply the relation 𝑃(𝐴 ∪ 𝐵) + 𝑃(𝐴 ∩ 𝐵) = 𝑃(𝐴) + 𝑃(𝐵)."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Simuler des expériences aléatoires indépendantes.",
+"text_en": "Simulate independent random experiments."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Organisation et gestion de données et probabilités",
+"text_fr": "Observer la stabilisation des fréquences lorsqu’on augmente le nombre de répétitions de l’expérience aléatoire, faire le lien entre fréquence et probabilité selon le nombre de répétitions.",
+"text_en": "Observe the stabilization of frequencies as the number of repetitions of the random experiment increases, make the link between frequency and probability according to the number of repetitions."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Utiliser des proportions, des pourcentages.",
+"text_en": "Use proportions, percentages."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Calculer, appliquer des proportions, des pourcentages.",
+"text_en": "Calculate, apply proportions, percentages."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Identifier des situations de proportionnalité dans des contextes concrets (prix, recettes, distances, échelles).",
+"text_en": "Identify proportionality situations in concrete contexts (prices, recipes, distances, scales)."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Utiliser un coefficient de proportionnalité dans des contextes concrets (prix unitaire, vitesse moyenne, échelle, etc.).",
+"text_en": "Use a proportionality coefficient in concrete contexts (unit price, average speed, scale, etc.)."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Représenter une situation de proportionnalité par un tableau ou un graphique.",
+"text_en": "Represent a proportionality situation by a table or a graph."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Reconnaitre une situation de proportionnalité à partir d’un tableau ou d’un graphique.",
+"text_en": "Recognize a proportionality situation from a table or a graph."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Reconnaitre graphiquement qu’un nuage de points est ou n’est pas associé à une situation de proportionnalité entre données discrètes.",
+"text_en": "Recognize graphically that a scatter plot is or is not associated with a proportionality situation between discrete data."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Introduire l’expression : « en fonction de » dans des contextes concrets ou mathématiques.",
+"text_en": "Introduce the expression: \"as a function of\" in concrete or mathematical contexts."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Produire un tableau de valeurs.",
+"text_en": "Produce a table of values."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Lire et interpréter un tableau de valeurs.",
+"text_en": "Read and interpret a table of values."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Placer dans un repère orthogonal donné des points correspondant à un tableau de valeurs.",
+"text_en": "Plot in a given orthogonal coordinate system points corresponding to a table of values."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Lire et interpréter un graphique cartésien donné par une courbe ou un nuage de points.",
+"text_en": "Read and interpret a Cartesian graph given by a curve or a scatter plot."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Traduire la relation de dépendance entre deux grandeurs par un tableau de valeurs à partir d’une formule.",
+"text_en": "Translate the dependence relationship between two quantities into a table of values from a formula."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Produire une formule simple représentant la dépendance de deux grandeurs.",
+"text_en": "Produce a simple formula representing the dependence of two quantities."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Caractériser graphiquement la proportionnalité.",
+"text_en": "Characterize proportionality graphically."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Utiliser des grandeurs quotients, avec ou sans unités.",
+"text_en": "Use quotient quantities, with or without units."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Comparer deux nombres ou deux grandeurs à l’aide de leur rapport ou ratio.",
+"text_en": "Compare two numbers or two quantities using their ratio."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Exprimer la proportionnalité entre deux suites de nombres par des égalités de rapports ou sous forme de ratio.",
+"text_en": "Express the proportionality between two sequences of numbers by equalities of ratios or in the form of a ratio."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Déterminer une quatrième proportionnelle.",
+"text_en": "Determine a fourth proportional."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Calculer avec des pourcentages.",
+"text_en": "Calculate with percentages."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Rendre compte d’une augmentation ou une diminution exprimée en pourcentages au moyen d’un coefficient multiplicateur",
+"text_en": "Account for an increase or a decrease expressed in percentages by means of a multiplier coefficient"
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Définir le coefficient multiplicateur.",
+"text_en": "Define the multiplier coefficient."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Résoudre des problèmes de partage proportionnel.",
+"text_en": "Solve proportional sharing problems."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Savoir appliquer un programme de calcul à deux (plusieurs) étapes à un nombre simple puis à une variable.",
+"text_en": "Know how to apply a two-step (multi-step) calculation program to a simple number and then to a variable."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Savoir retrouver le nombre de départ après avoir remonté un programme de calcul simple.",
+"text_en": "Know how to find the starting number after working backwards through a simple calculation program."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Produire une formule littérale représentant la dépendance d’une grandeur en fonction d’une autre.",
+"text_en": "Produce a literal formula representing the dependence of one quantity as a function of another."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Représenter l’expression d’une grandeur en fonction d’une autre par un graphique.",
+"text_en": "Represent the expression of one quantity as a function of another by a graph."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Comprendre la dépendance d’une grandeur en fonction d’une autre.",
+"text_en": "Understand the dependence of one quantity as a function of another."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Traduire une augmentation ou une diminution en pourcentages.",
+"text_en": "Express an increase or a decrease in percentages."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Relier la représentation graphique d’une situation de proportionnalité avec le théorème de Thalès.",
+"text_en": "Link the graphical representation of a proportionality situation with the Thales theorem."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Connaitre et utiliser les fonctions linéaires.",
+"text_en": "Know and use linear functions."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Utiliser les différentes représentations d’une fonction.",
+"text_en": "Use the different representations of a function."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "Proportionnalité, fonctions",
+"text_fr": "Définir et connaitre le vocabulaire : image, antécédents.",
+"text_en": "Define and know the vocabulary: image, preimages."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "La pensée informatique",
+"text_fr": "Manipuler des instructions simples et les séquencer.",
+"text_en": "Manipulate simple instructions and sequence them."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "La pensée informatique",
+"text_fr": "Identifier les entrées et sorties d’un programme.",
+"text_en": "Identify the inputs and outputs of a program."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "La pensée informatique",
+"text_fr": "Représenter des formules sous la forme d’une expression informatique dans un langage de programmation par blocs.",
+"text_en": "Represent formulas in the form of a computer expression in a block-based programming language."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "La pensée informatique",
+"text_fr": "Calculer la valeur de formules à l’aide d’une suite d’instruction dans un langage de programmation par blocs.",
+"text_en": "Calculate the value of formulas using a sequence of instructions in a block-based programming language."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "La pensée informatique",
+"text_fr": "Prévoir la valeur d’une expression informatique avant son exécution.",
+"text_en": "Predict the value of a computer expression before its execution."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "La pensée informatique",
+"text_fr": "Analyser un programme simple donné et modifier ses paramètres.",
+"text_en": "Analyze a given simple program and modify its parameters."
+},
+{
+"level": "C4",
+"grade": "7",
+"theme": "La pensée informatique",
+"text_fr": "Effectuer une boucle inconditionnelle simple permettant de répéter une séquence linéaire d’instructions un nombre précis de fois.",
+"text_en": "Carry out a simple unconditional loop to repeat a linear sequence of instructions a precise number of times."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "La pensée informatique",
+"text_fr": "Représenter des conditions simples.",
+"text_en": "Represent simple conditions."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "La pensée informatique",
+"text_fr": "Écrire des instructions conditionnelles.",
+"text_en": "Write conditional instructions."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "La pensée informatique",
+"text_fr": "Manipuler une variable.",
+"text_en": "Manipulate a variable."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "La pensée informatique",
+"text_fr": "Écrire un programme simple donné pour réaliser un objectif ou résoudre un problème.",
+"text_en": "Write a given simple program to achieve a goal or solve a problem."
+},
+{
+"level": "C4",
+"grade": "8",
+"theme": "La pensée informatique",
+"text_fr": "Modifier un programme donné pour changer son comportement.",
+"text_en": "Modify a given program to change its behavior."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "La pensée informatique",
+"text_fr": "Approfondir la notion de variables.",
+"text_en": "Deepen the notion of variables."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "La pensée informatique",
+"text_fr": "Utiliser des conditions composées.",
+"text_en": "Use compound conditions."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "La pensée informatique",
+"text_fr": "Utiliser une boucle conditionnelle.",
+"text_en": "Use a conditional loop."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "La pensée informatique",
+"text_fr": "Structurer des programmes.",
+"text_en": "Structure programs."
+},
+{
+"level": "C4",
+"grade": "9",
+"theme": "La pensée informatique",
+"text_fr": "Écrire un programme donné pour réaliser un objectif ou résoudre un problème.",
+"text_en": "Write a given program to achieve a goal or solve a problem."
+}
+]

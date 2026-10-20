@@ -1,4 +1,5 @@
 """Stage 4: Build standard_relationships from grade progression within each domain."""
+import argparse
 import sqlite3
 
 from shared.config import DB_PATH
@@ -14,12 +15,16 @@ def grade_key(g: str) -> int:
 
 
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--system", help="rebuild only this system (default: all)")
+    only = ap.parse_args().system
     print("Stage 4: Building standard relationships...")
     conn = sqlite3.connect(DB_PATH)
     conn.execute("PRAGMA foreign_keys = ON")
 
     rows = conn.execute(
-        "SELECT id, grade, domain, system FROM standards ORDER BY domain, grade"
+        "SELECT id, grade, domain, system FROM standards WHERE (?1 IS NULL OR system = ?1) ORDER BY domain, grade",
+        (only,),
     ).fetchall()
     print(f"  Processing {len(rows)} standards...")
 
@@ -59,7 +64,7 @@ def main() -> None:
     with conn:
         # Scoped to this script's own output only — never touch llm_validated rows
         # (e.g. the prereq-graph pilot's HARD/SOFT relationships).
-        conn.execute("DELETE FROM standard_relationships WHERE method='grade_heuristic'")
+        conn.execute("DELETE FROM standard_relationships WHERE method='grade_heuristic' AND (?1 IS NULL OR system = ?1)", (only,))
         conn.executemany(
             """INSERT OR IGNORE INTO standard_relationships
                (source_id, target_id, relationship, system)

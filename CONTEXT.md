@@ -12,6 +12,13 @@ Enrollment snapshot `data/world_enrollment.csv` = World Bank WDI SE.PRM.ENRL + S
 - Biggest math gaps by pupils: China 207M, Indonesia 57M, Pakistan 45M, Bangladesh 32M, DR Congo 29M, Egypt 27M, Philippines 25M, Ethiopia 21M.
 - Crosswalks are cosine over nomic-embed-text vectors (Ollama; local MacBook has the model), top-1 hub match >=0.70 via `crosswalk_engine/nlp_pass.py`; embeddings via `ingestion.shared.embed`.
 
+**Phase 2/3 result (same day):** `docs/world-coverage-candidates.md` ranks 17 missing countries. Only **France** was truly low-lift (Etalab-2.0, text PDFs); everything else large is all-rights-reserved or unreachable (Turkey/Sri Lanka/Pakistan have good docs but no reuse terms; Vietnam/Russia have the best legal footing but need a human to fetch the official copy; China needs a legal read + OCR).
+- Ingested `fr-men` (CP-3e, grades 1-9, 698 standards; lycee not done: education.gouv.fr annexes are behind Cloudflare). Pipeline: `scripts/france/parse_programmes.py` (deterministic) -> Claude translation -> `data/france_math_programmes.json` -> `ingestion.international.fetch_france` -> local-MacBook Ollama `nomic-embed-text` (no fleet needed, ~1 min) -> `relate.py --system fr-men` (new flag; leaves other systems alone) -> `nlp_pass --system fr-men`.
+- Built into a copy: `~/.standardgraph/common_core_world-coverage.db` (176,436 std / 311 systems / 208,898 crosswalks). The live DB is untouched; tests: 85 pass + 2 skip on live DB, 87 pass on the copy.
+- **After:** math pupils covered 41.35% -> 42.08% (34 countries); fr-men hub crosswalk coverage 65% (456/698; 0.70 cosine threshold), pulling math hub coverage 79.9% -> 79.6%; all-subject 61.2% unchanged. Gold precision (n=65 incl. 13 fr-men): strict 37%, lenient 72%; fr-men alone strict 5/13, lenient 10/13.
+- Not done for fr-men: LLM quality scores on its 456 crosswalks (graph was 100% scored; now 456 unscored), direct_family edges (belongs to `iberian_continental`).
+- To ship: promote the copy to the live DB, score the new edges, bump counts in README/CLAUDE.md/server.json (`/stats`), then HF upload (Ian only).
+
 ## 2026-10-19 - release-prep pass (branch `release-prep`, worktree ../standardgraph-release)
 
 No written pre-release checklist existed (CLAUDE.md only has the publish steps), so I derived one
