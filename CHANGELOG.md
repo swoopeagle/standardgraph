@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- World-coverage scan 2 (see `docs/world-coverage-scan-2.md`): new subjects for au-acara (social studies, digital tech, arts, languages), uk-nc, gb-sco (social studies), es-lomloe (science, ELA, social studies, CS, arts, languages) and new systems `no-udir` (Norway LK20) and `pl-men` (Poland, grades 4-8 maths/science/social studies/CS). Database not yet re-released.
 - France (`fr-men`): 698 mathematics outcomes for grades 1-9 (cycles 2-4), Etalab-2.0 source; hub crosswalks to CCSS. Database not yet re-released.
 - `scripts/coverage_report.py`: world-coverage metrics (countries and pupils covered, hub crosswalk coverage, gold-sample precision).
 - `relate.py --system` to rebuild one system's prerequisite edges.

@@ -290,3 +290,11 @@ The research base is strongest for mathematics; evidence for science standards a
 ## License
 
 MIT. Standards data © their respective curriculum bodies (CCSS, state DOEs, NGSS, NCSS, CSTA, ACARA, Cambridge Assessment, IBO, MOE Singapore, MEXT Japan, NZ Ministry of Education, Education Scotland, NCCA Ireland, EDB Hong Kong, NCERT India, NaCCA Ghana, DBE South Africa, etc.).
+
+### Attribution for openly licensed additions (2026-10 scan)
+
+- Australian Curriculum v9 (humanities and social sciences, digital technologies, arts, languages): (c) Australian Curriculum, Assessment and Reporting Authority (ACARA), CC BY 4.0. Content is unmodified apart from structuring.
+- England National Curriculum (computing, history, geography, citizenship, art, music, languages) and Education Scotland social studies experiences and outcomes: contains public sector information licensed under the Open Government Licence v3.0 (Crown copyright).
+- Spain LOMLOE (Reales Decretos 157/2022, 217/2022, 243/2022): Fuente de los datos: Agencia Estatal Boletin Oficial del Estado. English text is an unofficial translation by StandardGraph; the Spanish original is kept alongside it.
+- Norway LK20: data from Utdanningsdirektoratet (Grep), licensed under the Norwegian Licence for Open Government Data (NLOD).
+- Poland (podstawa programowa, Dz.U. 2026 poz. 378): official legal act (not subject to copyright, Prawo autorskie Art. 4); English text is an unofficial translation, Polish original kept.

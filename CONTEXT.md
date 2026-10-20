@@ -1,5 +1,15 @@
 # CONTEXT - StandardGraph
 
+## 2026-10-20 - world-coverage scan 2 (branch `more-countries`, worktree ../standardgraph-scan)
+
+**Full table + licence quotes: `docs/world-coverage-scan-2.md`. Built into the copy `~/.standardgraph/common_core_scan.db` only (live DB and data/common_core.db untouched).**
+- Ingested 6 systems, all licence-clean from a page I fetched: Spain LOMLOE other subjects (BOE reuse terms, 1,137 criteria, translated), Poland pl-men (Prawo autorskie Art. 4; statute basis, counsel check advised; 1,002, translated), Norway no-udir (NLOD; 444, official English), Australia v9 other subjects (CC BY 4.0; 1,681), England uk-nc other (OGL; 137), Scotland social studies (OGL; 117; arts/languages/tech parse failed and was dropped). Each: deterministic extractor in `scripts/<country>/`, committed JSON in `data/`, loader in `packages/ingestion/.../fetch_*.py` (shared `loader_common.py`), embed -> `relate --system` -> `nlp_pass --system --subject` -> LLM score (sonnet batches, applied with `score_batch.py apply`) -> `apply_cosine_floor.py --apply` (re-run AFTER scoring: `score_batch apply` clears the floor marker). Tests `tests/test_scan2.py`; suite 109 pass on the copy.
+- Coverage (pupil share): social studies 4.4% -> 6.4%, CS 3.5% -> 5.4%, arts/languages 3.5% -> 5.1%, science 13.5% -> 14.4%, ELA 13.5% -> 14.0%, math 42.1% -> 42.5%.
+- Honest result: new links are sparse after scoring + floor (national competency statements vs narrow US standards); arts/world-languages have no hub so are uncrosswalked.
+- Findings: held au-acara/uk-nc math came from commonstandardsproject.com (aggregator), not the official files. Several held African systems show all-rights-reserved footers (Kenya, Uganda, Nigeria): the retroactive-bar decision from the world-coverage pass still stands open.
+- Blocked/unverified: BC (all rights reserved), Wales/Hwb (no licence), Finland ePerusteet (no licence stated), Canada others, France other subjects (Cloudflare), NZ/Ireland (bot walls). Permission emails: BC `QPIPPCopyright@gov.bc.ca`, Hwb `support@hwbcymru.net`, Rwanda `info@reb.rw`.
+- Next: Peru (statute route), Estonia, Denmark, Netherlands, Sweden; ship = promote copy, bump counts (180,954 std / 313 systems), HF upload (Ian).
+
 ## 2026-10-19 - crosswalk-quality pass (branch `crosswalk-quality`, worktree ../standardgraph-quality)
 
 **Result: a cosine floor of 0.75 beats baseline on held-out gold, at a real coverage cost. Applied to the copy `~/.standardgraph/common_core_quality.db` only (live DB untouched; `apply_cosine_floor.py` refuses to write `common_core.db`).**
