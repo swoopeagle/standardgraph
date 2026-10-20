@@ -88,7 +88,7 @@ How does the C3 Framework approach civics compared to California's social studie
 |---|---|
 | 🇺🇸 United States | `ccss` (hub) + all 50 states + DC |
 | 🎓 Advanced Placement | `ap-calc-ab` `ap-calc-bc` `ap-stats` `ap-precalc` |
-| 🇨🇦 Canada | `ca-ab` `ca-bc` `ca-on` `ca-mb` `ca-sk` `ca-nb` `ca-qc` |
+| 🇨🇦 Canada | `ca-ab` `ca-on` `ca-mb` `ca-sk` `ca-nb` `ca-qc` |
 | 🌍 International Baccalaureate | `ib-pyp` `ib-myp` `ib-dp` |
 | 🌍 Other International | `cambridge` `aero` `dodea` |
 | 🇦🇺 Australia | `au-acara` `au-vic` |
@@ -97,7 +97,6 @@ How does the C3 Framework approach civics compared to California's social studie
 | 🇯🇵 Japan | `jp-mext` (Grades 1–9) |
 | 🇰🇷 South Korea | `ko-ncic` |
 | 🇩🇪 Germany | `de-kmk` |
-| 🇫🇮 Finland | `fi-oph` |
 | 🇨🇿 Czech Republic | `cz-msmt` |
 | 🇪🇸 Spain | `es-lomloe` |
 | 🇧🇷 Brazil | `br-bncc` |
@@ -113,7 +112,6 @@ How does the C3 Framework approach civics compared to California's social studie
 | 🇵🇭 Philippines | `ph-deped` |
 | 🇬🇭 Ghana | `gh-nacca` |
 | 🇿🇦 South Africa | `za-caps` |
-| 🇷🇼 Rwanda | `rw-reb` |
 
 ### Science
 

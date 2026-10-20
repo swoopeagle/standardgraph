@@ -1,0 +1,5 @@
+# Systems held out of releases until the publisher grants reuse permission.
+# One system id per line; text after '#' is the reason. Applied by scripts/withhold_systems.py.
+ca-bc   # BC curriculum: "All rights reserved ... prior written permission". Asked 2026-10-20 (docs/outreach/2026-10-20-curriculum-permission-emails-2.md)
+fi-oph  # ePerusteet states no data licence. Asked OPH 2026-10-20
+rw-reb  # REB syllabi state no licence. Asked REB 2026-10-20

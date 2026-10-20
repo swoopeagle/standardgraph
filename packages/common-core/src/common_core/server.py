@@ -36,9 +36,9 @@ Computer Science, Arts, and World Languages.
     la ma md me mi mn mo ms mt nc nd ne nh nj nm nv ny oh ok or pa ri sc sd tn tx
     ut va vt wa wi wv wy`)
   ⚠️  `de` = Delaware (US state), NOT Germany. Germany = `de-kmk`.
-  Canada: `ca-ab ca-bc ca-mb ca-nb ca-on ca-qc ca-sk`
+  Canada: `ca-ab ca-mb ca-nb ca-on ca-qc ca-sk`
   International: `sg-moe jp-mext nz-moe au-acara au-vic hk-edb ph-deped uk-nc uk-aqa
-    gb-sco ie-ncca in-ncert gh-nacca rw-reb za-caps cambridge ib-myp ib-dp de-kmk`
+    gb-sco ie-ncca in-ncert gh-nacca za-caps cambridge ib-myp ib-dp de-kmk`
   AP Math: `ap-calc-ab ap-calc-bc ap-stats ap-precalc`
 
 **Science** — hub: `ngss`

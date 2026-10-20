@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- Withheld British Columbia (`ca-bc`), Finland (`fi-oph`) and Rwanda (`rw-reb`) pending reuse permission from each publisher (`data/withheld_systems.txt`, applied by `scripts/withhold_systems.py`): 365 standards and 3,149 crosswalks removed from the release DB.
+
 ### Added
 
 - World-coverage scan 2 (see `docs/world-coverage-scan-2.md`): new subjects for au-acara (social studies, digital tech, arts, languages), uk-nc, gb-sco (social studies), es-lomloe (science, ELA, social studies, CS, arts, languages) and new systems `no-udir` (Norway LK20) and `pl-men` (Poland, grades 4-8 maths/science/social studies/CS). Database not yet re-released.
