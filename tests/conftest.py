@@ -1,10 +1,11 @@
 """Shared fixtures for StandardGraph tests."""
+import os
 import sqlite3
 from pathlib import Path
 
 import pytest
 
-DB_PATH = Path(__file__).parent.parent / "data" / "common_core.db"
+DB_PATH = Path(os.getenv("DB_PATH") or Path(__file__).parent.parent / "data" / "common_core.db")
 
 
 @pytest.fixture(scope="session")

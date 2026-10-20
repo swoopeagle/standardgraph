@@ -1,8 +1,8 @@
 name: standardgraph
 description: >
-  20,000+ math standards across 75+ curriculum systems — US (all 50 states + CCSS),
-  Canada, Australia, UK, Singapore, Japan, New Zealand, Ireland, Hong Kong, India,
-  Ghana, South Africa, Rwanda, Cambridge International, IB MYP/DP, and more.
+  175,000+ standards across 310 curriculum systems in 50+ countries - Math, Science,
+  ELA, Social Studies, CS, Arts, World Languages. US (all 50 states + hubs), Canada,
+  Australia, UK, Singapore, Japan, India, IB, Cambridge, AP, and more.
   All cross-referenced to CCSS via NLP semantic similarity. Ask Claude to compare
   curricula, trace concept progressions, or find equivalent standards across systems.
 

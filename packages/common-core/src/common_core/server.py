@@ -728,11 +728,14 @@ def search_standards(
     subject: optional — 'mathematics', 'science', 'ela', 'social-studies', 'cs', 'arts', 'world-languages'.
     grade: optional filter — single grade '5', range '6-8', or 'HS'. Grade codes: K 1 2 3 4 5 6 7 8 HS.
     domain: optional keyword to restrict by domain name (e.g. 'geometry', 'algebra').
-    limit: number of results (default 5, max sensible ~10).
+    limit: number of results (default 5, clamped to 1–50).
 
     Uses semantic similarity (requires Ollama) with automatic keyword FTS fallback when Ollama is unavailable.
     Returns standards ranked by relevance with scores (0–1).
     """
+    # Bound caller-controlled sizes: a huge limit dumps the corpus, a huge query burns embed time.
+    limit = max(1, min(int(limit), 50))
+    query = query[:2000]
     # Resolve scope: explicit system > subject (→ its hub, or subject-wide if hubless) > all hubs.
     scope_system: str | None = None
     scope_systems: list[str] | None = None

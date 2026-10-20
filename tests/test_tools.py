@@ -10,11 +10,11 @@ from pathlib import Path
 
 import pytest
 
-_DB_PATH = Path(__file__).parent.parent / "data" / "common_core.db"
+_DB_PATH = Path(os.getenv("DB_PATH") or Path(__file__).parent.parent / "data" / "common_core.db")
 os.environ.setdefault("DB_PATH", str(_DB_PATH))
 os.environ.setdefault("OLLAMA_BASE_URL", "http://localhost:11434")
 
-from common_core.server import lookup_standard, list_systems, map_standard  # noqa: E402
+from common_core.server import lookup_standard, list_systems, map_standard, search_standards  # noqa: E402
 
 
 def pytest_addoption(parser):
@@ -97,8 +97,8 @@ def test_lookup_has_grade_links():
 @pytest.mark.parametrize("std_id,from_sys,to_sys", [
     # These have precomputed crosswalk mappings (response key: "mappings")
     ("tx-ela.5.13.F",    "tx-ela",  "ccss-ela"),
-    ("al-ss.HG.14.a",    "al-ss",   "c3"),
-    ("fl-cs.7.08",       "fl-cs",   "csta"),
+    ("al-ss.SS24.HG.10a","al-ss",   "c3"),
+    ("fl-cs.7.07",       "fl-cs",   "csta"),
 ])
 def test_map_standard_precomputed(std_id, from_sys, to_sys):
     """Precomputed crosswalk returns a direct mapping."""
@@ -170,3 +170,19 @@ def db():
     conn.row_factory = sqlite3.Row
     yield conn
     conn.close()
+
+
+# ── input-surface hardening ───────────────────────────────────────────────────
+
+def test_search_limit_and_query_are_bounded():
+    assert len(json.loads(search_standards("fractions", limit=10**9))) <= 50
+    assert json.loads(search_standards("fractions", limit=-5)) is not None
+    search_standards("x" * 200_000)  # must not blow up or hang
+
+
+@pytest.mark.parametrize("hostile", ["'; DROP TABLE standards;--", "../../etc/passwd", "\x00", "%"])
+def test_hostile_ids_return_clean_errors(hostile):
+    assert json.loads(lookup_standard(hostile)).get("error") == "standard_not_found"
+    assert json.loads(map_standard(hostile, from_system=hostile, to_system=hostile)).get("error")
+    # table must still exist afterwards
+    assert json.loads(list_systems())["totals"]["standards"] > 100_000
