@@ -8,13 +8,13 @@
     "url": "https://github.com/swoopeagle/standardgraph",
     "source": "github"
   },
-  "version": "1.6.1",
+  "version": "1.6.2",
   "packages": [
     {
       "registryType": "pypi",
       "registryBaseUrl": "https://pypi.org",
       "identifier": "standardgraph",
-      "version": "1.6.1",
+      "version": "1.6.2",
       "runtimeHint": "uvx",
       "transport": {
         "type": "stdio"
