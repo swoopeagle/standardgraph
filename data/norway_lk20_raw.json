@@ -1,0 +1,4442 @@
+[
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13228",
+  "nb": "gruppere tal og mengder ut frå eigenskapar og reflektere over om dette kan gjerast på fleire måtar",
+  "en": "group numbers and sets based on their properties and to reflect upon whether there are multiple ways to do this",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13228"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13229",
+  "nb": "utforske tal, mengder og teljing i leik, natur, biletkunst, musikk og barnelitteratur",
+  "en": "explore numbers, sets and counting through play, nature, visual art, music and children’s literature",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13229"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13241",
+  "nb": "bruke talsymbol, talord, teikning og konkret til å representere tal og mengder på ulike måtar og omsetje mellom dei ulike representasjonane",
+  "en": "use numerals, number words, drawings and tangible objects to represent numbers and sets in different ways and translate between the different representations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13241"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13230",
+  "nb": "telje både framlengs og baklengs, velje ulike startpunkt og ulik differanse og forklare mønster i teljingar",
+  "en": "count both up and down, choose different starting points and intervals for counting, and explain counting patterns",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13230"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13231",
+  "nb": "beskrive og utforske eigenskapar ved partal og oddetal",
+  "en": "describe and explore the properties of odd and even numbers",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13231"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13232",
+  "nb": "bruke talsymbol, talord, teikning og konkret til å representere posisjonssystemet og omsetje mellom dei ulike representasjonane",
+  "en": "use numerals, number words, drawings and tangible objects to represent the positional system and translate between the different representations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13232"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13233",
+  "nb": "plassere tal på tallinja og bruke tallinja i rekning og problemløysing",
+  "en": "place numbers on the number line and use the number line to carry out arithmetic and solve problems",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13233"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13234",
+  "nb": "bruke addisjon og subtraksjon til å lage og løyse problem frå leik og kvardag",
+  "en": "use addition and subtraction in order to create and solve problems from play and in daily life",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13234"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13235",
+  "nb": "bruke kommutative og assosiative eigenskapar ved addisjon i hovudrekning og skriftleg rekning",
+  "en": "use commutative and associative properties when carrying out addition in written and mental arithmetic",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13235"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13242",
+  "nb": "bruke likskapsteiknet som eit relasjonelt symbol som viser at to uttrykk har same verdi",
+  "en": "use the equals sign as a relational symbol that shows that two expressions have the same value",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13242"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13236",
+  "nb": "kjenne att og beskrive repeterande einingar i mønster og lage eigne mønster",
+  "en": "recognise and describe repeating units in patterns and create their own patterns",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13236"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13237",
+  "nb": "utforske, teikne og beskrive geometriske figurar frå sitt eige nærmiljø og argumentere for måtar å sortere dei på etter eigenskapar",
+  "en": "explore, draw and describe geometric shapes from their own local environment and reason in relation to ways to sort them according to their properties",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13237"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13240",
+  "nb": "måle lengd og masse i praktiske situasjonar med ikkje-standardiserte og standardiserte måleiningar og samtale om resultata",
+  "en": "measure length and mass in practical situations using both non-standardised and standardised units of measurement, and to discuss the results",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13240"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13238",
+  "nb": "beskrive tid ved hjelp av kalender og analog og digital klokke",
+  "en": "describe time with the aid of a calendar as well as analogue and digital clocks",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13238"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 2,
+  "kode": "KM13239",
+  "nb": "lage og følgje reglar og trinnvise instruksjonar i leik og spel",
+  "en": "create and follow rules and step-by-step instructions during play and games",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13239"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13243",
+  "nb": "bruke formålstenlege strategiar for addisjon og subtraksjon til å lage og løyse problem frå leik og kvardag",
+  "en": "use appropriate strategies for addition and subtraction in order to create and solve problems from play and in daily life",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13243"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13244",
+  "nb": "forklare og utforske samanhengar mellom addisjon og subtraksjon i hovudrekning og skriftleg rekning",
+  "en": "explain and explore the relationships between addition and subtraction in written and mental arithmetic",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13244"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13245",
+  "nb": "beskrive og utforske multiplikasjon ved teljing og gruppering",
+  "en": "describe and explore multiplication through counting and grouping",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13245"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13254",
+  "nb": "bruke dobling og halvering i hovudrekning og skriftleg rekning",
+  "en": "double and halve in written and mental arithmetic",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13254"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13246",
+  "nb": "bruke multiplikasjon og divisjon til å lage og løyse problem frå leik og kvardag",
+  "en": "use multiplication and division in order to create and solve problems from play and in daily life",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13246"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13247",
+  "nb": "bruke talsymbol, tekst, tabellar, teikning og konkret til å representere multiplikasjon på ulike måtar og omsetje mellom dei ulike representasjonane",
+  "en": "use numerals, text, tables, drawings and tangible objects to represent multiplication in different ways and translate between the different representations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13247"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13248",
+  "nb": "bruke kommutative, assosiative og distributive eigenskapar ved multiplikasjon i hovudrekning og skriftleg rekning",
+  "en": "use commutative, associative and distributive properties when carrying out multiplication in written and mental arithmetic",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13248"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13249",
+  "nb": "bruke likskaps- og ulikskapsteikn som relasjonelle symbol for å samanlikne storleikar, mengder, uttrykk og tal",
+  "en": "use the equals sign and inequality signs as relational symbols to compare measures, quantities, expressions, and numbers",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13249"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13250",
+  "nb": "bruke talsymbol, teikning og konkret for å utforske likevekt og omsetje mellom dei ulike representasjonane",
+  "en": "use numerals, drawings, and tangible objects to explore equivalence and translate between the different representations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13250"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13253",
+  "nb": "måle areal i praktiske situasjonar med ikkje-standardiserte og standardiserte måleiningar",
+  "en": "measure areas in practical situations using both non-standardised and standardised units of measurement",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13253"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13251",
+  "nb": "eksperimentere med, namngi og plassere punkt i koordinatsystemet",
+  "en": "experiment with, name and plot points using a coordinate system",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13251"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 3,
+  "kode": "KM13252",
+  "nb": "lage og følgje reglar og trinnvise instruksjonar i leik og spel knytte til koordinatsystemet",
+  "en": "create and follow rules and step-by-step instructions during play and games related to a coordinate system",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13252"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13255",
+  "nb": "utforske og bruke målings- og delingsdivisjon i praktiske situasjonar",
+  "en": "explore and use grouping and sharing division in practical situations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13255"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13256",
+  "nb": "bruke tal, tekst, teikning og konkret for å utforske divisjon på ulike måtar og omsetje mellom dei ulike representasjonane",
+  "en": "use numbers, text, drawings, and tangible objects to explore division in different ways and translate between the different representations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13256"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13257",
+  "nb": "bruke og forklare ulike divisjonsstrategiar",
+  "en": "use and explain different division strategies",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13257"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13258",
+  "nb": "bruke hovudrekning og skriftleg rekning til å utforske og forklare samanhengar mellom dei fire rekneartane",
+  "en": "use written and mental arithmetic to explore and explain the relationships between the four arithmetic operations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13258"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13259",
+  "nb": "estimere, gjere overslag, forklare tenkjemåtar og vurdere kritisk eigne og andre sine modellar og løysingar i arbeid med praktiske situasjonar",
+  "en": "assess, estimate, explain their reasoning, and critically assess their own and others’ models and solutions when working in practical situations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13259"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13260",
+  "nb": "lage rekneuttrykk til praktiske situasjonar og finne praktiske situasjonar som passar til oppgitte rekneuttrykk",
+  "en": "create mathematical expressions for practical situations and identify practical situations that fit a given mathematical expression",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13260"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13261",
+  "nb": "beskrive og utforske eigenskapar ved to- og tredimensjonale figurar ved å bruke vinklar, kantar, hjørne og flater",
+  "en": "describe and explore the properties of two- and three-dimensional shapes by using angles, edges, corners, and faces",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13261"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13264",
+  "nb": "måle volum i praktiske situasjonar med ikkje-standardiserte og standardiserte måleiningar og samtale om resultata",
+  "en": "measure volume in practical situations using both non-standardised and standardised units of measurement, and to discuss the results",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13264"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13262",
+  "nb": "beskrive og utforske strukturar og mønster i leik og spel",
+  "en": "describe and explore structures and patterns in games and play",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13262"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 4,
+  "kode": "KM13263",
+  "nb": "lage algoritmar og uttrykkje dei ved bruk av variablar, vilkår og lykkjer",
+  "en": "create algorithms and express them using variables, conditions and loops",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13263"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13265",
+  "nb": "bruke tal, teikning og konkret til å beskrive og utforske samanhengar mellom brøkar, desimaltal og prosent",
+  "en": "use numbers, drawings, and tangible objects to describe and explore the relationships between fractions, decimals, and percentages",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13265"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13266",
+  "nb": "beskrive brøk som del av ein heil, som del av ei mengd, som ein divisjon og som tal på tallinja",
+  "en": "describe fractions as part of a whole, as part of a quantity, as part of a division, and as a number on a number line",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13266"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13267",
+  "nb": "bruke tal, tekst, teikning, konkret og praktiske situasjonar for å representere brøkar og kunne omsetje mellom dei ulike representasjonane",
+  "en": "use numbers, text, drawings, tangible objects, and practical situation to represent fractions, and to be able to translate between different representations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13267"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13268",
+  "nb": "utvikle og bruke ulike strategiar for rekning med positive tal og brøk og forklare tenkjemåtane sine",
+  "en": "develop and use different strategies for arithmetic using positive numbers and fractions, and to explain their reasoning",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13268"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13269",
+  "nb": "formulere og løyse problem som har med brøk å gjere",
+  "en": "formulate and solve problems related to fractions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13269"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13270",
+  "nb": "utforske og beskrive tilfeldigheit og sannsyn i spel og praktiske situasjonar, og knyte det til brøk",
+  "en": "explore and describe chance and probability in games and practical situations, and to connect these concepts to fractions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13270"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13274",
+  "nb": "bruke tal, tekst, teikning og konkret til å løyse likningar og teste og forklare løysingar",
+  "en": "use numbers, text, drawings and tangible objects to solve equations and test and explain solutions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13274"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13271",
+  "nb": "bruke rekneark for å lage og løyse oppgåver som handlar om personleg økonomi",
+  "en": "use spreadsheets to create and solve tasks relating to personal finance",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13271"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13273",
+  "nb": "lage og løyse oppgåver som handlar om tid",
+  "en": "create and solve tasks relating to time",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13273"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 5,
+  "kode": "KM13272",
+  "nb": "lage og programmere algoritmar med bruk av variablar, vilkår og lykkjer",
+  "en": "create and program algorithms using variables, conditions and loops",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13272"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13275",
+  "nb": "beskrive og plassere desimaltal på tallinja og samanlikne tal med ulikt antal desimalar som ein del av posisjonssystemet",
+  "en": "describe and place decimal numbers on the number line and compare numbers with different numbers of decimals as part of the positional system",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13275"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13276",
+  "nb": "utvikle og bruke ulike strategiar for rekning med desimaltal og samanlikne med reknestrategiar for heile tal",
+  "en": "develop and use different strategies for arithmetic using decimals and be able to compare these to numeracy strategies used for whole numbers",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13276"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13277",
+  "nb": "lage og løyse problem med desimaltal, brøk og prosent og argumentere for eigne løysingar",
+  "en": "create and solve problems featuring decimal numbers, fractions, and percentages, and to provide reasoning for their own solutions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13277"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13278",
+  "nb": "beskrive og utforske eigenskapar ved to- og tredimensjonale figurar og forklare kva for eigenskapar figurane har til felles, og kva for eigenskapar som skil figurane frå kvarandre",
+  "en": "describe and explore the properties of two- and three-dimensional shapes and explain which properties the shapes share in common, and which properties distinguish the shapes from each other",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13278"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13283",
+  "nb": "utforske og beskrive symmetri i mønster",
+  "en": "explore and describe symmetry in patterns",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13283"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13284",
+  "nb": "lage kongruensavbildingar med og utan koordinatsystem",
+  "en": "perform congruence transformations with and without a coordinate system",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13284"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13279",
+  "nb": "måle radius, diameter og omkrins i sirklar og utforske og forklare samanhengen mellom pi og diameteren i ein sirkel",
+  "en": "measure the radius, diameter and circumference of circles, and explore and explain the relationship between pi and the diameter of a circle",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13279"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13280",
+  "nb": "utforske areal og volum i praktiske situasjonar og bruke formålstjenlege måleiningar",
+  "en": "explore areas and volumes in practical situations and use appropriate units of measurement",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13280"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13285",
+  "nb": "utforske praktiske problem med areal ved å bruke oppdeling og distributivitet",
+  "en": "explore practical issues relating to area through the use of partitioning and distributivity",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13285"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13281",
+  "nb": "bruke og utforske strategiar for å måle og rekne ut areal og omkrins",
+  "en": "use and explore strategies for measuring and calculating area and perimeter",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13281"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 6,
+  "kode": "KM13282",
+  "nb": "bruke variablar, lykkjer, vilkår og funksjonar i programmering til å utforske geometriske figurar og mønster",
+  "en": "use variables, loops, conditions and functions in programming to explore geometric shapes and patterns",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13282"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13286",
+  "nb": "bruke tal, tekst, tabellar, teikning og konkret for å representere prosent og kunne omsetje mellom brøk, desimaltal og prosent",
+  "en": "use numbers, text, tables, drawings, and tangible objects to represent percentages, and to translate between fractions, decimals, and percentages",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13286"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13288",
+  "nb": "bruke formålstjenlege strategiar i hovudrekning og skriftleg rekning med brøk, desimaltal og prosent og forklare strategiar",
+  "en": "use appropriate strategies in written and mental arithmetic relating to fractions, decimals, and percentages, and to be able to explain these strategies",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13288"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13292",
+  "nb": "bruke og utforske negative tal både praktisk og teoretisk",
+  "en": "use and explore negative numbers in both practical and theoretical terms",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13292"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13287",
+  "nb": "bruke reglar for reknerekkefølgje i problemløysing og til å lage og løyse samansette rekneuttrykk",
+  "en": "apply the rules for the order of operations in problem solving and to create and solve multi-step numerical expressions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13287"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13291",
+  "nb": "bruke ulike strategiar for å løyse likningar og vurdere om løysingar er gyldige",
+  "en": "use different strategies to solve equations and assess whether those solutions are valid",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13291"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13294",
+  "nb": "formulere og løyse problem som har med likningar å gjere",
+  "en": "formulate and solve problems related to equations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13294"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13296",
+  "nb": "bruke tal, tekst, teikning og konkret til å løyse ulikskapar og teste og forklare løysingar",
+  "en": "use numbers, text, drawings and tangible objects to solve inequalities and test and explain solutions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13296"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13289",
+  "nb": "rekne sentralmål i eigne og andre sine datasett og velje formålstenleg sentralmål",
+  "en": "calculate averages from their own and others’ datasets, and to choose which average it is appropriate to use",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13289"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13290",
+  "nb": "logge, sortere, lese av og presentere data i tabellar og diagram og forklare valet av framstilling",
+  "en": "log, sort, read and present data in tables and diagrams, and explain the choice of presentation",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13290"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13295",
+  "nb": "estimere, gjere overslag, forklare tenkjemåtar og vurdere kritisk eigne og andre sine modellar og løysingar knytte til praktiske situasjonar i arbeid med økonomi",
+  "en": "assess, estimate, explain their reasoning, and critically assess their own and others’ models and solutions in relation to practical situations when working on finance",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13295"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 7,
+  "kode": "KM13293",
+  "nb": "bruke programmering til å utforske data i tabellar og datasett",
+  "en": "use programming to explore data contained in tables and datasets",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13293"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13297",
+  "nb": "rekne med potensar og kvadratrøter og forklare framgangsmåtar og resultat",
+  "en": "work with powers and square roots, and explain their approach and results",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13297"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13303",
+  "nb": "bruke kommutative, assosiative og distributive eigenskapar til å utvikle og kommunisere strategiar for hovudrekning og skriftleg rekning",
+  "en": "use commutative, associative and distributive properties to develop and communicate strategies for written and mental arithmetic",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13303"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13298",
+  "nb": "beskrive og utforske faktorisering og primtalsfaktorisering og bruke det i brøkrekning",
+  "en": "describe and explore factorisation and prime factorisation, and to use this in fractional arithmetic",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13298"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13299",
+  "nb": "utforske og generalisere geometriske mønster og tallmønster med eigne ord og algebraisk",
+  "en": "explore and generalise geometric patterns and numerical patterns in their own words and algebraically",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13299"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13301",
+  "nb": "lage og forklare rekneuttrykk med tal, variablar og konstantar knytte til praktiske situasjonar",
+  "en": "create and explain mathematical expressions with numbers, variables and constants related to practical situations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13301"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13304",
+  "nb": "lage og løyse likningar knytte til praktiske situasjonar og kritisk vurdere løysingar",
+  "en": "create and solve equations related to practical situations and critically assess solutions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13304"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13305",
+  "nb": "bruke ulike strategiar for å løyse ulikskapar og vurdere om løysingar er gyldige",
+  "en": "use different strategies to solve inequalities and assess whether those solutions are valid",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13305"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13302",
+  "nb": "beskrive, samanlikne og utforske funksjonar knytte til praktiske situasjonar",
+  "en": "describe, compare and explore functions related to practical situations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13302"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13306",
+  "nb": "bruke situasjonar, tabellar, grafar og uttrykk til å representere funksjonar og vise samanhengar mellom representasjonane",
+  "en": "use situations, tables, graphs and expressions to represent functions and show relationships between the representations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13306"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 8,
+  "kode": "KM13300",
+  "nb": "utforske korleis algoritmar kan skapast, testast og forbetrast ved hjelp av programmering",
+  "en": "explore how algorithms can be created, tested and improved using programming",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13300"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13316",
+  "nb": "lage og løyse problem som handlar om samansette måleiningar",
+  "en": "create and solve problems involving compound units",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13316"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13308",
+  "nb": "utforske eigenskapane ved ulike todimensjonale figurar og forklare omgrepa formlikskap og kongruens",
+  "en": "explore the properties of different two-dimensional shapes and explain the concepts of isomorphism and congruence",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13308"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13317",
+  "nb": "bruke formlikskap og læresetninga til Pytagoras til utforsking av praktiske situasjonar",
+  "en": "use isomorphism and Pythagoras’ theorem to explore practical situations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13317"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13307",
+  "nb": "utforske, beskrive og argumentere for samanhengar mellom sidelengdene i trekantar",
+  "en": "explore, describe and reason around the relationships between side lengths in triangles",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13307"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13309",
+  "nb": "utforske og argumentere for korleis det å endre føresetnader i geometriske problemstillingar påverkar løysingar både praktisk og algebraisk",
+  "en": "explore and put forward the argument for how changing assumptions in geometric problems affects solutions both practically and algebraically",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13309"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13310",
+  "nb": "bruke og argumentere for formlar for overflateareal og volum av tredimensjonale figurar",
+  "en": "use and put forward the argument for formulas for the calculation of the surface area and volume of three-dimensional shapes",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13310"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13312",
+  "nb": "tolke og kritisk vurdere statistiske framstillingar frå media og lokalsamfunnet",
+  "en": "interpret and critically assess statistical presentations found in the media and the local community",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13312"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13313",
+  "nb": "rekne på sentralmål og spreiingsmål i eigne og reelle datasett og bruke resultata til å beskrive dataa",
+  "en": "calculate averages and measures of dispersion in their own and others’ datasets, and then use these results to describe the data",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13313"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13314",
+  "nb": "samanlikne og argumentere for korleis framstillingar av tal og data kan brukast for å fremje ulike synspunkt",
+  "en": "compare and put forward the argument for how presentations of figures and data can be used to promote different points of view",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13314"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13315",
+  "nb": "berekne og vurdere sannsyn i statistikk og spel",
+  "en": "calculate and assess probability in statistics and games",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13315"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 9,
+  "kode": "KM13311",
+  "nb": "simulere utfall i tilfeldige forsøk og berekne sannsynet for at noko skal inntreffe, ved å bruke programmering",
+  "en": "simulate outcomes in randomised trials and calculate the probability of something occurring through the use of programming",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13311"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13328",
+  "nb": "bruke reknereglar og generalisere samanhengar algebraisk",
+  "en": "use the order of operations and generalise relationships algebraically",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13328"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13318",
+  "nb": "utforske kvadratsetningane geometrisk og algebraisk og bruke kvadratsetningane som reknestrategiar",
+  "en": "explore the square theorems geometrically and algebraically and use the square theorems as calculation strategies",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13318"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13324",
+  "nb": "lage, løyse og forklare likningssett knytte til praktiske situasjonar",
+  "en": "create, solve and explain systems of equations related to practical situations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13324"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13319",
+  "nb": "utforske og samanlikne eigenskapar ved lineære funksjonar, eksponentialfunksjonar, brøkfunksjonar og andregradsfunksjonar ved å bruke digitale verktøy",
+  "en": "explore and compare properties of linear functions, exponential functions, fractional functions and second-degree functions through the use of digital tools",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13319"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13320",
+  "nb": "forklare omgrepet endring per eining og rekne ut stigningstalet til lineære funksjonar",
+  "en": "explain the concept of change per unit and calculate the slope of linear functions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13320"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13322",
+  "nb": "utforske og forklare samanhengen mellom konstant prosentvis endring, vekstfaktor og eksponentialfunksjonar",
+  "en": "explore and explain the relationship between constant percentage change, growth factor and exponential functions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13322"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13321",
+  "nb": "hente ut og tolke relevant informasjon og reflektere over moglege konsekvensar ved kjøp og sal, renter på sparing, lån og kredittkjøp",
+  "en": "retrieve and interpret relevant information and reflect on the possible consequences of buying and selling, interest on savings, loans and credit purchases",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13321"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13325",
+  "nb": "planleggje, utføre og presentere eit utforskande arbeid knytt til personleg økonomi",
+  "en": "plan, carry out and present an exploratory assignment related to personal finance",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13325"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13323",
+  "nb": "modellere situasjonar, presentere resultata og vurdere kor gyldige modellane er",
+  "en": "model situations, present the results and assess the validity of the models",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13323"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13326",
+  "nb": "utforske matematiske eigenskapar og samanhengar ved å bruke programmering",
+  "en": "explore mathematical properties and relationships using programming",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13326"
+ },
+ {
+  "plan": "MAT01-06",
+  "subject": "mathematics",
+  "area": "Mathematics year 1-10",
+  "trinn": 10,
+  "kode": "KM13327",
+  "nb": "lese og forklare tekstbasert programkode i Python",
+  "en": "read and explain text-based programming code in Python",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13327"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13806",
+  "nb": "undre seg, utforske og lage spørsmål, og knytte dette til egne eller andres erfaringer",
+  "en": "query, explore and make questions and to link these to one's own or others’ experiences",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13806"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13807",
+  "nb": "presentere funnene sine og beskrive hvordan eleven har kommet fram til dem",
+  "en": "present one’s findings and describe how one has arrived at them",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13807"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13808",
+  "nb": "presentere egne ideer til teknologiske oppfinnelser",
+  "en": "present one’s own ideas for technological inventions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13808"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13809",
+  "nb": "utforske og beskrive observerbare egenskaper til ulike objekter, materialer og stoffer og sortere etter egenskaper",
+  "en": "explore and describe observable properties of different objects, materials and substances and sort them according to their properties",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13809"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13815",
+  "nb": "samtale om hvordan vi kan ta miljøbevisste valg og gjennomføre lokale miljøtiltak",
+  "en": "talk about how we can make environmentally aware choices and carry out local environmental initiatives",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13815"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13810",
+  "nb": "utforske et naturområde i nærmiljøet og beskrive hvordan noen organismer er tilpasset området og hverandre",
+  "en": "explore a local natural area and describe how some organisms are adapted to the area and to each other",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13810"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13811",
+  "nb": "oppleve naturen til ulike årstider, reflektere over hvordan naturen er i endring, og hvorfor året deles inn på ulike måter i norsk og samisk tradisjon",
+  "en": "experience nature during the different seasons, reflect on how nature is undergoing changes and why the year is divided in different ways in the Norwegian and Sami traditions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13811"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13812",
+  "nb": "planlegge og gjennomføre undersøkelser av vær og himmelfenomener og sammenligne målinger, observasjoner og værtegn gjennom året",
+  "en": "plan and carry out examinations of weather and sky phenomena and compare measurements, observations and weather signs throughout the year",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13812"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13813",
+  "nb": "utforske sansene gjennom lek ute og inne og samtale om hvordan sansene brukes til å samle informasjon",
+  "en": "explore the senses through indoor and outdoor play and talk about how the senses are used to collect information",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13813"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 2,
+  "kode": "KM13814",
+  "nb": "gi eksempler på noen vanlige sykdommer og samtale om hva man kan gjøre for å verne kroppen mot smittsomme sykdommer",
+  "en": "give examples of some common diseases and talk about what can be done to protect the body from infectious diseases",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13814"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13816",
+  "nb": "undre seg, stille spørsmål og lage hypoteser og utforske disse for å finne svar",
+  "en": "query, ask questions, formulate hypotheses and explore them to find answers",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13816"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13817",
+  "nb": "bruke tabeller og figurer til å organisere data, lage forklaringer basert på data og presentere funn",
+  "en": "use tables and figures to structure data, make explanations based on data and present findings",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13817"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13818",
+  "nb": "sammenligne modeller med observasjoner og samtale om hvorfor vi bruker modeller i naturfag",
+  "en": "compare models with observations and talk about how we use models in natural science",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13818"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13820",
+  "nb": "utforske teknologiske systemer som er satt sammen av ulike deler, og beskrive hvordan delene fungerer og virker sammen",
+  "en": "explore technological systems that are composed of different parts and describe how the parts function and work together",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13820"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13821",
+  "nb": "designe og lage et produkt basert på en kravspesifikasjon",
+  "en": "design and make a product based on specifications",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13821"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13822",
+  "nb": "utforske og beskrive hvordan noen stoffer kan endre seg når de blandes med andre stoffer",
+  "en": "explore and describe how some substances can change when mixed with other substances",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13822"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13823",
+  "nb": "utforske observerbare størrelser som fart og temperatur og knytte dem til energi",
+  "en": "explore observable quantities, such as speed and temperature, and connect them to energy",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13823"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13824",
+  "nb": "samtale om hva energi er, og utforske ulike energikjeder",
+  "en": "talk about what energy is and explore different energy chains",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13824"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13819",
+  "nb": "utforske et naturområde og drøfte bærekraftig bruk av området",
+  "en": "explore an area in nature and discuss sustainable use of the area",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13819"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13825",
+  "nb": "utforske og sammenligne ulike dyre- og plantearters tilpasninger til miljø og levesteder og drøfte hvorfor noen arter dør ut",
+  "en": "explore and compare how different species of animals and plants adapt to environments and habitats and discuss why some species become extinct",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13825"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13827",
+  "nb": "delta i høsting og bruk av naturressurser og drøfte hvordan naturressurser kan brukes på en bærekraftig måte",
+  "en": "participate in harvesting and using natural resources and explain how natural resources can be used in a sustainable way",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13827"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13826",
+  "nb": "gi eksempler på god dyrevelferd og reflektere over hvordan dyrs behov kan ivaretas",
+  "en": "give examples of good animal welfare and reflect on how to look after the needs of animals",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13826"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13828",
+  "nb": "utforske og beskrive vannets kretsløp og gjøre rede for hvorfor vann er viktig for livet på jorda",
+  "en": "explore and describe the water cycle and explain why water is important for life on Earth",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13828"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13832",
+  "nb": "samtale om hva fysisk og psykisk helse er, og drøfte hvordan livsstil og trivsel påvirker helse",
+  "en": "talk about physical and mental health and explain how lifestyles and well-being affect health",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13832"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13829",
+  "nb": "samtale om likheter og ulikheter mellom kjønnene, om kjønnsidentitet og om menneskets reproduksjon",
+  "en": "talk about the similarities and differences between the genders, about gender identity and about human reproduction",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13829"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13831",
+  "nb": "beskrive hvordan muskler og skjelett fungerer, og knytte dette til bevegelse",
+  "en": "describe how the muscles and skeleton function and relate this to movement",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13831"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 4,
+  "kode": "KM13830",
+  "nb": "beskrive funksjoner i kroppens ytre forsvar og samtale om hvordan dette verner mot sykdom",
+  "en": "describe functions in the body’s external defence mechanisms and talk about how these protect against disease",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13830"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13833",
+  "nb": "stille spørsmål og lage hypoteser om naturfaglige fenomener, identifisere variabler og samle data for å finne svar",
+  "en": "ask questions and formulate hypotheses about natural-science phenomena, identify variables and collect data to find answers",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13833"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13834",
+  "nb": "skille mellom observasjoner og slutninger, organisere data, bruke årsak-virkning-argumenter, trekke slutninger, vurdere feilkilder og presentere funn",
+  "en": "distinguish between observations and conclusions, structure data, use cause and effect arguments, draw conclusions, assess sources of errors and present findings",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13834"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13835",
+  "nb": "bruke og vurdere modeller som representerer fenomener man ikke kan observere direkte, og gjøre rede for hvorfor det brukes modeller i naturfag",
+  "en": "use and assess models that represent phenomena that cannot be observed directly and explain why models are used in natural science",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13835"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13836",
+  "nb": "lese og forstå faremerking og reflektere over hensikten med disse",
+  "en": "read and understand hazard labelling and reflect on the purpose os such labelling",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13836"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13837",
+  "nb": "gi eksempler på hvordan naturvitenskapelig kunnskap er utviklet og utvikler seg",
+  "en": "give examples of how natural-science knowledge has developed and continues to develop",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13837"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13851",
+  "nb": "gi eksempler på hvordan tradisjonell kunnskap har bidratt og bidrar til naturvitenskapelig kunnskap",
+  "en": "give examples of how traditional knowledge has contributed and continues to contribute to natural-science knowledge",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13851"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13838",
+  "nb": "utforske, lage og programmere teknologiske systemer som består av deler som virker sammen",
+  "en": "explore, make and program technological systems that consist of parts that work together",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13838"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13839",
+  "nb": "designe og lage et produkt basert på brukerbehov",
+  "en": "design and make a product based on user needs",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13839"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13840",
+  "nb": "reflektere over hvordan teknologi kan løse utfordringer, skape muligheter og føre til nye dilemmaer",
+  "en": "reflect on how technology can solve challenges, create opportunities and lead to new dilemmas",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13840"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13841",
+  "nb": "utforske faseoverganger og kjemiske reaksjoner og beskrive hva som kjennetegner dem",
+  "en": "explore phase transitions and chemical reactions and describe their properties",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13841"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13852",
+  "nb": "bruke partikkelmodellen til å forklare faseoverganger og egenskapene til faste stoffer, væsker og gasser",
+  "en": "use the particle model to explain phase transitions and the properties of solids, liquids and gases",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13852"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13842",
+  "nb": "utforske elektriske og magnetiske krefter gjennom forsøk og samtale om hvordan vi utnytter elektrisk energi i dagliglivet",
+  "en": "explore electric and magnetic forces through experiments and talk about how we exploit electric energy in everyday life",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13842"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13843",
+  "nb": "gjøre rede for hvordan organismer kan deles inn i hovedgrupper, og gi eksempler på ulike organismers særtrekk",
+  "en": "explain how organisms can be divided into main groups and give examples of the special features of different organisms",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13843"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13853",
+  "nb": "gjøre rede for betydningen av biologisk mangfold og gjennomføre tiltak for å bevare det biologiske mangfoldet i nærmiljøet",
+  "en": "explain the importance of biological diversity and implement measures to protect biological diversity in the local community",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13853"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13844",
+  "nb": "foreslå tiltak for å bevare det biologiske mangfoldet i nordområdene og gi eksempler på betydningen av tradisjonell kunnskap i naturforvaltning",
+  "en": "propose measures to preserve biological diversity in northern areas and give examples of the importance of traditional knowledge in nature management",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13844"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13845",
+  "nb": "utforske og beskrive ulike næringsnett og bruke dette til å diskutere samspill i naturen",
+  "en": "explore and describe different food cycles and use this to discuss synergy in nature",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13845"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13846",
+  "nb": "beskrive og visualisere hvordan døgn, månefaser og årstider oppstår, og samtale om hvordan dette påvirker livet på jorda",
+  "en": "describe and visualise how day and night, moon phases and seasons arise and talk about the effect on life on Earth",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13846"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13847",
+  "nb": "gjøre rede for jordas forutsetninger for liv og sammenligne med andre himmellegemer i universet",
+  "en": "explain the conditions for life on Earth and compare these to other celestial bodies in the universe",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13847"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13848",
+  "nb": "gjøre rede for hvordan det geologiske kretsløpet, platetektonikk og ytre krefter er med på å forme og endre ulike landskap",
+  "en": "explain how the geological cycle, plate tectonics and external forces help shape and change different landscapes",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13848"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13849",
+  "nb": "gjøre rede for fysiske og psykiske forandringer i puberteten og samtale om hvordan dette kan påvirke følelser, handlinger og seksualitet",
+  "en": "explain physical and mental changes during puberty and talk about how these can affect emotions, actions and sexuality",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13849"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 7,
+  "kode": "KM13850",
+  "nb": "gjøre rede for noen av kroppens organsystemer og beskrive hvordan systemene virker sammen",
+  "en": "describe some of the body’s organ systems and describe how the systems work together",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13850"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13854",
+  "nb": "stille spørsmål og lage hypoteser om naturfaglige fenomener, identifisere avhengige og uavhengige variabler og samle data for å finne svar",
+  "en": "ask questions and formulate hypotheses about natural-science phenomena, identify dependent and independent variables and collect data to find answers",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13854"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13855",
+  "nb": "analysere og bruke innsamlede data til å lage forklaringer, drøfte forklaringene i lys av relevant teori og vurdere kvaliteten på egne og andres utforskinger",
+  "en": "analyse and use collected data to make explanations, discuss the explanations in the light of relevant theory and assess the quality of one’s own and others’ explorations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13855"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13856",
+  "nb": "bruke og lage modeller for å forutsi eller beskrive naturfaglige prosesser og systemer og gjøre rede for modellenes styrker og begrensninger",
+  "en": "use and make models to predict or describe natural-science processes and systems and explain the strengths and limitations of the models",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13856"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13857",
+  "nb": "delta i risikovurderinger knyttet til forsøk og følge sikkerhetstiltakene",
+  "en": "participate in risk assessments in relation to experiments and comply with safety measures",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13857"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13858",
+  "nb": "gi eksempler på dagsaktuell forskning og drøfte hvordan ny kunnskap genereres gjennom samarbeid og kritisk tilnærming til eksisterende kunnskap",
+  "en": "give examples of current research and explain how new knowledge is generated through collaboration and a critical approach to existing knowledge",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13858"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13859",
+  "nb": "utforske, forstå og lage teknologiske systemer som består av en sender og en mottaker",
+  "en": "explore, understand and make technological systems that have a transmitter and receiver",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13859"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13860",
+  "nb": "bruke programmering til å utforske naturfaglige fenomener",
+  "en": "use programming to explore natural-science phenomena",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13860"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13861",
+  "nb": "utforske kjemiske reaksjoner, forklare massebevaring og gjøre rede for betydninger av noen forbrenningsreaksjoner",
+  "en": "explore chemical reactions, explain mass conservation and explain the importance of some combustion reactions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13861"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13862",
+  "nb": "bruke atommodeller og periodesystemet til å gjøre rede for egenskaper til grunnstoffer og kjemiske forbindelser",
+  "en": "use atomic models and the periodic table to explain the properties of the elements and chemical compounds",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13862"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13863",
+  "nb": "beskrive drivhuseffekten og gjøre rede for faktorer som kan forårsake globale klimaendringer",
+  "en": "describe the greenhouse effect and explain factors that can cause global climate changes",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13863"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13864",
+  "nb": "gjøre rede for energibevaring og energikvalitet og utforske ulike måter å omdanne, transportere og lagre energi på",
+  "en": "explain energy conservation and energy quality and explore different ways to convert, transport and store energy",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13864"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13865",
+  "nb": "drøfte hvordan energiproduksjon og energibruk kan påvirke miljøet lokalt og globalt",
+  "en": "explain how energy production and energy use can affect the environment locally and globally",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13865"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13866",
+  "nb": "beskrive hvordan forskere har kommet fram til evolusjonsteorien og bruke denne til å forklare utvikling av biologisk mangfold",
+  "en": "describe how researchers have arrived at evolution theory and use it to explain the development of biological diversity",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13866"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13867",
+  "nb": "sammenligne celler hos ulike organismer og beskrive sammenhenger mellom oppbygning og funksjon",
+  "en": "compare cells in various organisms and describe the connections between structure and function",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13867"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13868",
+  "nb": "utforske sammenhenger mellom abiotiske og biotiske faktorer i et økosystem og diskutere hvordan energi og materie omdannes i kretsløp",
+  "en": "explore connections between abiotic and biotic factors in an ecosystem and discuss how energy and matter are converted in cycles",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13868"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13875",
+  "nb": "gi eksempler på og drøfte aktuelle dilemmaer knyttet til utnyttelse av naturressurser og tap av biologisk mangfold",
+  "en": "give examples of and discuss current dilemmas related to exploitation of natural resources and the loss of biological diversity",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13875"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13869",
+  "nb": "gi eksempler på samers tradisjonelle kunnskap om naturen og diskutere hvordan denne kunnskapen kan bidra til bærekraftig forvaltning av naturen",
+  "en": "give examples of traditional Sami knowledge about nature and discuss how this knowledge can contribute to sustainable nature management",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13869"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13870",
+  "nb": "gjøre rede for hvordan fotosyntese og celleånding gir energi til alt levende gjennom karbonkretsløpet",
+  "en": "explain how photosynthesis and cellular respiration produce energy for all living organisms throughout the carbon cycle",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13870"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13871",
+  "nb": "bruke platetektonikkteorien til å forklare jordas utvikling over tid og gi eksempler på observasjoner som støtter teorien",
+  "en": "use plate tectonic theory to explain the development of Earth over time and give examples of observations that support this theory",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13871"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13872",
+  "nb": "drøfte spørsmål knyttet til seksuell og reproduktiv helse",
+  "en": "discuss questions relating to sexual and reproductive health",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13872"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13873",
+  "nb": "sammenligne nervesystemet og hormonsystemet og beskrive hvordan rusmidler, legemidler, miljøgifter og doping påvirker signalsystemene",
+  "en": "compare the nervous system and hormone system and describe how drugs, medicines, environmental toxins and doping affect the cell signalling systems",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13873"
+ },
+ {
+  "plan": "NAT01-05",
+  "subject": "science",
+  "area": "Natural science",
+  "trinn": 10,
+  "kode": "KM13874",
+  "nb": "beskrive kroppens immunforsvar og hvordan vaksiner virker, og gjøre rede for hva vaksiner betyr for folkehelsen",
+  "en": "describe the body’s immune system and how vaccines work and explain the importance of vaccines for public health",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13874"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14717",
+  "nb": "utvikle og presentere samfunnsfaglege spørsmål",
+  "en": "develop and present social-studies issues",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14717"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14718",
+  "nb": "samtale om korleis ulike kjelder, inkludert kart, kan gi informasjon om samfunnsfaglege spørsmål",
+  "en": "talk about how different sources, including maps, can provide information about social-studies issues",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14718"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14719",
+  "nb": "utforske og beskrive kulturminne og kultur- og naturlandskapet i nærmiljøet",
+  "en": "explore and describe the cultural heritage and cultural and natural landscape of the local community",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14719"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14720",
+  "nb": "utforske og presentere korleis menneska levde for éin til to menneskealdrar sidan",
+  "en": "explore and present the ways in which people lived one to two generations ago",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14720"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14721",
+  "nb": "reflektere over kvifor menneske har ulike meiningar og tek ulike val",
+  "en": "reflect on why people have different opinions and make different choices",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14721"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14722",
+  "nb": "samtale om vennskap og tilhøyrsle og kva som påverkar relasjonar",
+  "en": "talk about friendship and belonging and what can have an impact on relations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14722"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14728",
+  "nb": "beskrive og gi døme på mangfald i Noreg, med vekt på ulike familieformer og folkegrupper, inkludert det samiske urfolket",
+  "en": "describe and give examples of diversity in Norway, with an emphasis on different types of families and communities, including the indigenous Sami people",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14728"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14723",
+  "nb": "utforske og gi døme på korleis menneska påverkar klimaet og miljøet, og dokumentere korleis påverknadene kjem til syne i nærmiljøet",
+  "en": "explore and give examples of how people have impact on the climate and the environment, and document how this can be seen in the local community",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14723"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14724",
+  "nb": "presentere og gi døme på rettar barn har i Noreg og verda, og kva barn kan gjere ved brot på desse rettane",
+  "en": "present and give examples of children’s rights in Norway and in the world, and what children can do when these rights are violated",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14724"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14725",
+  "nb": "utforske og gi døme på korleis barn kan påverke avgjerder og samarbeide om demokratiske prosessar",
+  "en": "explore and give examples of how children can have an effect on decisions and collaborate on democratic processes",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14725"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14726",
+  "nb": "samtale om moglegheiter og utfordringar ved digital samhandling",
+  "en": "talk about the opportunities and challenges involved in digital interaction",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14726"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14727",
+  "nb": "samtale om kjensler, kropp, kjønn og seksualitet og korleis eigne og andre sine grenser kan uttrykkjast og respekterast",
+  "en": "talk about emotions, bodies, gender and sexuality and how both one’s own and other peoples’ boundaries can be expressed and respected",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14727"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 2,
+  "kode": "KM14729",
+  "nb": "utforske og gi døme på korleis menneske i ulike delar av verda påverkar livet til kvarandre",
+  "en": "explore and give examples of how people in different parts of the world can have an impact on each other’s lives",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14729"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14673",
+  "nb": "utforske og presentere samfunnsfaglege spørsmål, søkje etter informasjon i ulike kjelder og vurdere kor nyttig informasjonen er til å belyse spørsmåla",
+  "en": "explore and present social-studies-related topics, search for information in various sources and assess how useful the information that is to inform about the topics",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14673"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14669",
+  "nb": "utforske kulturminne og korleis menneska levde i den tida kulturminna er frå, og samanlikne med korleis vi lever i dag",
+  "en": "explore cultural heritage and how people lived during the time the cultural heritage is from, and compare this with how we live today",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14669"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14672",
+  "nb": "beskrive kultur- og naturlandskap i Noreg og samtale om korleis historiske og geografiske kjelder, inkludert kart, kan gi informasjon om landskap",
+  "en": "describe cultural and natural landscapes in Norway and talk about how historical and geographical sources, including maps, can provide information about these landscapes",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14672"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14674",
+  "nb": "samtale om kvifor det oppstår konfliktar i skule- og nærmiljøet, lytte til andre si meining og samarbeide med andre om å finne konstruktive løysingar",
+  "en": "talk about why conflicts arise in the school and local environment, listen to others’ opinions, and collaborate with them to find constructive solutions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14674"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14670",
+  "nb": "presentere menneskerettar og rettar barn har, og reflektere over kvifor desse rettane finst",
+  "en": "present human rights and children’s rights, and reflect on why we have these rights",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14670"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14671",
+  "nb": "presentere årsaker til at samane har urfolksstatus i Noreg, og beskrive forskjellige former for samisk kultur- og samfunnsliv før og no",
+  "en": "present reasons as to why the Sami people have been given indigenous status in Norway, and describe the different forms of Sami cultural and community life, both from the past and today",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14671"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14679",
+  "nb": "utforske og gi døme på nokre sider ved berekraftig utvikling",
+  "en": "explore and give examples of some aspects of sustainability",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14679"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14680",
+  "nb": "reflektere over samanhengen mellom personleg økonomi og forbruk hos den enkelte",
+  "en": "reflect on the connections between personal finances and one’s own consumption",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14680"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14668",
+  "nb": "samtale om identitet, mangfald og fellesskap og reflektere over korleis det kan opplevast ikkje å vere ein del av fellesskapet",
+  "en": "talk about identity, diversity and community, and reflect on what it might be like if one is not a part of the community",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14668"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14675",
+  "nb": "samtale om reglar og normer for personvern, deling og beskyttelse av informasjon og om kva det vil seie å bruke dømmekraft i digital samhandling",
+  "en": "talk about the rules and norms for protection of privacy, the sharing and protection of information, and what it means to use one’s judgment in digital interaction",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14675"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14676",
+  "nb": "samtale om grenser knytte til kropp, kva vald og seksuelle overgrep er, og kvar ein kan få hjelp dersom ein blir utsett for vald og seksuelle overgrep",
+  "en": "talk about the boundaries related to the body, what violence and sexual abuse is, and how to obtain help if one has been the victim of violence and sexual abuse",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14676"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14677",
+  "nb": "reflektere over kven som har makt, og kva eit demokrati er, og utvikle forslag til korleis ein kan vere med på å påverke avgjerder",
+  "en": "reflect on which forces in society have power and what a democracy is, and develop proposals for how one can have an impact on decisions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14677"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 4,
+  "kode": "KM14678",
+  "nb": "samtale om nokre viktige offentlege institusjonar og verksemder i Noreg og reflektere over kva dei betyr i livet til menneska",
+  "en": "talk about some important public institutions and their functions in Norway, and reflect on how they affect people’s lives",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14678"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14681",
+  "nb": "gjennomføre ei samfunnsfagleg undersøking og presentere resultata ved hjelp av eigna digitale verktøy",
+  "en": "conduct social-studies-related research and present the findings using one’s own digital tools",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14681"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14687",
+  "nb": "presentere ei aktuell nyheitssak og reflektere over forskjellar mellom fakta, meiningar og kommersiell bodskap i mediebiletet",
+  "en": "present a news item on current affairs and reflect on the differences between facts, opinions and the commercial message in the media picture",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14687"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14686",
+  "nb": "samanlikne korleis ulike kjelder kan gi ulik informasjon om same tema, og reflektere over korleis kjelder kan brukast til å påverke og fremje bestemte syn",
+  "en": "compare how various sources can provide different information on the same topic, and reflect on how sources can be used to affect and promote particular views",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14686"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14685",
+  "nb": "utforske korleis menneske i fortida livnærte seg, og samtale om korleis sentrale endringar i livsgrunnlag og teknologi har påverka og påverkar demografi, levekår og busetjingsmønster",
+  "en": "explore how people in the past provided for themselves, and discuss how key changes in livelihoods and technology have had impact on and continue to have impact on demographics, living conditions and settlement patterns",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14685"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14688",
+  "nb": "beskrive geografiske hovudtrekk i ulike delar av verda og reflektere over korleis desse hovudtrekka påverkar menneska som bur der",
+  "en": "describe geographic features in different parts of the world and reflect on how these features have impact on the lives of the people who live there",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14688"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14682",
+  "nb": "reflektere over kvifor konfliktar oppstår, og drøfte korleis den enkelte og samfunn kan handtere konfliktar",
+  "en": "reflect on why conflicts arise, and discuss how both the individual and society can deal with conflicts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14682"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14683",
+  "nb": "utforske ulike sider ved mangfald i Noreg og reflektere over menneska sine behov for å vere seg sjølve og for å høyre til i fellesskap",
+  "en": "explore various aspects of diversity in Norway and reflect on people’s need to be themselves and to belong to a community",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14683"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14684",
+  "nb": "drøfte kva likeverd og likestilling har å seie for eit demokrati, og utvikle forslag til korleis ein kan motarbeide fordommar, rasisme og diskriminering",
+  "en": "discuss what equality and equal opportunities mean for a democracy, and develop proposals for how to counteract prejudice, racism and discrimination",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14684"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14689",
+  "nb": "samtale om menneske- og likeverd og samanlikne korleis menneskerettane er blitt og blir varetekne i ulike land",
+  "en": "talk about human values and equality, and compare how human rights have been established and implemented in various countries",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14689"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14690",
+  "nb": "utforske hovudtrekk ved historia til samane og dei nasjonale minoritetane i Noreg og presentere rettar samane og dei nasjonale minoritetane i Noreg har i dag",
+  "en": "explore the main features in the history of the Sami people and the national minorities of Norway and make a presentation about the rights the Sami and national minorities of Norway have today",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14690"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14691",
+  "nb": "reflektere over korleis kommersiell påverknad kan verke inn på forbruk, personleg økonomi og sjølvbilete",
+  "en": "reflect on how commercialism can influence consumption, personal finances and one’s self-image",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14691"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14692",
+  "nb": "utforske og presentere ei global utfordring ved berekraftig utvikling og kva for konsekvensar ho kan ha, og utvikle forslag til korleis ein kan vere med på å motverke utfordringa og korleis samarbeid mellom land kan bidra",
+  "en": "explore and present a global challenge that is related to sustainability and what consequences this might have, and develop a proposal relating to how one can contribute to counteracting such challenges and how collaboration between countries may help",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14692"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14693",
+  "nb": "reflektere over korleis ein sjølv og andre deltek i digital samhandling, og drøfte kva det vil seie å bruke dømmekraft sett i lys av reglar, normer og grenser",
+  "en": "reflect on how one and other people participate in digital interaction, and discuss what it means to use one’s judgment in the light of rules, norms and boundaries",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14693"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14694",
+  "nb": "reflektere over variasjonar i identitetar, seksuell orientering og kjønnsuttrykk, og eigne og andre sine grenser knytte til kjensler, kropp, kjønn og seksualitet og drøfte kva ein kan gjere om grenser blir brotne",
+  "en": "reflect on variations in identity, sexual orientation and gender expression, and one’s own and others’ boundaries in connection with emotions, the body, gender and sexuality and discuss what one can do if those boundaries are violated",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14694"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14695",
+  "nb": "beskrive sentrale hendingar som har ført fram til det demokratiet vi har i Noreg i dag og samanlikne korleis enkeltmenneske har høve til å påverke i ulike styresett",
+  "en": "describe key events that have led to the democracy we have in Norway today and compare how individuals have the power to influence different systems of government",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14695"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14696",
+  "nb": "gi døme på kva lover, reglar og normer er og kva slags funksjon dei har i samfunn, og reflektere over konsekvensar av å bryte dei",
+  "en": "give examples of laws, rules and norms and how they function in society, and reflect on the consequences of any breaches of them",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14696"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 7,
+  "kode": "KM14697",
+  "nb": "reflektere over korleis møte mellom menneske har bidrege til å endre korleis menneske har tenkt og ulike samfunn har vore organiserte",
+  "en": "reflect on how encounters between people have contributed to changing the way people think, and also how different societies have been organised",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14697"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14698",
+  "nb": "bruke samfunnsfaglege metodar og digitale ressursar i eigne undersøkingar, presentere funn ved bruk av digitale verktøy og drøfte kor gyldige og relevante funna er",
+  "en": "use social studies methods and digital resources in one’s own research, and present the findings using digital tools and discussing the validity and relevancy of the findings",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14698"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14701",
+  "nb": "vurdere på kva måtar ulike kjelder gir informasjon om eit samfunnsfagleg tema, og reflektere over korleis algoritmar, einsretta kjelder eller mangel på kjelder kan prege forståinga vår",
+  "en": "assess the ways in which different sources provide information on social-studies-related topics, and reflect on how algorithms, biased sources or the lack of sources can affect our understanding",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14701"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14700",
+  "nb": "drøfte korleis framstillingar av fortida, hendingar og grupper har påverka og påverkar haldningane og handlingane til folk",
+  "en": "discuss how the way we see the past, events and groups has had impact on and continues to impact people's actions and attitudes",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14700"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14702",
+  "nb": "utforske korleis teknologi har vore og framleis er ein endringsfaktor, og drøfte innverknaden teknologien har hatt og har på enkeltmenneske, samfunn og natur",
+  "en": "explore how technology has been and continues to be a factor for change, and discuss the influence technology has had and has on the individual, society and nature",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14702"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14714",
+  "nb": "reflektere over korleis menneske har kjempa og kjempar for endringar i samfunnet og samstundes har vore og er påverka av geografiske forhold og historisk kontekst",
+  "en": "reflect on how people have fought and continue to fight for change in society while also having been and still being influenced by geographic conditions and historical contexts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14714"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14704",
+  "nb": "samanlikne korleis politiske, geografiske og historiske forhold påverkar levekår, busetjingsmønster og demografi i forskjellige delar av verda i dag",
+  "en": "compare how political, geographic and historical events affect living conditions, settlement patterns and demographics in different parts of the world today",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14704"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14699",
+  "nb": "gjere greie for årsaker til og konsekvensar av sentrale historiske og notidige konfliktar og reflektere over om endringar av nokre føresetnader kunne ha hindra konfliktane",
+  "en": "explain the causes and consequences of key historical and contemporary conflicts, and reflect on whether changes in certain conditions could have prevented the conflicts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14699"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14705",
+  "nb": "gjere greie for årsaker til og konsekvensar av terrorhandlingar og folkemord, som holocaust, og reflektere over korleis ekstreme haldningar og ekstreme handlingar kan førebyggjast",
+  "en": "explain the causes and consequences of terrorism and genocide, such as the Holocaust, and reflect on how extremist attitudes and extremist acts can be prevented",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14705"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14703",
+  "nb": "utforske og beskrive korleis menneske- og urfolksrettar og andre internasjonale avtalar og samarbeid har betydning for nasjonal politikk, livet til menneske, likestilling og likeverd",
+  "en": "explore and describe how human rights and the rights of indigenous peoples, as well as other international treaties and international cooperation, are important for national policies, people’s lives, equal rights and equality",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14703"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14706",
+  "nb": "gjere greie for fornorsking av samane og dei nasjonale minoritetane og uretten dei har vore utsette for, og reflektere over kva konsekvensar det har hatt og har på individ- og samfunnsnivå",
+  "en": "explain the policy of Norwegianisation of the Sami people and national minorities, and the injustices they have been subjected to, and thus reflect on what consequences this has had and has on both the individual and societal level",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14706"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14708",
+  "nb": "beskrive ulike dimensjonar ved berekraftig utvikling og korleis dei påverkar kvarandre, og presentere tiltak for meir berekraftige samfunn",
+  "en": "describe different dimensions of sustainability and how they have an impact on each other, and present measures that can be taken to make societies more sustainable",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14708"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14710",
+  "nb": "vurdere korleis arbeid, inntekt og forbruk kan påverke personleg økonomi, levestandard og livskvalitet",
+  "en": "assess how work, income and consumption can have an impact on one’s personal finances, standard of living and quality of life",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14710"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14707",
+  "nb": "reflektere over likskapar og ulikskapar i identitetar, levesett og kulturuttrykk og drøfte moglegheiter og utfordringar ved mangfald",
+  "en": "reflect on equalities and inequalities in identities, ways of life and cultural expressions, and discuss the opportunities and challenges related to diversity",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14707"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14709",
+  "nb": "utforske og reflektere over eigne digitale spor og høvet til å få sletta spora og å verne om retten ein sjølv og andre har til privatliv, personvern og opphavsrett",
+  "en": "explore and reflect on one’s own digital footprint and the possibility of deleting one’s digital trail and the value of one’s own and others’ right to privacy, data protection and copyright",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14709"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14711",
+  "nb": "reflektere over korleis identitet, sjølvbilete og eigne grenser blir utvikla og utfordra i ulike fellesskap, og presentere forslag til korleis ein kan handtere påverknad og uønskte hendingar",
+  "en": "reflect on how identity, self-image and one’s own boundaries are developed and challenged in different environments, and present proposals for how one might deal with influence and unwanted events",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14711"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14712",
+  "nb": "reflektere over kva for aktørar som har makt i samfunnet i dag, og korleis desse grunngir standpunkta sine",
+  "en": "reflect on which forces in society have power today, and how they justify their positions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14712"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14713",
+  "nb": "utforske ulike plattformer for digital samhandling og reflektere over korleis digital deltaking og samhandling påverkar forma på og innhaldet i samfunnsdebatten",
+  "en": "explore different platforms for digital interaction and reflect on how digital participation and digital interaction affect the form and content of societal debates",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14713"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14715",
+  "nb": "beskrive sentrale lover, reglar og normer og drøfte kva konsekvensar brot på desse kan ha for den enkelte og for samfunnet på kort og lang sikt",
+  "en": "describe important laws, rules and norms and discuss the consequences any violation of these may have for the individual and for society, in both the short and long run",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14715"
+ },
+ {
+  "plan": "SAF01-05",
+  "subject": "social-studies",
+  "area": "Social Studies",
+  "trinn": 10,
+  "kode": "KM14716",
+  "nb": "beskrive trekk ved det politiske systemet og velferdssamfunnet i Noreg i dag og reflektere over sentrale utfordringar",
+  "en": "describe features of the political system and welfare state in Norway today and reflect on the key challenges",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14716"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14139",
+  "nb": "lytte til og samtale om skjønnlitteratur og sakprosa på bokmål og nynorsk",
+  "en": "listen to and talk about fiction and factual prose in both \"bokmål\" and \"nynorsk\"",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14139"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14151",
+  "nb": "låne og lese bøker fra biblioteket",
+  "en": "borrow and read books from the library",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14151"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14141",
+  "nb": "uttrykke tekstopplevelser gjennom lek, sang, tegning, skriving og andre kreative aktiviteter",
+  "en": "express perceptions of texts through play, singing, drawing, writing and other creative activities",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14141"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14149",
+  "nb": "samtale om og beskrive hvordan ord vi bruker, kan påvirke andre",
+  "en": "talk about and describe how the words we use can affect others",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14149"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14145",
+  "nb": "leke med rim og rytme og lytte ut språklyder og stavelser i ord",
+  "en": "play with rhyme and rhythm and listen to identify the various speech sounds and syllables in words",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14145"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14146",
+  "nb": "trekke bokstavlyder sammen til ord under lesing og skriving",
+  "en": "combine letter sounds into words when reading and writing",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14146"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14140",
+  "nb": "lese med sammenheng og forståelse på papir og digitalt og bruke enkle strategier for leseforståelse",
+  "en": "read with coherence and comprehension on paper and on screen and use simple strategies for reading comprehension",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14140"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14142",
+  "nb": "lytte, ta ordet etter tur og begrunne egne meninger i samtaler",
+  "en": "listen, speak in turn and give grounds for one’s own opinions in conversations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14142"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14143",
+  "nb": "beskrive og fortelle muntlig og skriftlig",
+  "en": "describe and tell orally and in writing",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14143"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14147",
+  "nb": "skrive tekster for hånd og med tastatur",
+  "en": "write texts using pen and paper and using a keyboard",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14147"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14144",
+  "nb": "bruke store og små bokstaver, punktum, spørsmålstegn og utropstegn i tekster og samtale om egne og andres tekster",
+  "en": "use upper-case and lower-case letters, periods, question marks and exclamation marks in texts and in conversations about one’s own and others’ texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14144"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14152",
+  "nb": "lage tekster som kombinerer skrift med bilder",
+  "en": "create texts that combine text and pictures",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14152"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14148",
+  "nb": "utforske og samtale om oppbygningen av og betydningen til ord og uttrykk",
+  "en": "explore and talk about the structure and meaning of words and expressions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14148"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 2,
+  "kode": "KM14150",
+  "nb": "utforske eget talespråk og samtale om forskjeller og likheter mellom talespråk og skriftspråk",
+  "en": "explore one’s own spoken language and talk about differences and similarities between spoken language and written language",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14150"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14153",
+  "nb": "lese og lytte til fortellinger, eventyr, sangtekster, faktabøker og andre tekster på bokmål og nynorsk og i oversettelse fra samiske og andre språk, og samtale om hva tekstene betyr for eleven",
+  "en": "read and listen to stories, fairy tales, lyrics, factual books and other texts in \"bokmål\" and \"nynorsk\" and in translation from Sami and other languages, and talk about what the texts mean to him or her",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14153"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14166",
+  "nb": "velge bøker fra bibliotek ut fra egne interesser og leseferdigheter",
+  "en": "choose books from the library based on one’s own interests and reading skills",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14166"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14164",
+  "nb": "lese tekster med flyt og forståelse og bruke lesestrategier målrettet for å lære",
+  "en": "read texts with fluency and comprehension and use reading strategies focused on learning",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14164"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14158",
+  "nb": "utforske og formidle tekster gjennom samtale, skriving, lek, bevegelse og andre kreative uttrykk",
+  "en": "explore and present texts through conversation, writing, play, movement and other creative expressions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14158"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14163",
+  "nb": "samtale om forskjellen mellom meninger og fakta i tekster",
+  "en": "talk about the difference between opinions and facts in texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14163"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14154",
+  "nb": "holde muntlige presentasjoner med og uten digitale ressurser",
+  "en": "give oral presentations with and without digital resources",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14154"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14155",
+  "nb": "kombinere ulike uttrykksformer i sammensatte tekster",
+  "en": "combine various forms of expression in multimedia texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14155"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14167",
+  "nb": "følge opp innspill fra andre i faglige samtaler og stille oppklarende og utdypende spørsmål",
+  "en": "follow up input from others in dialogues on subject-related matter and ask questions to clarify and elaborate",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14167"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14162",
+  "nb": "beskrive, fortelle og argumentere muntlig og skriftlig og bruke språket på kreative måter",
+  "en": "describe, relate and reason both orally and in writing and use the language creatively",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14162"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14156",
+  "nb": "skrive tekster med funksjonell håndskrift og med tastatur",
+  "en": "write texts with functional handwriting and with the use of a keyboard",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14156"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14157",
+  "nb": "bruke komma og andre skilletegn i tekster",
+  "en": "use commas and other punctuation marks in texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14157"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14159",
+  "nb": "bruke fagspråk om setningsoppbygning og bøying av verb, substantiv og adjektiv i samtaler om språk og om egne og andres tekster",
+  "en": "use grammatical terms about syntax, verb conjugation and declension of nouns and adjectives in conversations about language and one’s own and others’ texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14159"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14160",
+  "nb": "reflektere over hvordan språkbruken vår påvirker andre, og hvordan vi tilpasser og endrer språket i ulike situasjoner",
+  "en": "reflect on how our use of language affects others and how we adapt and change our language to different situations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14160"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14168",
+  "nb": "sammenligne ord og uttrykk i norsk og andre språk",
+  "en": "compare words and expressions in Norwegian and other languages",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14168"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14165",
+  "nb": "utforske og samtale om språklig variasjon og mangfold i nærmiljøet",
+  "en": "explore and talk about linguistic variation and diversity in the local environment",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14165"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 4,
+  "kode": "KM14161",
+  "nb": "utforske forskjeller og likheter mellom skriving på hovedmål og sidemål",
+  "en": "explore the differences and similarities between written Norwegian first-choice language and written Norwegian second-choice language",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14161"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14176",
+  "nb": "lese lyrikk, noveller, fagtekster og annen skjønnlitteratur og sakprosa på bokmål og nynorsk, svensk og dansk og samtale om formål, form og innhold",
+  "en": "read poetry, short stories, factual texts and fiction in \"bokmål\" and \"nynorsk\", Swedish and Danish and talk about purpose, form and content",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14176"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14184",
+  "nb": "lese samiske tekster på norsk og samtale om verdiene som kommer til uttrykk, og hvordan stedsnavn og personnavn som inneholder de samiske bokstavene, uttales",
+  "en": "read Sami texts in Norwegian and talk about the values that are expressed and how place names and personal names that contain Sami letters are pronounced",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14184"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14173",
+  "nb": "orientere seg i faglige kilder på bibliotek og digitalt, vurdere hvor pålitelige kildene er, og vise til kilder i egne tekster",
+  "en": "find information in subject-related sources in libraries and digital media, assess the reliability of the sources and refer to the sources in one’s own texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14173"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14185",
+  "nb": "bruke lesestrategier tilpasset formålet med lesingen",
+  "en": "use reading strategies adapted to the purpose of the reading",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14185"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14180",
+  "nb": "skrive tekster med funksjonell håndskrift og med flyt på tastatur",
+  "en": "write texts with functional handwriting and with fluid keyboard typing",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14180"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14169",
+  "nb": "lytte til og videreutvikle innspill fra andre og begrunne egne standpunkter i samtaler",
+  "en": "listen to and develop input from others and justify one’s own points of views in conversations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14169"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14182",
+  "nb": "reflektere etisk over hvordan eleven framstiller seg selv og andre i digitale medier",
+  "en": "reflect ethically on how he or she presents him or herself and others in digital media",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14182"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14170",
+  "nb": "presentere faglige emner muntlig med og uten digitale ressurser",
+  "en": "present subject-related topics orally with and without digital resources",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14170"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14171",
+  "nb": "leke med språket og prøve ut ulike virkemidler og framstillingsmåter i muntlige og skriftlige tekster",
+  "en": "play with language and experiment with various language features, literary devices and types of presentation in oral and written texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14171"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14181",
+  "nb": "beskrive, fortelle, argumentere og reflektere i ulike muntlige og skriftlige sjangre og for ulike formål",
+  "en": "describe, relate, reason and reflect in different oral and written genres and for different purposes",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14181"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14172",
+  "nb": "skrive tekster med tydelig struktur og mestre sentrale regler for rettskriving, ordbøying og tegnsetting",
+  "en": "write texts with a clear structure and master important rules for spelling, word inflection and punctuation",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14172"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14174",
+  "nb": "gi tilbakemelding på medelevers tekster ut fra kriterier og bruke tilbakemeldinger i bearbeiding av egne tekster",
+  "en": "provide feedback on the texts of fellow pupils based on criteria and use the feedback to revise one’s own texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14174"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14177",
+  "nb": "bruke fagspråk og kunnskap om ordklasser og setningsoppbygning i samtale om egne og andres tekster",
+  "en": "use subject-related terminology and knowledge about word classes and syntax in conversations about one’s own and others’ texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14177"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14183",
+  "nb": "utforske og beskrive samspillet mellom skrift, bilder og andre uttrykksformer og lage egne sammensatte tekster",
+  "en": "explore and describe the interaction between writing, pictures and other forms of expression and create one’s own multimedia texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14183"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14175",
+  "nb": "prøve ut skriving av tekster på sidemål",
+  "en": "experiment with writing texts in the second-choice language",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14175"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14178",
+  "nb": "sammenligne talespråk i nærmiljøet med andre talespråkvarianter i Norge og med nabospråk",
+  "en": "compare the spoken language in the local environment with other varieties of spoken language in Norway and with neighbouring languages",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14178"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 7,
+  "kode": "KM14179",
+  "nb": "utforske og reflektere over sammenhengen mellom språk og identitet",
+  "en": "explore and reflect on the relationship between language and identity",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14179"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14193",
+  "nb": "lese skjønnlitteratur og sakprosa på bokmål og nynorsk og i oversettelse fra samiske og andre språk, og reflektere over tekstenes formål, innhold, sjangertrekk og virkemidler",
+  "en": "read fiction and factual prose in \"bokmål\" and \"nynorsk\" and translations from Sami and other languages, and reflect on the purpose, content, genre features, language features and literary devices in the texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14193"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14197",
+  "nb": "sammenligne og tolke romaner, noveller, lyrikk og andre tekster ut fra historisk kontekst og egen samtid",
+  "en": "compare and interpret novels, short stories, poetry and other texts based on historical context and their contemporary period",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14197"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14201",
+  "nb": "beskrive og reflektere over egen bruk av lesestrategier i lesing av skjønnlitteratur og sakprosa",
+  "en": "describe and reflect on one’s own use of reading strategies when reading fiction and factual texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14201"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14200",
+  "nb": "lytte til og lese tekster på svensk og dansk og gjøre rede for innhold og språklige trekk",
+  "en": "listen to and read texts in Swedish and Danish and explain their content and language features",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14200"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14198",
+  "nb": "utforske og reflektere over hvordan tekster framstiller unges livssituasjon",
+  "en": "investigate and reflect on how texts present the life situation of young people",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14198"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14192",
+  "nb": "gjenkjenne og bruke språklige virkemidler og retoriske appellformer",
+  "en": "recognise and use language features, literary devices and rhetorical language",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14192"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14190",
+  "nb": "bruke kilder på en kritisk måte, markere sitater og vise til kilder på en etterrettelig måte i egne tekster",
+  "en": "use sources critically, highlight quotes and refer to sources in a verifiable manner in one’s own texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14190"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14199",
+  "nb": "utforske og vurdere hvordan digitale medier påvirker og endrer språk og kommunikasjon",
+  "en": "explore and assess how digital media affect and change language and communication",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14199"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14186",
+  "nb": "bruke fagspråk og argumentere saklig i diskusjoner, samtaler, muntlige presentasjoner og skriftlige framstillinger om norskfaglige og tverrfaglige temaer",
+  "en": "use appropriate terminology and argue in a reasoned way in discussions, conversations, oral presentations and written texts on interdisciplinary and subject-related topics",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14186"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14188",
+  "nb": "informere, fortelle, argumentere og reflektere i ulike muntlige og skriftlige sjangre og for ulike formål tilpasset mottaker og medium",
+  "en": "inform, relate, reason and reflect in various oral and written genres and for different purposes and adapted to the receiver and the medium",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14188"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14191",
+  "nb": "skrive tekster med funksjonell tekstbinding og riktig tegnsetting og mestre rettskriving og ordbøying på hovedmål og sidemål",
+  "en": "write texts with functional coherence and correct punctuation and master spelling and word inflection in the written first-choice and second-choice languages",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14191"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14194",
+  "nb": "bruke fagspråk og kunnskap om grammatikk, tekststruktur og sjanger i samtale om og bearbeiding av tekster",
+  "en": "use subject-related terminology and knowledge about grammar, text structure and genres in conversations on and revisions of texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14194"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14187",
+  "nb": "uttrykke seg i ulike sjangre og eksperimentere med sjangre på kreative måter",
+  "en": "express him or herself in different genres and experiment with genres in a creative way",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14187"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14189",
+  "nb": "lage sammensatte tekster og begrunne valg av uttrykksformer",
+  "en": "create multimedia texts and justify the choice of forms of expression",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14189"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14195",
+  "nb": "forklare den historiske bakgrunnen for bokmål og nynorsk og reflektere over statusen til de offisielle språkene i Norge i dag",
+  "en": "explain the historical background of \"bokmål\" and \"nynorsk\" and reflect on the status of the official languages in Norway today",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14195"
+ },
+ {
+  "plan": "NOR01-08",
+  "subject": "ela",
+  "area": "Norwegian",
+  "trinn": 10,
+  "kode": "KM14196",
+  "nb": "utforske språklig variasjon og mangfold i Norge og reflektere over holdninger til ulike språk og talespråkvarianter",
+  "en": "explore linguistic variations and diversity in Norway and reflect on attitudes to different languages and language variants",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM14196"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13338",
+  "nb": "bruke digitale ressurser for å oppleve språket via autentiske språkmodeller og samtalepartnere",
+  "en": "use digital aids to experience the language through authentic language models and interlocutors",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13338"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13329",
+  "nb": "lytte til og gjenkjenne språklyder og stavelser i ord",
+  "en": "listen to and recognise phonemes and syllables in words",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13329"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13330",
+  "nb": "koble språklyder til bokstaver og stavemønstre og trekke bokstavlyder sammen til ord",
+  "en": "associate phonemes with letters and spelling patterns and combine letter sounds into words",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13330"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13331",
+  "nb": "lytte til og utforske det engelske alfabetet og uttalemønstre i lek- og sangaktiviteter",
+  "en": "listen to and explore the English alphabet and pronunciation patterns through play and singing",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13331"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13334",
+  "nb": "oppdage høyfrekvente ord og fraser i ulike type tekster",
+  "en": "find high frequency words and phrases in different types of texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13334"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13332",
+  "nb": "stille og svare på enkle spørsmål, følge enkle instruksjoner og bruke noen høflighetsuttrykk",
+  "en": "ask and answer simple questions, follow simple instructions and use some polite expressions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13332"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13333",
+  "nb": "delta i innøvde dialoger og spontane samtaler om egne behov og følelser, dagligliv og interesser",
+  "en": "participate in rehearsed dialogues and spontaneous conversations about one’s own needs and feelings, daily life and interests",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13333"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13335",
+  "nb": "oppdage ord som er felles for engelsk og andre språk eleven kjenner til",
+  "en": "find words that are common to English and other languages with which the pupil is familiar",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13335"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13336",
+  "nb": "lytte til, lese og samtale om innhold i enkle tekster, inkludert billedbøker",
+  "en": "listen to, read and talk about the content of simple texts, including picture books",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13336"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13339",
+  "nb": "lese og eksperimentere med å skrive kjente ord, fraser og enkle setninger",
+  "en": "read and experiment with writing familiar words, phrases and simple sentences",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13339"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 2,
+  "kode": "KM13337",
+  "nb": "tilegne seg ord og kulturell kunnskap gjennom engelskspråklig barnelitteratur og barnekultur",
+  "en": "learn words and acquire cultural knowledge through English-language literature for children",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13337"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13343",
+  "nb": "utforske ulike ordbøker og hvordan de kan brukes i språklæring",
+  "en": "explore different dictionaries and how they can be used in language learning",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13343"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13351",
+  "nb": "bruke digitale ressurser til å utforske språket og samhandle med andre",
+  "en": "use digital resources to explore the language and interact with others",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13351"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13340",
+  "nb": "utforske og bruke det engelske alfabetet og uttalemønstre i varierte lek- sang- og språklæringsaktiviteter",
+  "en": "explore and use the English alphabet and pronunciation patterns in a variety of playing, singing and language-learning activities",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13340"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13354",
+  "nb": "lytte til og forstå ord og uttrykk i tilpassede tekster",
+  "en": "listen to and understand words and expressions in adapted texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13354"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13341",
+  "nb": "bruke noen vanlige småord, høflighetsuttrykk og enkle fraser og setninger for å få hjelp til å forstå og bli forstått",
+  "en": "use a number of common small words, polite expressions and simple phrases and sentences to obtain help to understand and be understood",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13341"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13342",
+  "nb": "delta i samtaler om egne og andres behov, følelser, dagligliv og interesser og bruke samtaleregler",
+  "en": "participate in conversations on one’s own and others’ needs, feelings, daily life and interests and use conversation rules",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13342"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13346",
+  "nb": "oppdage og leke med ord og uttrykk som er felles for engelsk og andre språk eleven kjenner til",
+  "en": "discover and play with words and expressions that are common to both English and other languages with which the pupil is familiar",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13346"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13344",
+  "nb": "identifisere ordklasser i tilpassede tekster",
+  "en": "identify word classes in adapted texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13344"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13345",
+  "nb": "følge enkle regler for rettskriving og setningsstruktur",
+  "en": "follow simple rules for spelling and syntax",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13345"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13347",
+  "nb": "lese og forstå tekster med lydrette ord og kjente og ukjente ordbilder",
+  "en": "read and understand texts with phonetic words and familiar and unfamiliar word images",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13347"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13348",
+  "nb": "lese og forstå betydningen av kjente og ukjente ord, fraser og setninger ut fra sammenhengen i selvvalgte tekster",
+  "en": "read and understand the meaning of familiar and unfamiliar words, phrases and sentences based on the context in self-chosen texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13348"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13349",
+  "nb": "lese og samtale om innhold i ulike typer tekster, inkludert billedbøker",
+  "en": "read and talk about the content of various types of texts, including picture books",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13349"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13352",
+  "nb": "skrive enkle tekster som uttrykker tanker og meninger",
+  "en": "write simple texts that express thoughts and opinions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13352"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13353",
+  "nb": "samtale om noen sider ved ulike levemåter, tradisjoner og skikker i den engelskspråklige verden og i Norge",
+  "en": "talk about some aspects of different ways of living, traditions and customs in the English-speaking world and in Norway",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13353"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 4,
+  "kode": "KM13350",
+  "nb": "tilegne seg ord, fraser og kulturell kunnskap gjennom engelskspråklig litteratur og barnekultur",
+  "en": "learn words and phrases and acquire cultural knowledge through English-language literature",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13350"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13359",
+  "nb": "bruke enkle strategier i språklæring, tekstskaping og kommunikasjon",
+  "en": "use simple strategies for language learning, text creation and communication",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13359"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13364",
+  "nb": "bruke digitale ressurser og ulike ordbøker i språklæring, tekstskaping og samhandling",
+  "en": "use digital resources and different dictionaries in language learning, text creation and interaction",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13364"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13355",
+  "nb": "utforske og bruke uttalemønstre og ord og uttrykk i lek, sang og rollespill",
+  "en": "explore and use pronunciation patterns and words and expressions in play, singing and role playing",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13355"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13356",
+  "nb": "lytte til og forstå ord og uttrykk i tilpassede og autentiske tekster",
+  "en": "listen to and understand words and expressions in adapted and authentic texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13356"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13357",
+  "nb": "uttrykke seg forståelig med et variert ordforråd og høflighetsuttrykk tilpasset mottaker og situasjon",
+  "en": "express oneself in an understandable way with a varied vocabulary and polite expressions adapted to the receiver and situation",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13357"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13358",
+  "nb": "innlede, holde i gang og avslutte samtaler om egne interesser og aktuelle emner",
+  "en": "initiate, maintain and conclude conversations about one's own interests and current topics",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13358"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13361",
+  "nb": "utforske og samtale om noen språklige likheter mellom engelsk og andre språk eleven kjenner til, og bruke dette i egen språklæring",
+  "en": "explore and talk about some linguistic similarities between English and other languages that the pupil is familiar with and use this in their language learning",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13361"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13370",
+  "nb": "identifisere setningsledd i ulike typer setninger og bruke kunnskap om bøying av verb, substantiv og adjektiv i arbeid med egne muntlige og skriftlige tekster",
+  "en": "identify sentence elements in various types of sentences and use knowledge of verb conjugation and declension of nouns and adjectives in working on own oral and written texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13370"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13360",
+  "nb": "følge regler for rettskriving, ordbøying og setningsstruktur",
+  "en": "follow rules for spelling, word inflection and syntax",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13360"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13362",
+  "nb": "lese og videreformidle innhold fra ulike typer tekster, inkludert selvvalgte tekster",
+  "en": "read and present content from various types of texts, including self-chosen texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13362"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13363",
+  "nb": "lese og lytte til engelskspråklige sakprosatekster og engelskspråklig barne- og ungdomslitteratur og skrive og samtale om innholdet",
+  "en": "read and listen to English-language factual texts and literature for children and young people and write and talk about the content",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13363"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13365",
+  "nb": "samtale om ulike kilders pålitelighet, og velge kilder til eget bruk",
+  "en": "talk about the reliability of various sources and choose sources for one's own use",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13365"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13366",
+  "nb": "skrive sammenhengende tekster, inkludert sammensatte, som gjenforteller, forteller, spør og uttrykker meninger og interesser, tilpasset mottaker",
+  "en": "write cohesive texts, including multimedia texts, that retell, tell, inquire about and express opinions and interests adapted to the recipient",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13366"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13367",
+  "nb": "bearbeide egne tekster ut fra tilbakemeldinger",
+  "en": "revise one's own texts based on feedback",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13367"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13368",
+  "nb": "reflektere over og samtale om rollen engelsk har i eget liv",
+  "en": "reflect on and talk about the role played by English in their own lives",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13368"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 7,
+  "kode": "KM13369",
+  "nb": "utforske levemåter og tradisjoner i ulike samfunn i den engelskspråklige verden og i Norge og reflektere over identitet og kulturell tilhørighet",
+  "en": "investigate ways of living and traditions in different societies in the English-speaking world and in Norway and reflect on identity and cultural belonging",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13369"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13374",
+  "nb": "bruke varierte strategier i språklæring, tekstskaping og kommunikasjon",
+  "en": "use a variety of strategies for language learning, text creation and communication",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13374"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13380",
+  "nb": "bruke ulike digitale ressurser og andre hjelpemidler i språklæring, tekstskaping og samhandling",
+  "en": "use different digital resources and other aids in language learning, text creation and interaction",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13380"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13388",
+  "nb": "bruke sentrale mønstre for uttale i kommunikasjon",
+  "en": "use key patterns of pronunciation in communication",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13388"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13371",
+  "nb": "lytte til og forstå ord og uttrykk i varianter av engelsk",
+  "en": "listen to and understand words and expressions in variants of English",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13371"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13372",
+  "nb": "uttrykke seg med flyt og sammenheng med et variert ordforråd og idiomatiske uttrykk tilpasset formål, mottaker og situasjon",
+  "en": "express oneself with fluency and coherence with a varied vocabulary and idiomatic expressions adapted to the purpose, recipient and situation",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13372"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13373",
+  "nb": "stille spørsmål og følge opp innspill i samtaler om ulike emner tilpasset ulike formål, mottakere og situasjoner",
+  "en": "ask questions and follow up input when talking about various topics adapted to different purposes, recipients and situations",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13373"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13376",
+  "nb": "utforske og beskrive noen språklige likheter og ulikheter mellom engelsk og andre språk eleven kjenner til, og bruke dette i egen språklæring",
+  "en": "explore and describe some linguistic similarities and differences between English and other languages the pupil is familiar with and use this in one's own language learning",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13376"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13389",
+  "nb": "bruke kunnskap om ordklasser og setningsstruktur i arbeid med egne muntlige og skriftlige tekster",
+  "en": "use knowledge of word classes and syntax in working on one's own oral and written texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13389"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13375",
+  "nb": "følge regler for rettskriving, ordbøying, setningsstruktur og tekststruktur",
+  "en": "follow rules for spelling, word inflection, syntax and text structure",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13375"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13377",
+  "nb": "lese, diskutere og videreformidle innhold fra ulike typer tekster, inkludert selvvalgte tekster",
+  "en": "read, discuss and present content from various types of texts, including self-chosen texts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13377"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13378",
+  "nb": "lese, tolke og reflektere over engelskspråklig skjønnlitteratur, inkludert ungdomslitteratur",
+  "en": "read, interpret and reflect on English-language fiction, including young people’s literature",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13378"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13379",
+  "nb": "lese sakprosatekster og vurdere hvor pålitelige kildene er",
+  "en": "read factual texts and assess the reliability of the sources",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13379"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13381",
+  "nb": "bruke kilder på en kritisk og etterrettelig måte",
+  "en": "use sources in a critical and accountable manner",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13381"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13382",
+  "nb": "skrive formelle og uformelle tekster, inkludert sammensatte, med struktur og sammenheng som beskriver, forteller og reflekterer tilpasset formål, mottaker og situasjon",
+  "en": "write formal and informal texts, including multimedia texts with structure and coherence that describe, narrate and reflect, and are adapted to the purpose, recipient and situation",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13382"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13383",
+  "nb": "bearbeide egne tekster ut fra tilbakemeldinger og kunnskap om språk",
+  "en": "revise one's own texts based on feedback and knowledge of the language",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13383"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13384",
+  "nb": "beskrive og reflektere over rollen engelsk har i Norge og i verden",
+  "en": "describe and reflect on the role played by the English language in Norway and the rest of the world",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13384"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13385",
+  "nb": "utforske og reflektere over situasjonen til urfolk i den engelskspråklige verden og i Norge",
+  "en": "explore and reflect on the situation of indigenous peoples in the English-speaking world and in Norway",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13385"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13387",
+  "nb": "utforske og beskrive levemåter, tenkesett, kommunikasjonsmønstre og mangfold i den engelskspråklige verden",
+  "en": "explore and describe ways of living, ways of thinking, communication patterns and diversity in the English-speaking world",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13387"
+ },
+ {
+  "plan": "ENG01-06",
+  "subject": "world-languages",
+  "area": "English",
+  "trinn": 10,
+  "kode": "KM13386",
+  "nb": "utforske og videreformidle innhold i engelskspråklige kulturelle uttrykksformer fra ulike medier knyttet til egne interesser",
+  "en": "explore and present the content of cultural forms of expression from various media in the English-speaking world that are related to one's own interests",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13386"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 8,
+  "kode": "KM12609",
+  "nb": "lytte til og forstå enkel og tydelig tale om personlige og dagligdagse emner",
+  "en": "listen to and understand simple and clear speech about personal and everyday topics",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12609"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 8,
+  "kode": "KM12610",
+  "nb": "delta i enkle samtaler i dagligdagse situasjoner om aktiviteter og kjente emner",
+  "en": "participate in simple conversations in everyday situations about activities and familiar topics",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12610"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 8,
+  "kode": "KM12611",
+  "nb": "muntlig fortelle om dagligliv og opplevelser og uttrykke meninger, også spontant",
+  "en": "talk about daily life and experiences and express opinions, also spontaneously",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12611"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 8,
+  "kode": "KM12612",
+  "nb": "lese og forstå tilpassede og enklere autentiske tekster om personlige og dagligdagse emner",
+  "en": "read and understand adapted and simple authentic texts about personal and everyday topics",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12612"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 8,
+  "kode": "KM12613",
+  "nb": "skrive enkle tekster om dagligliv og opplevelser som forteller, beskriver og informerer, med og uten hjelpemidler",
+  "en": "write simple texts about daily life and experiences that tell, describe and inform, with and without aids",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12613"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 8,
+  "kode": "KM12614",
+  "nb": "bruke enkle språklige strukturer, regler for uttale og rettskriving og språkets offisielle alfabet eller tegn for å kommunisere på en situasjonstilpasset måte",
+  "en": "use simple language structures, rules for pronunciation and spelling and the official alphabet or characters of the language to communicate in a way that is adapted to the situation",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12614"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 8,
+  "kode": "KM12615",
+  "nb": "bruke relevante lærings- og kommunikasjonsstrategier, digitale ressurser og erfaringer fra tidligere språklæring i læringsprosessen",
+  "en": "use relevant learning and communication strategies, digital resources and experiences from earlier language learning in the learning process",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12615"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 8,
+  "kode": "KM12616",
+  "nb": "utforske og beskrive levemåter, tradisjoner og geografi i områder der språket snakkes, og se sammenhenger med egen bakgrunn",
+  "en": "explore and describe ways of life, traditions and geography in areas where the language is spoken and identify connections to one’s own background",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12616"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 8,
+  "kode": "KM12617",
+  "nb": "utforske og beskrive kunstneriske og kulturelle uttrykk fra områder der språket snakkes, og gi uttrykk for egne opplevelser",
+  "en": "explore and describe artistic and cultural expressions from areas where the language is spoken and express one’s own experiences",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12617"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 9,
+  "kode": "KM12618",
+  "nb": "lytte til og forstå tydelig tale om personlige og faglig relevante emner og aktuelle saker",
+  "en": "listen to and understand clear speech about personal and subject-related topics and current affairs",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12618"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 9,
+  "kode": "KM12619",
+  "nb": "samtale i en rekke dagligdagse situasjoner om kjente og faglig relevante emner",
+  "en": "take part in conversations in a number of everyday situations about familiar and subject-relevant topics",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12619"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 9,
+  "kode": "KM12620",
+  "nb": "muntlig forklare faglig relevante emner, skildre opplevelser, hendelser og planer, og begrunne meninger, også spontant",
+  "en": "orally explain subject-relevant topics, describe experiences, events and plans and give reasons for opinions, also spontaneously",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12620"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 9,
+  "kode": "KM12621",
+  "nb": "lese og forstå ulike typer tekster, også autentiske, om personlige og faglig relevante emner og aktuelle saker",
+  "en": "read and understand different types of texts, including authentic ones, about personal and subject-relevant topics and current affairs",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12621"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 9,
+  "kode": "KM12622",
+  "nb": "skrive ulike teksttyper om personlige og faglig relevante emner, og uttrykke og begrunne egne meninger, med og uten hjelpemidler",
+  "en": "write different types of texts about personal and subject-relevant topics and express and justify one’s own opinions, with or without technical aids",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12622"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 9,
+  "kode": "KM12623",
+  "nb": "bruke grunnleggende språklige strukturer, regler for uttale og rettskriving og språkets offisielle alfabet eller tegn for å kommunisere på en situasjonstilpasset måte",
+  "en": "use basic language structures, rules for pronunciation and spelling and the official alphabet or characters of the language to communicate in a way that is adapted to the situation",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12623"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 9,
+  "kode": "KM12626",
+  "nb": "bruke relevante lærings- og kommunikasjonsstrategier, digitale ressurser og erfaringer fra tidligere språklæring i læringsprosessen",
+  "en": "use relevant learning and communication strategies, digital resources and experiences from previous language learning in the learning process",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12626"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 9,
+  "kode": "KM12624",
+  "nb": "utforske og gjøre rede for mangfold, samfunnsforhold og historiske hendelser i områder der språket snakkes, og se sammenhenger med egen bakgrunn",
+  "en": "explore and explain diversity, social conditions and historical events in areas where the language is spoken and identify connections to one’s own background",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12624"
+ },
+ {
+  "plan": "FSP01-04",
+  "subject": "world-languages",
+  "area": "Foreign Languages",
+  "trinn": 9,
+  "kode": "KM12625",
+  "nb": "utforske og presentere kunstneriske og kulturelle uttrykk fra områder der språket snakkes, og gjøre rede for egne opplevelser",
+  "en": "explore and present artistic and cultural expressions from areas where the language is spoken and explain one’s own experiences",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM12625"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 2,
+  "kode": "KM13515",
+  "nb": "bruke håndverksteknikker og håndverktøy i utforming av tre, leire og tekstil på en miljøbevisst og trygg måte",
+  "en": "use craft techniques and hand tools for shaping wood, clay, and textiles in a safe and environmentally conscious and safe manner",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13515"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 2,
+  "kode": "KM13516",
+  "nb": "undersøke egenskaper ved materialer og dele sanseerfaringer",
+  "en": "investigate material properties and share sensory experiences",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13516"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 2,
+  "kode": "KM13517",
+  "nb": "utforske ulike visuelle uttrykk og bygge videre på andres ideer i eget skapende arbeid",
+  "en": "explore different visual expressions and build on others’ ideas in their own creative work",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13517"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 2,
+  "kode": "KM13518",
+  "nb": "eksperimentere med form, farge, rytme og kontrast",
+  "en": "experiment with form, colours, rhythm and contrast",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13518"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 2,
+  "kode": "KM13519",
+  "nb": "studere form gjennom å tegne, male og fotografere",
+  "en": "study form through drawing, painting and photography",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13519"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 2,
+  "kode": "KM13522",
+  "nb": "skape fortellinger ved hjelp av digitale verktøy etter inspirasjon fra lokale og nasjonale kunstverk",
+  "en": "use digital tools to create stories inspired by local and national artworks",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13522"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 2,
+  "kode": "KM13523",
+  "nb": "forestille seg og beskrive framtiden gjennom tegning og modeller",
+  "en": "imagine and describe the future through drawings and models",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13523"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 2,
+  "kode": "KM13520",
+  "nb": "planlegge og konstruere i naturmaterialer etter inspirasjon fra samisk og lokal byggeskikk",
+  "en": "plan and make constructions in natural materials after being inspired by Sámi and local building customs",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13520"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 2,
+  "kode": "KM13521",
+  "nb": "vise fram og presentere objekter gjennom utstilling eller samling",
+  "en": "display and present objects through exhibitions or collections",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13521"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13524",
+  "nb": "bruke håndverktøy og sammenføyningsteknikker i tre, leire og tekstil på en miljøbevisst og trygg måte",
+  "en": "use hand tools and joining techniques for wood, clay, and textiles in an environmentally conscious and safe manner",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13524"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13527",
+  "nb": "prøve ut ulike ideer og muligheter i gjenbruksmaterialer og formidle til andre hvordan man i egen hverdag kan bidra til å ivareta natur og miljø",
+  "en": "explore ideas and possibilities using reused materials and communicate to others how everyday practices can help care for nature and the environment",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13527"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13525",
+  "nb": "gjennomføre kunst- og designprosesser ved å søke inspirasjon, utforske muligheter, gjøre valg og lage egne produkter",
+  "en": "apply art and design processes by seeking inspiration, exploring possibilities, making choices, and creating products",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13525"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13526",
+  "nb": "undersøke hvordan tradisjonshåndverk, inkludert samisk håndverk, utnytter naturmaterialers egenskaper, og bruke erfaringer til å lage enkle bruksgjenstander",
+  "en": "investigate how traditional crafts, including Sámi crafts, utilise the properties of natural materials and use this knowledge to create simple functional objects",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13526"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13528",
+  "nb": "samtale om bruk, funksjon og materialvalg i ulike bygninger og lage skisser med forslag til ny arkitektur",
+  "en": "discuss the use, function and choice of materials in different buildings and create sketches proposing new architecture",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13528"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13529",
+  "nb": "tolke former og symboler fra ulike kulturer og bruke disse i visuelle uttrykk",
+  "en": "interpret shapes and symbols from different cultures and use them in visual expressions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13529"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13530",
+  "nb": "tegne form og dybde ved bruk av virkemidler som overlapping og forminskning",
+  "en": "create shape and depth in drawing using visual principles such as overlapping and size diminution",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13530"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13531",
+  "nb": "bruke enkle komposisjonsprinsipper i fotografi og digitale verktøy",
+  "en": "use basic principles of composition in photography and digital tools",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13531"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13532",
+  "nb": "utforske mangfold i motiver og visuelle uttrykk i kunst fra ulike verdensdeler og lage en digital presentasjon",
+  "en": "explore diversity in motifs and visual expression in art from different parts of the world and create a digital presentation",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13532"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 4,
+  "kode": "KM13533",
+  "nb": "formidle og vise fram eget arbeid gjennom utstilling",
+  "en": "communicate and present own work through an exhibition",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13533"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13534",
+  "nb": "bruke ulike håndverktøy og elektriske verktøy for å bearbeide og sammenføye harde, plastiske og myke materialer på en trygg og miljøbevisst måte",
+  "en": "use a range of hand tools and power tools to process and join hard, plastic, and soft materials in a safe and environmentally conscious manner",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13534"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13535",
+  "nb": "undersøke materialene i ulike gjenstander og vurdere funksjon, holdbarhet og muligheter for reparasjon og gjenbruk",
+  "en": "examine the materials in various objects and assess function, durability, and possibilities for repair and reuse",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13535"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13536",
+  "nb": "bygge og eksperimentere med stabile konstruksjoner",
+  "en": "build and experiment with stable constructions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13536"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13538",
+  "nb": "bruke ulike strategier for idéutvikling og problemløsing",
+  "en": "use different strategies for idea development and problem‑solving",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13538"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13537",
+  "nb": "bruke digitale verktøy til å planlegge og presentere prosesser og produkter",
+  "en": "use digital tools to plan and present processes and products",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13537"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13539",
+  "nb": "tegne form, flate og rom ved hjelp av virkemidler som kontraster, skygge, proporsjoner og perspektiv",
+  "en": "create form, plane and space in drawing using elements and principles of design such as contrast, shading, proportion and perspective",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13539"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13540",
+  "nb": "utforske og reflektere over hvordan følelser og meninger vises i kunst, og bruke symbolikk og farge til å uttrykke følelser og meninger i egne arbeider",
+  "en": "explore and reflect on how emotions and opinions are expressed in art, and use symbolism and colour to express emotions and opinions in own work",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13540"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13541",
+  "nb": "analysere visuelle virkemidler i ulike medier og belyse et aktuelt tema gjennom foto eller infografikk",
+  "en": "analyse visual elements in different media and address a topical issue through photography or infographics",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13541"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13542",
+  "nb": "beskrive mangfoldet i klestradisjoner eller gjenstander, inkludert samiske, og lage et produkt med inspirasjon fra kulturarv",
+  "en": "describe diversity in clothing traditions or objects, including Sámi traditions, and create a product inspired by cultural heritage",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13542"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13543",
+  "nb": "undersøke hvordan kjønnsroller vises i kulturelle uttrykk før og nå, og lage visuelle uttrykk som utfordrer stereotypier",
+  "en": "explore how gender roles are shown in cultural expressions in the past and present, and create visual expressions that challenge stereotypes",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13543"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13544",
+  "nb": "bruke programmering til å skape interaktivitet og visuelle uttrykk",
+  "en": "use programming to create interactivity and visual expressions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13544"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 7,
+  "kode": "KM13545",
+  "nb": "designe og lage en utstilling som viser fram prosess og produkt",
+  "en": "design and create an exhibition that presents both process and product",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13545"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13546",
+  "nb": "utforske muligheter innenfor håndverksteknikker og egnet teknologi ved å bearbeide og sammenføye harde, plastiske og myke materialer.",
+  "en": "explore possibilities within craft techniques and appropriate technologies by processing and joining hard, plastic, and soft materials",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13546"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13547",
+  "nb": "vurdere materialers holdbarhet og muligheter for reparasjon og gjenbruk, og bruke ulike verktøy og materialer på en hensiktsmessig og miljøbevisst måte",
+  "en": "assess material durability and possibilities for repair and reuse, and use different tools and materials in an appropriate and environmentally conscious manner",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13547"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13548",
+  "nb": "utvikle løsninger gjennom en stegvis designprosess og vurdere holdbarhet, funksjon og estetisk uttrykk",
+  "en": "develop solutions through a step‑by‑step design process and assess durability, function and aesthetic expression",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13548"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13549",
+  "nb": "utforske hvordan digitale verktøy og ny teknologi kan gi muligheter for kommunikasjonsformer og opplevelser i skapende prosesser og produkter",
+  "en": "explore how digital tools and new technologies create opportunities for communication and experiences in creative processes and products",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13549"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13550",
+  "nb": "visualisere form ved hjelp av frihåndstegninger, arbeidstegninger, modeller og digitale verktøy",
+  "en": "visualise form using freehand drawings, technical drawings, models and digital tools",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13550"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13552",
+  "nb": "analysere hvordan identitet og stedstilhørighet kommuniseres i arkitektur, klestradisjoner, kunst eller gjenstander, og integrere kulturelle referanser i eget skapende arbeid",
+  "en": "analyse how identity and local culture are communicated in architecture, clothing traditions, art, or objects, and integrate cultural references in own creative work",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13552"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13553",
+  "nb": "undersøke hvordan kunst, inkludert samisk kunst, kan bidra i samfunnskritikk, og skape kunstuttrykk som belyser utfordringer i egen samtid",
+  "en": "examine how art, including Sámi art, can contribute to social critique, and create artistic expressions that address challenges in contemporary society",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13553"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13554",
+  "nb": "reflektere kritisk over visuelle virkemidler og eksperimentere med ulike visuelle uttrykk i en skapende prosess",
+  "en": "reflect critically on elements and principles of design, and experiment with different visual expressions in a creative process",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13554"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13555",
+  "nb": "lage skisser til fornyelse av lokale omgivelser og modellere arkitektoniske løsninger som ivaretar ulike behov og interesser",
+  "en": "create sketches for the renewal of local environments and model architectural solutions that address diverse needs and interests",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13555"
+ },
+ {
+  "plan": "KHV01-03",
+  "subject": "arts",
+  "area": "Art and crafts",
+  "trinn": 10,
+  "kode": "KM13551",
+  "nb": "fordype seg i en visuell uttrykksform og/eller en håndverksteknikk, utforske muligheter gjennom praktisk skapende arbeid og presentere valg fra idé til ferdig resultat",
+  "en": "pecialise in a visual form of expression and/or a craft technique, explore possibilities through practical creative work and present choices from idea to finished result",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13551"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 2,
+  "kode": "KM13712",
+  "nb": "utøve et repertoar av sangleker, sanger og danser hentet fra elevenes nære musikkultur og fra kulturarven",
+  "en": "perform a repertoire of singing games, songs and dances from the pupils' local music culture and from cultural heritage",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13712"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 2,
+  "kode": "KM13714",
+  "nb": "utforske og eksperimentere med puls, rytme, tempo, klang, melodi, dynamikk, harmoni og form i dans, med stemmen og i spill på instrumenter",
+  "en": "explore and experiment with beat, rhythm, tempo, sound, melody, dynamics, harmony and form in dance, vocals and in playing instruments",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13714"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 2,
+  "kode": "KM13713",
+  "nb": "leke med musikkens grunnelementer gjennom lyd og stemme, lage mønstre og sette sammen mønstrene til enkle improvisasjoner og komposisjoner, også med digitale verktøy",
+  "en": "play with the basic elements of music through sound and voice, make patterns and combine the patterns into simple improvisations and compositions, also with digital tools",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13713"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 2,
+  "kode": "KM13715",
+  "nb": "formidle opplevelser av ulike musikalske uttrykk gjennom samtale og kunstneriske uttrykksformer",
+  "en": "present perceptions of different musical expressions through talking and through artistic expressions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13715"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 4,
+  "kode": "KM13716",
+  "nb": "utøve og utforske et repertoar av sanger og danser fra ulike musikkulturer, inkludert samisk musikkultur",
+  "en": "perform and explore a repertoire of songs and dances from different music cultures, including Saami music culture",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13716"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 4,
+  "kode": "KM13718",
+  "nb": "synge og spille på instrumenter alene og sammen med andre ved bruk av gehør og enkel notasjon",
+  "en": "sing and play instruments alone and together with others by ear and using simple notation",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13718"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 4,
+  "kode": "KM13717",
+  "nb": "eksperimentere med rytmer, melodier og andre grunnelementer, sette sammen mønstre til komposisjoner, også ved bruk av digitale verktøy, og beskrive arbeidsprosesser og resultater",
+  "en": "experiment with rhythms, melodies and other basic elements, assemble patterns into compositions, including using digital tools, and describe the work processes and results",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13717"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 4,
+  "kode": "KM13719",
+  "nb": "formidle egne musikkopplevelser og beskrive bruk av musikalske virkemidler ved hjelp av enkle fagbegreper",
+  "en": "present one’s own musical experiences and describe the use of musical techniques by means of simple subject-related terms",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13719"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 4,
+  "kode": "KM13720",
+  "nb": "samtale om og reflektere over hvordan musikk skaper mening når den brukes i ulike sosiale sammenhenger",
+  "en": "talk about and reflect on how music creates meaning when used in different contexts",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13720"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 7,
+  "kode": "KM13721",
+  "nb": "utøve et repertoar av musikk, sang, andre vokale uttrykk og dans fra samtiden og historien",
+  "en": "perform a repertoire of music, songs, other vocal expressions and dance from the contemporary period and from past times",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13721"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 7,
+  "kode": "KM13725",
+  "nb": "utforske og drøfte hvordan musikk fra fortiden påvirker dagens musikk",
+  "en": "explore and discuss how music from the past affects today's music",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13725"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 7,
+  "kode": "KM13723",
+  "nb": "øve inn og framføre sang og musikk, i samspill eller individuelt, gehørbasert og ved bruk av enkle notasjonsteknikker",
+  "en": "rehearse and perform songs and music, together or alone, by ear and using simple notation techniques",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13723"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 7,
+  "kode": "KM13722",
+  "nb": "lytte, eksperimentere og skape nye uttrykk med instrumenter, kropp, stemme eller lyd fra andre kilder, og presentere resultatet",
+  "en": "listen to, experiment and create new expressions with instruments, body, voice or sounds from other sources, and present the result",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13722"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 7,
+  "kode": "KM13728",
+  "nb": "bruke teknologi og digitale verktøy til å skape, øve inn og bearbeide musikk",
+  "en": "use technology and digital tools to create, rehearse and process music",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13728"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 7,
+  "kode": "KM13729",
+  "nb": "bruke fagbegreper i beskrivelse av og refleksjon over arbeidsprosesser, resultater, musikalske uttrykk og virkemidler",
+  "en": "use subject-related terms in the description of and reflection on work processes, results, musical expressions and techniques",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13729"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 7,
+  "kode": "KM13726",
+  "nb": "utforske og formidle musikalske opplevelser og erfaringer",
+  "en": "explore and present musical experiences and perceptions",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13726"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 7,
+  "kode": "KM13727",
+  "nb": "undersøke hvordan kjønn, kjønnsroller og seksualitet fremstilles i musikk og dans i det offentlige rom, og skape uttrykk som utfordrer stereotypier",
+  "en": "investigate how gender, gender roles and sexuality are presented in music and dance in the public sphere, and create expressions that challenge stereotypes",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13727"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 7,
+  "kode": "KM13724",
+  "nb": "reflektere over hvordan musikk kan spille ulike roller for utvikling av individer og gruppers identitet",
+  "en": "reflect on how music can play different roles in developing the identity of individuals and groups",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13724"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13730",
+  "nb": "utøve et variert repertoar av musikk, sang, andre vokale uttrykk og dans",
+  "en": "perform a varied repertoire of music, singing and other vocal expressions and dance",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13730"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13735",
+  "nb": "reflektere over hvordan musikalske tradisjoner, inkludert samiske musikktradisjoner, bevares og fornyes",
+  "en": "reflect on how musical traditions, including Sami traditions, are preserved and renewed",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13735"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13732",
+  "nb": "samarbeide med andre om å planlegge og gjennomføre øvingsprosesser hvor det inngår selvvalgt sang, andre vokale uttrykk, spill på instrumenter eller dans, og formidle resultatet i gruppe eller individuelt",
+  "en": "collaborate with others on planning and carrying out rehearsal processes, with self-chosen singing, other vocal expressions, playing instruments or dancing, and present the result in a group or individually",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13732"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13731",
+  "nb": "skape og programmere musikalske forløp ved å eksperimentere med lyd fra ulike kilder",
+  "en": "create and programme musical sequences by experimenting with sound from different sources",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13731"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13736",
+  "nb": "utforske og formidle musikalske opplevelser og erfaringer, og reflektere over bruk av musikalske virkemidler",
+  "en": "explore and present musical perceptions and experiences, and reflect on the use of musical techniques",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13736"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13737",
+  "nb": "lytte og prøve ut ulike uttrykk og begrunne valg i skapende prosesser fra idé til ferdig resultat",
+  "en": "listen to and experiment with different expressions and give grounds for choices in creative processes from idea to finished result",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13737"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13738",
+  "nb": "bruke gehør og notasjonsteknikker som støtte i skapende arbeid",
+  "en": "use ear and notation techniques as support in creative work",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13738"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13734",
+  "nb": "bruke relevante fagbegreper i skapende arbeid og i refleksjon over prosesser og resultater",
+  "en": "use subject-related terms in creative work and in reflection on processes and results",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13734"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13733",
+  "nb": "utforske og reflektere over hvordan musikk, sang og dans som estetiske uttrykk er påvirket av og uttrykk for historiske og samfunnsmessige forhold, og skape musikalske uttrykk som tar opp utfordringer i samtiden",
+  "en": "explore and reflect on how music, singing and dance as aesthetic expressions are influenced by and are expressions of historical and social circumstances, and create musical expressions that address contemporary challenges",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13733"
+ },
+ {
+  "plan": "MUS01-03",
+  "subject": "arts",
+  "area": "Music",
+  "trinn": 10,
+  "kode": "KM13739",
+  "nb": "utforske og drøfte musikkens og dansens betydning i samfunnet og etiske problemstillinger knyttet til musikalske ytringer og musikkulturer",
+  "en": "explore and discuss the importance of music and dance in society and ethical issues relating to musical utterances and music cultures",
+  "url": "https://data.udir.no/kl06/v201906/kompetansemaal-lk20/KM13739"
+ }
+]
