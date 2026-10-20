@@ -1,0 +1,84 @@
+# World-coverage scan 3 (harder countries: translation, OCR, messy parsing)
+
+_2026-10-20. Branch `harder-countries` (from `release-1.6.3`), built into the copy `~/.standardgraph/common_core_harder.db` only (live DB untouched). Pupils = primary + secondary enrollment, `data/world_enrollment.csv`.
+Outcomes: **CLEAN** = official open licence / written permission, ingested. **STATUTE-ROUTE** = only basis is a copyright-law exclusion for official/normative documents: extracted, translated, JSON committed, loader written, **not loaded** ("ready, pending counsel"). **BLOCKED** = rights reserved / non-commercial / no usable official source.
+"Verified" = I fetched the page this session and the quote is verbatim; "agent-fetched" = a research subagent fetched and saved it (saved copies in the session scratchpad), not re-fetched by me. Bot challenges (Cloudflare on basenacionalcomum.mec.gov.br home page, gob.mx, emu.dk; JS bot wrapper on vbpl.vn) were left alone, not bypassed. No commercial mirrors were used._
+
+## Ranked table
+
+| # | System | Subjects | Pupils | Source | Licence verdict (quote) | Effort | Outcome | Status |
+|---|---|---|---:|---|---|---|---|---|
+| 1 | **China** `cn-moe` | math, science (+physics/chem/bio), Chinese, history, geography, IT, arts, English; grades 1-9 (1,151 items) | 206.6M | MOE notice 教材〔2022〕2号 `https://www.moe.gov.cn/srcsite/A26/s8001/202204/t20220420_619921.html`; 11 image-only PDFs | Copyright Law Art. 5 (verified, state-run copy ncsti.gov.cn): "本法不适用于：（一）法律、法规，国家机关的决议、决定、命令和其他具有立法、行政、司法性质的文件，及其官方正式译文". Counter-signal (verified, `.../201005/t20100504_87292.html`): "任何媒体、互联网站和商业机构不得利用本网站发布的内容进行商业性的原版原式地转载，也不得歪曲和篡改本网站所发布的内容". Standards are attachments of a 通知 (notice); untested | HIGH (OCR + 5 table grammars) | STATUTE-ROUTE | JSON committed, loader `fetch_china.py` not run |
+| 2 | **Brazil** `br-bncc` non-math | Portuguese, science, history, geography, arts, English; EF 1-9 (925) | 36.6M | BNCC EI/EF PDF `http://basenacionalcomum.mec.gov.br/images/BNCC_EI_EF_110518_versaofinal_site.pdf` (direct GET ok; home page Cloudflare) | Lei 9.610 art. 8 IV (verified): "os textos de tratados ou convenções, leis, decretos, regulamentos, decisões judiciais e demais atos oficiais". BNCC = Anexo of Resolução CNE/CP 2/2017 art. 1 (agent-fetched). **Counter-signal (verified, gov.br/mec):** "Todo o conteúdo deste site está publicado sob a licença Creative Commons Atribuição-SemDerivações 3.0 Não Adaptada" (CC BY-ND) | LOW-MED | STATUTE-ROUTE (weakest of the three, ND stamp) | JSON committed, loader not run |
+| 3 | **Russia** `ru-fop` | maths, world around us, physics, chemistry, biology, informatics, geography, Russian, literature; grades 1-11 (1,489) | 18.4M | ФОП/ФРП per-subject files `https://static.edsoo.ru/projects/fop/files/{noo,ooo,soo}/N.pdf` (ISMO, text layer); gazette annex of orders 370/371/372 `http://publication.pravo.gov.ru/document/0001202307140040` (312 MB image scan, not used) | GK RF Art. 1259(6)(1) (agent-fetched, saved page): "Не являются объектами авторских прав: 1) официальные документы государственных органов ... в том числе законы, другие нормативные акты ...". Counter-signal (agent-fetched): edsoo.ru footer "Все права защищены" | LOW-MED | STATUTE-ROUTE | JSON committed, loader not run. Used the ISMO text rendering, not the gazette scan (scan lacks maths) |
+| 4 | **Japan** `jp-mext` (added to existing maths) | science (el + lower sec), English (grades 3-12 objectives); 263 | 12.9M | MEXT official English tentative translation `https://www.mext.go.jp/a_menu/shotou/new-cs/1384661.htm` | CLEAN (verified, `https://www.mext.go.jp/b_menu/1351168.htm`): "どなたでも以下の1）～6）に従って、複製、公衆送信、翻訳・変形等の翻案等、自由に利用できます。商用利用も可能です。" and "本利用ルールは、クリエイティブ・コモンズ・ライセンスの表示4.0国際（…CC BY）と互換性があり". Credit MEXT, mark edits. Pages are titled 仮訳 (tentative translation). Copyright Act Art. 13 also applies (agent-fetched) | LOW | **CLEAN** | **Ingested.** No English for kokugo, social studies, tech/home ec, IT; music/art PDFs not parsed |
+| 5 | **Italy** `it-miur` (added to existing maths) | Italian, English/L2, history, geography, science, technology, music, art; primo ciclo 2025 (571) | 7.2M | `https://www.mim.gov.it/documents/20182/10554370/curricolo_web.pdf` (DM 9.12.2025 n. 221) | CLEAN (verified, `https://www.mim.gov.it/note-legali`): "Salvo ove diversamente indicato, i testi pubblicati sul presente sito sono messi a disposizione con licenza CC-BY 3.0". L. 633/1941 art. 5 also (agent-fetched). No PDF-specific exclusion seen | MED (prose bullets, margin noise) | **CLEAN** | **Ingested** (objectives + expected competences, grades 3/5/8) |
+| 6 | **Sweden** `se-skolverket` | maths, science, technology, Swedish, English/languages, social studies, arts; grades 1-9 (937 bullets) | 1.8M | Skolverket Syllabus API `https://api.skolverket.se/syllabus/v1/subjects/{code}` | CLEAN with one caveat (verified, `.../api-for-laroplaner-kurs--och-amnesplaner`): under "Villkor för användning" the only text is a link "Villkoren i Skolverkets källicens (Creative Commons)" pointing at `https://creativecommons.org/publicdomain/zero/1.0/deed.sv` (CC0 1.0). The word CC0 appears only in the link target | LOW | **CLEAN** | **Ingested**; confirmation e-mail advised |
+| 7 | Vietnam | all subjects | 18.5M | Annex of Thông tư 32/2018/TT-BGDĐT: no official host serves it (moet.gov.vn 404s, rgep.moet DNS fails, vbpl.vn JS bot wrapper, congbao search is JS; datafiles hit was a different doc) | IP Law consolidated 155/VBHN-VPQH art. 15 (agent-fetched, official gazette PDF): "2. Văn bản quy phạm pháp luật, văn bản hành chính ... và bản dịch chính thức của văn bản đó". Programme is "ban hành kèm theo Thông tư" (annex of a circular). Later Law 131/2025 unverified | n/a (source) | STATUTE-ROUTE, source-blocked | Needs a human to fetch the annex |
+| 8 | Mexico | campos formativos (Lenguajes, Saberes y pensamiento científico, Ética/Naturaleza/Sociedades) | 27.2M | DOF Acuerdo 08/08/23 Anexo `https://dof.gob.mx/2023/SEP/ANEXO_ACUERDO_080823_FASES_2_A_6.pdf` (479 pp, scanned, downloaded) | LFDA art. 14 VIII (agent-fetched): "Los textos legislativos, reglamentarios, administrativos o judiciales, así como sus traducciones oficiales"; programmes are the Anexo of a DOF Acuerdo. gob.mx terms: Cloudflare challenge, not read | HIGH: 3-column merged-cell tables, no codes, campo-based not subject-based (mapping to maths/science would mislabel) | STATUTE-ROUTE, **not extracted** | Strongest legal basis after Poland; extraction skipped on structure/quality grounds |
+| 9 | Indonesia | all | 56.5M | CP annex of Kepka BSKAP 046/H/KR/2025; kurikulum.kemendikdasmen.go.id and jdih time out / DNS fail from here; only mirrors elsewhere | UU 28/2014 Pasal 42 (agent-fetched): "Tidak ada Hak Cipta atas hasil karya berupa: ... b. peraturan perundang-undangan"; a Kepala Badan decision is doubtfully a peraturan. Site footer "Hak Cipta © 2026 Badan Kebijakan Pendidikan Dasar dan Menengah" | n/a | BLOCKED (source unreachable; statute doubtful) | Retry from an Indonesian network |
+| 10 | Korea | all (2022 curriculum, 별책) | 5.2M | NCIC inventory is JS; only the 총론 PDF obtained | Copyright Act Art. 7(2) (agent-fetched): notices (고시) not protected; curriculum is a 고시 (교육부 고시 제2022-33호). NCIC policy: "공공누리 제2유형 ... 비상업적 이용만 가능"; NEC site KOGL Type 1 | MED (not fetched) | STATUTE-ROUTE, not extracted | Per-subject 별책 not downloaded |
+| 11 | Peru | CNEB, programas curriculares | 6.8M | gob.pe; secundaria scanned | DL 822 art. 9 b (agent-fetched). Programa PDFs carry "Todos los derechos reservados" | HIGH | STATUTE-ROUTE (weak), not extracted | RM 281-2016 annex covers the CNEB; programas' annex status unproven |
+| 12 | Netherlands | Dutch, maths (Stb. 2026, 198) | 2.8M | `zoek.officielebekendmakingen.nl/stb-2026-198` | Auteurswet art. 11 (agent-fetched): "Er bestaat geen auteursrecht op wetten, besluiten en verordeningen ... noch op ... administratieve beslissingen"; SLO dataset CC BY 4.0 (catalogue entry, API token-gated) | MED, two subjects only | STATUTE-ROUTE, not extracted | Other 7 areas not yet enacted |
+| 13 | Denmark | all (Fælles Mål, BEK 1715) | 1.0M | Retsinformation XML | Ophavsloven §9 (agent-fetched) with stk. 2 carve-out; BEK 1715 shows EndDate 2026-10-09 (a successor probably exists) | LOW | STATUTE-ROUTE, not extracted | Check current BEK first |
+| 14 | Estonia | all (Põhikooli riiklik õppekava) | 0.2M | riigiteataja.ee annexes | AutÕS §5(3) (agent-fetched); English translation stale (2014) | MED | STATUTE-ROUTE, not extracted | |
+| 15 | Poland `pl-men` (scan 2) | maths, science, social studies, CS | 4.9M | Dz.U. 2026 poz. 378 | Prawo autorskie Art. 4 only (verified in scan 2) | done | **reclassified STATUTE-ROUTE** | Still in the copy (inherited from scan 2); added to `data/withheld_systems.txt` so releases exclude it |
+| 16 | Germany KMK | non-maths Bildungsstandards | 10.3M | kmk.org | Impressum (agent-fetched): "Lediglich die Herstellung von Kopien und Downloads für den persönlichen, privaten und nicht kommerziellen Gebrauch ist erlaubt"; UrhG §5(2) imposes Änderungsverbot | | BLOCKED | |
+| 17 | Portugal DGE | Aprendizagens Essenciais | 1.3M | dge.mec.pt | Terms link to CC BY-NC-ND 2.5 PT (agent-fetched); CDADC art. 7 does not reach curricula | | BLOCKED | |
+| 18 | Colombia | estándares | 9.0M | mineducacion.gov.co | "No reproducir, copiar, distribuir, transformar o modificar los 'contenidos' a menos de que se cuente con la autorización" (agent-fetched) | | BLOCKED | |
+| 19 | Chile | Bases curriculares | 3.1M | curriculumnacional.cl times out; search snippet (unfetched) says CC BY-NC-ND | | | BLOCKED (unverified) | |
+| 20 | Egypt, Morocco, Iran | | 27.0M / 8.2M / 15.7M | moe.gov.eg 403 (WAF); men.gov.ma no HTTP response; medu.ir no DNS | n/a | | BLOCKED (unreachable) | |
+| 21 | Bangladesh | | 31.8M | nctb.gov.bd reachable, Bengali, no licence text, no English structured document | none found | | BLOCKED | |
+| 22 | Saudi Arabia | | 6.8M | moe.gov.sa loads, no per-grade outcomes document found | Copyright Law Art. 4 (agent-fetched, MISA translation): "Laws and judicial judgments, decisions of administrative bodies ... and all official documents ... subject to the provisions concerning the circulation of such documents" | | BLOCKED (no source document) | |
+
+Not separately scanned this pass: Turkey, Pakistan, Philippines, Sri Lanka, Argentina (no change since `world-coverage-candidates.md`: permission asks already drafted for Turkey and Philippines).
+
+## Quality evidence
+
+- **OCR (China, Apple Vision zh-Hans, 200 dpi).** Hand-checked two pages by reading the page image: maths p. 31 (formula page) CER 3.0 % (16 edits / 534 chars), p. 62 CER 2.3 % (14 / 620); pooled 2.6 %. Errors cluster in formulas and fractions (e.g. "y/x=5" lost) and in stray running headers; `parse_cn.py` strips known header noise. ~17 science rows have a stage inferred because the stage label was missed (`stage_inferred` in the JSON).
+- **Translation spot-check (blind back-translation, 20 random items per system, seed 20261020).** A sonnet agent saw only the English and translated back; a second agent rated meaning agreement 2/1/0 against the original (mean = sum/40): China 18/2/0 = 95.0 %, Sweden 19/1/0 = 97.5 %, Brazil 18/2/0 = 95.0 %, Italy 19/1/0 = 97.5 %, Russia 18/2/0 = 95.0 %. Japan is MEXT's own English (no step). Caveat: both agents are the same model family as the translator, so this measures round-trip consistency, not independent correctness. No item rated 0; the 1s were term drift (e.g. 几何体, 废旧材料) and one garbled-formula row.
+- **Scoring.** 620 new CLEAN-system hub edges (Sweden 335, Japan science 131, Italy 154) scored 1-5 by sonnet batches (scores: 1: 15, 2: 93, 3: 160, 4: 177, 5: 21 for Sweden+Japan; Italy 32 of 154 scored <=2), then `apply_cosine_floor.py --apply` (228 flagged) and `flag_low_scores.py` (0). Unflagged survivors: Sweden 143 of 335, Italy 58 of 154, Japan science 51 of 131.
+
+## Numbers (world K-12 pupils in a country with the subject in the DB; `coverage_report.py` on the copy)
+
+| Subject | before (scan-2 copy) | after (CLEAN ingests) | projected if counsel says yes to China + Brazil + Russia |
+|---|---:|---:|---:|
+| mathematics | 37.0 % | 37.1 % (Sweden) | 53.0 % (+China, Russia) |
+| science | 9.2 % | 10.8 % (+Japan, Sweden, Italy) | 29.2 % |
+| ela | 8.9 % | 9.5 % | 28.0 % |
+| social studies | 6.4 % | 7.1 % | 25.5 % |
+| CS | 5.4 % | 6.1 % | 22.0 % |
+| arts | 5.1 % | 5.8 % | 23.0 % |
+| world languages | 5.1 % | 6.7 % | 23.9 % |
+
+(Brazil already counts for maths, so its non-maths rows move the other subjects.) Poland (4.9M pupils, 0.35 pt) is counted in "before/after" because it is in the copy; it is statute-route and now on the withheld list, so a release that withholds it is about 0.35 pt lower on maths, science, social studies and CS. "Before" is slightly below the scan-2 doc's 42.5 % maths because the copy has the withheld systems (BC, Kenya, etc.) removed.
+
+## Counsel list (statute-route systems)
+
+| System | Pupils | The one question |
+|---|---:|---|
+| China (`cn-moe`, extracted) | 206.6M | Are the 2022 curriculum standards, issued as attachments to MOE notice 教材〔2022〕2号, "具有行政性质的文件" under Copyright Law Art. 5(1), and does the MOE site statement's ban on "商业性的原版原式地转载" restrict a restructured, translated dataset? |
+| Brazil (`br-bncc` non-maths, extracted) | 36.6M | Does Lei 9.610 art. 8 IV ("demais atos oficiais") cover the BNCC as the Anexo of CNE/CP Resolução 2/2017 despite gov.br's CC BY-ND 3.0 stamp, and is a translated, restructured dataset a "derivative" that the ND stamp would forbid if art. 8 did not apply? |
+| Russia (`ru-fop`, extracted) | 18.4M | Is a ФРП approved as an annex of a Minjust-registered Minprosveshcheniya order an "официальный документ" under GK RF 1259(6)(1), including the amended 2024-26 texts as published by ISMO (whose footer says "Все права защищены")? |
+| Vietnam (not extracted: annex unobtainable) | 18.5M | Is a programme issued "kèm theo" a Thông tư a "văn bản quy phạm pháp luật" under IP Law art. 15(2) as consolidated in 155/VBHN-VPQH, and did Law 131/2025 narrow art. 15? |
+| Mexico (not extracted) | 27.2M | Is the Anexo of DOF Acuerdo 08/08/23 a "texto ... reglamentario, administrativo" under LFDA art. 14 VIII, given that the DOF publishes it as an annex file? |
+| Poland (`pl-men`, loaded in copy) | 4.9M | Is the podstawa programowa, an annex of a ministerial regulation, excluded by Prawo autorskie Art. 4 (1)? |
+| Korea | 5.2M | Does Copyright Act Art. 7(2) (고시) override NCIC's KOGL Type 2 non-commercial marking for the 별책? |
+| Peru | 6.8M | Are the Programas Curriculares part of the RM 281-2016 annex (DL 822 art. 9 b), despite their "Todos los derechos reservados" line? |
+| Netherlands / Denmark / Estonia | 2.8M / 1.0M / 0.2M | Does Auteurswet art. 11 / Ophavsloven §9 (stk. 2 carve-out) / AutÕS §5(3) cover the kerndoelen / Fælles Mål / õppekava annexes? |
+
+## Permission-email candidates (addresses verified on a fetched official page)
+
+1. **Skolverket** `registrator@skolverket.se` (Skolverket "kontakta-oss" page): confirm the "källicens" for the Syllabus API is CC0 1.0 (ingested on the strength of the link only).
+2. **Vietnam MOET** `bogddt@moet.gov.vn` (moet.gov.vn home page): ask for the official file of the annex to Thông tư 32/2018 and confirm reuse under IP Law art. 15.
+3. **Korea National Education Commission** `nec0927@korea.kr` (ne.go.kr policy page; copyright desk 02-2100-3312): ask which KOGL type governs the NCIC 별책.
+4. **SLO (Netherlands)** `info@slo.nl` (slo.nl/disclaimer): ask about reuse of the other seven kerndoelen areas and API access.
+5. **Portugal DGE** `dge@dge.mec.pt` (dge.mec.pt/contactos): ask for a commercial/derivative licence for the Aprendizagens Essenciais (CC BY-NC-ND today).
+6. Earlier asks stand: BC `QPIPPCopyright@gov.bc.ca`, Hwb `support@hwbcymru.net`, Rwanda `info@reb.rw`.
+No verified address found for China MOE (phone 010-66096114 only), Brazil MEC (ouvidoria web form), Russia (ISMO/Minprosveshcheniya), Japan MEXT, Italy MIM (URP web page) or Mexico SEP (sep.gob.mx unreachable; `info@conaliteg.gob.mx` is the textbook agency, not the curriculum owner, so do not use).
+
+## Findings
+
+- Three CLEAN ingests, none of them needed OCR; the hard-country value is all in STATUTE-ROUTE. China + Russia + Brazil-non-maths would take the "any subject" ceiling from 37 % to 53 % and every non-maths subject to 22-29 %, which is why a counsel decision is worth asking for.
+- New links per system remain sparse after scoring and the 0.75 floor, as in scan 2: national competency statements rarely align 1:1 with narrow US hub standards. Arts and world-languages have no hub, so they are searchable but uncrosswalked.
+- Everything else in the DB is unchanged; `scripts/translate_batches.py` is the shared split/merge helper for the sonnet translation step.

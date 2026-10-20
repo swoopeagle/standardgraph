@@ -143,6 +143,7 @@ SYSTEM_META: dict[str, dict] = {
     "no-udir":   {"country": "Norway",       "country_code": "NO", "region": "Europe",             "language": "Norwegian/English",  "level": "national"},
     "se-skolverket": {"country": "Sweden",   "country_code": "SE", "region": "Europe",             "language": "Swedish",            "level": "national"},
     "cn-moe":    {"country": "China",     "country_code": "CN", "region": "Asia-Pacific",      "language": "Chinese",            "level": "national"},
+    "ru-fop":    {"country": "Russia",    "country_code": "RU", "region": "Europe",             "language": "Russian",            "level": "national"},
     "pl-men":    {"country": "Poland",       "country_code": "PL", "region": "Europe",             "language": "Polish",             "level": "national"},
     "fr-men":    {"country": "France",       "country_code": "FR", "region": "Europe",             "language": "French",             "level": "national"},
     "pt-dge":    {"country": "Portugal",      "country_code": "PT", "region": "Europe",             "language": "Portuguese",         "level": "national"},
