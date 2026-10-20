@@ -13,7 +13,7 @@ DB = os.path.expanduser(os.environ.get("DB_PATH", "~/.standardgraph/common_core.
 
 
 def test_list_parses():
-    assert {"ca-bc", "fi-oph", "rw-reb"} <= set(withheld())
+    assert {"ca-bc", "fi-oph", "rw-reb", "ke-kicd", "ug-ncdc", "ng-nerdc"} <= set(withheld())
 
 
 @pytest.mark.skipif(os.path.basename(DB) == "common_core.db", reason="live DB predates the withhold; checked on release copies")

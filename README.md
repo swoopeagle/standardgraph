@@ -120,7 +120,7 @@ How does the C3 Framework approach civics compared to California's social studie
 | 🇺🇸 United States | `ngss` (hub, K–12) + all 50 states + DC |
 | 🎓 Advanced Placement | `ap-bio` `ap-chem` `ap-phys-1` `ap-phys-2` `ap-phys-c-mech` `ap-phys-c-em` `ap-env` |
 | 🌍 International Baccalaureate | `ib-dp-bio` `ib-dp-chem` `ib-dp-physics` `ib-dp-ess` `ib-myp-science` |
-| 🌍 International | `au-acara` `ca-on` `gb-sco` `gh-nacca` `ie-ncca` `ke-kicd` `na-nied` `ng-nerdc` `sg-moe` `tz-tie` `ug-ncdc` `uk-nc` `zm-cdc` `zw-zimsec` |
+| 🌍 International | `au-acara` `ca-on` `gb-sco` `gh-nacca` `ie-ncca` `na-nied` `sg-moe` `tz-tie` `uk-nc` `zm-cdc` `zw-zimsec` |
 
 ### ELA (English Language Arts)
 
@@ -129,7 +129,7 @@ How does the C3 Framework approach civics compared to California's social studie
 | 🇺🇸 United States | `ccss-ela` (hub, K–12) + 49 states |
 | 🎓 Advanced Placement | `ap-english-lang` `ap-english-lit` |
 | 🌍 International Baccalaureate | `ib-dp-english-a` `ib-myp-english` |
-| 🌍 International | `au-acara` `ca-on` `gb-sco` `gh-nacca` `ie-ncca` `ke-kicd` `na-nied` `ng-nerdc` `sg-moe` `tz-tie` `ug-ncdc` `uk-nc` `zm-cdc` `zw-zimsec` |
+| 🌍 International | `au-acara` `ca-on` `gb-sco` `gh-nacca` `ie-ncca` `na-nied` `sg-moe` `tz-tie` `uk-nc` `zm-cdc` `zw-zimsec` |
 
 ### Social Studies
 

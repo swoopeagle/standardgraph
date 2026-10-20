@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Withheld British Columbia (`ca-bc`), Finland (`fi-oph`) and Rwanda (`rw-reb`) pending reuse permission from each publisher (`data/withheld_systems.txt`, applied by `scripts/withhold_systems.py`): 365 standards and 3,149 crosswalks removed from the release DB.
+- Withheld British Columbia (`ca-bc`), Finland (`fi-oph`) and Rwanda (`rw-reb`) pending reuse permission (no stated licence or all rights reserved), and Kenya (`ke-kicd`), Uganda (`ug-ncdc`) and Nigeria (`ng-nerdc`) (sources marked "All rights reserved", verified 2026-10-20). Listed in `data/withheld_systems.txt`, applied by `scripts/withhold_systems.py`: 6,677 standards and 36,717 crosswalks removed from the release DB.
 
 ### Added
 

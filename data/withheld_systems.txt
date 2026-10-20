@@ -3,3 +3,6 @@
 ca-bc   # BC curriculum: "All rights reserved ... prior written permission". Asked 2026-10-20 (docs/outreach/2026-10-20-curriculum-permission-emails-2.md)
 fi-oph  # ePerusteet states no data licence. Asked OPH 2026-10-20
 rw-reb  # REB syllabi state no licence. Asked REB 2026-10-20
+ke-kicd  # KICD site and curriculum design PDFs: "All rights reserved ... without the prior written permission" (verified 2026-10-20); some rows sourced via a commercial publisher's mirror
+ug-ncdc  # NCDC site and syllabus PDFs: "Copyright (c) NCDC ... All rights reserved: No part ... may be reproduced" (verified 2026-10-20)
+ng-nerdc # NERDC site footer: "NERDC All rights reserved" (verified 2026-10-20)
