@@ -134,7 +134,7 @@ def main():
         p = sum(r["label"] == "P" for r in g)
         n = len(g)
         print(f"Sample n={n} ({len(set(r['source_system'] for r in g))} systems: "
-              f"{', '.join(sorted(set(r['source_system'] for r in g)))}), single rater (Claude, not blind to cosine score), random unflagged top-1 math->ccss edges, 13 per system, seed 20261019.")
+              f"{', '.join(sorted(set(r['source_system'] for r in g)))}), single rater (Claude, NOT blind to cosine score; legacy v1 - the blind v2 re-label of the same 65 gives strict 15% / lenient 68%, see CONTEXT.md and data/crosswalk_gold_v2.csv), random unflagged top-1 math->ccss edges, 13 per system, seed 20261019.")
         print(f"- strict precision (Y only): **{100 * y / n:.0f}%** ({y}/{n})")
         print(f"- lenient precision (Y + partial): **{100 * (y + p) / n:.0f}%** ({y + p}/{n})")
         by = defaultdict(lambda: [0, 0, 0])

@@ -82,7 +82,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
     e = sub.add_parser("export")
-    e.add_argument("--like", default=None, help="source_system LIKE filter (e.g. 'ap-%')")
+    e.add_argument("--like", default=None, help="source_system LIKE filter (e.g. 'ap-%%')")
     e.add_argument("--limit", type=int, default=60)
     e.add_argument("--out", required=True)
     a = sub.add_parser("apply")
