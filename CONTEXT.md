@@ -1,5 +1,17 @@
 # CONTEXT - StandardGraph
 
+## 2026-10-19 - world-coverage pass (branch `world-coverage`, worktree ../standardgraph-world)
+
+**Measuring unit:** `scripts/coverage_report.py` (run: `DB_PATH=~/.standardgraph/common_core.db uv run --directory packages/common-core python ../../scripts/coverage_report.py`).
+Enrollment snapshot `data/world_enrollment.csv` = World Bank WDI SE.PRM.ENRL + SE.SEC.ENRL (UNESCO UIS), latest year per country, fetched 2026-10-19; gold sample `data/crosswalk_gold.csv` (52 hand-labelled math->ccss edges).
+
+**Baseline (v1.6.2 DB, 175,738 std / 310 systems / 208,442 crosswalks):**
+- Headline: **41.4%** of world K-12 pupils (585M of 1,415M) live in a country with a math curriculum in the DB; 33 countries. Science/ELA: 15 countries, 13.5%. Social studies 2 countries 4.4%. CS/arts/world-languages: US only, 3.5%.
+- Hub crosswalk coverage (standards with >=1 crosswalk to subject hub): math 79.9%, science 58.1%, ELA 76.5%, social studies 32.0%, CS 36.8%; all 61.2%.
+- Crosswalk precision (n=52, 4 intl math systems, single rater Claude): strict 37%, lenient (incl. partial) 71%. Small sample; directional.
+- Biggest math gaps by pupils: China 207M, Indonesia 57M, Pakistan 45M, Bangladesh 32M, DR Congo 29M, Egypt 27M, Philippines 25M, Ethiopia 21M.
+- Crosswalks are cosine over nomic-embed-text vectors (Ollama; local MacBook has the model), top-1 hub match >=0.70 via `crosswalk_engine/nlp_pass.py`; embeddings via `ingestion.shared.embed`.
+
 ## 2026-10-19 - release-prep pass (branch `release-prep`, worktree ../standardgraph-release)
 
 No written pre-release checklist existed (CLAUDE.md only has the publish steps), so I derived one
