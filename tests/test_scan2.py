@@ -1,9 +1,14 @@
 """World-coverage scan 2: new subjects/systems (au-acara, uk-nc, gb-sco, es-lomloe other subjects; no-udir; pl-men).
 DB tests skip on a DB built before this ingest."""
 import json
+import sys
 from pathlib import Path
 
 import pytest
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
+from withhold_systems import withheld  # noqa: E402
+WITHHELD = set(withheld())
 
 ROOT = Path(__file__).parent.parent
 # (system, subject, min rows)
@@ -15,12 +20,14 @@ EXPECT = [("au-acara", "social-studies", 300), ("au-acara", "cs", 70), ("au-acar
 
 @pytest.fixture(scope="module")
 def has_scan(db):
-    if not db.execute("SELECT COUNT(*) FROM standards WHERE system='pl-men'").fetchone()[0]:
+    if not db.execute("SELECT COUNT(*) FROM standards WHERE system='no-udir'").fetchone()[0]:
         pytest.skip("DB predates scan 2")
 
 
 @pytest.mark.parametrize("system,subject,n", EXPECT)
 def test_counts(db, has_scan, system, subject, n):
+    if system in WITHHELD:
+        pytest.skip(f"{system} is withheld from release DBs")
     assert db.execute("SELECT COUNT(*) FROM standards WHERE system=? AND subject=?", (system, subject)).fetchone()[0] >= n
 
 
@@ -38,7 +45,7 @@ def test_new_crosswalks_respect_floor(db, has_scan):
     n = db.execute("""SELECT COUNT(*) FROM crosswalk_mappings cm JOIN standards s ON s.id=cm.source_id
         WHERE s.system IN ('no-udir','pl-men') AND cm.flagged_for_review=0 AND cm.confidence_score<0.75""").fetchone()[0]
     assert n == 0
-    assert db.execute("SELECT COUNT(*) FROM crosswalk_mappings WHERE source_system='pl-men'").fetchone()[0] > 100
+    assert db.execute("SELECT COUNT(*) FROM crosswalk_mappings WHERE source_system='no-udir'").fetchone()[0] > 100
 
 
 def test_new_crosswalks_scored(db, has_scan):

@@ -7,11 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Withheld British Columbia (`ca-bc`), Finland (`fi-oph`) and Rwanda (`rw-reb`) pending reuse permission (no stated licence or all rights reserved), and Kenya (`ke-kicd`), Uganda (`ug-ncdc`) and Nigeria (`ng-nerdc`) (sources marked "All rights reserved", verified 2026-10-20). Listed in `data/withheld_systems.txt`, applied by `scripts/withhold_systems.py`: 6,677 standards and 36,717 crosswalks removed from the release DB.
+- Withheld British Columbia (`ca-bc`), Finland (`fi-oph`) and Rwanda (`rw-reb`) pending reuse permission (no stated licence or all rights reserved), and Kenya (`ke-kicd`), Uganda (`ug-ncdc`) and Nigeria (`ng-nerdc`) (sources marked "All rights reserved", verified 2026-10-20), and Poland (`pl-men`, statute basis only, pending counsel). Listed in `data/withheld_systems.txt`, applied by `scripts/withhold_systems.py`: 6,677 standards and 36,717 crosswalks removed from the release DB.
 
 ### Added
 
-- World-coverage scan 2 (see `docs/world-coverage-scan-2.md`): new subjects for au-acara (social studies, digital tech, arts, languages), uk-nc, gb-sco (social studies), es-lomloe (science, ELA, social studies, CS, arts, languages) and new systems `no-udir` (Norway LK20) and `pl-men` (Poland, grades 4-8 maths/science/social studies/CS). Database not yet re-released.
+- World-coverage scan 2 (see `docs/world-coverage-scan-2.md`): new subjects for au-acara (social studies, digital tech, arts, languages), uk-nc, gb-sco (social studies), es-lomloe (science, ELA, social studies, CS, arts, languages) and new systems `no-udir` (Norway LK20) (Norway). Poland (`pl-men`) was extracted but is withheld pending counsel. Database not yet re-released.
 - France (`fr-men`): 698 mathematics outcomes for grades 1-9 (cycles 2-4), Etalab-2.0 source; hub crosswalks to CCSS. Database not yet re-released.
 - `scripts/coverage_report.py`: world-coverage metrics (countries and pupils covered, hub crosswalk coverage, gold-sample precision).
 - `relate.py --system` to rebuild one system's prerequisite edges.
