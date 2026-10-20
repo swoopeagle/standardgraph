@@ -1,5 +1,14 @@
 # CONTEXT - StandardGraph
 
+## 2026-10-20 - slim release DB (branch `slim-db`, worktree ../standardgraph-slim; NOT merged, nothing uploaded)
+
+**2,053,529,600 B -> 885,698,560 B (-57%); gzip -6 676 MB -> 310 MB, zstd -10 531 MB -> 241 MB.** Built on a copy (`~/.standardgraph/common_core_slim.db` from `common_core_scan.db`); live DB untouched.
+- `scripts/slim_release_db.py` (run AFTER `withhold_systems.py` + floor/flag scripts; `--dry-run`, `--keep-fp32`, refuses `common_core.db`, idempotent): drops `idx_relationships_source` + `idx_relationships_method`; deletes `successor` rows after proving every successor is an exact mirror of a prerequisite and vice versa (0 mismatches, incl. 2,016 llm_validated); drops `keywords` (nothing in `packages/common-core` reads it; `scripts/export_json.py` does, so export from the pipeline DB, not the slim one); float32 -> float16 embeddings; VACUUM.
+- Server (`server.py`): successors = prerequisite rows by `target_id`; vectors decoded by blob length (float16 or float32, old installs still work); `ORDER BY id` pinned on the llm_validated edge queries (without it, dropping the method index reordered `prerequisite_rationales`/learning-path edges); `list_systems` `relationships` = 2x prerequisites (still 3,597,184).
+- Proof: `scripts/slim_equivalence.py` replays 79 fixed calls (lookup x25, progression x9, learning_path x13, map x15, search x15, list_systems x3) with cached Ollama query vectors. Code change alone on the unslimmed DB: 0/79 diffs. Slim DB: 72/79 byte-identical; the other 7 are all float16: 5 last-digit score roundings (+-0.0001) and 2 rank swaps between exactly tied results (0.6536 vs 0.6536). Tests on the copy: 115 pass.
+- float16 recall@10 vs float32, 500 random query standards (top-1 within 1e-3 score: 100% everywhere): hub scope 0.999, same-system 0.994, random other system 0.999 (the scopes the server uses). Global all-systems scope is 0.892 strict-by-id only because verbatim-duplicate standards tie (every returned item is within 1e-3 of the true 10th score: tolerant recall 1.000); the server never searches unscoped. int8+scale failed the bar (same-system 0.978, other-system 0.978) and was skipped.
+- Not done (options): `standard_relationships` still carries `id`, `system`, `created_at` per row plus a 103 MB UNIQUE autoindex; WITHOUT ROWID on (source_id,target_id,relationship) would drop ~100 MB more but changes the schema/`ORDER BY id` used above. `keywords` should be dropped from ingestion's release path only.
+
 ## 2026-10-20 - world-coverage scan 2 (branch `more-countries`, worktree ../standardgraph-scan)
 
 **Full table + licence quotes: `docs/world-coverage-scan-2.md`. Built into the copy `~/.standardgraph/common_core_scan.db` only (live DB and data/common_core.db untouched).**
