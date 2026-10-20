@@ -141,6 +141,8 @@ SYSTEM_META: dict[str, dict] = {
     "ie-ncca":   {"country": "Ireland",       "country_code": "IE", "region": "Europe",             "language": "English/Irish",      "level": "national"},
     "it-miur":   {"country": "Italy",         "country_code": "IT", "region": "Europe",             "language": "Italian",            "level": "national"},
     "no-udir":   {"country": "Norway",       "country_code": "NO", "region": "Europe",             "language": "Norwegian/English",  "level": "national"},
+    "se-skolverket": {"country": "Sweden",   "country_code": "SE", "region": "Europe",             "language": "Swedish",            "level": "national"},
+    "cn-moe":    {"country": "China",     "country_code": "CN", "region": "Asia-Pacific",      "language": "Chinese",            "level": "national"},
     "pl-men":    {"country": "Poland",       "country_code": "PL", "region": "Europe",             "language": "Polish",             "level": "national"},
     "fr-men":    {"country": "France",       "country_code": "FR", "region": "Europe",             "language": "French",             "level": "national"},
     "pt-dge":    {"country": "Portugal",      "country_code": "PT", "region": "Europe",             "language": "Portuguese",         "level": "national"},
