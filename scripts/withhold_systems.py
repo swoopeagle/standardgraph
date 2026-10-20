@@ -34,6 +34,8 @@ def main():
         ("standards", f"system IN ({q})", systems),  # last: the subqueries above need these rows
     ]
     for table, where, args in stmts:
+        if not db.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?", (table,)).fetchone():
+            continue  # e.g. keywords is dropped from slimmed release DBs (slim_release_db.py)
         n = db.execute(f"SELECT COUNT(*) FROM {table} WHERE {where}", args).fetchone()[0]
         print(f"{table}: {n} rows{' (dry run)' if dry else ''}")
         if not dry:

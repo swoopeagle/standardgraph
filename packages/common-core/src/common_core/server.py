@@ -443,7 +443,9 @@ def _cosine_scores(
     if not rows:
         return []
     dim = rows[0]["dimensions"]
-    matrix = np.frombuffer(b"".join(r["vector"] for r in rows), dtype=np.float32).reshape(len(rows), dim)
+    # Vectors are float32, or float16 in slimmed release DBs (self-describing by blob length).
+    vdt = np.float16 if len(rows[0]["vector"]) == dim * 2 else np.float32
+    matrix = np.frombuffer(b"".join(r["vector"] for r in rows), dtype=vdt).reshape(len(rows), dim).astype(np.float32)
     ids = [r["standard_id"] for r in rows]
 
     q = query_vec / (np.linalg.norm(query_vec) + 1e-9)
@@ -578,18 +580,25 @@ def _related(conn, sid: str, relationship: str, prefer_validated: bool):
     the grade-heuristic edges (source='grade_heuristic'). Falling back preserves
     non-empty prerequisite lists for standards the pilot never re-validated.
     """
+    # Release DBs store only prerequisite rows (successor rows are exact mirrors and were
+    # dropped to save space); a successor of X is any Y with a prerequisite edge Y -> X.
+    # Old DBs that still carry successor rows return the identical set through this path.
+    if relationship == "successor":
+        rel, col, other = "prerequisite", "target_id", "source_id"
+    else:
+        rel, col, other = relationship, "source_id", "target_id"
     if prefer_validated:
         val = [r[0] for r in conn.execute(
-            "SELECT target_id FROM standard_relationships "
-            "WHERE source_id=? AND relationship=? AND method='llm_validated' "
-            "ORDER BY confidence_score DESC, target_id",
-            (sid, relationship)).fetchall()]
+            f"SELECT {other} FROM standard_relationships "
+            f"WHERE {col}=? AND relationship=? AND method='llm_validated' "
+            f"ORDER BY confidence_score DESC, {other}",
+            (sid, rel)).fetchall()]
         if val:
             return val, "llm_validated"
     allrows = [r[0] for r in conn.execute(
-        "SELECT target_id FROM standard_relationships "
-        "WHERE source_id=? AND relationship=? ORDER BY target_id",
-        (sid, relationship)).fetchall()]
+        f"SELECT {other} FROM standard_relationships "
+        f"WHERE {col}=? AND relationship=? ORDER BY {other}",
+        (sid, rel)).fetchall()]
     return allrows, "grade_heuristic"
 
 
@@ -677,7 +686,7 @@ def lookup_standard(
         prereq_rationales = {}
         for r in conn.execute(
             "SELECT target_id, confidence_score, notes FROM standard_relationships "
-            "WHERE source_id=? AND relationship='prerequisite' AND method='llm_validated'",
+            "WHERE source_id=? AND relationship='prerequisite' AND method='llm_validated' ORDER BY id",
             (sid,)).fetchall():
             strength, why = _parse_prereq_note(r[2])
             prereq_rationales[r[0]] = {
@@ -979,7 +988,7 @@ def get_learning_path(
         rows = conn.execute(
             "SELECT target_id, confidence_score, notes FROM standard_relationships "
             "WHERE source_id=? AND relationship='prerequisite' "
-            "AND method='llm_validated' AND confidence_score >= ?",
+            "AND method='llm_validated' AND confidence_score >= ? ORDER BY id",
             (node, min_conf)).fetchall()
         out = []
         for p, conf, notes in rows:
@@ -1024,8 +1033,8 @@ def get_learning_path(
                 nx: list[str] = []
                 for n in fr:
                     for r in conn.execute(
-                        "SELECT target_id FROM standard_relationships "
-                        "WHERE source_id=? AND relationship='successor' "
+                        "SELECT source_id FROM standard_relationships "
+                        "WHERE target_id=? AND relationship='prerequisite' "
                         "AND method='llm_validated' AND confidence_score >= ?",
                         (n, min_conf)).fetchall():
                         s = r[0]
@@ -1374,7 +1383,8 @@ def _systems_snapshot():
         "standards":          conn.execute("SELECT COUNT(*) FROM standards").fetchone()[0],
         "embeddings":         conn.execute("SELECT COUNT(*) FROM embeddings").fetchone()[0],
         "crosswalk_mappings": conn.execute("SELECT COUNT(*) FROM crosswalk_mappings").fetchone()[0],
-        "relationships":      conn.execute("SELECT COUNT(*) FROM standard_relationships").fetchone()[0],
+        # every prerequisite edge has a mirrored successor edge (stored only in old DBs)
+        "relationships":      conn.execute("SELECT 2 * COUNT(*) FROM standard_relationships WHERE relationship='prerequisite'").fetchone()[0],
     }
     conn.close()
 
