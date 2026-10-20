@@ -3,11 +3,11 @@
 ## 2026-10-20 - world-coverage scan 3, harder countries (branch `harder-countries`, worktree ../standardgraph-harder)
 
 **Full table, licence quotes, counsel list, emails: `docs/world-coverage-scan-3.md`. Built into the copy `~/.standardgraph/common_core_harder.db` only (live DB untouched).**
-- CLEAN, ingested + embedded + crosswalked + sonnet-scored + 0.75 floor: Sweden `se-skolverket` (937, CC0 via link; confirm with Skolverket), Japan `jp-mext` science + English (263, MEXT CC BY-compatible terms, official English), Italy `it-miur` non-maths (571, CC BY 3.0). Suite 131 pass on the copy (`tests/test_scan3.py`).
+- CLEAN, ingested + embedded + crosswalked + sonnet-scored + 0.75 floor: Sweden `se-skolverket` (937, CC0 via link; confirm with Skolverket), Japan `jp-mext` science + English (263, MEXT CC BY-compatible terms, official English), Italy `it-miur` non-maths (571, CC BY 3.0). Suite 129 pass on the copy (`tests/test_scan3.py`).
 - STATUTE-ROUTE, extracted + translated + JSON committed, loaders written, **NOT loaded**: China `cn-moe` (1,151, Apple Vision OCR, CER ~2.6 % on two hand-checked pages), Brazil `br-bncc` non-maths (925; gov.br stamps CC BY-ND, weakest), Russia `ru-fop` (1,489, ISMO text files). Load = one command each (`python -m ingestion.international.fetch_{china,brazil_other,russia}`). Not extracted: Vietnam (annex not on any official host), Mexico (campo-based scanned tables), Korea, Peru, NL/DK/EE.
-- Poland `pl-men` is statute-route by the same rule: still in the copy, now in `data/withheld_systems.txt` (revert = delete that line).
+- Poland `pl-men` is statute-route by the same rule: removed from the copy via `withhold_systems.py` and added to `data/withheld_systems.txt` (revert = delete that line and re-run `fetch_poland`).
 - Translation checks: blind back-translation 95-97.5 % agreement per system (same model family, so consistency not independence).
-- Coverage (pupil share) before -> after -> if counsel says yes to China+Brazil+Russia: maths 37.0 -> 37.1 -> 53.0; science 9.2 -> 10.8 -> 29.2; ELA 8.9 -> 9.5 -> 28.0; social studies 6.4 -> 7.1 -> 25.5; CS 5.4 -> 6.1 -> 22.0; arts 5.1 -> 5.8 -> 23.0; languages 5.1 -> 6.7 -> 23.9.
+- Coverage (pupil share) before -> after (Poland withheld) -> projected if counsel says yes to China+Brazil+Russia: maths 37.0 -> 36.8 -> 52.7; science 9.2 -> 10.4 -> 28.9; ELA 8.9 -> 9.5 -> 28.0; social studies 6.4 -> 6.7 -> 25.2; CS 5.4 -> 5.7 -> 21.6; arts 5.1 -> 5.8 -> 23.0; languages 5.1 -> 6.7 -> 23.9 (add ~0.3 pt to maths/science/SS/CS if Poland is cleared too).
 - Blocked: Indonesia (hosts unreachable), Colombia, Chile, Germany KMK, Portugal (NC-ND), Egypt/Morocco/Iran (unreachable), Bangladesh, Saudi (no document).
 - Ship = promote the copy only after deciding the withheld/statute-route list; other session owns `slim-db` (no schema/server storage changes here; server.py touched only for SYSTEM_META rows).
 

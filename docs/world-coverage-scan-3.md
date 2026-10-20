@@ -22,7 +22,7 @@ Outcomes: **CLEAN** = official open licence / written permission, ingested. **ST
 | 12 | Netherlands | Dutch, maths (Stb. 2026, 198) | 2.8M | `zoek.officielebekendmakingen.nl/stb-2026-198` | Auteurswet art. 11 (agent-fetched): "Er bestaat geen auteursrecht op wetten, besluiten en verordeningen ... noch op ... administratieve beslissingen"; SLO dataset CC BY 4.0 (catalogue entry, API token-gated) | MED, two subjects only | STATUTE-ROUTE, not extracted | Other 7 areas not yet enacted |
 | 13 | Denmark | all (Fælles Mål, BEK 1715) | 1.0M | Retsinformation XML | Ophavsloven §9 (agent-fetched) with stk. 2 carve-out; BEK 1715 shows EndDate 2026-10-09 (a successor probably exists) | LOW | STATUTE-ROUTE, not extracted | Check current BEK first |
 | 14 | Estonia | all (Põhikooli riiklik õppekava) | 0.2M | riigiteataja.ee annexes | AutÕS §5(3) (agent-fetched); English translation stale (2014) | MED | STATUTE-ROUTE, not extracted | |
-| 15 | Poland `pl-men` (scan 2) | maths, science, social studies, CS | 4.9M | Dz.U. 2026 poz. 378 | Prawo autorskie Art. 4 only (verified in scan 2) | done | **reclassified STATUTE-ROUTE** | Still in the copy (inherited from scan 2); added to `data/withheld_systems.txt` so releases exclude it |
+| 15 | Poland `pl-men` (scan 2) | maths, science, social studies, CS | 4.9M | Dz.U. 2026 poz. 378 | Prawo autorskie Art. 4 only (verified in scan 2) | done | **reclassified STATUTE-ROUTE** | Added to `data/withheld_systems.txt` and removed from the copy; JSON and loader stay |
 | 16 | Germany KMK | non-maths Bildungsstandards | 10.3M | kmk.org | Impressum (agent-fetched): "Lediglich die Herstellung von Kopien und Downloads für den persönlichen, privaten und nicht kommerziellen Gebrauch ist erlaubt"; UrhG §5(2) imposes Änderungsverbot | | BLOCKED | |
 | 17 | Portugal DGE | Aprendizagens Essenciais | 1.3M | dge.mec.pt | Terms link to CC BY-NC-ND 2.5 PT (agent-fetched); CDADC art. 7 does not reach curricula | | BLOCKED | |
 | 18 | Colombia | estándares | 9.0M | mineducacion.gov.co | "No reproducir, copiar, distribuir, transformar o modificar los 'contenidos' a menos de que se cuente con la autorización" (agent-fetched) | | BLOCKED | |
@@ -41,17 +41,17 @@ Not separately scanned this pass: Turkey, Pakistan, Philippines, Sri Lanka, Arge
 
 ## Numbers (world K-12 pupils in a country with the subject in the DB; `coverage_report.py` on the copy)
 
-| Subject | before (scan-2 copy) | after (CLEAN ingests) | projected if counsel says yes to China + Brazil + Russia |
-|---|---:|---:|---:|
-| mathematics | 37.0 % | 37.1 % (Sweden) | 53.0 % (+China, Russia) |
-| science | 9.2 % | 10.8 % (+Japan, Sweden, Italy) | 29.2 % |
-| ela | 8.9 % | 9.5 % | 28.0 % |
-| social studies | 6.4 % | 7.1 % | 25.5 % |
-| CS | 5.4 % | 6.1 % | 22.0 % |
-| arts | 5.1 % | 5.8 % | 23.0 % |
-| world languages | 5.1 % | 6.7 % | 23.9 % |
+| Subject | before (scan-2 copy, incl. Poland) | after (CLEAN ingests, Poland withheld) | projected: after + counsel yes on China, Brazil, Russia (Poland still withheld) | same, plus Poland |
+|---|---:|---:|---:|---:|
+| mathematics | 37.0 % | 36.8 % | 52.7 % | 53.0 % |
+| science | 9.2 % | 10.4 % | 28.9 % | 29.2 % |
+| ela | 8.9 % | 9.5 % | 28.0 % | 28.0 % |
+| social studies | 6.4 % | 6.7 % | 25.2 % | 25.5 % |
+| CS | 5.4 % | 5.7 % | 21.6 % | 22.0 % |
+| arts | 5.1 % | 5.8 % | 23.0 % | 23.0 % |
+| world languages | 5.1 % | 6.7 % | 23.9 % | 23.9 % |
 
-(Brazil already counts for maths, so its non-maths rows move the other subjects.) Poland (4.9M pupils, 0.35 pt) is counted in "before/after" because it is in the copy; it is statute-route and now on the withheld list, so a release that withholds it is about 0.35 pt lower on maths, science, social studies and CS. "Before" is slightly below the scan-2 doc's 42.5 % maths because the copy has the withheld systems (BC, Kenya, etc.) removed.
+Countries with maths: 31 before, 31 after (Sweden added, Poland withheld), 33 projected (China, Russia). Brazil already counts for maths, so its non-maths rows only move the other subjects. The CLEAN ingests add +1.6 pt science, +0.6 ela, +0.3 social studies, +0.3 CS, +0.7 arts, +1.6 languages; the net maths dip is Poland being withheld (-0.35 pt) against Sweden (+0.13). "Before" is below the scan-2 doc's 42.5 % maths because the copy has the withheld systems (BC, Kenya, etc.) removed. `pl-men` was removed from the copy with `withhold_systems.py` (re-load: `python -m ingestion.international.fetch_poland`); `tests/test_scan2.py` no longer depends on it.
 
 ## Counsel list (statute-route systems)
 

@@ -10,12 +10,12 @@ ROOT = Path(__file__).parent.parent
 EXPECT = [("au-acara", "social-studies", 300), ("au-acara", "cs", 70), ("au-acara", "arts", 150), ("au-acara", "world-languages", 1000),
           ("uk-nc", "social-studies", 50), ("uk-nc", "cs", 20), ("gb-sco", "social-studies", 100),
           ("es-lomloe", "science", 200), ("es-lomloe", "ela", 150), ("es-lomloe", "social-studies", 150), ("es-lomloe", "arts", 250),
-          ("no-udir", "mathematics", 90), ("no-udir", "science", 60), ("pl-men", "mathematics", 140), ("pl-men", "science", 300)]
+          ("no-udir", "mathematics", 90), ("no-udir", "science", 60)]
 
 
 @pytest.fixture(scope="module")
 def has_scan(db):
-    if not db.execute("SELECT COUNT(*) FROM standards WHERE system='pl-men'").fetchone()[0]:
+    if not db.execute("SELECT COUNT(*) FROM standards WHERE system='no-udir'").fetchone()[0]:
         pytest.skip("DB predates scan 2")
 
 
@@ -26,24 +26,23 @@ def test_counts(db, has_scan, system, subject, n):
 
 def test_integrity(db, has_scan):
     q = lambda s: db.execute(s).fetchone()[0]
-    where = "(system IN ('no-udir','pl-men') OR (system='au-acara' AND subject IN ('social-studies','cs','arts','world-languages')) OR (system='es-lomloe' AND subject<>'mathematics') OR (system='uk-nc' AND subject IN ('social-studies','cs','arts','world-languages')) OR (system='gb-sco' AND subject='social-studies'))"
+    where = "(system IN ('no-udir') OR (system='au-acara' AND subject IN ('social-studies','cs','arts','world-languages')) OR (system='es-lomloe' AND subject<>'mathematics') OR (system='uk-nc' AND subject IN ('social-studies','cs','arts','world-languages')) OR (system='gb-sco' AND subject='social-studies'))"
     assert q(f"SELECT COUNT(*) FROM standards WHERE {where} AND (standard_text='' OR domain='' OR source_url='')") == 0
     assert q(f"SELECT COUNT(*) FROM standards s WHERE {where} AND NOT EXISTS (SELECT 1 FROM embeddings e WHERE e.standard_id=s.id)") == 0
     # translated systems keep the original text and it differs from the English
-    assert q("SELECT COUNT(*) FROM standards WHERE system IN ('pl-men','es-lomloe') AND subject<>'mathematics' AND (cluster IS NULL OR cluster=standard_text)") == 0
-    assert q("SELECT COUNT(*) FROM standards WHERE system='pl-men' AND subject NOT IN ('mathematics','science','social-studies','cs')") == 0
+    assert q("SELECT COUNT(*) FROM standards WHERE system IN ('es-lomloe') AND subject<>'mathematics' AND (cluster IS NULL OR cluster=standard_text)") == 0
 
 
 def test_new_crosswalks_respect_floor(db, has_scan):
     n = db.execute("""SELECT COUNT(*) FROM crosswalk_mappings cm JOIN standards s ON s.id=cm.source_id
-        WHERE s.system IN ('no-udir','pl-men') AND cm.flagged_for_review=0 AND cm.confidence_score<0.75""").fetchone()[0]
+        WHERE s.system IN ('no-udir') AND cm.flagged_for_review=0 AND cm.confidence_score<0.75""").fetchone()[0]
     assert n == 0
-    assert db.execute("SELECT COUNT(*) FROM crosswalk_mappings WHERE source_system='pl-men'").fetchone()[0] > 100
+    assert db.execute("SELECT COUNT(*) FROM crosswalk_mappings WHERE source_system='no-udir'").fetchone()[0] > 50
 
 
 def test_new_crosswalks_scored(db, has_scan):
     n = db.execute("""SELECT COUNT(*) FROM crosswalk_mappings cm JOIN standards s ON s.id=cm.source_id
-        WHERE s.system IN ('no-udir','pl-men') AND cm.notes NOT LIKE '%LLM score%'""").fetchone()[0]
+        WHERE s.system IN ('no-udir') AND cm.notes NOT LIKE '%LLM score%'""").fetchone()[0]
     assert n == 0
 
 
