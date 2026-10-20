@@ -22,3 +22,11 @@ def test_release_db_has_no_withheld_rows():
     q = ",".join("?" * len(withheld()))
     assert db.execute(f"SELECT COUNT(*) FROM standards WHERE system IN ({q})", withheld()).fetchone()[0] == 0
     assert db.execute(f"SELECT COUNT(*) FROM crosswalk_mappings WHERE source_system IN ({q}) OR target_system IN ({q})", withheld() * 2).fetchone()[0] == 0
+
+
+@pytest.mark.skipif(os.path.basename(DB) == "common_core.db", reason="live DB predates the score-flag fix; checked on release copies")
+def test_no_unflagged_score_one_edges():
+    db = sqlite3.connect(DB)
+    n = db.execute("SELECT COUNT(*) FROM crosswalk_mappings WHERE flagged_for_review=0 AND verified_by_human=0 "
+                   "AND notes LIKE '%[LLM score 1/%'").fetchone()[0]
+    assert n == 0
