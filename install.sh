@@ -7,7 +7,7 @@ set -euo pipefail
 REPO="swoopeagle/standardgraph"
 DB_DIR="$HOME/.standardgraph"
 DB_PATH="$DB_DIR/common_core.db"
-DB_URL="https://huggingface.co/datasets/swoopeagle/standardgraph/resolve/main/common_core.db"
+DB_URL="https://huggingface.co/datasets/swoopeagle/standardgraph/resolve/main/common_core_v2.db"
 CLAUDE_CONFIG="$HOME/Library/Application Support/Claude/claude_desktop_config.json"
 
 # ── Colours ───────────────────────────────────────────────────────────────────
@@ -48,7 +48,7 @@ if [ -f "$DB_PATH" ]; then
     info "Database already exists ($existing_size). Skipping download."
     info "To re-download, delete $DB_PATH and re-run this script."
 else
-    info "Downloading standardgraph database (~1.5 GB)..."
+    info "Downloading standardgraph database (~850 MB)..."
     if command -v curl &>/dev/null; then
         curl -L --progress-bar "$DB_URL" -o "$DB_PATH" || fail "Database download failed. Check your internet connection."
     elif command -v wget &>/dev/null; then

@@ -2,7 +2,7 @@
 
 ## What this is
 
-FastMCP server exposing 175,000+ education standards across 310 curriculum systems as six MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
+FastMCP server exposing 175,000+ education standards across 307 curriculum systems as six MCP tools for Claude Desktop. Standards cover Math, Science, ELA, Social Studies, CS, Arts, and World Languages.
 
 ## Architecture
 
@@ -28,8 +28,8 @@ scripts/
 ## Key facts
 
 - **DB size:** ~1.9 GB
-- **Standards:** 175,738 across 310 systems (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, CCSS Mathematical Practice standards, the 2026-07 international expansion incl. 10 African systems, and the 2026-07-15 math grade-coverage fill-in for 11 countries)
-- **Crosswalk rows:** ~208,442 — hub-centric (CCSS for math, NGSS for science, etc.) PLUS ~88,944 direct within-family country-to-country math edges (see `crosswalk_engine/direct_family.py`; tagged `direct_family` in notes). map_standard serves direct edges automatically, two-hop-via-CCSS is the fallback.
+- **Standards:** 175,046 across 307 systems as of 1.6.3 (withheld systems in `data/withheld_systems.txt` are removed at release) (incl. CCSS sub-standard decomposition, source-side decomposition of 11 high-bundling systems, CCSS Mathematical Practice standards, the 2026-07 international expansion incl. 10 African systems, and the 2026-07-15 math grade-coverage fill-in for 11 countries)
+- **Crosswalk rows:** 173,485 as of 1.6.3 (101,689 served; the rest flagged by score or the 0.75 cosine floor). Previously ~208,442 — hub-centric (CCSS for math, NGSS for science, etc.) PLUS ~88,944 direct within-family country-to-country math edges (see `crosswalk_engine/direct_family.py`; tagged `direct_family` in notes). map_standard serves direct edges automatically, two-hop-via-CCSS is the fallback.
 - **Crosswalk quality scores:** **ALL 208,442 crosswalks now carry a 1–5 LLM quality score (100%)** — completed 2026-07-18 via two overnight Ollama fleet runs (Studio + Mini 2 + IWPC GPU, qwen2.5:14b): the 88,944 direct-family math edges, then the 41,697 hub-centric edges (mostly ELA/Sci/SS). 37,335 edges carry `flagged_for_review=1` and are suppressed from default `map_standard` results. Flagging policy differs by layer: direct-family flags score ≤2; hub-centric flags **only score 1** (hub 2s are often valid-but-grade-shifted, and map_standard already ranks by score). Non-math hub rationales were re-scored with a subject-neutral prompt (the initial fleet prompt said "math", polluting ~2,520 non-math rationales — fixed). Note: scores span calibration regimes (earlier Sonnet mode=4; fleet 14b generous top-end) — directional weak/strong signal intact.
 - **Relationships:** ~3.79M rows (prerequisites/successors)
 - **Ollama host:** `http://169.254.1.1:11434` (Mac Studio via Thunderbolt Bridge from Mini 2 — 0.4ms RTT)
@@ -109,7 +109,7 @@ uvx twine upload --username __token__ dist/standardgraph-X.Y.Z*
 
 # Upload DB to HuggingFace
 uvx huggingface-cli upload swoopeagle/standardgraph \
-    ~/.standardgraph/common_core.db common_core.db --repo-type dataset
+    ~/.standardgraph/common_core_slim.db common_core_v2.db --repo-type dataset
 
 # Watch overnight pipeline
 bash scripts/dashboard.sh --watch

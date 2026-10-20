@@ -2,9 +2,9 @@
 
 **The alignment layer for the global curriculum.** Map any standard to its equivalent in another country or exam board — cross-border alignment no single-country tool provides.
 
-175,738 standards across 310 curriculum systems in 50+ countries, cross-walked into a single graph and accessible via Claude.
+175,046 standards across 307 curriculum systems in 50+ countries, cross-walked into a single graph and accessible via Claude.
 
-> 🎯 **Every crosswalk in the graph is now quality-scored.** All 208,442 crosswalks carry a 1–5 LLM quality score (100% coverage) — spanning the 88,944 direct country-to-country math edges and every hub-centric mapping across all seven subjects. Weak matches are automatically suppressed and results are ranked by real alignment quality, so what you get back is the strongest match first.
+> 🎯 **Every crosswalk in the graph is now quality-scored.** All 173,485 crosswalks carry a 1–5 LLM quality score. Weak matches (low score, or embedding similarity below 0.75) are suppressed by default, which raised measured precision on a blind-labelled test set from 79% to 91% (partly or fully correct). Results are ranked by alignment quality, so what you get back is the strongest match first.
 
 > ⚡ **Try it in 30 seconds — no install.** In Claude, go to **Settings → Connectors → Add custom connector** and paste `https://standardgraph.walkmakewalk.com/mcp`. No download, no token. ([full instructions ↓](#install))
 
@@ -44,7 +44,7 @@ curl -fsSL https://raw.githubusercontent.com/swoopeagle/standardgraph/main/insta
 
 Then **quit and reopen Claude Desktop**. Look for the 🔨 icon in a new conversation.
 
-> The installer handles everything: downloads the pre-built database (~2.1 GB), installs dependencies, and patches your Claude config automatically.
+> The installer handles everything: downloads the pre-built database (~850 MB), installs dependencies, and patches your Claude config automatically.
 
 **Optional: better semantic search**
 
@@ -173,7 +173,7 @@ StandardGraph works out of the box once installed, but pasting the following int
 <summary>Copy this into your Claude Project instructions</summary>
 
 ```
-You are a K-12 curriculum expert with access to StandardGraph — a database of 175,000+ standards across 310 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
+You are a K-12 curriculum expert with access to StandardGraph — a database of 175,000+ standards across 307 curriculum systems in 50+ countries, covering Math, Science, ELA, Social Studies, Computer Science, Arts, and World Languages.
 
 ## When the user asks about standards, use these tools:
 - search_standards — when they describe a concept and want matching standards

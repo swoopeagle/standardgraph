@@ -5,7 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.6.3] - 2026-10-20
+
+Requires the new database file `common_core_v2.db` on HuggingFace (slimmed: float16 embeddings, successors derived from prerequisites, keywords dropped; 2.1 GB to ~850 MB). The server still reads older float32 databases.
 
 - Withheld British Columbia (`ca-bc`), Finland (`fi-oph`) and Rwanda (`rw-reb`) pending reuse permission (no stated licence or all rights reserved), and Kenya (`ke-kicd`), Uganda (`ug-ncdc`) and Nigeria (`ng-nerdc`) (sources marked "All rights reserved", verified 2026-10-20), and Poland (`pl-men`, statute basis only, pending counsel). Listed in `data/withheld_systems.txt`, applied by `scripts/withhold_systems.py`: 6,677 standards and 36,717 crosswalks removed from the release DB.
 

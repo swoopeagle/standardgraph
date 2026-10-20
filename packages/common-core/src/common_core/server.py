@@ -79,7 +79,7 @@ K, 1, 2, 3, 4, 5, 6, 7, 8, HS
 Every crosswalk mapping carries two independent signals:
 - `confidence_score` — embedding cosine similarity. ≥ 0.85 is a strong match; 0.70–0.80 is plausible.
 - `quality_score` — a 1–5 LLM judgement of whether the two standards really teach the same
-  thing, with a written rationale in `notes`. All 208,442 mappings are scored.
+  thing, with a written rationale in `notes`. All 173,485 mappings are scored.
 Weak mappings are marked `flagged: true` and are **suppressed by default**; pass
 `include_flagged=True` to see them. Results are ranked by quality first, then confidence.
 Scores are LLM-generated, not human-verified — treat 4–5 as reliable and 3 as worth checking.
